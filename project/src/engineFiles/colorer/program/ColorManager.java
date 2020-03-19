@@ -11,7 +11,7 @@ import java.util.*;
 
 public class ColorManager {
 
-
+    private Random r = new Random();
     private SpecialColorObj specialColorObj;
     private ArrayList<ColorObj> colors = new ArrayList();
 
@@ -21,7 +21,7 @@ public class ColorManager {
     }
 
 
-    private boolean isTransparent(BufferedImage image, int x, int y) {
+    protected boolean isTransparent(BufferedImage image, int x, int y) {
         int pixel = image.getRGB(x,y);
         if( (pixel>>24) == 0x00 ) {
             return true;
@@ -29,7 +29,7 @@ public class ColorManager {
         return false;
     }
 
-    private BufferedImage getImage(File input) throws IOException {
+    protected BufferedImage getImage(File input) throws IOException {
 
         BufferedImage tmpImage = ImageIO.read(input);
 
@@ -62,16 +62,18 @@ public class ColorManager {
     }
 
 
-    private ColorObj getRandomColorObj(){
-       return colors.get(new Random().nextInt(colors.size()));
+    public ColorObj getRandomColorObj(){
+       return colors.get(r.nextInt(colors.size()));
     }
 
-    private Color getRandomColor(){
+    public Color getRandomColor(){
         return getRandomColorObj().getRandomShade();
     }
 
 
-
+    public ColorObj getRandomColorObj(ColorObj[] arr){
+        return arr[r.nextInt(arr.length)];
+    }
 
 
 
@@ -92,6 +94,8 @@ public class ColorManager {
         genertateBlue();
         generateRed();
     }
+
+
     private void specialColorsInit(){
         String random = "#ff0000";
         String midColor = "#b7b7b7";
@@ -175,6 +179,125 @@ public class ColorManager {
 
     private void generateColor(String light, String mid, String dark, String colorName){
         this.colors.add(new ColorObj(light,dark,mid,colorName));
+    }
+
+    public ColorObj findColor(String name){
+        for(ColorObj color: this.colors){
+            if(color.getName().equals(name)){
+                return color;
+            }
+        }
+        return null;
+    }
+
+    public ColorObj getBlack(){
+        return this.findColor("black");
+    }
+    public ColorObj getWhite(){
+        return this.findColor("white");
+    }
+    public ColorObj getYellow(){
+        return this.findColor("yellow");
+    }
+    public ColorObj getRed(){
+        return this.findColor("red");
+    }
+    public ColorObj getBlue(){
+        return this.findColor("blue");
+    }
+    public ColorObj getBrown(){
+        return this.findColor("brown");
+    }
+    public ColorObj getPink(){
+        return this.findColor("pink");
+    }
+    public ColorObj getPurple(){
+        return this.findColor("purple");
+    }
+    public ColorObj getGreen(){
+        return this.findColor("green");
+    }
+
+    public ColorObj getUnusedColor(ColorObj[] colorSlots){
+        ColorObj temp;
+        boolean found;
+        while (true){
+            found = false;
+            temp = getRandomColorObj();
+            for(ColorObj color:colorSlots){
+                if(areColorsSame(temp,color)){
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                return temp;
+            }
+        }
+    }
+
+    public boolean areColorsSame(ColorObj legitColor, ColorObj potentialColor){
+        if(potentialColor == null){
+            return false;
+        }
+        return (legitColor.getName().equals(potentialColor.getName()));
+    }
+
+    public ArrayList<ColorObj> getDarkColors(){
+        ArrayList<ColorObj> darkColors = new ArrayList<ColorObj>();
+        darkColors.add(getBlack());
+        darkColors.add(getRed());
+        darkColors.add(getPurple());
+        return darkColors;
+    }
+
+    public ArrayList<ColorObj> getMidColors(){
+        ArrayList<ColorObj> midColors = new ArrayList<ColorObj>();
+        midColors.add(getGreen());
+        midColors.add(getBrown());
+        midColors.add(getBlue());
+        return midColors;
+    }
+
+    public ArrayList<ColorObj> getLightColors(){
+        ArrayList<ColorObj> lightColors = new ArrayList<ColorObj>();
+        lightColors.add(getWhite());
+        lightColors.add(getYellow());
+        lightColors.add(getPink());
+        return lightColors;
+    }
+
+    public boolean isColorObjInArr(ColorObj tested, ColorObj[] arr){
+        for (ColorObj color: arr){
+            if(color.getName().equals(tested.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isColorDark(ColorObj tested){
+        return isColorObjInArr(tested, (ColorObj[]) getDarkColors().toArray());
+    }
+
+    public  boolean isColorMid(ColorObj tested){
+        return isColorObjInArr(tested, (ColorObj[]) getMidColors().toArray());
+    }
+
+    public boolean isColorLight(ColorObj tested){
+        return isColorObjInArr(tested, (ColorObj[]) getLightColors().toArray());
+    }
+
+    public ColorObj getRandomDarkColorObj(){
+        return getRandomColorObj((ColorObj[]) getDarkColors().toArray());
+    }
+
+    public ColorObj getRandomMidColorObj(){
+        return getRandomColorObj((ColorObj[]) getMidColors().toArray());
+    }
+
+    public ColorObj getRandomLightColorObj(){
+        return getRandomColorObj((ColorObj[]) getLightColors().toArray());
     }
 
 
