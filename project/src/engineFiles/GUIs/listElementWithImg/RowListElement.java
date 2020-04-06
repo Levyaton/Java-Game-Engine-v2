@@ -3,14 +3,9 @@ package engineFiles.GUIs.listElementWithImg;
 import ui.FolderOP;
 import ui.Sprite;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import static java.awt.GridBagConstraints.FIRST_LINE_START;
 import static java.awt.GridBagConstraints.LINE_START;
 
 public class RowListElement extends JLayeredPane{

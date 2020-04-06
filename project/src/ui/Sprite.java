@@ -1,7 +1,10 @@
 package ui;
 
+import org.json.JSONObject;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
+
 
 public class Sprite {
     private File ogFile;
@@ -13,18 +16,60 @@ public class Sprite {
     private int defaultWidth;
     private int currentHeight;
     private int currentWidth;
+    private JSONObject json;
+
+    private int layer = 0;
+
 
     public Sprite(File file) {
         this.ogFile = file;
-        this.img = FolderOP.getImage(file);
-        this.path = file.getPath();
-        this.name = file.getName();
-        this.defaultHeight = this.img.getHeight();
-        this.defaultWidth = this.img.getWidth();
+        initFromOGFile();
         this.currentHeight = this.defaultHeight;
         this.currentWidth = this.defaultWidth;
+        this.coord = new Coordinates(0,0);
+        json = updateJSON();
     }
 
+    public Sprite(JSONObject json){
+        this.ogFile = new File(json.get("Path").toString());
+        initFromOGFile();
+        currentHeight = JSONHelper.getIntParameter(json,"Height");
+        currentWidth = JSONHelper.getIntParameter(json,"Width");
+        int x = JSONHelper.getIntParameter(json,"XAxis");
+        int y = JSONHelper.getIntParameter(json,"YAxis");
+        coord = new Coordinates(x,y);
+        layer = JSONHelper.getIntParameter(json,"Layer");
+;    }
+
+    private void initFromOGFile(){
+
+        this.img = FolderOP.getImage(this.ogFile);
+        this.path = this.ogFile.getPath();
+        this.name = this.ogFile.getName();
+        this.defaultHeight = this.img.getHeight();
+        this.defaultWidth = this.img.getWidth();
+    }
+
+    public JSONObject updateJSON(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.append("Width", getCurrentWidth());
+        jsonObject.append("Height", getCurrentHeight());
+        jsonObject.append("XAxis", getCoord().getX());
+        jsonObject.append("YAxis", getCoord().getY());
+        jsonObject.append("Layer", getLayer());
+        jsonObject.append("Path", getPath());
+        return jsonObject;
+    }
+
+
+    public JSONObject getJSON() {
+        return json;
+    }
+
+
+    public int getLayer(){
+        return layer;
+    };
 
     public File getOgFile() {
         return ogFile;
@@ -76,6 +121,10 @@ public class Sprite {
 
     public void setCoord(Coordinates coord) {
         this.coord = coord;
+    }
+
+    public void setLayer(int layer){
+        this.layer = layer;
     }
 
     public void setDefaultHeight(int defaultHeight) {

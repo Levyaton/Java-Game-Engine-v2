@@ -4,7 +4,6 @@ import ui.Sprite;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 import static java.awt.GridBagConstraints.LINE_START;
 
