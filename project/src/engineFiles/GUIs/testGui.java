@@ -3,8 +3,9 @@ package engineFiles.GUIs;
 import engineFiles.GUIs.mainGameGui.GameGUIArea;
 import engineFiles.GUIs.mainGameGui.GameGUIFrame;
 import engineFiles.main.models.OverworldPlayer;
-import ui.Player;
-import ui.Sprite;
+import engineFiles.ui.FolderOP;
+import engineFiles.ui.Player;
+import engineFiles.ui.Sprite;
 
 import javax.swing.*;
 import java.io.File;
@@ -24,12 +25,14 @@ public class testGui {
             @Override
             public void run() {
                 //new WorldEditGUI2();
+                String spritePathDir = "project/src/gameFiles/models/sprites/static/";
+                // BufferedImage test = null;
+                String playerPath = spritePathDir+"other/redSquare.png";
+                String backgroundPath = spritePathDir+"backgrounds/iceBlue.png";
                 OverworldPlayer player = new OverworldPlayer(new File(playerPath), new Player());
-                player.setCurrentWidth(10);
-                player.setCurrentHeight(10);
-                GameGUIArea area = new GameGUIArea(new Sprite[0], player, new Sprite(new File((backgroundPath))));
-                GameGUIFrame frame = new GameGUIFrame(area);
 
+                GameGUIArea area = new GameGUIArea(FolderOP.getSprites(spritePathDir), player, new Sprite(backgroundPath));
+                GameGUIFrame frame = new GameGUIFrame(area);
 
             }
 

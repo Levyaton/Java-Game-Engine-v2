@@ -1,7 +1,7 @@
 package engineFiles.GUIs.listElementWithImg;
 
-import ui.FolderOP;
-import ui.Sprite;
+import engineFiles.ui.FolderOP;
+import engineFiles.ui.Sprite;
 
 import javax.swing.*;
 import java.awt.*;

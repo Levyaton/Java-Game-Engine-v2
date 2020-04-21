@@ -1,4 +1,4 @@
-package ui;
+package engineFiles.ui;
 
 import org.json.*;
 import org.json.simple.parser.JSONParser;
@@ -39,13 +39,16 @@ public class FolderOP {
         return new Sprite(f);
     }
 
-    public static Sprite[] getSprites(String dir){
+    public static ArrayList<Sprite> getSprites(String dir){
         ArrayList<Sprite> sprites = new ArrayList<>();
         File[] files = FolderOP.getFiles(dir);
         for (File f: files) {
-            sprites.add(new Sprite(f));
+            if(f.getPath().contains(".png")){
+                sprites.add(new Sprite(f));
+            }
+
         }
-        return (Sprite[]) sprites.toArray();
+        return sprites;
     }
 
     public static JSONObject getJSON(String path){

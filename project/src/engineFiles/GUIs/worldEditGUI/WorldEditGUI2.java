@@ -3,8 +3,8 @@ package engineFiles.GUIs.worldEditGUI;
 import engineFiles.GUIs.listElementWithImg.ListElement;
 import engineFiles.GUIs.listElementWithImg.RowListElement;
 import engineFiles.GUIs.listElementWithImg.SquareListElement;
-import ui.FolderOP;
-import ui.Sprite;
+import engineFiles.ui.FolderOP;
+import engineFiles.ui.Sprite;
 
 import javax.swing.*;
 import java.awt.*;
