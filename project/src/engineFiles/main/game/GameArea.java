@@ -45,6 +45,6 @@ public class GameArea extends JPanel {
         // ((JLabel)sprite.getComponent()).paintImmediately(sprite.getCoord().getX(), sprite.getCoord().getY(), sprite.getCurrentWidth(), sprite.getCurrentHeight());
         g.drawImage(sprite.getImg(), sprite.getCoord().getX(), sprite.getCoord().getY(), this);
         //revalidate();
-        repaint();
+//        repaint();
     }
 }

@@ -31,7 +31,7 @@ public class testGui {
                 String backgroundPath = spritePathDir+"backgrounds/iceBlue.png";
                 OverworldPlayer player = new OverworldPlayer(new File(playerPath), new Player());
 
-                GameGUIArea area = new GameGUIArea(FolderOP.getSprites(spritePathDir), player, new Sprite(backgroundPath));
+                GameGUIArea area = new GameGUIArea(FolderOP.getSprites(spritePathDir), player);
                 GameGUIFrame frame = new GameGUIFrame(area);
 
             }

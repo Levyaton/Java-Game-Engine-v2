@@ -56,8 +56,10 @@ public class Coordinates {
     }
 
     public void moveUp(){
+        //System.out.println("confirmUp");
         y_last = this.y;
-        this.y-= height;
+       // this.y-= height;
+        this.y -= 3;
     }
 
     public void moveUp(double mod){
@@ -66,8 +68,10 @@ public class Coordinates {
     }
 
     public void moveDown(){
+       // System.out.println("confirmDown");
         y_last = this.y;
-        this.y+= height;
+        //this.y+= height;
+        this.y += 3;
     }
 
     public void moveDown(double mod){
@@ -76,8 +80,10 @@ public class Coordinates {
     }
 
     public void moveLeft(){
+       // System.out.println("confirmLeft");
         x_last = this.x;
-        this.x-= width;
+        //this.x-= width;
+        this.x-= 3;
     }
 
     public void moveLeft(double mod) {
@@ -86,8 +92,10 @@ public class Coordinates {
     }
 
     public void moveRight(){
+        //System.out.println("confirmRight");
         x_last = this.x;
-        this.x+= width;
+        //this.x+= width;
+        this.x+= 3;
     }
 
     public void moveRight(double mod){
