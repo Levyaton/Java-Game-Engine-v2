@@ -55,7 +55,7 @@ public class GameGUIArea extends JPanel implements KeyListener {
     }
 
     private void loadPlayer(){
-       // sprites.add(player);
+       sprites.add(player);
     }
 
     private JLabel loadSprite(Sprite s){
