@@ -36,8 +36,7 @@ public class AdvancedColorManager extends ColorManager {
     private ArrayList<ColorObj> lightColors;
 
 
-
-    AdvancedColorManager(){
+    AdvancedColorManager() {
 
         initUtilColors();
         darkColors = getDarkColors();
@@ -47,7 +46,7 @@ public class AdvancedColorManager extends ColorManager {
     }
 
 
-    private void initUtilColors(){
+    private void initUtilColors() {
         utilDark1 = getUtilDarkColorObj1();
         utilDark2 = getUtilDarkColorObj2();
         utilDark3 = getUtilDarkColorObj3();
@@ -59,13 +58,13 @@ public class AdvancedColorManager extends ColorManager {
         utilMid3 = getUtilMidColorObj3();
     }
 
-    private void assignColors(){
+    private void assignColors() {
         assignDarkColors();
         assignLightColors();
         assignMidColors();
     }
 
-    private void assignDarkColors(){
+    private void assignDarkColors() {
         int index = r.nextInt(darkColors.size());
         dark1 = darkColors.get(index);
         darkColors.remove(index);
@@ -79,7 +78,7 @@ public class AdvancedColorManager extends ColorManager {
         darkColors.remove(index);
     }
 
-    private void assignLightColors(){
+    private void assignLightColors() {
         int index = r.nextInt(lightColors.size());
         light1 = lightColors.get(index);
         lightColors.remove(index);
@@ -93,7 +92,7 @@ public class AdvancedColorManager extends ColorManager {
         lightColors.remove(index);
     }
 
-    private void assignMidColors(){
+    private void assignMidColors() {
         int index = r.nextInt(midColors.size());
         mid1 = midColors.get(index);
         midColors.remove(index);
@@ -108,69 +107,67 @@ public class AdvancedColorManager extends ColorManager {
     }
 
 
-
-
     public ColorObj getUtilDarkColorObj1() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"dark1");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "dark1");
     }
 
     public ColorObj getUtilDarkColorObj2() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"dark2");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "dark2");
     }
 
     public ColorObj getUtilDarkColorObj3() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"dark3");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "dark3");
     }
 
     public ColorObj getUtilMidColorObj1() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"mid1");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "mid1");
     }
 
     public ColorObj getUtilMidColorObj2() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"mid2");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "mid2");
     }
 
     public ColorObj getUtilMidColorObj3() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"mid3");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "mid3");
     }
 
     public ColorObj getUtilLightColorObj1() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"light1");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "light1");
     }
 
     public ColorObj getUtilLightColorObj2() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"light2");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "light2");
     }
 
     public ColorObj getUtilLightColorObj3() {
         String lightShadeHex = "";//DOPLŇ!!!!!
         String midShadeHex = "";//DOPLŇ!!!!!
         String darkShadeHex = "";//DOPLŇ!!!!!
-        return new ColorObj(lightShadeHex,midShadeHex,darkShadeHex,"light3");
+        return new ColorObj(lightShadeHex, midShadeHex, darkShadeHex, "light3");
     }
 
     public void advanceColorSwap(File input, File output) throws IOException {
@@ -179,126 +176,89 @@ public class AdvancedColorManager extends ColorManager {
         int width = image.getWidth();
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-        for(int y = 0; y < height; y++){
-            for (int x = 0; x < width; x++){
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 //Color current = new Color(image.getRGB(x,y));
-                if(!isTransparent(image,x,y)){
-                    Color corresponding = getAdvanceCorrespondingColor(new Color(image.getRGB(x,y)));
-                    newImage.setRGB(x,y,corresponding.getRGB());
-                }
-                else{
+                if (!isTransparent(image, x, y)) {
+                    Color corresponding = getAdvanceCorrespondingColor(new Color(image.getRGB(x, y)));
+                    newImage.setRGB(x, y, corresponding.getRGB());
+                } else {
                     System.out.println("Empty");
                 }
             }
         }
-        ImageIO.write(newImage,"png", output);
+        ImageIO.write(newImage, "png", output);
     }
 
 
-    private Color getAdvanceCorrespondingColor(Color input){
+    private Color getAdvanceCorrespondingColor(Color input) {
         String hexInput = hexColorValue(input);
-        if (hexInput.equals(utilDark1.getDarkHex())){
+        if (hexInput.equals(utilDark1.getDarkHex())) {
             return Color.decode(dark1.getDarkHex());
-        }
-        else if (hexInput.equals(utilDark1.getMidHex())){
+        } else if (hexInput.equals(utilDark1.getMidHex())) {
             return Color.decode(dark1.getMidHex());
-        }
-        else if (hexInput.equals(utilDark1.getLightHex())){
+        } else if (hexInput.equals(utilDark1.getLightHex())) {
             return Color.decode(dark1.getLightHex());
-        }
-        else if (hexInput.equals(utilDark2.getDarkHex())){
+        } else if (hexInput.equals(utilDark2.getDarkHex())) {
             return Color.decode(dark2.getDarkHex());
-        }
-        else if (hexInput.equals(utilDark2.getMidHex())){
+        } else if (hexInput.equals(utilDark2.getMidHex())) {
             return Color.decode(dark2.getMidHex());
-        }
-        else if (hexInput.equals(utilDark2.getLightHex())){
+        } else if (hexInput.equals(utilDark2.getLightHex())) {
             return Color.decode(dark2.getMidHex());
-        }
-        else if (hexInput.equals(utilDark3.getDarkHex())){
+        } else if (hexInput.equals(utilDark3.getDarkHex())) {
             return Color.decode(dark3.getDarkHex());
-        }
-        else if (hexInput.equals(utilDark3.getMidHex())){
+        } else if (hexInput.equals(utilDark3.getMidHex())) {
             return Color.decode(dark3.getMidHex());
-        }
-        else if (hexInput.equals(utilDark3.getLightHex())){
+        } else if (hexInput.equals(utilDark3.getLightHex())) {
             return Color.decode(dark3.getMidHex());
-        }
-        else if (hexInput.equals(utilMid1.getDarkHex())){
+        } else if (hexInput.equals(utilMid1.getDarkHex())) {
             return Color.decode(mid1.getDarkHex());
-        }
-        else if (hexInput.equals(utilMid1.getMidHex())){
+        } else if (hexInput.equals(utilMid1.getMidHex())) {
             return Color.decode(mid1.getMidHex());
-        }
-        else if (hexInput.equals(utilMid1.getLightHex())){
+        } else if (hexInput.equals(utilMid1.getLightHex())) {
             return Color.decode(mid1.getLightHex());
-        }
-        else if (hexInput.equals(utilMid2.getDarkHex())){
+        } else if (hexInput.equals(utilMid2.getDarkHex())) {
             return Color.decode(mid2.getDarkHex());
-        }
-        else if (hexInput.equals(utilMid2.getMidHex())){
+        } else if (hexInput.equals(utilMid2.getMidHex())) {
             return Color.decode(mid2.getMidHex());
-        }
-        else if (hexInput.equals(utilMid2.getLightHex())){
+        } else if (hexInput.equals(utilMid2.getLightHex())) {
             return Color.decode(mid2.getMidHex());
-        }
-        else if (hexInput.equals(utilMid3.getDarkHex())){
+        } else if (hexInput.equals(utilMid3.getDarkHex())) {
             return Color.decode(mid3.getDarkHex());
-        }
-        else if (hexInput.equals(utilMid3.getMidHex())){
+        } else if (hexInput.equals(utilMid3.getMidHex())) {
             return Color.decode(mid3.getMidHex());
-        }
-        else if (hexInput.equals(utilMid3.getLightHex())){
+        } else if (hexInput.equals(utilMid3.getLightHex())) {
             return Color.decode(mid3.getMidHex());
-        }
-        else if (hexInput.equals(utilLight1.getDarkHex())){
+        } else if (hexInput.equals(utilLight1.getDarkHex())) {
             return Color.decode(light1.getDarkHex());
-        }
-        else if (hexInput.equals(utilLight1.getMidHex())){
+        } else if (hexInput.equals(utilLight1.getMidHex())) {
             return Color.decode(light1.getMidHex());
-        }
-        else if (hexInput.equals(utilLight1.getLightHex())){
+        } else if (hexInput.equals(utilLight1.getLightHex())) {
             return Color.decode(light1.getLightHex());
-        }
-        else if (hexInput.equals(utilLight2.getDarkHex())){
+        } else if (hexInput.equals(utilLight2.getDarkHex())) {
             return Color.decode(light2.getDarkHex());
-        }
-        else if (hexInput.equals(utilLight2.getMidHex())){
+        } else if (hexInput.equals(utilLight2.getMidHex())) {
             return Color.decode(light2.getMidHex());
-        }
-        else if (hexInput.equals(utilLight2.getLightHex())){
+        } else if (hexInput.equals(utilLight2.getLightHex())) {
             return Color.decode(light2.getMidHex());
-        }
-        else if (hexInput.equals(utilLight3.getDarkHex())){
+        } else if (hexInput.equals(utilLight3.getDarkHex())) {
             return Color.decode(light3.getDarkHex());
-        }
-        else if (hexInput.equals(utilLight3.getMidHex())){
+        } else if (hexInput.equals(utilLight3.getMidHex())) {
             return Color.decode(light3.getMidHex());
-        }
-        else if (hexInput.equals(utilLight3.getLightHex())){
+        } else if (hexInput.equals(utilLight3.getLightHex())) {
             return Color.decode(light3.getMidHex());
-        }
-        else{
+        } else {
             return input;
         }
 
 
     }
 
-    private String hexColorValue(Color input){
+    private String hexColorValue(Color input) {
         String hex = Integer.toHexString(input.getRGB());
         hex = "#" + hex.substring(2);
         return hex;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

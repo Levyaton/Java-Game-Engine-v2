@@ -10,8 +10,7 @@ public class ColorObj {
     private String name;
 
 
-
-    ColorObj(String light, String dark, String mid, String name){
+    ColorObj(String light, String dark, String mid, String name) {
         this.light = light;
         this.dark = dark;
         this.mid = mid;
@@ -30,9 +29,9 @@ public class ColorObj {
         return mid;
     }
 
-    public String getRandomShadeHex(){
+    public String getRandomShadeHex() {
         int choice = new Random().nextInt(3);
-        switch (choice){
+        switch (choice) {
             case 0:
                 return light;
             case 1:
@@ -47,19 +46,19 @@ public class ColorObj {
         return name;
     }
 
-    public Color getLightColor(){
+    public Color getLightColor() {
         return Color.decode(light);
     }
 
-    public Color getDarkColor(){
+    public Color getDarkColor() {
         return Color.decode(dark);
     }
 
-    public Color getMidColor(){
+    public Color getMidColor() {
         return Color.decode(mid);
     }
 
-    public Color getRandomShade(){
+    public Color getRandomShade() {
         return Color.decode(this.getRandomShadeHex());
     }
 }

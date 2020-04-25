@@ -8,7 +8,7 @@ public class Controlls {
     private ArrayList<Integer> left;
     private ArrayList<Integer> right;
 
-    public Controlls(ArrayList<Integer> up, ArrayList<Integer> down, ArrayList<Integer> left, ArrayList<Integer> right){
+    public Controlls(ArrayList<Integer> up, ArrayList<Integer> down, ArrayList<Integer> left, ArrayList<Integer> right) {
         this.down = down;
         this.left = left;
         this.right = right;
@@ -22,30 +22,30 @@ public class Controlls {
         return up;
     }
 
-    public ArrayList<Integer> getDown() {
-        return down;
-    }
-
-    public ArrayList<Integer> getLeft() {
-        return left;
-    }
-
-    public ArrayList<Integer> getRight() {
-        return right;
-    }
-
-    //SETTERS
-
     public void setUp(ArrayList<Integer> up) {
         this.up = up;
+    }
+
+    public ArrayList<Integer> getDown() {
+        return down;
     }
 
     public void setDown(ArrayList<Integer> down) {
         this.down = down;
     }
 
+    //SETTERS
+
+    public ArrayList<Integer> getLeft() {
+        return left;
+    }
+
     public void setLeft(ArrayList<Integer> left) {
         this.left = left;
+    }
+
+    public ArrayList<Integer> getRight() {
+        return right;
     }
 
     public void setRight(ArrayList<Integer> right) {

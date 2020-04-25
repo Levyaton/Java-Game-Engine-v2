@@ -14,28 +14,28 @@ public class GameArea extends JPanel {
     OverworldPlayer player;
     private Image dbImage;
     private Graphics dbGraphics;
-    public GameArea(SpriteCollection dynamicSprites,  SpriteCollection staticSprites, OverworldPlayer player){
+
+    public GameArea(SpriteCollection dynamicSprites, SpriteCollection staticSprites, OverworldPlayer player) {
 
     }
 
 
-
-    public SpriteCollection getAllSprites(){
-        SpriteCollection sprites = (SpriteCollection)staticSprites.clone();
-        for (Sprite s: dynamicSprites){
+    public SpriteCollection getAllSprites() {
+        SpriteCollection sprites = (SpriteCollection) staticSprites.clone();
+        for (Sprite s : dynamicSprites) {
             sprites.add(s);
         }
         return sprites;
     }
 
-    private void paint(Graphics g, Sprite sprite){
+    private void paint(Graphics g, Sprite sprite) {
         dbImage = createImage(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         dbGraphics = dbImage.getGraphics();
-        for(Sprite s: getAllSprites()){
+        for (Sprite s : getAllSprites()) {
 
         }
-        paintComponent(dbGraphics,sprite);
-        g.drawImage(dbImage,0,0,this);
+        paintComponent(dbGraphics, sprite);
+        g.drawImage(dbImage, 0, 0, this);
     }
 
     protected void paintComponent(Graphics g, Sprite sprite) {

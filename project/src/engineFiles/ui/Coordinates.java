@@ -9,7 +9,7 @@ public class Coordinates {
     private int height;
     private int width;
 
-    public Coordinates(int x, int y, int width, int height){
+    public Coordinates(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.x_last = x;
@@ -19,7 +19,7 @@ public class Coordinates {
         this.z = 0;
     }
 
-    public Coordinates(int x, int y, int z, int width, int height){
+    public Coordinates(int x, int y, int z, int width, int height) {
         this.x = x;
         this.y = y;
         this.x_last = x;
@@ -29,20 +29,8 @@ public class Coordinates {
         this.z = z;
     }
 
-    public int getX(){
+    public int getX() {
         return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getZ() {
-        return z;
-    }
-
-    public void setZ(int z){
-        this.z = z;
     }
 
     public void setX(int x) {
@@ -50,57 +38,69 @@ public class Coordinates {
         this.x = x;
     }
 
+    public int getY() {
+        return y;
+    }
+
     public void setY(int y) {
         y_last = this.y;
         this.y = y;
     }
 
-    public void moveUp(){
+    public int getZ() {
+        return z;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+
+    public void moveUp() {
         //System.out.println("confirmUp");
         y_last = this.y;
-       // this.y-= height;
+        // this.y-= height;
         this.y -= 3;
     }
 
-    public void moveUp(double mod){
+    public void moveUp(double mod) {
         y_last = this.y;
-        this.y-=(mod * height);
+        this.y -= (mod * height);
     }
 
-    public void moveDown(){
-       // System.out.println("confirmDown");
+    public void moveDown() {
+        // System.out.println("confirmDown");
         y_last = this.y;
         //this.y+= height;
         this.y += 3;
     }
 
-    public void moveDown(double mod){
+    public void moveDown(double mod) {
         y_last = this.y;
-        this.y+=(mod*height);
+        this.y += (mod * height);
     }
 
-    public void moveLeft(){
-       // System.out.println("confirmLeft");
+    public void moveLeft() {
+        // System.out.println("confirmLeft");
         x_last = this.x;
         //this.x-= width;
-        this.x-= 3;
+        this.x -= 3;
     }
 
     public void moveLeft(double mod) {
         x_last = this.x;
-        this.x-=mod*width;
+        this.x -= mod * width;
     }
 
-    public void moveRight(){
+    public void moveRight() {
         //System.out.println("confirmRight");
         x_last = this.x;
         //this.x+= width;
-        this.x+= 3;
+        this.x += 3;
     }
 
-    public void moveRight(double mod){
+    public void moveRight(double mod) {
         x_last = this.x;
-        this.x+=mod*width;
+        this.x += mod * width;
     }
 
 }

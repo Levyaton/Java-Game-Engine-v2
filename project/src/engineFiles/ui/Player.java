@@ -1,4 +1,4 @@
 package engineFiles.ui;
 
-public class Player{
+public class Player {
 }

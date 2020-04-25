@@ -2,7 +2,7 @@ package engineFiles.colorer.program;
 
 import java.awt.*;
 
-public class SpecialColorObj extends ColorObj{
+public class SpecialColorObj extends ColorObj {
 
     private String boarder;
     private String random;
@@ -19,24 +19,26 @@ public class SpecialColorObj extends ColorObj{
         this.random = random;
     }
 
-    public void setChosen(Color light, Color dark, Color mid, Color random){
+    public void setChosen(Color light, Color dark, Color mid, Color random) {
         this.chosenDark = dark;
         this.chosenLight = light;
         this.chosenMid = mid;
         this.chosenRandom = random;
     }
 
-    public Color getChosenDark(){
+    public Color getChosenDark() {
         return chosenDark;
     }
 
-    public Color getChosenLight(){
+    public Color getChosenLight() {
         return chosenLight;
     }
-    public Color getChosenMid(){
+
+    public Color getChosenMid() {
         return chosenMid;
     }
-    public Color getChosenRandom(){
+
+    public Color getChosenRandom() {
         return chosenRandom;
     }
 
@@ -44,18 +46,17 @@ public class SpecialColorObj extends ColorObj{
         return boarder;
     }
 
-    public String getRandomHex(){
+    public String getRandomHex() {
         return random;
     }
 
-    public Color getRandomColor(){
+    public Color getRandomColor() {
         return Color.decode(random);
     }
 
-    public Color getBoarderColor(){
+    public Color getBoarderColor() {
         return Color.decode(boarder);
     }
-
 
 
     public Color getCorrespondingColor(Color input) {
@@ -71,7 +72,7 @@ public class SpecialColorObj extends ColorObj{
         return input;
     }
 
-    private String hexColorValue(Color input){
+    private String hexColorValue(Color input) {
         String hex = Integer.toHexString(input.getRGB());
         hex = "#" + hex.substring(2);
         return hex;

@@ -1,7 +1,6 @@
 package engineFiles.colorer.program;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class test {
         for (File member : directoryListing) {
             try {
 
-                cm.switchColors(member,new File(outputDir + member.getName()));
+                cm.switchColors(member, new File(outputDir + member.getName()));
             } catch (IOException e) {
                 System.out.println(inputDir);
                 e.printStackTrace();
@@ -27,10 +26,6 @@ public class test {
 
         //File path = new File("project/src/playerGameFiles/sprites/image.png");
         //for(File file:)
-
-    }
-
-    private void workFiles(){
 
     }
 
@@ -44,6 +39,9 @@ public class test {
         return image;
     }
 
+    private void workFiles() {
+
+    }
 
 
 }

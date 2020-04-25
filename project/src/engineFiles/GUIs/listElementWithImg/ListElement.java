@@ -12,7 +12,7 @@ public class ListElement {
     JLabel temp;
 
 
-    public ListElement(RowListElement re, JFrame overlay){
+    public ListElement(RowListElement re, JFrame overlay) {
         this.element = re;
         this.sprite = re.sprite;
 
@@ -26,7 +26,7 @@ public class ListElement {
             @Override
             public void mousePressed(MouseEvent e) {
                 e.translatePoint(e.getComponent().getLocation().x, e.getComponent().getLocation().y);
-                temp.setLocation(e.getX(),e.getY());
+                temp.setLocation(e.getX(), e.getY());
             }
 
             @Override
@@ -47,11 +47,10 @@ public class ListElement {
             }
 
 
-
         });
     }
 
-    public ListElement(SquareListElement se){
+    public ListElement(SquareListElement se) {
         this.element = JLayeredPane.getLayeredPaneAbove(se);
         this.sprite = se.sprite;
     }
