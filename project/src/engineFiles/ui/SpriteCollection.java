@@ -1,10 +1,28 @@
 package engineFiles.ui;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class SpriteCollection extends ArrayList<Sprite> {
 
+    public SpriteCollection(JSONArray sprites){
+        for (Object json: sprites) {
+            Sprite s = new Sprite((JSONObject) json);
+            add(s);
+        }
+    }
+
+    public SpriteCollection(ArrayList<Sprite> arr){
+        addAll(arr);
+    }
+
+    public SpriteCollection(){
+
+    }
 
     @Override
     public boolean add(Sprite sprite) {
@@ -28,6 +46,15 @@ public class SpriteCollection extends ArrayList<Sprite> {
         super.sort(compareByZ);
 
     }
+
+    public JSONArray toJSONArray(){
+        JSONArray arr = new JSONArray();
+        for (Sprite s:this) {
+            arr.put(s.getJSON());
+        }
+        return arr;
+    }
+
 
 
 }

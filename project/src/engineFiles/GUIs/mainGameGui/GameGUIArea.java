@@ -2,6 +2,7 @@ package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.OverworldPlayer;
+import engineFiles.ui.Area;
 import engineFiles.ui.Sprite;
 import engineFiles.ui.SpriteCollection;
 
@@ -14,19 +15,17 @@ import java.util.ArrayList;
 public class GameGUIArea extends JPanel implements KeyListener {
 
 
-    private SpriteCollection sprites = new SpriteCollection();
-    private SpriteCollection staticSprites = new SpriteCollection();
-    private SpriteCollection movableSprites = new SpriteCollection();
     private OverworldPlayer player;
     private int frameCount = 0;
     //DoubleBuffer
     private Image dbImage;
     private Graphics dbGraphics;
-    public GameGUIArea(ArrayList<Sprite> sprites, OverworldPlayer player) {
+    private Area area;
+    public GameGUIArea(Area area, OverworldPlayer player) {
         this.player = player;
-
+        this.area = area;
         setLayout(null);
-        loadSprites(sprites);
+        loadSprites(area.getSprites());
         loadPlayer();
 
         //setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -48,7 +47,7 @@ public class GameGUIArea extends JPanel implements KeyListener {
     }
 
     private void loadPlayer() {
-        sprites.add(player);
+        area.getSprites().add(player);
     }
 
     private JLabel loadSprite(Sprite s) {
@@ -67,7 +66,7 @@ public class GameGUIArea extends JPanel implements KeyListener {
         }
 
          */
-        sprites.add(s);
+        //area.getSprites().add(s);
         return image;
     }
 
@@ -119,6 +118,15 @@ public class GameGUIArea extends JPanel implements KeyListener {
     }
 
     public SpriteCollection getSprites() {
-        return sprites;
+        return area.getSprites();
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 }
+

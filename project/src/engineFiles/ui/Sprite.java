@@ -25,7 +25,7 @@ public class Sprite implements Comparable {
     protected JSONObject json;
     protected JComponent component;
     protected boolean movable = false;
-    protected boolean physical = true;
+    protected boolean solid = true;
 
 
     public Sprite(File file) {
@@ -48,8 +48,11 @@ public class Sprite implements Comparable {
 
 
     public Sprite(JSONObject json) {
-        this.ogFile = new File(json.get("Path").toString());
+        String path = json.get("Path").toString();
+        //path = path.substring(2,path.length()-2);
+        this.ogFile = new File(path);
         initFromOGFile();
+       // System.out.println(json.get("Height"));
         currentHeight = json.getInt("Height");
         currentWidth = json.getInt("Width");
         int x = json.getInt("XAxis");
@@ -57,6 +60,7 @@ public class Sprite implements Comparable {
         int z = json.getInt("ZAxis");
         coord = new Coordinates(x, y, currentWidth, currentHeight);
         coord.setZ(z);
+        solid = json.getBoolean("Solid");
         movable = json.getBoolean("Movable");
     }
 
@@ -78,6 +82,7 @@ public class Sprite implements Comparable {
         jsonObject.append("YAxis", getCoord().getY());
         jsonObject.append("ZAxis", getCoord().getZ());
         jsonObject.append("Path", getPath());
+        jsonObject.append("Solid",solid);
         jsonObject.append("Movable", this.movable);
         return jsonObject;
     }
@@ -123,12 +128,8 @@ public class Sprite implements Comparable {
         return coord;
     }
 
-    public boolean isPhysical() {
-        return physical;
-    }
-
-    public JSONObject getJson() {
-        return json;
+    public boolean isSolid() {
+        return solid;
     }
 
     public void setCoord(Coordinates coord) {
@@ -199,8 +200,8 @@ public class Sprite implements Comparable {
         this.json = json;
     }
 
-    public void setPhysical(boolean physical) {
-        this.physical = physical;
+    public void setSolid(boolean solid) {
+        this.solid = solid;
     }
 
     //USE ONLY FOR COMPARING Z VALUES!!!!!!

@@ -4,9 +4,7 @@ import engineFiles.GUIs.mainGameGui.GameGUIArea;
 import engineFiles.GUIs.mainGameGui.GameGUIFrame;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.OverworldPlayer;
-import engineFiles.ui.FolderOP;
-import engineFiles.ui.Player;
-import engineFiles.ui.Sprite;
+import engineFiles.ui.*;
 
 import java.awt.*;
 import java.io.File;
@@ -27,20 +25,23 @@ public class GameContainer {
     }
 
     public static void main(String[] args) {
-        String spritePathDir = "project/src/gameFiles/models/sprites/static/";
+        String areaDir = "project/src/gameFiles/models/objects/areas/";
         // BufferedImage test = null;
-        String playerPath = spritePathDir + "other/redSquare.png";
-        String backgroundPath = spritePathDir + "backgrounds/iceBlue.png";
+        String playerPath =  "project/src/gameFiles/models/sprites/static/other/redSquare.png";
+
         OverworldPlayer player = new OverworldPlayer(new File(playerPath), new Player());
         player.getCoord().setX(500);
         player.getCoord().setY(500);
-        ArrayList<Sprite> sprites = FolderOP.getSprites(spritePathDir);
-        Sprite background = new Sprite(backgroundPath);
 
-        background.transformImg(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-        background.getCoord().setZ(-100);
-        sprites.add(new Sprite(backgroundPath));
-        GameGUIArea area = new GameGUIArea(sprites, player);
+        Area a = new Area("project/src/gameFiles/models/objects/areas/Test.json");
+
+        int xCoord = 0;
+        int yCoord = 300;
+        boolean solid = true;
+
+
+
+        GameGUIArea area = new GameGUIArea(a, player);
         GameGUIFrame frame = new GameGUIFrame(area);
         GameContainer gc = new GameContainer(frame);
         gc.start();

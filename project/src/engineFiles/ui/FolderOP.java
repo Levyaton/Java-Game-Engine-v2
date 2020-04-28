@@ -1,16 +1,17 @@
 package engineFiles.ui;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
+
 import org.json.simple.parser.ParseException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class FolderOP {
 
@@ -23,6 +24,7 @@ public class FolderOP {
         try {
             return ImageIO.read(file);
         } catch (IOException e) {
+
             System.out.println(e.getMessage());
             System.out.println(file.getPath());
             return null;
@@ -52,23 +54,37 @@ public class FolderOP {
     }
 
     public static JSONObject getJSON(String path) {
-        JSONParser parser = new JSONParser();
+       Gson gSon = new Gson();
+
+        File f = new File(path);
+
         try {
-            return (JSONObject) parser.parse(new FileReader(path));
-        } catch (IOException | ParseException e) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+            String line = br.readLine();
+            StringBuilder sb = new StringBuilder();
+            while(line != null){
+                sb.append(line).append("\n");
+                line = br.readLine();
+            }
+            System.out.println(sb.toString());
+            return new JSONObject(sb.toString());
+        } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public static JSONObject getJSON(File file) {
-        JSONParser parser = new JSONParser();
+
+
+        // create a reader
+
         try {
-            return (JSONObject) parser.parse(new FileReader(file));
-        } catch (IOException | ParseException e) {
+            return new JSONObject(new Scanner(file));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
 }
