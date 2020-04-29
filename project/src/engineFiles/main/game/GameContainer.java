@@ -1,14 +1,12 @@
 package engineFiles.main.game;
 
-import engineFiles.GUIs.mainGameGui.GameGUIArea;
-import engineFiles.GUIs.mainGameGui.GameGUIFrame;
+import engineFiles.GUIs.mainGameGui.GamePanel;
+import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.*;
 
-import java.awt.*;
 import java.io.File;
-import java.util.ArrayList;
 
 public class GameContainer {
 
@@ -16,11 +14,11 @@ public class GameContainer {
     private GameLoop loop;
 
 
-    private GameGUIFrame frame;
+    private Window frame;
 
-    public GameContainer(GameGUIFrame frame) {
+    public GameContainer(Window frame) {
         this.frame = frame;
-
+        start();
 
     }
 
@@ -35,16 +33,9 @@ public class GameContainer {
 
         Area a = new Area("project/src/gameFiles/models/objects/areas/Test.json");
 
-        int xCoord = 0;
-        int yCoord = 300;
-        boolean solid = true;
-
-
-
-        GameGUIArea area = new GameGUIArea(a, player);
-        GameGUIFrame frame = new GameGUIFrame(area);
+        GamePanel area = new GamePanel(a, player);
+        Window frame = new Window(area);
         GameContainer gc = new GameContainer(frame);
-        gc.start();
     }
 
     public void start() {

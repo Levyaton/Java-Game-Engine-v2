@@ -6,17 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class GameGUIFrame extends JFrame {
+public class Window extends JFrame {
     int lastDrawX;
     int lastDrawY;
-    private GameGUIArea activePanel;
+    private GamePanel activePanel;
     private BufferStrategy bs;
 
-    public GameGUIFrame() {
+    public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public GameGUIFrame(GameGUIArea activePanel) {
+    public Window(GamePanel activePanel) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setActivePanel(activePanel);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -30,7 +30,7 @@ public class GameGUIFrame extends JFrame {
 
     }
 
-    public void setActivePanel(GameGUIArea activePanel) {
+    public void setActivePanel(GamePanel activePanel) {
         if (this.activePanel != null) {
             this.remove(activePanel);
         }
@@ -39,18 +39,11 @@ public class GameGUIFrame extends JFrame {
         activePanel.setFocusable(true);
     }
 
-    public GameGUIArea getGameGUIArea() {
+    public GamePanel getGameGUIArea() {
         return activePanel;
     }
 
-    @Override
-    public void paintComponents(Graphics g) {
-        super.paintComponents(g);
-        for (Sprite s : activePanel.getSprites()) {
-            g.drawImage(s.getImg(), s.getCoord().getX(), s.getCoord().getY(), this);
-        }
 
-    }
 
     public void redraw() {
        // super.paintComponents(bs.getDrawGraphics());

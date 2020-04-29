@@ -8,6 +8,7 @@ public class Coordinates {
     private int z;
     private int height;
     private int width;
+    private int MOD = 3;
 
     public Coordinates(int x, int y, int width, int height) {
         this.x = x;
@@ -59,7 +60,7 @@ public class Coordinates {
         //System.out.println("confirmUp");
         y_last = this.y;
         // this.y-= height;
-        this.y -= 3;
+        this.y -= MOD;
     }
 
     public void moveUp(double mod) {
@@ -71,7 +72,7 @@ public class Coordinates {
         // System.out.println("confirmDown");
         y_last = this.y;
         //this.y+= height;
-        this.y += 3;
+        this.y += MOD;
     }
 
     public void moveDown(double mod) {
@@ -83,7 +84,7 @@ public class Coordinates {
         // System.out.println("confirmLeft");
         x_last = this.x;
         //this.x-= width;
-        this.x -= 3;
+        this.x -= MOD;
     }
 
     public void moveLeft(double mod) {
@@ -95,7 +96,7 @@ public class Coordinates {
         //System.out.println("confirmRight");
         x_last = this.x;
         //this.x+= width;
-        this.x += 3;
+        this.x += MOD;
     }
 
     public void moveRight(double mod) {
@@ -103,4 +104,7 @@ public class Coordinates {
         this.x += mod * width;
     }
 
+    public int getMOD() {
+        return MOD;
+    }
 }

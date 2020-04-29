@@ -3,6 +3,7 @@ package engineFiles.GUIs.mainGameGui;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.Area;
+import engineFiles.ui.Settings;
 import engineFiles.ui.Sprite;
 import engineFiles.ui.SpriteCollection;
 
@@ -12,8 +13,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-public class GameGUIArea extends JPanel implements KeyListener {
+public class GamePanel extends JPanel implements KeyListener {
 
+    private ArrayList<Integer> up = Settings.controlls.getUp();
+    private ArrayList<Integer> down = Settings.controlls.getDown();
+    private ArrayList<Integer> left = Settings.controlls.getLeft();
+    private ArrayList<Integer> right = Settings.controlls.getRight();
 
     private OverworldPlayer player;
     private int frameCount = 0;
@@ -21,7 +26,8 @@ public class GameGUIArea extends JPanel implements KeyListener {
     private Image dbImage;
     private Graphics dbGraphics;
     private Area area;
-    public GameGUIArea(Area area, OverworldPlayer player) {
+
+    public GamePanel(Area area, OverworldPlayer player) {
         this.player = player;
         this.area = area;
         setLayout(null);
@@ -128,5 +134,54 @@ public class GameGUIArea extends JPanel implements KeyListener {
     public void setArea(Area area) {
         this.area = area;
     }
+
+    private boolean collision(int x, int y, int width, int height){
+        System.out.println("Player: [" + x + ";" + y + "]");
+        for(Sprite s:area.getSprites()){
+            if(s.isSolid() && !s.equals(player)) {
+                int spriteX = s.getCoord().getX();
+                int spriteY = s.getCoord().getY();
+                System.out.println("Sprite: [" + spriteX + ";" + spriteY + "]");
+                if (
+                    x >= spriteX &&
+                    x <= spriteX + s.getCurrentWidth() &&
+                    y >= spriteY &&
+                    y <= spriteY + s.getCurrentHeight()
+                ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Void updateMovement(Void param) {
+        int x = player.getCoord().getX();
+        int y = player.getCoord().getY();
+        int playerMovementMod = player.getCoord().getMOD();
+        int width = player.getCurrentWidth();
+        int height = player.getCurrentHeight();
+        //Pressing two keys results in faster movement, fix later
+        if (KeyMap.isPressed(right) && !collision(x + playerMovementMod, y, width, height)) {
+            moveRight();
+            x = player.getCoord().getX();
+
+        }
+        if (KeyMap.isPressed(left) && !collision(x - playerMovementMod, y, width, height)) {
+            moveLeft();
+            x = player.getCoord().getX();
+
+        }
+        if (KeyMap.isPressed(down) && !collision(x, y  + playerMovementMod, width , height)) {
+           moveDown();
+            y = player.getCoord().getY();
+        }
+        if (KeyMap.isPressed(up)  && !collision(x, y - playerMovementMod, width, height)) {
+            moveUp();
+            y = player.getCoord().getY();
+        }
+        return null;
+    }
+
 }
 

@@ -1,9 +1,6 @@
 package engineFiles.GUIs;
 
-import engineFiles.GUIs.mainGameGui.GameGUIArea;
-import engineFiles.GUIs.mainGameGui.GameGUIFrame;
 import engineFiles.main.models.OverworldPlayer;
-import engineFiles.ui.FolderOP;
 import engineFiles.ui.Player;
 
 import javax.swing.*;
