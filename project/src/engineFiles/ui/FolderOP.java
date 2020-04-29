@@ -1,17 +1,15 @@
 package engineFiles.ui;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.json.JSONObject;
 
-import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
+import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class FolderOP {
 

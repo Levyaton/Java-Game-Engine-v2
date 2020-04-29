@@ -24,7 +24,7 @@ public class GameLoop implements Runnable {
 
             //System.out.println("hey");
             //Catches up on the missed updates, however many times is needed
-            EngineStats.catchUp(frame.getGameGUIArea()::updateMovement);
+            EngineStats.catchUp(frame.getActiveGamePanel()::updateMovement);
 
             if (EngineStats.render) {
                 frame.redraw();

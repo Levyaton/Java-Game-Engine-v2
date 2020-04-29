@@ -1,7 +1,5 @@
 package engineFiles.ui;
 
-import netscape.javascript.JSObject;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -132,7 +130,6 @@ public class Area {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ;
     }
 
 

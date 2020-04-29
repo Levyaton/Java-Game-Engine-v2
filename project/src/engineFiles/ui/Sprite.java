@@ -3,10 +3,8 @@ package engineFiles.ui;
 import org.imgscalr.Scalr;
 import org.json.JSONObject;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -204,10 +202,17 @@ public class Sprite implements Comparable {
         this.solid = solid;
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(this.getCoord().getX(), this.getCoord().getY(), currentWidth, currentHeight);
+    }
     //USE ONLY FOR COMPARING Z VALUES!!!!!!
     @Override
     public int compareTo(Object o) {
         int compareZOrder = ((Sprite) o).getCoord().getZ();
         return this.getCoord().getZ() - compareZOrder;
+    }
+
+    public void defaultCollision(Sprite s){
+        System.out.println(this.name + " collided with " + s.getName());
     }
 }

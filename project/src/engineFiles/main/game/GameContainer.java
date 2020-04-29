@@ -1,6 +1,8 @@
 package engineFiles.main.game;
 
 import engineFiles.GUIs.mainGameGui.GamePanel;
+import engineFiles.GUIs.mainGameGui.OverworldPanel;
+import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.OverworldPlayer;
@@ -33,8 +35,9 @@ public class GameContainer {
 
         Area a = new Area("project/src/gameFiles/models/objects/areas/Test.json");
 
-        GamePanel area = new GamePanel(a, player);
-        Window frame = new Window(area);
+        GamePanel gamePanel = new OverworldPanel(a, player);
+        PanelManager.panels.put("overworld", gamePanel);
+        Window frame = new Window("overworld",gamePanel);
         GameContainer gc = new GameContainer(frame);
     }
 
