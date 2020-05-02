@@ -1,10 +1,10 @@
 package semestralka.utils;
 
-public class Vector2 {
+public class Position {
 
   public int x, y;
 
-  public Vector2(int x, int y) {
+  public Position(int x, int y) {
     this.x = x;
     this.y = y;
   }

@@ -6,9 +6,9 @@ import java.awt.image.BufferStrategy;
 
 import semestralka.graphics.Resources;
 import semestralka.screen.ScreenManager;
+import semestralka.view.GamePanel;
 import semestralka.utils.KeyManager;
 import semestralka.utils.MouseManager;
-import semestralka.view.GamePanel;
 
 public class GameLoop implements Runnable {
 
@@ -19,9 +19,9 @@ public class GameLoop implements Runnable {
   private Thread thread;
   private int curFps = 0;
 
-  private ScreenManager screenManager;
-  private KeyManager keyManager;
   private MouseManager mouseManager;
+  private KeyManager keyManager;
+  private ScreenManager screenManager;
 
   public GameLoop(BufferStrategy bs, GamePanel gamePanel) {
     this.bs = bs;
@@ -59,11 +59,12 @@ public class GameLoop implements Runnable {
       delta += (now - lastTime) / nsPerTick;
       timer += (now - lastTime);
       lastTime = now;
-      while (delta >= 1) {
+
+      if (delta >= 1) {
         Graphics g = bs.getDrawGraphics();
 
         drawStats(g);
-        screenManager.init(g, keyManager, mouseManager);
+        screenManager.init(g);
 
         g.dispose();
         bs.show();
@@ -73,7 +74,7 @@ public class GameLoop implements Runnable {
       }
 
       try {
-        Thread.sleep(2);
+        Thread.sleep(10);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -89,11 +90,10 @@ public class GameLoop implements Runnable {
   }
 
   public void init() {
-    screenManager = new ScreenManager();
-    keyManager = new KeyManager(gamePanel, screenManager);
-    mouseManager = new MouseManager(gamePanel, screenManager);
-
     Resources.load();
+    mouseManager = new MouseManager(gamePanel);
+    keyManager = new KeyManager(gamePanel);
+    screenManager = new ScreenManager(keyManager, mouseManager);
   }
 
   public void drawStats(Graphics g) {

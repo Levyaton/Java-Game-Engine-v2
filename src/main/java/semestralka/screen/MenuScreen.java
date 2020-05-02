@@ -1,22 +1,30 @@
 package semestralka.screen;
 
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import semestralka.ui.UIButton;
 import semestralka.ui.UIComponent;
-import semestralka.utils.Vector2;
+import semestralka.utils.KeyManager;
+import semestralka.utils.MouseManager;
+import semestralka.utils.Position;
 import semestralka.view.GamePanel;
 
 public class MenuScreen extends Screen {
 
   private List<UIComponent> components;
 
-  public MenuScreen() {
+  public MenuScreen(ScreenManager screenManager) {
     components = new ArrayList<>();
-    components.add(new UIButton("start", new Vector2(GamePanel.width / 2, GamePanel.height / 2), 180, 60));
+    components.add(new UIButton("start", new Position(GamePanel.width / 2, GamePanel.height / 2), 180, 60,
+        () -> screenManager.setCurrent("play")));
+  }
+
+  @Override
+  public void input(KeyManager keyManager, MouseManager mouseManager) {
+    for (UIComponent component : components) {
+      component.input(mouseManager);
+    }
   }
 
   @Override
@@ -28,22 +36,5 @@ public class MenuScreen extends Screen {
     for (UIComponent component : components) {
       component.render(g);
     }
-  }
-
-  @Override
-  public void keyPressed(KeyEvent e) {
-
-  }
-
-  @Override
-  public void mouseMoved(MouseEvent e) {
-    for (UIComponent component : components) {
-      component.mouseMoved(e);
-    }
-  }
-
-  @Override
-  public void mouseReleased(MouseEvent e) {
-
   }
 }

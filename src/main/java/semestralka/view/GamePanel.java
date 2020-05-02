@@ -8,7 +8,7 @@ import semestralka.engine.GameLoop;
 
 public class GamePanel extends Canvas {
 
-  public static int width = 600, height = 400;
+  public static int width = 720, height = 480;
 
   public GamePanel() {
     Dimension d = new Dimension(width, height);

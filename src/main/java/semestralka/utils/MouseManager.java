@@ -3,19 +3,16 @@ package semestralka.utils;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import semestralka.screen.ScreenManager;
 import semestralka.view.GamePanel;
 
 public class MouseManager implements MouseListener, MouseMotionListener {
 
-  ScreenManager screenManager;
+  private int x, y;
+  private boolean clicked;
 
-  public MouseManager(GamePanel gamePanel, ScreenManager screenManager) {
+  public MouseManager(GamePanel gamePanel) {
     gamePanel.addMouseListener(this);
     gamePanel.addMouseMotionListener(this);
-
-    this.screenManager = screenManager;
   }
 
   @Override
@@ -25,12 +22,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
   @Override
   public void mousePressed(MouseEvent e) {
-
+    clicked = true;
   }
 
   @Override
   public void mouseReleased(MouseEvent e) {
-
+    clicked = false;
   }
 
   @Override
@@ -50,6 +47,19 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
   @Override
   public void mouseMoved(MouseEvent e) {
-    screenManager.getCurrent().mouseMoved(e);
+    x = e.getX();
+    y = e.getY();
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public boolean isClicked() {
+    return clicked;
   }
 }
