@@ -2,8 +2,8 @@ package semestralka.utils;
 
 public class AABB {
 
-  private int x, y;
-  private int width, height;
+  public int x, y;
+  public int width, height;
 
   public AABB(int x, int y, int width, int height) {
     this.x = x;
@@ -14,5 +14,10 @@ public class AABB {
 
   public boolean isColliding(int x, int y) {
     return (x >= this.x && y >= this.y && x <= this.x + this.width && y <= this.y + this.height);
+  }
+
+  public boolean isColliding(AABB bound) {
+    return (((x + width) > bound.x) && (x < (bound.x + bound.width)) && ((y + height) > bound.y)
+        && (y < (bound.y + bound.height)));
   }
 }

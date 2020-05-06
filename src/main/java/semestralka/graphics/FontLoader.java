@@ -5,7 +5,7 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 
 public class FontLoader {
-  public void registerFont(String path) {
+  public void register(String path) {
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     try {
       Font font = Font.createFont(Font.TRUETYPE_FONT, FontLoader.class.getResourceAsStream(path));

@@ -8,42 +8,53 @@ public class Resources {
   public static Font arialFontBold;
   public static Font zeldaFontMedium;
 
-  public static BufferedImage grass, rock, tree;
-  public static BufferedImage[] player;
-  public static BufferedImage[] player_run_down, player_run_up, player_run_left, player_run_right;
+  public static BufferedImage[] basictiles;
+
+  public static BufferedImage[][] player;
+
+  public static BufferedImage[][] skeleton;
 
   public static void load() {
-    new FontLoader().registerFont("/fonts/ZeldaFont.ttf");
+    loadFonts();
+    loadBasictiles();
+    loadCharacters();
+  }
+
+  public static void loadFonts() {
+    new FontLoader().register("/fonts/ZeldaFont.ttf");
     zeldaFontMedium = new Font("The Wild Breath of Zelda", Font.PLAIN, 45);
     arialFontBold = new Font("Arial", Font.BOLD, 10);
+  }
 
-    BufferedImage tileSheet = new SpriteLoader().loadSprite("/textures/basictiles.png");
-    BufferedImage entitySheet = new SpriteLoader().loadSprite("/textures/characters.png");
+  public static void loadBasictiles() {
+    BufferedImage sheet = new SpriteLoader().load("/textures/basictiles.png");
+    int width = sheet.getWidth() / 16;
+    int height = sheet.getHeight() / 16;
 
-    grass = tileSheet.getSubimage(48, 16, 16, 16);
-    rock = tileSheet.getSubimage(16, 0, 16, 16);
-    tree = tileSheet.getSubimage(56, 216, 16, 16);
+    basictiles = new BufferedImage[120];
 
-    player = new BufferedImage[4];
-    player[0] = entitySheet.getSubimage(64, 48, 16, 16);
-    player[1] = entitySheet.getSubimage(64, 0, 16, 16);
-    player[2] = entitySheet.getSubimage(64, 16, 16, 16);
-    player[3] = entitySheet.getSubimage(64, 32, 16, 16);
+    for (int x = 0; x < width; x++) {
+      for (int y = 0; y < height; y++) {
+        basictiles[x + (y * width)] = sheet.getSubimage(x * 16, y * 16, 16, 16);
+      }
+    }
+  }
 
-    player_run_down = new BufferedImage[2];
-    player_run_down[0] = entitySheet.getSubimage(48, 0, 16, 16);
-    player_run_down[1] = entitySheet.getSubimage(80, 0, 16, 16);
+  public static void loadCharacters() {
+    BufferedImage sheet = new SpriteLoader().load("/textures/characters.png");
 
-    player_run_up = new BufferedImage[2];
-    player_run_up[0] = entitySheet.getSubimage(48, 48, 16, 16);
-    player_run_up[1] = entitySheet.getSubimage(80, 48, 16, 16);
+    player = new BufferedImage[3][4];
+    loopCharacters(48, 0, sheet, player);
 
-    player_run_left = new BufferedImage[2];
-    player_run_left[0] = entitySheet.getSubimage(48, 16, 16, 16);
-    player_run_left[1] = entitySheet.getSubimage(80, 16, 16, 16);
+    skeleton = new BufferedImage[3][4];
+    loopCharacters(144, 0, sheet, skeleton);
+  }
 
-    player_run_right = new BufferedImage[2];
-    player_run_right[0] = entitySheet.getSubimage(48, 32, 16, 16);
-    player_run_right[1] = entitySheet.getSubimage(80, 32, 16, 16);
+  public static void loopCharacters(int originX, int originY, BufferedImage sheet, BufferedImage[][] character) {
+    for (int x = 0; x < 3; x++) {
+      for (int y = 0; y < 4; y++) {
+        character[x][y] = sheet.getSubimage((x * 16) + originX, (y * 16) + originY, 16, 16);
+      }
+    }
   }
 }

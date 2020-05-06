@@ -17,7 +17,7 @@ public class ScreenManager {
     this.mouseManager = mouseManager;
 
     menu = new MenuScreen(this);
-    play = new PlayScreen(this, keyManager);
+    play = new PlayScreen(this);
 
     current = menu;
   }

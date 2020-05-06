@@ -3,7 +3,6 @@ package semestralka.engine;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-
 import semestralka.graphics.Resources;
 import semestralka.screen.ScreenManager;
 import semestralka.view.GamePanel;
@@ -23,8 +22,7 @@ public class GameLoop implements Runnable {
   private KeyManager keyManager;
   private ScreenManager screenManager;
 
-  public GameLoop(BufferStrategy bs, GamePanel gamePanel) {
-    this.bs = bs;
+  public GameLoop(GamePanel gamePanel) {
     this.gamePanel = gamePanel;
 
     thread = new Thread(this, "Game loop");
@@ -61,10 +59,12 @@ public class GameLoop implements Runnable {
       lastTime = now;
 
       if (delta >= 1) {
+        bs = gamePanel.getBufferStrategy();
         Graphics g = bs.getDrawGraphics();
 
-        drawStats(g);
+        g.clearRect(0, 0, GamePanel.width, GamePanel.height);
         screenManager.init(g);
+        drawStats(g);
 
         g.dispose();
         bs.show();
@@ -97,7 +97,6 @@ public class GameLoop implements Runnable {
   }
 
   public void drawStats(Graphics g) {
-    g.clearRect(0, 0, GamePanel.width, GamePanel.height);
     g.setColor(Color.BLACK);
     g.fillRect(5, 5, 50, 18);
     g.setColor(Color.WHITE);

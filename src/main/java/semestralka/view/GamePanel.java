@@ -3,7 +3,6 @@ package semestralka.view;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.image.BufferStrategy;
 import semestralka.engine.GameLoop;
 
 public class GamePanel extends Canvas {
@@ -22,7 +21,6 @@ public class GamePanel extends Canvas {
   public void addNotify() {
     super.addNotify();
     createBufferStrategy(3);
-    BufferStrategy bs = getBufferStrategy();
-    new GameLoop(bs, this);
+    new GameLoop(this);
   }
 }
