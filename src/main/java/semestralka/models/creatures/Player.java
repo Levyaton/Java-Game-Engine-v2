@@ -38,7 +38,7 @@ public class Player extends Creature {
   public void update() {
     animate();
     move();
-    world.getCamera().centerPlayer(this);
+    world.getCamera().centerPlayer(pos.x, pos.y);
   }
 
   @Override

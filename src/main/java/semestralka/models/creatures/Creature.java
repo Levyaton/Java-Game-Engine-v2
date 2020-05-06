@@ -76,8 +76,8 @@ public abstract class Creature extends Entity {
       running = false;
     } else {
       running = true;
+      animation.update();
     }
-    animation.update();
   }
 
   public AABB getBounds() {

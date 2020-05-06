@@ -33,9 +33,9 @@ public class Map {
     int worldY = world.getCamera().getWorldY();
 
     int startX = Math.max(worldX / 48, 0);
-    int endX = Math.min((worldX + GamePanel.width) / 44, width);
+    int endX = Math.min(((worldX + GamePanel.width) / 48) + 1, width);
     int startY = Math.max(worldY / 48, 0);
-    int endY = Math.min((worldY + GamePanel.height) / 44, height);
+    int endY = Math.min(((worldY + GamePanel.height) / 48) + 1, height);
 
     for (int x = startX; x < endX; x++) {
       for (int y = startY; y < endY; y++) {
