@@ -61,10 +61,10 @@ public class GameLoop implements Runnable {
       if (delta >= 1) {
         bs = gamePanel.getBufferStrategy();
         Graphics g = bs.getDrawGraphics();
-
         g.clearRect(0, 0, GamePanel.width, GamePanel.height);
+
         screenManager.init(g);
-        drawStats(g);
+        // drawStats(g);
 
         g.dispose();
         bs.show();

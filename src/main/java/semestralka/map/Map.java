@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.util.Iterator;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
+import semestralka.view.GamePanel;
+import semestralka.world.CreaturesManager;
 import semestralka.world.World;
 
 public class Map {
@@ -13,33 +15,44 @@ public class Map {
   int pixWidth, pixHeight;
   private World world;
 
+  private CreaturesManager creaturesManager;
+
   public Map(String path, World world) {
     map = new TileMap[2];
+    creaturesManager = world.getCreatureManager();
     this.world = world;
     loadMap(path);
   }
 
   public void update() {
-
+    creaturesManager.update();
   }
 
-  public void groundRender(Graphics g) {
-    for (int x = 0; x < width; x++) {
-      for (int y = 0; y < height; y++) {
-        if (map[0].getTile(x, y) != null) {
-          g.drawImage(map[0].getTile(x, y).tile, (x * 48) - world.getCamera().getWorldX(),
-              (y * 48) - world.getCamera().getWorldY(), 48, 48, null);
+  public void render(Graphics g) {
+    int worldX = world.getCamera().getWorldX();
+    int worldY = world.getCamera().getWorldY();
+
+    int startX = Math.max(worldX / 48, 0);
+    int endX = Math.min((worldX + GamePanel.width) / 44, width);
+    int startY = Math.max(worldY / 48, 0);
+    int endY = Math.min((worldY + GamePanel.height) / 44, height);
+
+    for (int x = startX; x < endX; x++) {
+      for (int y = startY; y < endY; y++) {
+        Tile block = map[0].getTile(x, y);
+        if (block != null) {
+          g.drawImage(block.tile, (x * 48) - worldX, (y * 48) - worldY, 48, 48, null);
         }
       }
     }
-  }
 
-  public void solidRender(Graphics g) {
-    for (int x = 0; x < width; x++) {
-      for (int y = 0; y < height; y++) {
-        if (map[1].getTile(x, y) != null) {
-          g.drawImage(map[1].getTile(x, y).tile, (x * 48) - world.getCamera().getWorldX(),
-              (y * 48) - world.getCamera().getWorldY(), 48, 48, null);
+    creaturesManager.render(g);
+
+    for (int x = startX; x < endX; x++) {
+      for (int y = startY; y < endY; y++) {
+        Tile block = map[1].getTile(x, y);
+        if (block != null) {
+          g.drawImage(block.tile, (x * 48) - worldX, (y * 48) - worldY, 48, 48, null);
         }
       }
     }
@@ -69,7 +82,6 @@ public class Map {
     if (x >= pixWidth || x < 0 || y >= pixHeight || y < 0) {
       return false;
     }
-    System.out.println("x:" + x / 48 + ",y:" + y / 48);
     return (map[1].getTile(x / 48, y / 48) != null);
   }
 }

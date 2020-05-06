@@ -32,29 +32,43 @@ public abstract class Creature extends Entity {
   }
 
   public void move() {
-    System.out.println(pos.x / 48 + "," + pos.y / 48);
     if (xMove > 0) {
-      if (!isColliding() && !world.getMap().isTileSolid(pos.x + xMove + bounds.x + bounds.width, pos.y + bounds.height)
+      if (!world.getMap().isTileSolid(pos.x + xMove + bounds.x + bounds.width, pos.y + bounds.height)
           && !world.getMap().isTileSolid(pos.x + xMove + bounds.x + bounds.width, pos.y)) {
-        pos.x += xMove; // right
+        xMove();
       }
     } else if (xMove < 0) {
-      if (!isColliding() && !world.getMap().isTileSolid(pos.x + xMove, pos.y + bounds.height)
+      if (!world.getMap().isTileSolid(pos.x + xMove, pos.y + bounds.height)
           && !world.getMap().isTileSolid(pos.x + xMove, pos.y)) {
-        pos.x += xMove; // left
+        xMove();
       }
     }
+
     if (yMove > 0) {
-      if (!isColliding() && !world.getMap().isTileSolid(pos.x + bounds.width, pos.y + yMove + bounds.y + bounds.height)
+      if (!world.getMap().isTileSolid(pos.x + bounds.width, pos.y + yMove + bounds.y + bounds.height)
           && !world.getMap().isTileSolid(pos.x, pos.y + yMove + bounds.y + bounds.width)) {
-        pos.y += yMove; // down
+        yMove();
       }
     } else if (yMove < 0) {
-      if (!isColliding() && !world.getMap().isTileSolid(pos.x + bounds.width, pos.y + yMove)
+      if (!world.getMap().isTileSolid(pos.x + bounds.width, pos.y + yMove)
           && !world.getMap().isTileSolid(pos.x, pos.y + yMove)) {
-        pos.y += yMove; // up
+        yMove();
       }
     }
+  }
+
+  public void xMove() {
+    if (isColliding()) {
+      return;
+    }
+    pos.x += xMove;
+  }
+
+  public void yMove() {
+    if (isColliding()) {
+      return;
+    }
+    pos.y += yMove;
   }
 
   public void animate() {

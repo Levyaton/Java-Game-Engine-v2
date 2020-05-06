@@ -34,13 +34,10 @@ public class World {
 
   public void update() {
     map.update();
-    creatureManager.update();
   }
 
   public void render(Graphics g) {
-    map.groundRender(g);
-    creatureManager.render(g);
-    map.solidRender(g);
+    map.render(g);
   }
 
   public CreaturesManager getCreatureManager() {
