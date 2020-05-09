@@ -23,4 +23,8 @@ public class KeyMap {
         }
         return false;
     }
+
+    public static Set<Integer> getKeys() {
+        return keys;
+    }
 }

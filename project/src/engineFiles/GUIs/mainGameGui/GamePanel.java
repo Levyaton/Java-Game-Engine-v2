@@ -10,10 +10,12 @@ import java.awt.event.KeyListener;
 
 public abstract class GamePanel extends JPanel implements KeyListener,GamePanelInterface {
 
+    protected  String panelName;
     protected Area area;
     protected OverworldPlayer player;
 
-    public GamePanel(Area area, OverworldPlayer player){
+    public GamePanel(Area area, OverworldPlayer player, String panelName){
+        this.panelName = panelName;
         this.player = player;
         this.area = area;
         this.addKeyListener(this);
@@ -56,6 +58,10 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
 
     protected OverworldPlayer getPlayer(){
         return player;
+    }
+
+    public String getPanelName() {
+        return panelName;
     }
 }
 

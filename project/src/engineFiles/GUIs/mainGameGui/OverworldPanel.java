@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class OverworldPanel extends GamePanel {
+public class OverworldPanel extends GamePanel{
 
     private ArrayList<Integer> up = Settings.controlls.getUp();
     private ArrayList<Integer> down = Settings.controlls.getDown();
@@ -25,13 +25,14 @@ public class OverworldPanel extends GamePanel {
     private Graphics dbGraphics;
 
 
-    public OverworldPanel(Area area, OverworldPlayer player) {
-        super(area,player);
+    public OverworldPanel(Area area, OverworldPlayer player, String panelName) {
+        super(area,player,panelName);
         setLayout(null);
         loadSprites(area.getSprites());
         loadPlayer();
         setDoubleBuffered(true);
-
+        requestFocus();
+        //System.out.println(hasFocus());
     }
 
     private void loadSprites(ArrayList<Sprite> sprites) {
@@ -56,10 +57,12 @@ public class OverworldPanel extends GamePanel {
 
     @Override
     public void keyTyped(KeyEvent e) {
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //System.out.println("Pressed " + e);
         KeyMap.setKey(e.getKeyCode(), false);
     }
 
@@ -98,10 +101,14 @@ public class OverworldPanel extends GamePanel {
     }
 
     public Void updateMovement(Void param) {
+
+
         if (KeyMap.isPressed(right)) {
             player.getCoord().moveRight();
+            //System.out.println("Moving");
             if(colliding(player)){
                 player.getCoord().moveLeft();
+                //System.out.println("Failed");
             }
         }
         if (KeyMap.isPressed(left)) {
@@ -122,6 +129,8 @@ public class OverworldPanel extends GamePanel {
                 player.getCoord().moveDown();
             }
         }
+
+        System.out.println();
         return null;
     }
 

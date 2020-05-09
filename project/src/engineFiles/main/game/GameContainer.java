@@ -1,5 +1,4 @@
 package engineFiles.main.game;
-
 import engineFiles.GUIs.mainGameGui.GamePanel;
 import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.GUIs.mainGameGui.PanelManager;
@@ -7,8 +6,11 @@ import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.*;
+import engineFiles.ui.TileMapClasses.TileMap;
+import org.imgscalr.Scalr;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class GameContainer {
 
@@ -30,15 +32,23 @@ public class GameContainer {
         String playerPath =  "project/src/gameFiles/models/sprites/static/other/redSquare.png";
 
         OverworldPlayer player = new OverworldPlayer(new File(playerPath), new Player());
-        player.getCoord().setX(500);
-        player.getCoord().setY(500);
+        player.setImg(Scalr.resize(player.getImg(), 4));
+        player.getCoord().setX(60);
+        player.getCoord().setY(5);
+        player.getCoord().setZ(500);
+        try {
+            TileMap tm = new TileMap("project/src/gameFiles/models/objects/areas/TilesetAreaTest.json");
+            Area a = tm.getArea();
 
-        Area a = new Area("project/src/gameFiles/models/objects/areas/Test.json");
+            GamePanel gamePanel = new OverworldPanel(a, player, "overworld");
+            PanelManager.panels.put("overworld", gamePanel);
+            Window frame = new Window("overworld",gamePanel);
+            frame.resetActivePanel();
+            GameContainer gc = new GameContainer(frame);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        GamePanel gamePanel = new OverworldPanel(a, player);
-        PanelManager.panels.put("overworld", gamePanel);
-        Window frame = new Window("overworld",gamePanel);
-        GameContainer gc = new GameContainer(frame);
     }
 
     public void start() {

@@ -24,8 +24,11 @@ public class Sprite implements Comparable {
     protected JComponent component;
     protected boolean movable = false;
     protected boolean solid = true;
+    protected int id;
 
+    public Sprite(){
 
+    }
     public Sprite(File file) {
         this.ogFile = file;
         initFromOGFile();
@@ -85,6 +88,33 @@ public class Sprite implements Comparable {
         return jsonObject;
     }
 
+    public void setOgImg(BufferedImage ogImg) {
+        this.ogImg = ogImg;
+    }
+
+    public void setCurrentHeight(int currentHeight) {
+        this.currentHeight = currentHeight;
+    }
+
+    public void setCurrentWidth(int currentWidth) {
+        this.currentWidth = currentWidth;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public BufferedImage getOgImg() {
+        return ogImg;
+    }
+
+    public JSONObject getJson() {
+        return json;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public boolean isMovable() {
         return movable;

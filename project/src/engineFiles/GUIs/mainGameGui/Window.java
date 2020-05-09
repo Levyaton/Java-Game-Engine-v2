@@ -38,8 +38,11 @@ public class Window extends JFrame {
         if(!this.activePanelKey.equals(PanelManager.current)){
             resetActivePanel();
         }
+        if(!this.getActiveGamePanel().hasFocus()){
+            this.getActiveGamePanel().requestFocus();
+        }
     }
-    private void resetActivePanel() {
+    public void resetActivePanel() {
         try{
             this.remove(PanelManager.panels.get(activePanelKey));
         }
@@ -57,10 +60,12 @@ public class Window extends JFrame {
 
 
     public void redraw() {
+        //System.out.println(getActiveGamePanel().getPanelName() + " is the active panel, does it have focuse? " + getActiveGamePanel().hasFocus());
         confirmActivePanel();
        // super.paintComponents(bs.getDrawGraphics());
         Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
         //super.paintComponents(g2d);
+        g2d.scale(20.0, 20.0);
         g2d.clearRect(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
         for (Sprite s : getActiveGamePanel().getSprites()) {
             g2d.drawImage(s.getImg(), s.getCoord().getX(), s.getCoord().getY(), this);
@@ -70,8 +75,6 @@ public class Window extends JFrame {
         g2d.dispose();
 
         bs.show();
-
-
     }
 
 }

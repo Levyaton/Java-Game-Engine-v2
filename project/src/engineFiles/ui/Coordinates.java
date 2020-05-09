@@ -8,7 +8,7 @@ public class Coordinates {
     private int z;
     private int height;
     private int width;
-    private int MOD = 3;
+    private double MOD = 1;
 
     public Coordinates(int x, int y, int width, int height) {
         this.x = x;
@@ -104,7 +104,7 @@ public class Coordinates {
         this.x += mod * width;
     }
 
-    public int getMOD() {
+    public double getMOD() {
         return MOD;
     }
 }
