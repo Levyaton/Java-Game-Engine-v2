@@ -9,6 +9,7 @@
 /com/
 /out/
 /web/
+/target/
 
 .metadata
 bin/
