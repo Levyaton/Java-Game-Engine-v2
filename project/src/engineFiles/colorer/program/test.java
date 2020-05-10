@@ -7,21 +7,22 @@ import java.io.IOException;
 
 public class test {
     public static void main(String[] args) {
-        ColorManager cm = new ColorManager();
-        String inputDir = "project/src/engineFiles/colorer/testFiles/";
-        String outputDir = "project/src/playerGameFiles/sprites/";
-        File sourceImagesDir = new File(inputDir);
-        File[] directoryListing = sourceImagesDir.listFiles();
+        String inputDir = "project/src/engineFiles/colorer/testFiles/basictiles.png";
+        String outputDir = "project/src/gameFiles/models/sprites/tilesets/basictiles.png";
+        File sourceImage = new File(inputDir);
 
-        for (File member : directoryListing) {
+
             try {
 
-                cm.switchColors(member, new File(outputDir + member.getName()));
+               // cm.switchColors(member, new File(outputDir + member.getName()));
+                BufferedImage recolor = TileSetColorer.getTilesetRecolor(ImageIO.read(sourceImage), 16,16);
+                ImageIO.write(recolor,"png", new File(outputDir));
+
             } catch (IOException e) {
                 System.out.println(inputDir);
                 e.printStackTrace();
             }
-        }
+
 
 
         //File path = new File("project/src/playerGameFiles/sprites/image.png");

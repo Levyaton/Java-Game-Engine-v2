@@ -34,7 +34,7 @@ public class TileMap {
     Layer[] layers;
     EditorSettings editorsettings;
 
-    private String PATH = "project/src/gameFiles/models/sprites/tilesets/";
+    private String PATH = "project/src/playerGameFiles/sprites/tilesets/";
     public TileMap(){
 
     }
