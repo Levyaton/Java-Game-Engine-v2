@@ -16,6 +16,7 @@ public abstract class Creature extends Entity {
   protected int direction = 0;
   protected int xMove, yMove;
   protected boolean up, down, left, right;
+  protected int health = 10;
 
   public Creature(BufferedImage[][] character, Position pos, World world) {
     super(pos);
@@ -59,6 +60,7 @@ public abstract class Creature extends Entity {
 
   public void xMove() {
     if (isColliding()) {
+      world.getBattle().init();
       return;
     }
     pos.x += xMove;
@@ -66,6 +68,7 @@ public abstract class Creature extends Entity {
 
   public void yMove() {
     if (isColliding()) {
+      world.getBattle().init();
       return;
     }
     pos.y += yMove;

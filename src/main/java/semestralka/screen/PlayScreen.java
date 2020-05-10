@@ -1,7 +1,6 @@
 package semestralka.screen;
 
 import java.awt.Graphics;
-
 import semestralka.utils.KeyManager;
 import semestralka.utils.MouseManager;
 import semestralka.world.World;

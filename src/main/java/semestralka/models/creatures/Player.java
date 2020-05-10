@@ -21,16 +21,16 @@ public class Player extends Creature {
 
     if (keyManager.keys[0]) {
       direction = 3;
-      yMove -= 3;
+      yMove -= 3;// up
     } else if (keyManager.keys[1]) {
       direction = 0;
-      yMove += 3;
+      yMove += 3; // down
     } else if (keyManager.keys[2]) {
       direction = 1;
-      xMove -= 3;
+      xMove -= 3; // left
     } else if (keyManager.keys[3]) {
       direction = 2;
-      xMove += 3;
+      xMove += 3; // right
     }
   }
 
@@ -53,8 +53,6 @@ public class Player extends Creature {
   }
 
   public void drawZone(Graphics g) {
-    // g.setColor(Color.RED);
-    // g.drawRect(pos.x, pos.y + 30, 48, 18);
     g.setColor(Color.GREEN);
     g.drawRect(pos.x - world.getCamera().getWorldX(), pos.y - world.getCamera().getWorldY(), 48, 48);
   }

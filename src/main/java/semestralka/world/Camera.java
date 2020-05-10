@@ -1,4 +1,4 @@
-package semestralka.utils;
+package semestralka.world;
 
 import semestralka.view.GamePanel;
 
