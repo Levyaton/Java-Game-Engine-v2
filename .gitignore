@@ -2,7 +2,6 @@
 /.idea/
 /lib/
 /META-INF/
-/src/
 /web/
 /.gitignore
 /pom.xml
