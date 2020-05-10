@@ -58,7 +58,7 @@ public class Colorizer_2 {
     private static ArrayList<Color> getColors(){
         ArrayList<Color> colors = new ArrayList<>();
         Color[] def = new Color[]{
-                Color.BLUE,Color.CYAN, Color.DARK_GRAY, Color.gray, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.YELLOW, defRed, defBlue, defGreen
+                Color.BLUE,Color.CYAN, Color.DARK_GRAY, Color.gray, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.YELLOW
         };
         Collections.addAll(colors, def);
         return colors;
@@ -66,7 +66,7 @@ public class Colorizer_2 {
     private static ArrayList<Color> getColors(Color defRed, Color defBlue, Color defGreen){
         ArrayList<Color> colors = new ArrayList<>();
         Color[] def = new Color[]{
-                Color.BLUE,Color.CYAN, Color.DARK_GRAY, Color.gray, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.YELLOW
+                Color.BLUE,Color.CYAN, Color.DARK_GRAY, Color.gray, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED, Color.YELLOW, defRed, defBlue, defGreen
         };
         Collections.addAll(colors, def);
         return colors;
@@ -83,7 +83,7 @@ public class Colorizer_2 {
         index = new Random().nextInt(colors.size());
         int b = colors.get(index).getRGB();
 
-        return new Colorer_2_Model(img.get, )
+        return null;
     }
 
 

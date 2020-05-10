@@ -52,7 +52,7 @@ public class FolderOP {
     }
 
     public static JSONObject getJSON(String path) {
-       Gson gSon = new Gson();
+        Gson gSon = new Gson();
 
         File f = new File(path);
 

@@ -27,6 +27,7 @@ public class OverworldPanel extends GamePanel{
 
     public OverworldPanel(Area area, OverworldPlayer player, String panelName) {
         super(area,player,panelName);
+        Dimension d = new Dimension(800, 700);
         setLayout(null);
         loadSprites(area.getSprites());
         loadPlayer();

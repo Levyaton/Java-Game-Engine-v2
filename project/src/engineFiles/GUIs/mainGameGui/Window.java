@@ -13,7 +13,7 @@ public class Window extends JFrame {
     private String activePanelKey;
     public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         setIgnoreRepaint(true);
         createBufferStrategy(2);
@@ -50,7 +50,8 @@ public class Window extends JFrame {
         this.activePanelKey = PanelManager.current;
         GamePanel activePanel = PanelManager.panels.get(activePanelKey);
         this.add(activePanel);
-        activePanel.setFocusable(true);
+        this.pack();
+        activePanel.requestFocus();
     }
 
     public GamePanel getActiveGamePanel() {
@@ -65,10 +66,12 @@ public class Window extends JFrame {
        // super.paintComponents(bs.getDrawGraphics());
         Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
         //super.paintComponents(g2d);
-        g2d.clearRect(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-        for (Sprite s : getActiveGamePanel().getSprites()) {
-            g2d.drawImage(s.getImg(), s.getCoord().getX(), s.getCoord().getY(), 16,16,this);
-        }
+//        g2d.clearRect(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+//        for (Sprite s : getActiveGamePanel().getSprites()) {
+//            g2d.drawImage(s.getImg(), 0, 0, s.getCurrentWidth(),s.getCurrentHeight(),this);
+//        }
+        g2d.setColor(Color.BLUE);
+        g2d.drawRect(0,0, 48, 48);
 
        // super.paintComponents(g2d);
         g2d.dispose();

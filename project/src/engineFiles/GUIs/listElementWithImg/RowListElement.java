@@ -88,6 +88,3 @@ public class RowListElement extends JLayeredPane {
         this.sprite = sprite;
     }
 }
-
-
-

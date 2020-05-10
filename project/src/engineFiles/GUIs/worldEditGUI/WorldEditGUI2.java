@@ -106,8 +106,8 @@ public class WorldEditGUI2 extends JFrame {
 
     private void testSquareLayout() {
         for (int x = 0; x < 20; x++) {
-            SquareListElement le = new SquareListElement(FolderOP.getSprite(this.spritePathDir + "backgrounds/iceBlue.png"));
-            listItems.add(new ListElement(le));
+            //SquareListElement le = new SquareListElement(FolderOP.getSprite(this.spritePathDir + "backgrounds/iceBlue.png"));
+           // listItems.add(new ListElement(le));
             scrollBody.add(listItems.get(listItems.size() - 1).getElement(), getConstraints());
         }
     }

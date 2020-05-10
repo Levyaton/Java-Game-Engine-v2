@@ -53,7 +53,7 @@ public class Sprite implements Comparable {
         //path = path.substring(2,path.length()-2);
         this.ogFile = new File(path);
         initFromOGFile();
-       // System.out.println(json.get("Height"));
+        // System.out.println(json.get("Height"));
         currentHeight = json.getInt("Height");
         currentWidth = json.getInt("Width");
         int x = json.getInt("XAxis");
