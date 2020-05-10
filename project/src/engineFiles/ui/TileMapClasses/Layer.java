@@ -107,20 +107,24 @@ public class Layer {
         SpriteCollection spriteCollection = new SpriteCollection();
         for (int x = 0; x < this.width; x++) {
             for (int y = 0; y < this.height; y++) {
-                spriteCollection.add(buildSprite(tiles,tileSet,x,y));
+                int id = this.data[x + (y * this.width)];
+                if(id != 0){
+                    spriteCollection.add(buildSprite(tiles,tileSet,x,y, id));
+                }
             }
         }
+
+
+        //spriteCollection.add(buildSprite(tiles, tileSet,0,0));
         return spriteCollection;
     }
 
-    private Sprite buildSprite(BufferedImage[] tiles, File tileSet, int x, int y){
-        int id = this.data[x + (y * this.width)];
-
-        BufferedImage current = tiles[id];//Scalr.resize(tiles[id], SPRITE_MOD);
+    private Sprite buildSprite(BufferedImage[] tiles, File tileSet, int x, int y, int id){
+        BufferedImage current = tiles[id - 1];//Scalr.resize(tiles[id], SPRITE_MOD);
         Sprite s = new Sprite(tileSet);
         s.setOgImg(current);
         s.setImg(current);
-        s.setCoord(new Coordinates(x,y,this.id, SPRITE_WIDTH*SPRITE_MOD, SPRITE_WIDTH*SPRITE_MOD));
+        s.setCoord(new Coordinates(x * 16, y * 16,this.id, SPRITE_WIDTH*SPRITE_MOD, SPRITE_WIDTH*SPRITE_MOD));
         s.setDefaultWidth(this.SPRITE_WIDTH);
         s.setDefaultHeight(this.SPRITE_HEIGHT);
         s.setCurrentWidth(SPRITE_WIDTH*SPRITE_MOD);

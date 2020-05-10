@@ -89,10 +89,10 @@ public class OverworldPanel extends GamePanel{
             if(s.isSolid() && !s.equals(checked)) {
                 Rectangle rect1 = checked.getBounds();
                 Rectangle rect2 = s.getBounds();
-                if (
-                        rect1.intersects(rect2)
-                ) {
+                if ( rect1.intersects(rect2) ) {
                     s.defaultCollision(checked);
+                    System.out.println("Player Coords: [" + checked.getCoord().getX() + ", " + checked.getCoord().getY() + "]");
+                    System.out.println("Sprite Coords: [" + s.getCoord().getX() + ", " + s.getCoord().getY() + "]");
                     return true;
                 }
             }

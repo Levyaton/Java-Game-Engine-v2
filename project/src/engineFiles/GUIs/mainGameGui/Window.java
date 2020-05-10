@@ -65,10 +65,9 @@ public class Window extends JFrame {
        // super.paintComponents(bs.getDrawGraphics());
         Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
         //super.paintComponents(g2d);
-        g2d.scale(20.0, 20.0);
         g2d.clearRect(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
         for (Sprite s : getActiveGamePanel().getSprites()) {
-            g2d.drawImage(s.getImg(), s.getCoord().getX(), s.getCoord().getY(), this);
+            g2d.drawImage(s.getImg(), s.getCoord().getX(), s.getCoord().getY(), 16,16,this);
         }
 
        // super.paintComponents(g2d);

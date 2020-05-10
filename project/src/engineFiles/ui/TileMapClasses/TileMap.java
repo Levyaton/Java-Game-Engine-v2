@@ -65,7 +65,7 @@ public class TileMap {
         //Type eventsType = new TypeToken<List<Event>>(){}.getType();
 
         JsonObject obj = json.getAsJsonObject();
-        Layer[] eventList = eventGson.fromJson(obj.get("layers"), Layer[].class);
+        //Layer[] eventList = eventGson.fromJson(obj.get("layers"), Layer[].class);
         this.layers =   gson.fromJson(json.getAsJsonArray("layers"), Layer[].class);
         this.tilesets = gson.fromJson(json.get("tilesets"), Tileset[].class);
         this.editorsettings = gson.fromJson(json.get("editorsettings"), EditorSettings.class);
@@ -220,8 +220,6 @@ public class TileMap {
         //MAKE SURE THE SOURCE IS CORRECT AND COMPATIBLE WITH CODE
         File areaTileset = new File(PATH + tilesets[0].source);
         for (Layer l: layers) {
-
-
             s.addAll(l.getSpriteCollection(areaTileset));
         }
        return new Area(s, areaTileset.getName(),this.width, this.height);
