@@ -7,3 +7,6 @@
 /.gitignore
 /pom.xml
 /README.md
+/com/
+/out/
+/web/
