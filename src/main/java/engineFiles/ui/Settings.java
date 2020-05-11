@@ -9,6 +9,7 @@ public class Settings {
     public static double screenWidth;
     public static double screenHeight;
 
+    public static double MOVEMENT_SPEED = 2;
 
     public static Controlls controlls = setControlls();
 

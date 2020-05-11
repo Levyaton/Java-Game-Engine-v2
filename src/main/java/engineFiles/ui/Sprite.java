@@ -232,9 +232,7 @@ public class Sprite implements Comparable {
         this.solid = solid;
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle(this.getCoord().getX(), this.getCoord().getY(), currentWidth, currentHeight);
-    }
+
     //USE ONLY FOR COMPARING Z VALUES!!!!!!
     @Override
     public int compareTo(Object o) {

@@ -2,6 +2,7 @@ package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.Area;
+import engineFiles.ui.Coordinates;
 import engineFiles.ui.SpriteCollection;
 
 import javax.swing.*;
@@ -62,6 +63,10 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
 
     public String getPanelName() {
         return panelName;
+    }
+
+    public Coordinates getOffset(){
+        return new Coordinates(0,0,0,0);
     }
 }
 

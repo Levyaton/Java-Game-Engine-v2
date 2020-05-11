@@ -1,5 +1,7 @@
 package engineFiles.ui;
 
+import java.awt.*;
+
 public class Coordinates {
     private int x_last;
     private int y_last;
@@ -8,7 +10,7 @@ public class Coordinates {
     private int z;
     private int height;
     private int width;
-    private double MOD = 1;
+    private double MOD = Settings.MOVEMENT_SPEED;
 
     public Coordinates(int x, int y, int width, int height) {
         this.x = x;
@@ -106,5 +108,9 @@ public class Coordinates {
 
     public double getMOD() {
         return MOD;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(this.x, this.y, this.width, this.height);
     }
 }

@@ -2,10 +2,7 @@ package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.OverworldPlayer;
-import engineFiles.ui.Area;
-import engineFiles.ui.Settings;
-import engineFiles.ui.Sprite;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.ui.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,7 +72,20 @@ public class OverworldPanel extends GamePanel{
 
     @Override
     public SpriteCollection getSprites() {
-        return area.getSprites();
+        Coordinates offest = this.getOffset();
+        SpriteCollection result = new SpriteCollection();
+
+       // System.out.println("width: " + rect.width + " height: " + rect.height);
+        for(Sprite s: this.area.getSprites()) {
+            if(offest.getBounds().intersects(s.getCoord().getBounds())){
+                if(s.equals(player)){
+                    //System.out.println("Player found");
+                }
+                result.add(s);
+            }
+        }
+       // System.out.println(result.size());
+        return result;
     }
 
 
@@ -88,8 +98,8 @@ public class OverworldPanel extends GamePanel{
 
         for(Sprite s:area.getSprites()){
             if(s.isSolid() && !s.equals(checked)) {
-                Rectangle rect1 = checked.getBounds();
-                Rectangle rect2 = s.getBounds();
+                Rectangle rect1 = checked.getCoord().getBounds();
+                Rectangle rect2 = s.getCoord().getBounds();
                 if ( rect1.intersects(rect2) ) {
                     s.defaultCollision(checked);
                     System.out.println("Player Coords: [" + checked.getCoord().getX() + ", " + checked.getCoord().getY() + "]");
@@ -131,8 +141,19 @@ public class OverworldPanel extends GamePanel{
             }
         }
 
-        System.out.println();
+
         return null;
+    }
+
+    @Override
+    public Coordinates getOffset(){
+        int EXTRA_SPACE_MOD = 20;
+        int width = Resolution.SCREEN_WIDTH + EXTRA_SPACE_MOD;
+        int height = Resolution.SCREEN_HEIGHT + EXTRA_SPACE_MOD;
+       // System.out.println(width);
+        int offset_X = player.getCoord().getX() -  width/2;
+        int offset_y = player.getCoord().getY() -  height/2;
+        return new Coordinates(offset_X,offset_y,width,height);
     }
 
 }
