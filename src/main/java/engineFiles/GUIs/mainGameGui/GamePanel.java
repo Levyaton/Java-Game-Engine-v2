@@ -1,6 +1,6 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.main.models.OverworldPlayer;
+import engineFiles.main.models.Entities.Entity;
 import engineFiles.ui.Area;
 import engineFiles.ui.Coordinates;
 import engineFiles.ui.SpriteCollection;
@@ -8,16 +8,17 @@ import engineFiles.ui.SpriteCollection;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 public abstract class GamePanel extends JPanel implements KeyListener,GamePanelInterface {
 
     protected  String panelName;
     protected Area area;
-    protected OverworldPlayer player;
+    protected List<Entity> entities;
 
-    public GamePanel(Area area, OverworldPlayer player, String panelName){
+    public GamePanel(Area area, List<Entity> entities, String panelName){
         this.panelName = panelName;
-        this.player = player;
+        this.entities = entities;
         this.area = area;
         this.addKeyListener(this);
     }
@@ -57,8 +58,8 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
         return area;
     }
 
-    protected OverworldPlayer getPlayer(){
-        return player;
+    protected List<Entity> getEntities(){
+        return entities;
     }
 
     public String getPanelName() {

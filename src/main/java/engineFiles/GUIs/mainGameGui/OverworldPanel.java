@@ -1,13 +1,14 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.OverworldPlayer;
+import engineFiles.main.models.Entities.Entity;
 import engineFiles.ui.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OverworldPanel extends GamePanel{
 
@@ -17,13 +18,15 @@ public class OverworldPanel extends GamePanel{
     private ArrayList<Integer> right = Settings.controlls.getRight();
 
 
+
+
     private int frameCount = 0;
     private Image dbImage;
     private Graphics dbGraphics;
 
 
-    public OverworldPanel(Area area, OverworldPlayer player, String panelName) {
-        super(area,player,panelName);
+    public OverworldPanel(Area area, List<Entity> entities, String panelName) {
+        super(area,entities,panelName);
         //Dimension d = new Dimension(800, 700);
         setLayout(null);
         loadSprites(area.getSprites());
@@ -40,7 +43,7 @@ public class OverworldPanel extends GamePanel{
     }
 
     private void loadPlayer() {
-        area.getSprites().add(player);
+        area.getSprites().addAll(entities);
     }
 
     private JLabel loadSprite(Sprite s) {
@@ -78,10 +81,12 @@ public class OverworldPanel extends GamePanel{
        // System.out.println("width: " + rect.width + " height: " + rect.height);
         for(Sprite s: this.area.getSprites()) {
             if(offest.getBounds().intersects(s.getCoord().getBounds())){
-                if(s.equals(player)){
-                    //System.out.println("Player found");
-                }
                 result.add(s);
+            }
+        }
+        for(Entity e: this.entities){
+            if(offest.getBounds().intersects(e.getCoord().getBounds())){
+                result.add(e);
             }
         }
        // System.out.println(result.size());
@@ -113,47 +118,45 @@ public class OverworldPanel extends GamePanel{
 
     public Void updateMovement(Void param) {
 
-
-        if (KeyMap.isPressed(right)) {
-            player.getCoord().moveRight();
-            //System.out.println("Moving");
-            if(colliding(player)){
-                player.getCoord().moveLeft();
+        for(Entity e: this.entities){
+            e.getMovement();
+            if(colliding(e)){
+                e.movementBlocked();
                 //System.out.println("Failed");
             }
-        }
-        if (KeyMap.isPressed(left)) {
-            player.getCoord().moveLeft();
-            if(colliding(player)){
-                player.getCoord().moveRight();
-            }
-        }
-        if (KeyMap.isPressed(down)) {
-            player.getCoord().moveDown();
-            if(colliding(player)){
-                player.getCoord().moveUp();
-            }
-        }
-        if (KeyMap.isPressed(up)) {
-            player.getCoord().moveUp();
-            if(colliding(player)){
-                player.getCoord().moveDown();
-            }
-        }
 
-
+        }
         return null;
     }
 
     @Override
     public Coordinates getOffset(){
+        Entity player = this.getPlayer();
+        int offset_X = 0;
+        int offset_y = 0;
+
         int EXTRA_SPACE_MOD = 20;
         int width = Resolution.SCREEN_WIDTH + EXTRA_SPACE_MOD;
         int height = Resolution.SCREEN_HEIGHT + EXTRA_SPACE_MOD;
+
+        if(player != null){
+            offset_X = player.getCoord().getX() -  width/2;
+            offset_y = player.getCoord().getY() -  height/2;
+        }
+
        // System.out.println(width);
-        int offset_X = player.getCoord().getX() -  width/2;
-        int offset_y = player.getCoord().getY() -  height/2;
+
         return new Coordinates(offset_X,offset_y,width,height);
+    }
+
+    private Entity getPlayer(){
+        for (Entity e: entities){
+            if(e.getCategoryName().equals("player")){
+                return e;
+            }
+        }
+
+        return null;
     }
 
 }

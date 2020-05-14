@@ -65,7 +65,7 @@ public class Sprite implements Comparable {
         movable = json.getBoolean("Movable");
     }
 
-    private void initFromOGFile() {
+    protected void initFromOGFile() {
 
         this.img = FolderOP.getImage(this.ogFile);
         this.ogImg = img;
