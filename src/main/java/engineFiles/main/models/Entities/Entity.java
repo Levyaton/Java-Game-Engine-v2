@@ -11,6 +11,7 @@ import java.util.List;
 
 public abstract class Entity extends Sprite {
 
+    protected int lastMovementIndex = 0;
     protected MovementAnimation animation;
     protected Controlls controlls;
     protected List<Entity> others;
@@ -18,24 +19,27 @@ public abstract class Entity extends Sprite {
 
     int movementIndex;
 
-    public Entity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, JSONObject json){
+    public Entity(MovementAnimation animation, JSONObject json){
         super(json);
-        this.animation = new MovementAnimation(down,up, left,right);
+        this.animation = animation;
     }
 
-    public Entity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, File f){
+    public Entity(MovementAnimation animation, File f){
         super(f);
-        this.animation = new MovementAnimation(down,up, left,right);
+        this.animation = animation;
     }
     @Override
     public BufferedImage getImg(){
-        return this.animation.move(getMovementIndex());
+        int movementIndex = getMovementIndex();
+        //System.out.println(movementIndex);
+        return this.animation.move(movementIndex);
 
     }
 
     protected int getMovementIndex(){
         int chosenMovement = getMovement();
-        movementIndex = 0;
+        //System.out.println("Movement is " + chosenMovement);
+        //movementIndex = 0;
         if(this.controlls.getUp().contains(chosenMovement)){
             movementIndex = 1;
         }
@@ -45,13 +49,14 @@ public abstract class Entity extends Sprite {
         else if(this.controlls.getRight().contains(chosenMovement)){
             movementIndex = 3;
         }
+        else if(this.controlls.getDown().contains(chosenMovement)){
+            movementIndex = 0;
+        }
+        //lastMovementIndex = movementIndex;
         return movementIndex;
     }
 
-    public int getMovement(){
-        //IMPLEMENT MOVEMENT METHOD
-        return 0;
-    }
+    public abstract int getMovement();
 
     public void addOtherEntity(Entity other){
         this.others.add(other);

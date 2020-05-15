@@ -1,25 +1,24 @@
 package engineFiles.main.models.Entities;
 
+import engineFiles.main.models.MovementAnimation;
 import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.List;
 
 public class HomingEntity extends Entity {
     Entity target;
 
-    public HomingEntity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, JSONObject json, Entity target){
-        super(down, up, left, right, json);
+    public HomingEntity(MovementAnimation animation, JSONObject json, Entity target){
+        super(animation, json);
         super.controlls = Settings.controlls;
         this.categoryName = "homing";
         super.others.add(target);
         this.target = target;
     }
 
-    public HomingEntity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, File f, Entity target){
-        super(down, up, left, right, f);
+    public HomingEntity(MovementAnimation animation, File f, Entity target){
+        super(animation, f);
         super.controlls = Settings.controlls;
         this.categoryName = "homing";
         super.others.add(target);

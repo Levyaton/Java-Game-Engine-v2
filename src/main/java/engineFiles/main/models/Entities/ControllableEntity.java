@@ -1,48 +1,58 @@
 package engineFiles.main.models.Entities;
 
 import engineFiles.main.game.KeyMap;
+import engineFiles.main.models.MovementAnimation;
 import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.List;
 
 public class ControllableEntity extends Entity{
 
-    public ControllableEntity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, JSONObject json){
-        super(down, up, left, right, json);
+
+    public ControllableEntity(MovementAnimation animation, JSONObject json){
+        super(animation, json);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }
 
-    public ControllableEntity(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, File f){
-        super(down, up, left, right, f);
+    public ControllableEntity(MovementAnimation animation, File f){
+        super(animation, f);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }
 
     @Override
     public int getMovement(){
-
+        int choice = 666;
         if (KeyMap.isPressed(super.controlls.getRight())) {
+            choice = super.controlls.getRight().get(0);
             super.coord.moveRight();
-            return 3;
         }
         if (KeyMap.isPressed(super.controlls.getLeft())) {
+            choice = super.controlls.getLeft().get(0);
             super.coord.moveLeft();
-            return 2;
+
         }
         if (KeyMap.isPressed(super.controlls.getDown())) {
+            choice = super.controlls.getDown().get(0);
             super.coord.moveDown();
-           return 0;
+
         }
         if (KeyMap.isPressed(super.controlls.getUp())) {
+            choice = super.controlls.getUp().get(0);
             super.coord.moveUp();
-            return 1;
+
         }
-        super.animation.resetStateIndex();
-        return animation.getMovementIndex();
+        if(choice == 666){
+            choice = super.lastMovementIndex;
+            super.lastMovementIndex = choice;
+            super.animation.resetStateIndex();
+        }
+
+        //System.out.println("NO KEY PRESSED");
+
+        return choice;
     }
 
 

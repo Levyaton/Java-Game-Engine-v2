@@ -4,14 +4,14 @@ import engineFiles.GUIs.mainGameGui.GamePanel;
 import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
-import engineFiles.colorer.program.Colorizer_2;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.Entities.Entity;
+import engineFiles.main.models.MovementAnimation;
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.Area;
 import engineFiles.ui.Player;
 import engineFiles.ui.TileMapClasses.TileMap;
-import org.imgscalr.Scalr;
+import engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class GameContainer {
@@ -43,47 +44,45 @@ public class GameContainer {
         //COLORING
         String inputDir = "src/main/java/resources/gameFiles/models/sprites/tilesets/basictiles.png";
         String outputDir = "src/main/java/resources/playerGameFiles/sprites/tilesets/basictiles.png";
-        File sourceImage = new File(inputDir);
+        String characterSpriteSheet = "src/main/java/resources/gameFiles/models/characterSpriteSheets/characters.png";
 
-        try {
+        File sourceImage = new File(inputDir);
+        HashMap<Integer, MovementAnimation> animations;
+
 
             // cm.switchColors(member, new File(outputDir + member.getName()));
-            BufferedImage recolor = Colorizer_2.getCompleteReColor(ImageIO.read(sourceImage));
-            ImageIO.write(recolor, "png", new File(outputDir));
+            int rowCount = 4;
+            int columnCount = 3;
+            int spriteWidth = 16;
+            int spriteHeight = 16;
 
-            List<BufferedImage> down = new ArrayList<>();
-            List<BufferedImage> up = new ArrayList<>();
-            List<BufferedImage> left = new ArrayList<>();
-            List<BufferedImage> right = new ArrayList<>();
-            BufferedImage b = ImageIO.read(new File(playerPath));
-
-            down.add(b);
-            up.add(b);
-            left.add(b);
-            right.add(b);
-
-            OverworldPlayer player = new OverworldPlayer(down, up, left, right, new File(playerPath), new Player());
-            player.setImg(Scalr.resize(player.getImg(), 4));
-            player.getCoord().setX(60);
-            player.getCoord().setY(5);
-            player.getCoord().setZ(500);
             try {
-                TileMap tm = new TileMap("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json");
-                Area a = tm.getArea();
-                List<Entity> entities = new ArrayList<>();
-                entities.add(player);
-                GamePanel gamePanel = new OverworldPanel(a, entities, "overworld");
-                PanelManager.panels.put("overworld", gamePanel);
-                Window frame = new Window("overworld", gamePanel);
-                frame.resetActivePanel();
-                GameContainer gc = new GameContainer(frame);
-            } catch (FileNotFoundException e) {
+
+                BufferedImage sheet = ImageIO.read(new File(characterSpriteSheet));
+                animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
+
+
+                OverworldPlayer player = new OverworldPlayer(animations.get(0), new File(playerPath), new Player());
+               // player.setImg(Scalr.resize(player.getImg(), 4));
+                player.getCoord().setX(60);
+                player.getCoord().setY(5);
+                player.getCoord().setZ(500);
+                try {
+                    TileMap tm = new TileMap("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json");
+                    Area a = tm.getArea();
+                    List<Entity> entities = new ArrayList<>();
+                    entities.add(player);
+                    GamePanel gamePanel = new OverworldPanel(a, entities, "overworld");
+                    PanelManager.panels.put("overworld", gamePanel);
+                    Window frame = new Window("overworld", gamePanel);
+                    frame.resetActivePanel();
+                    GameContainer gc = new GameContainer(frame);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        } catch (IOException e) {
-            System.out.println(inputDir);
-            e.printStackTrace();
-        }
 
     }
 
