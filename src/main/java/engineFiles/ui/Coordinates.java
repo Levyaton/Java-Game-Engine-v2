@@ -61,8 +61,9 @@ public class Coordinates {
     public void moveUp() {
         //System.out.println("confirmUp");
         y_last = this.y;
-        // this.y-= height;
+        // this.y-=
         this.y -= MOD;
+
     }
 
     public void moveUp(double mod) {

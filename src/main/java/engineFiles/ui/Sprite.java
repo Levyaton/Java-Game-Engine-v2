@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.zip.CheckedInputStream;
 
 
 public class Sprite implements Comparable {
@@ -36,6 +37,22 @@ public class Sprite implements Comparable {
         this.currentWidth = this.defaultWidth;
         this.coord = new Coordinates(0, 0, currentWidth, currentHeight);
         json = updateJSON();
+    }
+
+    public Sprite(File file, BufferedImage img, int dimMod, int x, int y, int z,int blockID, int width, int height, boolean solid, boolean movable) {
+        this.ogFile = file;
+        this.img = img;
+        this.ogImg = img;
+        this.path = this.ogFile.getPath();
+        this.name = String.valueOf(blockID);
+        this.defaultHeight = height;
+        this.defaultWidth = width;
+        this.currentHeight = width*dimMod;
+        this.currentWidth = height*dimMod;
+        this.coord = new Coordinates(x * width, y * height, z, width*dimMod, height*dimMod);
+        json = updateJSON();
+        this.solid = solid;
+        this.movable = movable;
     }
 
     public Sprite(String file) {

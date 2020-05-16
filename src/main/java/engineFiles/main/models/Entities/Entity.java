@@ -16,6 +16,10 @@ public abstract class Entity extends Sprite {
     protected Controlls controlls;
     protected List<Entity> others;
     protected String categoryName;
+    protected boolean still = false;
+    protected int currentMovement;
+    protected int health;
+    protected int damage;
 
     int movementIndex;
 
@@ -30,14 +34,16 @@ public abstract class Entity extends Sprite {
     }
     @Override
     public BufferedImage getImg(){
-        int movementIndex = getMovementIndex();
+         int movementIndex = getMovementIndex();
+         //System.out.println(movementIndex);
         //System.out.println(movementIndex);
-        return this.animation.move(movementIndex);
-
+       // System.out.println("["+ this.getCoord().getX() + "," + getCoord().getY() + "]");
+          return this.animation.move(movementIndex, still);
+       // return this.animation.getDown().get(0);
     }
 
     protected int getMovementIndex(){
-        int chosenMovement = getMovement();
+        int chosenMovement = currentMovement;
         //System.out.println("Movement is " + chosenMovement);
         //movementIndex = 0;
         if(this.controlls.getUp().contains(chosenMovement)){
@@ -82,5 +88,9 @@ public abstract class Entity extends Sprite {
 
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public MovementAnimation getAnimation() {
+        return animation;
     }
 }

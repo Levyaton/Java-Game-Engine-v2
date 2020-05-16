@@ -9,6 +9,11 @@ import java.io.File;
 
 public class ControllableEntity extends Entity{
 
+    public int getTEST_COUNTER() {
+        return TEST_COUNTER;
+    }
+
+    public int TEST_COUNTER = 0;
 
     public ControllableEntity(MovementAnimation animation, JSONObject json){
         super(animation, json);
@@ -24,35 +29,42 @@ public class ControllableEntity extends Entity{
 
     @Override
     public int getMovement(){
-        int choice = 666;
+        this.TEST_COUNTER++;
+        super.still = false;
+        int choice;
         if (KeyMap.isPressed(super.controlls.getRight())) {
             choice = super.controlls.getRight().get(0);
             super.coord.moveRight();
         }
-        if (KeyMap.isPressed(super.controlls.getLeft())) {
+        else if (KeyMap.isPressed(super.controlls.getLeft())) {
             choice = super.controlls.getLeft().get(0);
             super.coord.moveLeft();
 
         }
-        if (KeyMap.isPressed(super.controlls.getDown())) {
+        else if (KeyMap.isPressed(super.controlls.getDown())) {
             choice = super.controlls.getDown().get(0);
             super.coord.moveDown();
 
         }
-        if (KeyMap.isPressed(super.controlls.getUp())) {
+        else if (KeyMap.isPressed(super.controlls.getUp())) {
             choice = super.controlls.getUp().get(0);
             super.coord.moveUp();
-
+            //System.out.println(coord.getY());
         }
-        if(choice == 666){
+        else {
+            System.out.println("standing");
             choice = super.lastMovementIndex;
             super.lastMovementIndex = choice;
+            super.still = true;
             super.animation.resetStateIndex();
         }
 
-        //System.out.println("NO KEY PRESSED");
+       // System.out.println(this.TEST_COUNTER);
 
+        //System.out.println("NO KEY PRESSED");
+        super.currentMovement = choice;
         return choice;
+        //return super.controlls.getLeft().get(0);
     }
 
 

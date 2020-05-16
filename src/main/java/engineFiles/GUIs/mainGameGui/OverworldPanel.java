@@ -1,7 +1,9 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
+import engineFiles.main.models.Entities.ControllableEntity;
 import engineFiles.main.models.Entities.Entity;
+import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.*;
 
 import javax.swing.*;
@@ -70,26 +72,50 @@ public class OverworldPanel extends GamePanel{
     @Override
     public void keyReleased(KeyEvent e) {
         KeyMap.setKey(e.getKeyCode(), true);
+        System.out.println("released");
     }
 
 
     @Override
     public SpriteCollection getSprites() {
         Coordinates offest = this.getOffset();
-        SpriteCollection result = new SpriteCollection();
-
+        SpriteCollection result = area.getSprites();
+        result.add(getPlayer());
+        System.out.println(getPlayer().getCoord().getX() + "," + getPlayer().getCoord().getY() );
        // System.out.println("width: " + rect.width + " height: " + rect.height);
+        /*
         for(Sprite s: this.area.getSprites()) {
+
             if(offest.getBounds().intersects(s.getCoord().getBounds())){
                 result.add(s);
             }
         }
+        */
+        //result.add(area.getSprites().get(1));
+//        for (int x = 0; x < 500; x++){
+//            result.add(area.getSprites().get(x));
+//
+//        }
+        /*
         for(Entity e: this.entities){
-            if(offest.getBounds().intersects(e.getCoord().getBounds())){
+           if(offest.getBounds().intersects(e.getCoord().getBounds())){
                 result.add(e);
-            }
+           }
         }
+
+        Entity p = getPlayer();
+        ControllableEntity nextP = new ControllableEntity(p.getAnimation(), p.getOgFile());
+        nextP.setName("JIGGLY");
+        nextP.setCoord(new Coordinates(p.getCoord().getX() + 30, p.getCoord().getY() + 30, p.getCoord().getZ(), p.getCurrentWidth(), p.getCurrentHeight()));
+        result.add(nextP);
+        Entity p2 = getPlayer();
+        ControllableEntity nextP2 = new ControllableEntity(p.getAnimation(), p.getOgFile());
+        nextP2.setName("JIGGLY");
+        nextP2.setCoord(new Coordinates(p2.getCoord().getX() + 60, p2.getCoord().getY() + 15, p2.getCoord().getZ(), p2.getCurrentWidth(), p2.getCurrentHeight()));
+        result.add(nextP2);
        // System.out.println(result.size());
+
+         */
         return result;
     }
 
@@ -118,14 +144,23 @@ public class OverworldPanel extends GamePanel{
 
     public Void updateMovement(Void param) {
 
+        //System.out.println(entities.size());
+        ControllableEntity e =  ((ControllableEntity) getPlayer());
+        e.getMovement();
+        e.TEST_COUNTER  = 0;
+        /*
         for(Entity e: this.entities){
+           // System.out.println("Check");
             e.getMovement();
+            /*
             if(colliding(e)){
                 e.movementBlocked();
                 //System.out.println("Failed");
             }
 
         }
+    */
+        ((ControllableEntity) getPlayer()).TEST_COUNTER = 0;
         return null;
     }
 

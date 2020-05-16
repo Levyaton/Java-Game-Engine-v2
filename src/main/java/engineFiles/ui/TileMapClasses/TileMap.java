@@ -34,7 +34,7 @@ public class TileMap {
     Layer[] layers;
     EditorSettings editorsettings;
 
-    private String PATH = "src/main/java/resources/playerGameFiles/sprites/tilesets/";
+    private String PATH = "src/main/java/engineFiles/colorer/testFiles/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
     public TileMap(){
 
     }
@@ -221,6 +221,7 @@ public class TileMap {
         File areaTileset = new File(PATH + tilesets[0].source);
         for (Layer l: layers) {
             s.addAll(l.getSpriteCollection(areaTileset));
+            System.out.println(l.name);
         }
        return new Area(s, areaTileset.getName(),this.width, this.height);
     }

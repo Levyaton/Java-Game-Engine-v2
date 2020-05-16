@@ -61,8 +61,8 @@ public class GameContainer {
                 BufferedImage sheet = ImageIO.read(new File(characterSpriteSheet));
                 animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
 
-
-                OverworldPlayer player = new OverworldPlayer(animations.get(0), new File(playerPath), new Player());
+                MovementAnimation playerAnimation = animations.get(0);
+                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player());
                // player.setImg(Scalr.resize(player.getImg(), 4));
                 player.getCoord().setX(60);
                 player.getCoord().setY(5);

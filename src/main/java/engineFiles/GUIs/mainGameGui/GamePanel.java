@@ -1,14 +1,15 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.models.Entities.Entity;
-import engineFiles.ui.Area;
-import engineFiles.ui.Coordinates;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.ui.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.Set;
 
 public abstract class GamePanel extends JPanel implements KeyListener,GamePanelInterface {
 
@@ -21,6 +22,7 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
         this.entities = entities;
         this.area = area;
         this.addKeyListener(this);
+
     }
 
     public GamePanel(){

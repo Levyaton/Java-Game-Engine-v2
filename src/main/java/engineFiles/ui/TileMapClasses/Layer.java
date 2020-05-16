@@ -120,20 +120,11 @@ public class Layer {
         return spriteCollection;
     }
 
-    private Sprite buildSprite(BufferedImage[] tiles, File tileSet, int x, int y, int id){
-        BufferedImage current = tiles[id - 1];//Scalr.resize(tiles[id], SPRITE_MOD);
-        Sprite s = new Sprite(tileSet);
-        s.setOgImg(current);
-        s.setImg(current);
-        s.setCoord(new Coordinates(x * SPRITE_WIDTH, y * SPRITE_HEIGHT,this.id, SPRITE_WIDTH*SPRITE_MOD, SPRITE_WIDTH*SPRITE_MOD));
-        s.setDefaultWidth(this.SPRITE_WIDTH);
-        s.setDefaultHeight(this.SPRITE_HEIGHT);
-        s.setCurrentWidth(SPRITE_WIDTH*SPRITE_MOD);
-        s.setDefaultHeight(SPRITE_WIDTH*SPRITE_MOD);
-        s.setSolid(this.name.equals("solid") || this.name.equals("movable") || this.name.equals("characters"));
-        s.setId(id);
-        s.setMovable(this.name.equals("movable"));
-        s.setName(String.valueOf(id));
-        return s;
+    private Sprite buildSprite(BufferedImage[] tiles, File tileSet, int x, int y, int blockID){
+        int z = this.id;
+        BufferedImage current = tiles[blockID - 1];//Scalr.resize(tiles[id], SPRITE_MOD);
+        boolean solid = (this.name.equals("solid") || this.name.equals("movable") || this.name.equals("characters"));
+        boolean movable = this.name.equals("movable");
+        return new Sprite(tileSet,current,SPRITE_MOD,x,y,z,blockID,SPRITE_WIDTH,SPRITE_HEIGHT, solid, movable);
     }
 }

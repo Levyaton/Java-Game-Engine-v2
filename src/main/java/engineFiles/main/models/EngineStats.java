@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 public class EngineStats {
     public static final double UPDATE_CAP = 1.0 / 60.0;
-    public static final double LARGE_CONST = 1000000000.0;
+    public static final double LARGE_CONST = 100000000.0;
     public static boolean render = false;
     public static double currentTime;
     public static double firstTime = 0;
