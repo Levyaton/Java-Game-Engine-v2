@@ -11,8 +11,8 @@ public class Player extends Creature {
 
   BufferedImage frame;
 
-  public Player(BufferedImage[][] character, Position pos, World world) {
-    super(character, pos, world);
+  public Player(String name, BufferedImage[][] character, Position pos, World world) {
+    super(name, character, pos, world);
   }
 
   public void input(KeyManager keyManager) {
@@ -20,17 +20,21 @@ public class Player extends Creature {
     yMove = 0;
 
     if (keyManager.keys[0]) {
+      // up
       direction = 3;
-      yMove -= 3;// up
+      yMove -= 3;
     } else if (keyManager.keys[1]) {
+      // down
       direction = 0;
-      yMove += 3; // down
+      yMove += 3;
     } else if (keyManager.keys[2]) {
+      // left
       direction = 1;
-      xMove -= 3; // left
+      xMove -= 3;
     } else if (keyManager.keys[3]) {
+      // right
       direction = 2;
-      xMove += 3; // right
+      xMove += 3;
     }
   }
 

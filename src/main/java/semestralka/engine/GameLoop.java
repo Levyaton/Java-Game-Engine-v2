@@ -90,7 +90,7 @@ public class GameLoop implements Runnable {
   }
 
   public void init() {
-    Resources.load();
+    new Resources().load();
     mouseManager = new MouseManager(gamePanel);
     keyManager = new KeyManager(gamePanel);
     screenManager = new ScreenManager(keyManager, mouseManager);

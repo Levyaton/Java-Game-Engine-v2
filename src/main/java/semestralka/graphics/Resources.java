@@ -5,23 +5,25 @@ import java.awt.image.BufferedImage;
 
 public class Resources {
 
-  public static Font arialFontBold;
-  public static Font zeldaFontMedium;
+  public static Font arialFontBold, zeldaFontMedium, zeldaFontSmall;
+
+  public static BufferedImage battleBackground, battleOptions, battleDialog, battleStats;
 
   public static BufferedImage[] basictiles;
 
   public static BufferedImage[][] player;
-
   public static BufferedImage[][] skeleton;
 
-  public static void load() {
+  public void load() {
     loadFonts();
     loadBasictiles();
     loadCharacters();
+    loadBattleComponents();
   }
 
   public static void loadFonts() {
     new FontLoader().register("/fonts/ZeldaFont.ttf");
+    zeldaFontSmall = new Font("The Wild Breath of Zelda", Font.PLAIN, 20);
     zeldaFontMedium = new Font("The Wild Breath of Zelda", Font.PLAIN, 45);
     arialFontBold = new Font("Arial", Font.BOLD, 10);
   }
@@ -56,5 +58,12 @@ public class Resources {
         character[x][y] = sheet.getSubimage((x * 16) + originX, (y * 16) + originY, 16, 16);
       }
     }
+  }
+
+  public void loadBattleComponents() {
+    battleBackground = new SpriteLoader().load("/components/battle_bg.png");
+    battleOptions = new SpriteLoader().load("/components/battle_options.png");
+    battleDialog = new SpriteLoader().load("/components/battle_dialog.png");
+    battleStats = new SpriteLoader().load("/components/battle_stats.png");
   }
 }

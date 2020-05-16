@@ -12,9 +12,9 @@ public class UIButton extends UIComponent {
   private AABB bounds;
   private boolean hovering = false;
   private String text;
-  private ClickFunc func;
+  private CallbackFunc func;
 
-  public UIButton(String text, Position pos, int width, int height, ClickFunc func) {
+  public UIButton(String text, Position pos, int width, int height, CallbackFunc func) {
     super(pos, width, height);
     this.text = text;
     this.func = func;

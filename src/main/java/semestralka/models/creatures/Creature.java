@@ -17,10 +17,14 @@ public abstract class Creature extends Entity {
   protected int xMove, yMove;
   protected boolean up, down, left, right;
   protected int health = 10;
+  protected int curHealth = 10;
+  protected int damage = 2;
+  protected String name;
 
-  public Creature(BufferedImage[][] character, Position pos, World world) {
+  public Creature(String name, BufferedImage[][] character, Position pos, World world) {
     super(pos);
     this.world = world;
+    this.name = name;
     animation = new Animation(character);
   }
 
@@ -60,7 +64,9 @@ public abstract class Creature extends Entity {
 
   public void xMove() {
     if (isColliding()) {
-      world.getBattle().init();
+      if (this instanceof Player == false) {
+        world.getBattle().startBattle(this);
+      }
       return;
     }
     pos.x += xMove;
@@ -68,8 +74,9 @@ public abstract class Creature extends Entity {
 
   public void yMove() {
     if (isColliding()) {
-      world.getBattle().init();
-      return;
+      if (this instanceof Player == false) {
+        world.getBattle().startBattle(this);
+      }
     }
     pos.y += yMove;
   }
@@ -101,5 +108,33 @@ public abstract class Creature extends Entity {
       }
     }
     return false;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Animation getAnimation() {
+    return animation;
+  }
+
+  public int getCurHealth() {
+    return curHealth;
+  }
+
+  public void setCurHealth(int curHealth) {
+    this.curHealth = curHealth;
+  }
+
+  public int getHealth() {
+    return health;
+  }
+
+  public int getDamage() {
+    return damage;
+  }
+
+  public void setDamage(int damage) {
+    this.damage = damage;
   }
 }

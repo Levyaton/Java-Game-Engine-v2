@@ -10,8 +10,8 @@ public class KeyManager implements KeyListener {
   public boolean[] keys;
 
   public KeyManager(GamePanel gamePanel) {
+    keys = new boolean[5];
     gamePanel.addKeyListener(this);
-    keys = new boolean[4];
   }
 
   @Override
@@ -22,7 +22,6 @@ public class KeyManager implements KeyListener {
   @Override
   public void keyPressed(KeyEvent e) {
     int keyCode = e.getKeyCode();
-
     pressed = true;
 
     if (keyCode == KeyEvent.VK_W) {
@@ -36,6 +35,9 @@ public class KeyManager implements KeyListener {
     }
     if (keyCode == KeyEvent.VK_D) {
       keys[3] = true;
+    }
+    if (keyCode == KeyEvent.VK_SPACE) {
+      keys[4] = true;
     }
   }
 
@@ -55,6 +57,9 @@ public class KeyManager implements KeyListener {
     }
     if (keyCode == KeyEvent.VK_D) {
       keys[3] = false;
+    }
+    if (keyCode == KeyEvent.VK_SPACE) {
+      keys[4] = false;
     }
   }
 }

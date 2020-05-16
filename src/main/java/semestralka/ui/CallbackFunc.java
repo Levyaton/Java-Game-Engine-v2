@@ -1,5 +1,5 @@
 package semestralka.ui;
 
-public interface ClickFunc {
+public interface CallbackFunc {
   void apply();
 }

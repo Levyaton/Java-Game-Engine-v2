@@ -12,8 +12,8 @@ public class Skeleton extends Creature {
   private int tick = 0;
   private int tickD = 0;
 
-  public Skeleton(BufferedImage[][] character, Position pos, World world) {
-    super(character, pos, world);
+  public Skeleton(String name, BufferedImage[][] character, Position pos, World world) {
+    super(name, character, pos, world);
   }
 
   @Override

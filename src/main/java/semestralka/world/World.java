@@ -23,16 +23,18 @@ public class World {
     creatureManager = new CreaturesManager();
     camera = new Camera();
     inventory = new Inventory();
-    battle = new Battle();
-    player = new Player(Resources.player, new Position(200, 250), this);
-    Skeleton skeleton = new Skeleton(Resources.skeleton, new Position(96, 96), this);
+    battle = new Battle(this);
+    player = new Player("alex", Resources.player, new Position(200, 250), this);
+    Skeleton skeleton = new Skeleton("skeleton joe", Resources.skeleton, new Position(96, 96), this);
     creatureManager.add(player);
     creatureManager.add(skeleton);
     map = new Map("/maps/tilemap_1.json", this);
   }
 
   public void input(KeyManager keyManager, MouseManager mouseManager) {
-    if (!battle.isInBattle()) {
+    if (battle.isInBattle()) {
+      battle.input(keyManager);
+    } else {
       player.input(keyManager);
     }
   }
@@ -71,5 +73,9 @@ public class World {
 
   public Battle getBattle() {
     return battle;
+  }
+
+  public Player getPlayer() {
+    return player;
   }
 }
