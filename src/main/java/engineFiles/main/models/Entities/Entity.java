@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Entity extends Sprite {
@@ -14,7 +15,7 @@ public abstract class Entity extends Sprite {
     protected int lastMovementIndex = 0;
     protected MovementAnimation animation;
     protected Controlls controlls;
-    protected List<Entity> others;
+    protected List<Entity> others = new ArrayList<>();
     protected String categoryName;
     protected boolean still = false;
     protected int currentMovement;
@@ -23,20 +24,21 @@ public abstract class Entity extends Sprite {
 
     int movementIndex;
 
-    public Entity(MovementAnimation animation, JSONObject json){
+    public Entity(MovementAnimation animation, JSONObject json, double speed){
         super(json);
         this.animation = animation;
+        this.coord.setMOD(speed);
     }
 
-    public Entity(MovementAnimation animation, File f){
+    public Entity(MovementAnimation animation, File f, double speed){
         super(f);
         this.animation = animation;
+        this.coord.setMOD(speed);
     }
     @Override
     public BufferedImage getImg(){
          int movementIndex = getMovementIndex();
          //System.out.println(movementIndex);
-        //System.out.println(movementIndex);
        // System.out.println("["+ this.getCoord().getX() + "," + getCoord().getY() + "]");
           return this.animation.move(movementIndex, still);
        // return this.animation.getDown().get(0);

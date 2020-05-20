@@ -1,11 +1,11 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.ui.SpriteCollection;
+import java.awt.*;
 
 public interface GamePanelInterface {
 
     //A method that ensures access to currently used Sprites
-    SpriteCollection getSprites();
+    Image getRenderGraphics();
 
     //Method where you check which keys are being pressed, or what should move
     Void updateMovement(Void param);

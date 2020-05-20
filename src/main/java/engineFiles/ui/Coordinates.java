@@ -12,6 +12,12 @@ public class Coordinates {
     private int width;
     private double MOD = Settings.MOVEMENT_SPEED;
 
+    public void setMOD(double MOD) {
+        this.MOD = MOD;
+    }
+
+
+
     public Coordinates(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;

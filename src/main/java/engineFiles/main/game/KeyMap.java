@@ -1,7 +1,7 @@
 package engineFiles.main.game;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class KeyMap {
@@ -15,7 +15,7 @@ public class KeyMap {
         keys.add(keyCode);
     }
 
-    public static boolean isPressed(ArrayList<Integer> keyCode) {
+    public static boolean isPressed(List<Integer> keyCode) {
         for (int key : keyCode) {
             if (keys.contains(key)) {
                 return true;

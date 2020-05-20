@@ -6,10 +6,12 @@ import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.Entities.Entity;
+import engineFiles.main.models.Entities.HomingEntity;
 import engineFiles.main.models.MovementAnimation;
 import engineFiles.main.models.OverworldPlayer;
 import engineFiles.ui.Area;
 import engineFiles.ui.Player;
+import engineFiles.ui.Resolution;
 import engineFiles.ui.TileMapClasses.TileMap;
 import engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser;
 
@@ -62,16 +64,24 @@ public class GameContainer {
                 animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
 
                 MovementAnimation playerAnimation = animations.get(0);
-                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player());
+                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player(), 1);
                // player.setImg(Scalr.resize(player.getImg(), 4));
+
                 player.getCoord().setX(60);
                 player.getCoord().setY(5);
                 player.getCoord().setZ(500);
+
+                int range = Resolution.SCREEN_WIDTH/2;
+                HomingEntity enemy  = new HomingEntity(playerAnimation, new File(playerPath), player, range, 1);
+                enemy.getCoord().setX(160);
+                enemy.getCoord().setY(1005);
+                enemy.getCoord().setZ(500);
                 try {
                     TileMap tm = new TileMap("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json");
                     Area a = tm.getArea();
                     List<Entity> entities = new ArrayList<>();
                     entities.add(player);
+                    entities.add(enemy);
                     GamePanel gamePanel = new OverworldPanel(a, entities, "overworld");
                     PanelManager.panels.put("overworld", gamePanel);
                     Window frame = new Window("overworld", gamePanel);

@@ -1,14 +1,10 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.ui.Resolution;
-import engineFiles.ui.Settings;
-import engineFiles.ui.Sprite;
-import engineFiles.ui.SpriteCollection;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Set;
 
 public class Window extends JFrame {
     int lastDrawX;
@@ -64,6 +60,7 @@ public class Window extends JFrame {
         this.add(activePanel, BorderLayout.CENTER);
 
         activePanel.requestFocus();
+
     }
 
     public GamePanel getActiveGamePanel() {
@@ -108,15 +105,11 @@ public class Window extends JFrame {
         @Override
         public void paint(Graphics g) {
             super.paint(g);
-            Graphics g2d = g;//(Graphics2D) g;
             GamePanel activePanel = getActiveGamePanel();
-            g2d.clearRect(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-            for (Sprite s : getActiveGamePanel().getSprites()) {
-                g2d.drawImage(s.getImg(), s.getCoord().getX() - activePanel.getOffset().getX(), s.getCoord().getY() - activePanel.getOffset().getY(), s.getCurrentWidth(),s.getCurrentHeight(),this);
-            }
+            g.drawImage(activePanel.getRenderGraphics(), 0 , 0, this);
 
             // super.paintComponents(g2d);
-            g2d.dispose();
+            g.dispose();
 
         }
     }

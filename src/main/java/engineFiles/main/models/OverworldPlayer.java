@@ -10,14 +10,14 @@ public class OverworldPlayer extends ControllableEntity {
 
     private Player player;
 
-    public OverworldPlayer(MovementAnimation animation, JSONObject json, Player player) {
-        super(animation, json);
+    public OverworldPlayer(MovementAnimation animation, JSONObject json, Player player, double speed) {
+        super(animation, json, speed);
         super.categoryName = "player";
         this.player = player;
     }
 
-    public OverworldPlayer(MovementAnimation animation, File f, Player player) {
-        super(animation, f);
+    public OverworldPlayer(MovementAnimation animation, File f, Player player, double speed) {
+        super(animation, f, speed);
         super.categoryName = "player";
         this.player = player;
     }

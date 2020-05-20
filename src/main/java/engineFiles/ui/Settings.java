@@ -1,13 +1,14 @@
 package engineFiles.ui;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Settings {
 
-    public static double screenWidth;
-    public static double screenHeight;
+    public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+    public static int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public static double MOVEMENT_SPEED = 1;
 

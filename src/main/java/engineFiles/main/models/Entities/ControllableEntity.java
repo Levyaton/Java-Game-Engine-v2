@@ -15,14 +15,14 @@ public class ControllableEntity extends Entity{
 
     public int TEST_COUNTER = 0;
 
-    public ControllableEntity(MovementAnimation animation, JSONObject json){
-        super(animation, json);
+    public ControllableEntity(MovementAnimation animation, JSONObject json, double speed){
+        super(animation, json, speed);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }
 
-    public ControllableEntity(MovementAnimation animation, File f){
-        super(animation, f);
+    public ControllableEntity(MovementAnimation animation, File f, double speed){
+        super(animation, f, speed);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }
@@ -52,7 +52,7 @@ public class ControllableEntity extends Entity{
             //System.out.println(coord.getY());
         }
         else {
-            System.out.println("standing");
+            //System.out.println("standing");
             choice = super.lastMovementIndex;
             super.lastMovementIndex = choice;
             super.still = true;

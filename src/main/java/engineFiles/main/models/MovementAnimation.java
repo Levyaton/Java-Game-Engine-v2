@@ -14,7 +14,7 @@ public class MovementAnimation {
 
     private int stateIndex = 0;
 
-    private int animationSpeed = 3000;
+    private int animationSpeed = 3000000;
 
     private int animationCounter = 0;
 
@@ -97,8 +97,9 @@ public class MovementAnimation {
         return movementIndex;
     }
     public void nextState(){
-        if(isAnimationCounterFull()){
-            System.out.println((stateIndex + 1) % stateSelect(movementIndex).size());
+        //System.out.println(isAnimationCounterFull());
+        if(!isAnimationCounterFull()){
+           // System.out.println((stateIndex + 1) % stateSelect(movementIndex).size());
             this.stateIndex = (stateIndex + 1) % stateSelect(movementIndex).size();
         }
     }
@@ -121,7 +122,7 @@ public class MovementAnimation {
     public BufferedImage move(int movementIndex, boolean standing){
 
         if(movementIndex != this.movementIndex){
-            System.out.println("Change");
+            //System.out.println("Change");
             this.movementIndex = movementIndex;
             resetStateIndex();
         }
@@ -129,6 +130,7 @@ public class MovementAnimation {
         List<BufferedImage> currentMovement = stateSelect(movementIndex);
        // System.out.println(currentMovement.size());
         BufferedImage current = currentMovement.get(stateIndex);
+        //System.out.println(this.stateIndex);
         //System.out.println(movementIndex);
         if(!standing){
             nextState();
