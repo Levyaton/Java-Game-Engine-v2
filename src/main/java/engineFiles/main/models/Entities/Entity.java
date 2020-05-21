@@ -21,19 +21,23 @@ public abstract class Entity extends Sprite {
     protected int currentMovement;
     protected int health;
     protected int damage;
+    protected int speedCounter;
+    protected int currentSpeedCount = 0;
 
     int movementIndex;
 
-    public Entity(MovementAnimation animation, JSONObject json, double speed){
+    public Entity(MovementAnimation animation, JSONObject json, int speedCounter){
         super(json);
         this.animation = animation;
-        this.coord.setMOD(speed);
+        this.speedCounter = speedCounter;
+        //this.coord.setMOD(speed);
     }
 
-    public Entity(MovementAnimation animation, File f, double speed){
+    public Entity(MovementAnimation animation, File f, int speedCounter){
         super(f);
         this.animation = animation;
-        this.coord.setMOD(speed);
+        this.speedCounter = speedCounter;
+        //this.coord.setMOD(speed);
     }
     @Override
     public BufferedImage getImg(){
@@ -86,6 +90,15 @@ public abstract class Entity extends Sprite {
                 super.getCoord().moveLeft();
                 break;
         }
+    }
+
+    public boolean timeToMove(){
+        if(this.speedCounter == this.currentSpeedCount){
+            this.currentSpeedCount = 0;
+            return true;
+        }
+        currentSpeedCount++;
+        return false;
     }
 
     public String getCategoryName() {

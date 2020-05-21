@@ -15,14 +15,14 @@ public class ControllableEntity extends Entity{
 
     public int TEST_COUNTER = 0;
 
-    public ControllableEntity(MovementAnimation animation, JSONObject json, double speed){
-        super(animation, json, speed);
+    public ControllableEntity(MovementAnimation animation, JSONObject json, int speedCounter){
+        super(animation, json, speedCounter);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }
 
-    public ControllableEntity(MovementAnimation animation, File f, double speed){
-        super(animation, f, speed);
+    public ControllableEntity(MovementAnimation animation, File f, int speedCounter){
+        super(animation, f, speedCounter);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
     }

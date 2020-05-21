@@ -64,7 +64,7 @@ public class GameContainer {
                 animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
 
                 MovementAnimation playerAnimation = animations.get(0);
-                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player(), 1);
+                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player(), 5);
                // player.setImg(Scalr.resize(player.getImg(), 4));
 
                 player.getCoord().setX(60);
@@ -72,7 +72,7 @@ public class GameContainer {
                 player.getCoord().setZ(500);
 
                 int range = Resolution.SCREEN_WIDTH/2;
-                HomingEntity enemy  = new HomingEntity(playerAnimation, new File(playerPath), player, range, 1);
+                HomingEntity enemy  = new HomingEntity(playerAnimation, new File(playerPath), player, range, 7);
                 enemy.getCoord().setX(160);
                 enemy.getCoord().setY(1005);
                 enemy.getCoord().setZ(500);

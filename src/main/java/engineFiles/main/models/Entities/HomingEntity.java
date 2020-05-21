@@ -28,8 +28,8 @@ public class HomingEntity extends Entity {
         return new Controlls(up,down,left,right);
     }
 
-    public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, double speed){
-        super(animation, json, speed);
+    public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter){
+        super(animation, json, speedCounter);
         super.controlls = controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
@@ -37,8 +37,8 @@ public class HomingEntity extends Entity {
         this.range = range;
     }
 
-    public HomingEntity(MovementAnimation animation, File f, Entity target, int range, double speed){
-        super(animation, f,speed);
+    public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter){
+        super(animation, f,speedCounter);
         super.controlls = controllsInit();
         this.categoryName = "homing";
         super.others.add(target);

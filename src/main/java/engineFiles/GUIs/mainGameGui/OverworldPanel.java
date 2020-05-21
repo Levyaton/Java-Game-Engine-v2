@@ -178,12 +178,15 @@ public class OverworldPanel extends GamePanel{
 
         for(Entity e: this.entities){
            // System.out.println("Check");
-            e.getMovement();
+            if(e.timeToMove()){
+                e.getMovement();
 
-            if(colliding(e)){
-                e.movementBlocked();
-                //System.out.println("Failed");
+                if(colliding(e)){
+                    e.movementBlocked();
+                    //System.out.println("Failed");
+                }
             }
+
 
         }
     return null;
