@@ -1,8 +1,8 @@
 package engineFiles.main.game;
 
-import engineFiles.main.models.OverworldPlayer;
-import engineFiles.ui.Sprite;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
+import engineFiles.main.models.Sprites.Sprite;
+import engineFiles.main.models.Sprites.SpriteCollection;
 
 import javax.swing.*;
 import java.awt.*;

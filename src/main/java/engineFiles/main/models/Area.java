@@ -1,5 +1,8 @@
-package engineFiles.ui;
+package engineFiles.main.models;
 
+import engineFiles.main.models.Sprites.Sprite;
+import engineFiles.main.models.Sprites.SpriteCollection;
+import engineFiles.ui.FolderOP;
 import org.json.JSONObject;
 
 import java.io.File;

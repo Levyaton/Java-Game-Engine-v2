@@ -2,7 +2,7 @@ package engineFiles.GUIs.worldEditGUI;
 
 import engineFiles.GUIs.listElementWithImg.ListElement;
 import engineFiles.GUIs.listElementWithImg.RowListElement;
-import engineFiles.ui.Sprite;
+import engineFiles.main.models.Sprites.Sprite;
 
 import javax.swing.*;
 import java.awt.*;

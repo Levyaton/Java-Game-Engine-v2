@@ -1,7 +1,10 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.Entities.Entity;
+import engineFiles.main.models.Area;
+import engineFiles.main.models.Sprites.Entities.Entity;
+import engineFiles.main.models.Sprites.Sprite;
+import engineFiles.main.models.Sprites.SpriteCollection;
 import engineFiles.ui.*;
 
 import javax.swing.*;
@@ -155,6 +158,8 @@ public class OverworldPanel extends GamePanel{
     private boolean colliding(Sprite checked){
         Rectangle rect1 = new Rectangle();
         Rectangle rect2 = new Rectangle();
+
+        List<Sprite> toBeRemoved = new ArrayList<>();
         rect1.setBounds(checked.getCoord().getX() - this.SPACE_MOD2, checked.getCoord().getY() - this.SPACE_MOD2, checked.getCurrentWidth(), checked.getCurrentHeight());
         for(Sprite s:area.getSprites()){
             if(s.isSolid() && !s.equals(checked)) {
@@ -162,9 +167,26 @@ public class OverworldPanel extends GamePanel{
                // s.getCoord().setX(s.getCoord().getX() - 50);
               //  s.getCoord().setY(s.getCoord().getY() - 50);
                 if ( rect1.intersects(rect2) ) {
-                    s.defaultCollision(checked);
+                    if(!s.onCollision(checked)){
+                        area.getSprites().remove(s);
+                        System.out.println("Got here");
+                        toBeRemoved.add(s);
+                    }
                     System.out.println("Player Coords: [" + checked.getCoord().getX() + ", " + checked.getCoord().getY() + "]");
                     System.out.println("Sprite Coords: [" + s.getCoord().getX() + ", " + s.getCoord().getY() + "]");
+                    return true;
+                }
+            }
+        }
+
+        rect1.setBounds(checked.getCoord().getX(), checked.getCoord().getY(), checked.getCurrentWidth(), checked.getCurrentHeight());
+        for(Entity e: entities){
+            if(!e.equals(checked)){
+                rect2.setBounds(e.getCoord().getX() /* - this.SPACE_MOD1*/, e.getCoord().getY() /*- this.SPACE_MOD1*/, e.getCurrentWidth(), e.getCurrentHeight());
+                if ( rect1.intersects(rect2) ) {
+                    e.onCollision(checked);
+                    System.out.println("Player Coords: [" + checked.getCoord().getX() + ", " + checked.getCoord().getY() + "]");
+                    System.out.println("Entity Coords: [" + e.getCoord().getX() + ", " + e.getCoord().getY() + "]");
                     return true;
                 }
             }
@@ -175,8 +197,9 @@ public class OverworldPanel extends GamePanel{
     public Void updateMovement(Void param) {
 
 
-
+        //System.out.println(entities.size());
         for(Entity e: this.entities){
+
            // System.out.println("Check");
             if(e.timeToMove()){
                 e.getMovement();

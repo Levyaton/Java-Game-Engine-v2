@@ -1,8 +1,7 @@
-package engineFiles.main.models.Entities;
+package engineFiles.main.models.Sprites.Entities;
 
-import engineFiles.main.models.MovementAnimation;
-import engineFiles.ui.Controlls;
-import engineFiles.ui.Sprite;
+import engineFiles.main.models.Sprites.Controlls;
+import engineFiles.main.models.Sprites.Sprite;
 import org.json.JSONObject;
 
 import java.awt.image.BufferedImage;
@@ -16,7 +15,6 @@ public abstract class Entity extends Sprite {
     protected MovementAnimation animation;
     protected Controlls controlls;
     protected List<Entity> others = new ArrayList<>();
-    protected String categoryName;
     protected boolean still = false;
     protected int currentMovement;
     protected int health;
@@ -64,6 +62,7 @@ public abstract class Entity extends Sprite {
         else if(this.controlls.getDown().contains(chosenMovement)){
             movementIndex = 0;
         }
+        System.out.println(movementIndex);
         //lastMovementIndex = movementIndex;
         return movementIndex;
     }
@@ -76,20 +75,23 @@ public abstract class Entity extends Sprite {
 
 
     public void movementBlocked(){
-        switch (getMovementIndex()){
-            case 0:
-                super.getCoord().moveUp();
-                break;
-            case 1:
-                super.getCoord().moveDown();
-                break;
-            case 2:
-                super.getCoord().moveRight();
-                break;
-            case 3:
-                super.getCoord().moveLeft();
-                break;
+        if(!still){
+            switch (getMovementIndex()){
+                case 0:
+                    super.getCoord().moveUp();
+                    break;
+                case 1:
+                    super.getCoord().moveDown();
+                    break;
+                case 2:
+                    super.getCoord().moveRight();
+                    break;
+                case 3:
+                    super.getCoord().moveLeft();
+                    break;
+            }
         }
+
     }
 
     public boolean timeToMove(){
@@ -107,5 +109,18 @@ public abstract class Entity extends Sprite {
 
     public MovementAnimation getAnimation() {
         return animation;
+    }
+
+    protected Controlls controllsInit(){
+        List<Integer> up = new ArrayList<>();
+        List<Integer> down = new ArrayList<>();
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+
+        up.add(1);
+        down.add(0);
+        left.add(2);
+        right.add(3);
+        return new Controlls(up,down,left,right);
     }
 }

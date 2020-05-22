@@ -1,4 +1,4 @@
-package engineFiles.main.models;
+package engineFiles.main.models.Sprites.Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;

@@ -1,6 +1,6 @@
 package engineFiles.GUIs.listElementWithImg;
 
-import engineFiles.ui.Sprite;
+import engineFiles.main.models.Sprites.Sprite;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;

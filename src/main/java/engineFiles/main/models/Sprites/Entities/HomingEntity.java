@@ -1,36 +1,20 @@
-package engineFiles.main.models.Entities;
+package engineFiles.main.models.Sprites.Entities;
 
-import engineFiles.main.models.MovementAnimation;
-import engineFiles.ui.Controlls;
 import engineFiles.ui.Coordinates;
 import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomingEntity extends Entity {
     Entity target;
     int range;
 
 
-    private Controlls controllsInit(){
-        List<Integer> up = new ArrayList<>();
-        List<Integer> down = new ArrayList<>();
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-
-        up.add(1);
-        down.add(0);
-        left.add(2);
-        right.add(3);
-        return new Controlls(up,down,left,right);
-    }
 
     public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter){
         super(animation, json, speedCounter);
-        super.controlls = controllsInit();
+        super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
         this.target = target;
@@ -39,7 +23,7 @@ public class HomingEntity extends Entity {
 
     public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter){
         super(animation, f,speedCounter);
-        super.controlls = controllsInit();
+        super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
         this.range = range;

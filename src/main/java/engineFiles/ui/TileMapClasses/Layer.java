@@ -1,8 +1,7 @@
 package engineFiles.ui.TileMapClasses;
 
-import engineFiles.ui.Coordinates;
-import engineFiles.ui.Sprite;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.main.models.Sprites.Sprite;
+import engineFiles.main.models.Sprites.SpriteCollection;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

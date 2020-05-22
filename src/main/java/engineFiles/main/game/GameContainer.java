@@ -5,11 +5,15 @@ import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
-import engineFiles.main.models.Entities.Entity;
-import engineFiles.main.models.Entities.HomingEntity;
-import engineFiles.main.models.MovementAnimation;
-import engineFiles.main.models.OverworldPlayer;
-import engineFiles.ui.Area;
+import engineFiles.main.models.Sprites.Entities.Entity;
+import engineFiles.main.models.Sprites.Entities.HomingEntity;
+import engineFiles.main.models.Sprites.Entities.Vector;
+import engineFiles.main.models.Sprites.Entities.VectorEntity;
+import engineFiles.main.models.Sprites.Entities.MovementAnimation;
+import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
+import engineFiles.main.models.Area;
+import engineFiles.main.models.Sprites.Items.Item;
+import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.ui.Player;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.TileMapClasses.TileMap;
@@ -70,18 +74,41 @@ public class GameContainer {
                 player.getCoord().setX(60);
                 player.getCoord().setY(5);
                 player.getCoord().setZ(500);
+                player.setName("Player");
 
                 int range = Resolution.SCREEN_WIDTH/2;
-                HomingEntity enemy  = new HomingEntity(playerAnimation, new File(playerPath), player, range, 7);
+                MovementAnimation homingAnim = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight).get(0);
+                HomingEntity enemy  = new HomingEntity(homingAnim, new File(playerPath), player, range, 7);
                 enemy.getCoord().setX(160);
                 enemy.getCoord().setY(1005);
                 enemy.getCoord().setZ(500);
+                enemy.setName("Enemy");
+
+                List<Vector> vectors = new ArrayList<>();
+                vectors.add(new Vector(0,50));
+                vectors.add(new Vector(50,0));
+                vectors.add(new Vector(0,-50));
+                vectors.add(new Vector(-50,0));
+
+                MovementAnimation vectorAnim = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight).get(0);
+                VectorEntity squareWalker = new VectorEntity(vectorAnim, new File(playerPath), 5, vectors);
+                squareWalker.getCoord().setX(-20);
+                squareWalker.getCoord().setY(-55);
+                squareWalker.getCoord().setZ(500);
+                squareWalker.setName("Bob");
+
+
+                ItemSprite item = new ItemSprite(new File(playerPath), 1, 60,55,499, new Item("testItem", 200));
+
                 try {
                     TileMap tm = new TileMap("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json");
                     Area a = tm.getArea();
+                    a.getSprites().add(item);
                     List<Entity> entities = new ArrayList<>();
                     entities.add(player);
                     entities.add(enemy);
+                    entities.add(squareWalker);
+
                     GamePanel gamePanel = new OverworldPanel(a, entities, "overworld");
                     PanelManager.panels.put("overworld", gamePanel);
                     Window frame = new Window("overworld", gamePanel);

@@ -1,6 +1,6 @@
 package engineFiles.ui.charecterSpriteSheetClasses;
 
-import engineFiles.main.models.MovementAnimation;
+import engineFiles.main.models.Sprites.Entities.MovementAnimation;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

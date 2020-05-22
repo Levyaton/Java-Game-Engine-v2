@@ -1,4 +1,4 @@
-package engineFiles.ui;
+package engineFiles.main.models.Sprites;
 
 
 import java.util.ArrayList;
@@ -9,12 +9,18 @@ public class Controlls {
     private List<Integer> down;
     private List<Integer> left;
     private List<Integer> right;
+    private int interaction;
 
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right) {
         this.down = down;
         this.left = left;
         this.right = right;
         this.up = up;
+    }
+
+    public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction) {
+        this(up,down,left,right);
+        this.interaction = interaction;
     }
 
 
@@ -52,5 +58,13 @@ public class Controlls {
 
     public void setRight(ArrayList<Integer> right) {
         this.right = right;
+    }
+
+    public int getInteraction() {
+        return interaction;
+    }
+
+    public void setInteraction(int interaction) {
+        this.interaction = interaction;
     }
 }

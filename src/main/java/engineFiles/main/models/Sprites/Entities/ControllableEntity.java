@@ -1,7 +1,6 @@
-package engineFiles.main.models.Entities;
+package engineFiles.main.models.Sprites.Entities;
 
 import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.MovementAnimation;
 import engineFiles.ui.Settings;
 import org.json.JSONObject;
 

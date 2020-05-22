@@ -1,6 +1,5 @@
-package engineFiles.main.models;
+package engineFiles.main.models.Sprites.Entities;
 
-import engineFiles.main.models.Entities.ControllableEntity;
 import engineFiles.ui.Player;
 import org.json.JSONObject;
 

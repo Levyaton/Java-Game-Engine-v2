@@ -1,7 +1,7 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.main.models.Entities.Entity;
-import engineFiles.ui.Area;
+import engineFiles.main.models.Sprites.Entities.Entity;
+import engineFiles.main.models.Area;
 import engineFiles.ui.Coordinates;
 
 import javax.swing.*;

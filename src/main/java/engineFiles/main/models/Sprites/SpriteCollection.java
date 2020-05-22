@@ -1,4 +1,4 @@
-package engineFiles.ui;
+package engineFiles.main.models.Sprites;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

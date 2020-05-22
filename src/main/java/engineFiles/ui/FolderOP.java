@@ -2,6 +2,7 @@ package engineFiles.ui;
 
 
 import com.google.gson.Gson;
+import engineFiles.main.models.Sprites.Sprite;
 import org.json.JSONObject;
 
 import javax.imageio.ImageIO;

@@ -1,7 +1,7 @@
 package engineFiles.GUIs.worldEditGUI.models;
 
 import com.google.gson.Gson;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.main.models.Sprites.SpriteCollection;
 import org.json.JSONObject;
 
 public class AreaModel extends GsonModel{

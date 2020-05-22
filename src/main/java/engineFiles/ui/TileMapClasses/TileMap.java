@@ -3,8 +3,8 @@ package engineFiles.ui.TileMapClasses;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import engineFiles.ui.Area;
-import engineFiles.ui.SpriteCollection;
+import engineFiles.main.models.Area;
+import engineFiles.main.models.Sprites.SpriteCollection;
 import engineFiles.ui.Utils;
 
 import java.io.BufferedReader;

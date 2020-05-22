@@ -1,5 +1,7 @@
 package engineFiles.ui;
 
+import engineFiles.main.models.Sprites.Controlls;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -20,8 +22,9 @@ public class Settings {
         ArrayList<Integer> down = new ArrayList<>(Arrays.asList(KeyEvent.VK_DOWN, KeyEvent.VK_S));
         ArrayList<Integer> left = new ArrayList<>(Arrays.asList(KeyEvent.VK_LEFT, KeyEvent.VK_A));
         ArrayList<Integer> right = new ArrayList<>(Arrays.asList(KeyEvent.VK_RIGHT, KeyEvent.VK_D));
+        int interaction = KeyEvent.VK_SPACE;
 
-        return new Controlls(up, down, left, right);
+        return new Controlls(up, down, left, right, interaction);
     }
 
 }

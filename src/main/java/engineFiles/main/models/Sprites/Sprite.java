@@ -1,5 +1,7 @@
-package engineFiles.ui;
+package engineFiles.main.models.Sprites;
 
+import engineFiles.ui.Coordinates;
+import engineFiles.ui.FolderOP;
 import org.imgscalr.Scalr;
 import org.json.JSONObject;
 
@@ -7,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.zip.CheckedInputStream;
 
 
 public class Sprite implements Comparable {
@@ -26,6 +27,7 @@ public class Sprite implements Comparable {
     protected boolean movable = false;
     protected boolean solid = true;
     protected int id;
+    protected String categoryName;
 
     public Sprite(){
 
@@ -47,8 +49,8 @@ public class Sprite implements Comparable {
         this.name = String.valueOf(blockID);
         this.defaultHeight = height;
         this.defaultWidth = width;
-        this.currentHeight = width*dimMod;
-        this.currentWidth = height*dimMod;
+        this.currentHeight = height*dimMod;
+        this.currentWidth = width*dimMod;
         this.coord = new Coordinates(x * width, y * height, z, width*dimMod, height*dimMod);
         json = updateJSON();
         this.solid = solid;
@@ -257,7 +259,16 @@ public class Sprite implements Comparable {
         return this.getCoord().getZ() - compareZOrder;
     }
 
-    public void defaultCollision(Sprite s){
+    public boolean onCollision(Sprite s){
         System.out.println(this.name + " collided with " + s.getName());
+        return true;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
