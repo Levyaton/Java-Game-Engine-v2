@@ -4,14 +4,10 @@ import engineFiles.GUIs.mainGameGui.GamePanel;
 import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
-import engineFiles.main.models.EngineStats;
-import engineFiles.main.models.Sprites.Entities.Entity;
-import engineFiles.main.models.Sprites.Entities.HomingEntity;
-import engineFiles.main.models.Sprites.Entities.Vector;
-import engineFiles.main.models.Sprites.Entities.VectorEntity;
-import engineFiles.main.models.Sprites.Entities.MovementAnimation;
-import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
+import engineFiles.colorer.program.RecolorV3;
 import engineFiles.main.models.Area;
+import engineFiles.main.models.EngineStats;
+import engineFiles.main.models.Sprites.Entities.*;
 import engineFiles.main.models.Sprites.Items.Item;
 import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.ui.Player;
@@ -48,11 +44,12 @@ public class GameContainer {
         String playerPath = "src/main/java/resources/gameFiles/models/sprites/static/other/redSquare.png";
 
         //COLORING
-        String inputDir = "src/main/java/resources/gameFiles/models/sprites/tilesets/basictiles.png";
+        String inputDir = "src/main/java/engineFiles/colorer/testFiles/basictiles.png";
         String outputDir = "src/main/java/resources/playerGameFiles/sprites/tilesets/basictiles.png";
+        File sourceImage = new File(inputDir);
         String characterSpriteSheet = "src/main/java/resources/gameFiles/models/characterSpriteSheets/characters.png";
 
-        File sourceImage = new File(inputDir);
+
         HashMap<Integer, MovementAnimation> animations;
 
 
@@ -63,6 +60,10 @@ public class GameContainer {
             int spriteHeight = 16;
 
             try {
+                BufferedImage recolor = RecolorV3.recolor(ImageIO.read(sourceImage));
+                File f = new File(outputDir);
+                f.createNewFile();
+                ImageIO.write(recolor,"png", f);
 
                 BufferedImage sheet = ImageIO.read(new File(characterSpriteSheet));
                 animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);

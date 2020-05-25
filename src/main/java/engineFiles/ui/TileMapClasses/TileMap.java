@@ -34,7 +34,7 @@ public class TileMap {
     Layer[] layers;
     EditorSettings editorsettings;
 
-    private String PATH = "src/main/java/engineFiles/colorer/testFiles/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
+    private String PATH = "src/main/java/resources/playerGameFiles/sprites/tilesets/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
     public TileMap(){
 
     }
