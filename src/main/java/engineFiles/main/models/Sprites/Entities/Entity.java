@@ -21,6 +21,16 @@ public abstract class Entity extends Sprite {
     protected int damage;
     protected int speedCounter;
     protected int currentSpeedCount = 0;
+    protected int uniqueIndex;
+
+
+    public void setUniqueIndex(int uniqueIndex) {
+        this.uniqueIndex = uniqueIndex;
+    }
+
+    public int getUniqueIndex() {
+        return uniqueIndex;
+    }
 
     int movementIndex;
 
@@ -122,5 +132,9 @@ public abstract class Entity extends Sprite {
         left.add(2);
         right.add(3);
         return new Controlls(up,down,left,right);
+    }
+
+    public int getSpeedCounter() {
+        return speedCounter;
     }
 }

@@ -7,8 +7,9 @@ import java.awt.*;
 import java.io.File;
 
 public class HomingEntity extends Entity {
-    Entity target;
-    int range;
+    private Entity target;
+    private int range;
+    private int targetIndex;
 
 
 
@@ -107,4 +108,27 @@ public class HomingEntity extends Entity {
         return choice;
     }
 
+    public void setTarget(Entity target) {
+        this.target = target;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public Entity getTarget() {
+        return target;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getTargetIndex() {
+        return targetIndex;
+    }
+
+    public void setTargetIndex(int targetIndex) {
+        this.targetIndex = targetIndex;
+    }
 }

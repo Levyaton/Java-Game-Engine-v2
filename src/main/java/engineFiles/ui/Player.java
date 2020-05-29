@@ -1,14 +1,23 @@
 package engineFiles.ui;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import engineFiles.main.models.Sprites.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private Gson gson = new Gson();
     private String username;
     private List<Item> inventory = new ArrayList<>();
-
+    public Player(JsonObject json){
+        this.username = json.get("username").getAsString();
+        for (JsonElement el : json.get("inventory").getAsJsonArray()){
+            this.inventory.add(gson.fromJson(el.getAsJsonObject(), Item.class));
+        }
+    }
 
     public void setUsername(String username) {
         this.username = username;

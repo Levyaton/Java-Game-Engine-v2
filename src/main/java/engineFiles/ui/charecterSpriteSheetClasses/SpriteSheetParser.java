@@ -42,7 +42,7 @@ public class SpriteSheetParser {
                 System.out.println("X = " + x + " Y = " + y);
                 //System.out.println(id);
                 try {
-                    ImageIO.write(result,"png", new File("src/main/java/resources/gameFiles/models/sprites/" + String.valueOf(id) +  String.valueOf(y)+String.valueOf(x) +".png"));
+                    ImageIO.write(result,"png", new File("src/main/java/resources/gameFiles/models/sprites/" + id + y + x +".png"));
                 } catch (IOException e) {
                     System.out.println("failed");
                     e.printStackTrace();
@@ -102,7 +102,7 @@ public class SpriteSheetParser {
         }
 
         private void calculateSpriteArea(){
-            this.spriteArea = spriteHeight*spriteWidth;;
+            this.spriteArea = spriteHeight*spriteWidth;
         }
 
         private void calculateTotalSpriteCount(){

@@ -5,12 +5,40 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class RecolorV3 {
+    int redShiftSeed;
+    int greenShiftSeed;
+    int blueShiftSeed;
 
-    public static BufferedImage recolor(BufferedImage img){
+    public RecolorV3(){
+        this.redShiftSeed = new Random().nextInt(255);
+        this.greenShiftSeed = new Random().nextInt(255);
+        this.blueShiftSeed = new Random().nextInt(255);
+    }
+
+    public RecolorV3( int redShiftSeed, int greenShiftSeed, int blueShiftSeed){
+        this.redShiftSeed = redShiftSeed;
+        this.greenShiftSeed = greenShiftSeed;
+        this.blueShiftSeed = blueShiftSeed;
+    }
+
+    public int getRedShiftSeed() {
+        return redShiftSeed;
+    }
+
+    public int getGreenShiftSeed() {
+        return greenShiftSeed;
+    }
+
+    public int getBlueShiftSeed() {
+        return blueShiftSeed;
+    }
+
+    public BufferedImage recolorLocal(BufferedImage img){
+        return recolorAlgorithm(img, this.redShiftSeed, this.blueShiftSeed, this.greenShiftSeed);
+    }
+
+    public static BufferedImage recolorAlgorithm(BufferedImage img, int redShiftSeed, int greenShiftSeed, int blueShiftSeed){
         BufferedImage result = copyImage(img);
-        int redShiftSeed = new Random().nextInt(255);
-        int greenShiftSeed = new Random().nextInt(255);
-        int blueShiftSeed = new Random().nextInt(255);
         for (int x = 0; x < img.getWidth(); x++){
             for(int y = 0; y < img.getHeight(); y++){
                 int pixel = img.getRGB(x,y);
@@ -25,6 +53,14 @@ public class RecolorV3 {
             }
         }
         return result;
+    }
+
+    public static BufferedImage recolor(BufferedImage img){
+
+        int redShiftSeed = new Random().nextInt(255);
+        int greenShiftSeed = new Random().nextInt(255);
+        int blueShiftSeed = new Random().nextInt(255);
+        return recolorAlgorithm(img,redShiftSeed,greenShiftSeed, blueShiftSeed);
     }
 
     private static BufferedImage copyImage(BufferedImage source){

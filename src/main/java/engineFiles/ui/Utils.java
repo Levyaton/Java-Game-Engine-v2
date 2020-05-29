@@ -32,4 +32,13 @@ public class Utils {
 
         return dimg;
     }
+
+    private static int entityIndex = 1;
+
+    public static int getEntityIndex(){
+        int index = entityIndex;
+        entityIndex++;
+        return index;
+
+    }
 }

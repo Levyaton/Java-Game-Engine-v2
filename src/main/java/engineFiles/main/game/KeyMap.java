@@ -25,11 +25,7 @@ public class KeyMap {
     }
     public static boolean isPressed(int keyCode) {
 
-            if (keys.contains(keyCode)) {
-                return true;
-            }
-
-        return false;
+        return keys.contains(keyCode);
     }
 
     public static Set<Integer> getKeys() {

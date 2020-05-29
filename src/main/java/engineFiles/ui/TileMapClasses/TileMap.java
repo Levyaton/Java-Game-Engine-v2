@@ -40,6 +40,7 @@ public class TileMap {
     }
 
     public TileMap(String path) throws FileNotFoundException {
+
         BufferedReader br = new BufferedReader(new FileReader(path));
         Gson gson = new Gson();
         TileMap tm = gson.fromJson(br, TileMap.class);
