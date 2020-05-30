@@ -1,8 +1,10 @@
 package semestralka.battle;
 
+import semestralka.models.creatures.Creature;
+
 public class AI {
 
-  public Move getNextMove(String kind) {
-    return new Move("attack", 1);
+  public Move getNextMove(Creature creature, String kind) {
+    return new Move(creature, "attack", 1);
   }
 }

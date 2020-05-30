@@ -10,8 +10,6 @@ public class Controller extends Component {
   private Battle battle;
 
   private int curIndex = 0;
-  private boolean pressAllowed = true;
-  private Move curMove;
   private String[] baseOptions;
 
   public Controller(Battle battle) {
@@ -21,8 +19,8 @@ public class Controller extends Component {
 
   @Override
   public void input(KeyManager keyManager) {
-    if (keyManager.pressed && pressAllowed) {
-      pressAllowed = false;
+    if (keyManager.pressed) {
+      keyManager.pressed = false;
 
       if (keyManager.keys[0] && (curIndex != 0)) {
         curIndex--;
@@ -32,17 +30,13 @@ public class Controller extends Component {
       }
       if (keyManager.keys[4]) {
         System.out.println("enter");
-        curMove = new Move(baseOptions[curIndex], 2);
+        battle.getBattleManager().push(new Move(battle.player, baseOptions[curIndex], 2));
       }
-    }
-    if (!keyManager.pressed) {
-      pressAllowed = true;
     }
   }
 
   @Override
   public void update() {
-
   }
 
   @Override
@@ -67,13 +61,5 @@ public class Controller extends Component {
       g.setColor(Color.BLACK);
     }
     g.drawString("items", 30, 325);
-  }
-
-  public Move getMove() {
-    return curMove;
-  }
-
-  public void resetMove() {
-    curMove = null;
   }
 }

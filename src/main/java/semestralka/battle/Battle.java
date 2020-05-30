@@ -54,8 +54,16 @@ public class Battle {
 
   public void update() {
     componentStack.peek().update();
-    if (opponent.getCurHealth() != 0 && player.getCurHealth() != 0) {
+    if (!gameEnded()) {
       battleManager.update();
+    } else {
+      if (opponent.getCurHealth() < 1) {
+        pushDialog(opponent.getName() + " was defeated");
+        pushDialog("VICTORY!");
+      } else if (player.getCurHealth() < 1) {
+        pushDialog(player.getName() + " was defeated");
+        pushDialog("DEFEAT!");
+      }
     }
   }
 
@@ -70,10 +78,6 @@ public class Battle {
   public void drawLayout(Graphics g) {
     // setting up background and components
     g.drawImage(Resources.battleBackground, 0, 0, GamePanel.width, GamePanel.height, null);
-    // if (opponent.getCurHealth() != 0 && player.getCurHealth() != 0) {
-    // g.drawImage(Resources.battleOptions, 10, 200, 178, 144, null);
-    // controller.render(g);
-    // }
     // setting up font
     g.setFont(Resources.zeldaFontSmall);
     // player
@@ -105,6 +109,14 @@ public class Battle {
 
   public Controller getController() {
     return controller;
+  }
+
+  public BattleManager getBattleManager() {
+    return battleManager;
+  }
+
+  public boolean gameEnded() {
+    return player.getCurHealth() < 1 || opponent.getCurHealth() < 1;
   }
 
   public void pushDialog(String text) {

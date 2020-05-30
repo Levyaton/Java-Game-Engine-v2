@@ -19,9 +19,9 @@ public class Dialog extends Component {
 
   @Override
   public void input(KeyManager keyManager) {
-    if (keyManager.keys[4]) {
-      System.out.println("enter");
+    if (keyManager.pressed && keyManager.keys[4]) {
       keyManager.pressed = false;
+      System.out.println("enter");
       func.apply();
     }
   }

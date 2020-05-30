@@ -6,75 +6,58 @@ public class BattleManager {
 
   private Battle battle;
   private AI ai;
-
-  private boolean isPlayerTurn = true;
-  private boolean waiting = true;
-  private Stack<BattlePhase> battlePhases;
-  private Move playerMove, opponentMove;
+  private Stack<Move> moveStack;
 
   public BattleManager(Battle battle) {
     this.battle = battle;
     this.ai = new AI();
-    battlePhases = new Stack<BattlePhase>();
+    moveStack = new Stack<Move>();
   }
 
   public void update() {
-
-    // if (waiting) {
-    // if (isPlayerTurn) {
-    // playerMove = battle.getController().getMove();
-    // if (playerMove == null) {
-    // return;
-    // }
-    // System.out.println("player picked a move");
-    // isPlayerTurn = false;
-    // } else {
-    // opponentMove = ai.getNextMove(battle.opponent.getName());
-    // System.out.println("oponnent picked a move");
-    // waiting = false;
-    // initFight();
-    // }
-    // }
+    if (moveStack.empty()) {
+      return;
+    }
+    executeMove(moveStack.peek());
   }
 
-  public void initFight() {
-    System.out.println("fight executing");
+  public void push(Move move) {
+    moveStack.push(move);
+    moveStack.push(ai.getNextMove(battle.opponent, "normal"));
+  }
 
-    switch (playerMove.name) {
-      case "heal":
-        battle.player.setCurHealth(battle.player.getCurHealth() + playerMove.value);
-        System.out.println("Player healed by: " + playerMove.value + " HP");
-        break;
+  public void executeMove(Move move) {
+    moveStack.pop();
+    switch (move.name) {
       case "attack":
-        System.out.println("Player attacking with " + playerMove.value + " DMG");
-        break;
-      case "dodge":
-        System.out.println("Player dodging attack");
-        break;
-    }
+        if (!moveStack.isEmpty() && moveStack.peek().name == "dodge") {
+          battle.pushDialog(move.creature.getName() + " attack was dodged by " + moveStack.peek().creature.getName());
+          moveStack.pop();
+        } else {
+          battle.pushDialog("Attack was effective");
+          if (move.creature == battle.player) {
+            battle.opponent.setCurHealth(battle.opponent.getCurHealth() - move.value);
+          } else {
+            battle.player.setCurHealth(battle.opponent.getCurHealth() - move.value);
+          }
+        }
 
-    switch (opponentMove.name) {
+        battle.pushDialog(move.creature.getName() + " attacks with " + move.value + " DMG");
+        break;
+
       case "heal":
-        battle.opponent.setCurHealth(battle.opponent.getCurHealth() + opponentMove.value);
-        System.out.println("Opponent healed by " + opponentMove.value + " HP");
+        move.creature.setCurHealth(move.creature.getCurHealth() + move.value);
+        battle.pushDialog(move.creature.getName() + " heals " + move.value + " HP");
         break;
-      case "attack":
-        System.out.println("Opponent attacking with " + opponentMove.value + " DMG");
-        break;
+
       case "dodge":
-        System.out.println("Oponnent dodging attack");
+        if (!moveStack.isEmpty() && moveStack.peek().name == "attack") {
+          battle.pushDialog(move.creature.getName() + " dodged an attacked by " + moveStack.peek().creature.getName());
+          moveStack.pop();
+        }
+
+        battle.pushDialog(move.creature.getName() + " dodges attack");
         break;
     }
-
-    if (playerMove.name == "attack" && opponentMove.name != "dodge") {
-      battle.opponent.setCurHealth(battle.opponent.getCurHealth() - playerMove.value);
-    }
-    if (opponentMove.name == "attack" && playerMove.name != "dodge") {
-      battle.player.setCurHealth(battle.player.getCurHealth() - opponentMove.value);
-    }
-
-    battle.getController().resetMove();
-    isPlayerTurn = true;
-    waiting = true;
   }
 }
