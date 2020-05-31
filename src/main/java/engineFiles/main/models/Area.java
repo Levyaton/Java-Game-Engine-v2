@@ -6,22 +6,23 @@ import engineFiles.ui.FolderOP;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Objects;
 
+import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
+
 public class Area {
-    private String spritePath = "project/src/main.gameFiles/models/objects/areas/";
+
     private SpriteCollection sprites = new SpriteCollection();
     private String name;
     private int width;
     private int height;
     private JSONObject json = new JSONObject();
 
-    public Area(String name, int width, int height){
+    public Area(String name, int width, int height, String spritePath){
         this.name = name;
         this.width = width;
         this.height = height;
+
         buildJSON();
     }
 
@@ -35,10 +36,10 @@ public class Area {
 
     public Area(JSONObject json){
         this.json = json;
-        this.name = json.getString("Name");
-        this.width = json.getInt("Width");
-        this.height = json.getInt("Height");
-        this.sprites = new SpriteCollection(json.getJSONArray("Sprites"));
+        this.name = json.getString(NAME_KEY);
+        this.width = json.getInt(WIDTH_KEY);
+        this.height = json.getInt(HEIGHT_KEY);
+        this.sprites = new SpriteCollection(json.getJSONArray(SPRITES_KEY));
     }
 
     public Area(File f){
@@ -94,46 +95,37 @@ public class Area {
     }
 
     private void buildJSON(){
-        this.json.put("Name",name);
-        this.json.put("Width", width);
-        this.json.put("Height", height);
-        this.json.put("Sprites", sprites.toJSONArray());
+        this.json.put(NAME_KEY,name);
+        this.json.put(WIDTH_KEY, width);
+        this.json.put(HEIGHT_KEY, height);
+        this.json.put(SPRITES_KEY, sprites.toJSONArray());
     }
 
     private void updateJSON(){
-        this.json.remove("Name");
-        this.json.remove("Width");
-        this.json.remove("Height");
-        this.json.remove("Sprites");
+        this.json.remove(NAME_KEY);
+        this.json.remove(WIDTH_KEY);
+        this.json.remove(HEIGHT_KEY);
+        this.json.remove(SPRITES_KEY);
         buildJSON();
     }
     private void updateJSON(String name){
-        this.json.remove("Name");
-        this.json.put("Name",name);
+        this.json.remove(NAME_KEY);
+        this.json.put(NAME_KEY,name);
     }
 
     private void updateJSON(int width, int height){
-        this.json.remove("Width");
-        this.json.remove("Height");
-        this.json.put("Width", width);
-        this.json.put("Height", height);
-        this.json.put("Name",name);
+        this.json.remove(WIDTH_KEY);
+        this.json.remove(HEIGHT_KEY);
+        this.json.put(WIDTH_KEY, width);
+        this.json.put(HEIGHT_KEY, height);
+        this.json.put(NAME_KEY,name);
     }
 
     private void updateJSON(SpriteCollection sprite){
-        this.json.remove("Sprites");
-        this.json.put("Sprites", sprites.toJSONArray());
+        this.json.remove(SPRITES_KEY);
+        this.json.put(SPRITES_KEY, sprites.toJSONArray());
     }
 
-    public void storeJSON(){
-        try {
-            FileWriter f = new FileWriter(this.spritePath + this.name + ".json");
-            f.write(getJSONArea().toString());
-            f.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 

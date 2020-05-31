@@ -17,6 +17,7 @@ public class Sprite implements Comparable {
     protected BufferedImage ogImg;
     protected String path;
     protected String name;
+    protected Coordinates ogCoord;
     protected Coordinates coord;
     protected int defaultHeight;
     protected int defaultWidth;
@@ -38,6 +39,7 @@ public class Sprite implements Comparable {
         this.currentHeight = this.defaultHeight;
         this.currentWidth = this.defaultWidth;
         this.coord = new Coordinates(0, 0, currentWidth, currentHeight);
+        this.ogCoord = this.coord;
         json = updateJSON();
     }
 
@@ -52,6 +54,7 @@ public class Sprite implements Comparable {
         this.currentHeight = height*dimMod;
         this.currentWidth = width*dimMod;
         this.coord = new Coordinates(x * width, y * height, z, width*dimMod, height*dimMod);
+        this.ogCoord = this.coord;
         json = updateJSON();
         this.solid = solid;
         this.movable = movable;
@@ -63,6 +66,7 @@ public class Sprite implements Comparable {
         this.currentHeight = this.defaultHeight;
         this.currentWidth = this.defaultWidth;
         this.coord = new Coordinates(0, 0, currentWidth, currentHeight);
+        this.ogCoord = this.coord;
         json = updateJSON();
     }
 
@@ -80,6 +84,7 @@ public class Sprite implements Comparable {
         int z = json.getInt("ZAxis");
         coord = new Coordinates(x, y, currentWidth, currentHeight);
         coord.setZ(z);
+        this.ogCoord = this.coord;
         solid = json.getBoolean("Solid");
         movable = json.getBoolean("Movable");
     }
@@ -105,6 +110,14 @@ public class Sprite implements Comparable {
         jsonObject.append("Solid",solid);
         jsonObject.append("Movable", this.movable);
         return jsonObject;
+    }
+
+    public Coordinates getOgCoord() {
+        return ogCoord;
+    }
+
+    public void setOgCoord(Coordinates ogCoord) {
+        this.ogCoord = ogCoord;
     }
 
     public void setOgImg(BufferedImage ogImg) {

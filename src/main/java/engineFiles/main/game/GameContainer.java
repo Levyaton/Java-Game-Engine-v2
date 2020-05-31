@@ -1,5 +1,8 @@
 package engineFiles.main.game;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import engineFiles.GUIs.mainGameGui.GamePanel;
 import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.GUIs.mainGameGui.PanelManager;
@@ -19,10 +22,14 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
 public class GameContainer {
 
@@ -69,7 +76,12 @@ public class GameContainer {
                 animations = SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
 
                 MovementAnimation playerAnimation = animations.get(0);
-                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player(), 5);
+                JsonObject playerJson = new JsonObject();
+                JsonArray inventory = new JsonArray();
+                playerJson.addProperty(USERNAME_KEY, "user");
+                playerJson.add(INVENTORY_KEY, inventory);
+
+                OverworldPlayer player = new OverworldPlayer(playerAnimation, new File(playerPath), new Player(playerJson), 5);
                // player.setImg(Scalr.resize(player.getImg(), 4));
 
                 player.getCoord().setX(60);
@@ -102,7 +114,7 @@ public class GameContainer {
                 ItemSprite item = new ItemSprite(new File(playerPath), 1, 60,55,499, new Item("testItem", 200));
 
                 try {
-                    TileMap tm = new TileMap("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json");
+                    TileMap tm = new TileMap(JsonParser.parseReader(new FileReader("src/main/java/resources/gameFiles/models/objects/areas/TilesetAreaTest.json")).getAsJsonObject(), "src/main/java/resources/playerGameFiles/sprites/tilesets/");
                     Area a = tm.getArea();
                     a.getSprites().add(item);
                     List<Entity> entities = new ArrayList<>();

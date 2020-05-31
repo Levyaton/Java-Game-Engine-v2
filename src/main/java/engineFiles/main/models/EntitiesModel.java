@@ -17,7 +17,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 
+
+import static engineFiles.main.models.WorldGenKeys.EntityKeys.*;
+
 public class EntitiesModel {
+
+   
     private Gson gson = new Gson();
     OverworldPlayer player;
     List<HomingEntity> homing;
@@ -27,18 +32,18 @@ public class EntitiesModel {
 
     public EntitiesModel(JsonObject json) throws IOException {
         List<Entity> allEntities = new ArrayList<>();
-        this.player = initOverworldPlayer(json.get("overworldPlayer").getAsJsonObject());
+        this.player = initOverworldPlayer(json.get(OVERWORLD_PLAYER_KEY).getAsJsonObject());
         allEntities.add(player);
-        this.controlable = initControllableEntities(json.get("controllable"));
+        this.controlable = initControllableEntities(json.get(CONTROLLABLE_ENITITIES_KEY));
         allEntities.addAll(controlable);
-        this.vector = initVectorEntities(json.get("vector"));
+        this.vector = initVectorEntities(json.get(VECTOR_ENTITIES_KEY));
         allEntities.addAll(vector);
-        this.homing = initHomingEntities(json.get("homing"), allEntities);
+        this.homing = initHomingEntities(json.get(HOMING_ENITITIES_KEY), allEntities);
     }
 
     private Entity loadVectorEntity(EntitiyParam param){
         List<Vector> vecotrs = new ArrayList<>();
-        for (JsonElement el : param.getJson().get("vectors").getAsJsonArray()){
+        for (JsonElement el : param.getJson().get(VECTROES_KEY).getAsJsonArray()){
             JsonObject obj = el.getAsJsonObject();
             Vector vector = gson.fromJson(obj, Vector.class);
             vecotrs.add(vector);
@@ -58,8 +63,8 @@ public class EntitiesModel {
 
     private Entity loadHomingEntity(EntitiyParam param){
         HomingEntity e = new HomingEntity(param.anim,(File) null, null, 0,  param.getSpeedCounter());
-        e.setRange(param.getJson().get("range").getAsInt());
-        e.setTargetIndex(param.getJson().get("targetIndex").getAsInt());
+        e.setRange(param.getJson().get(RANGE_KEY).getAsInt());
+        e.setTargetIndex(param.getJson().get(TARGET_INDEX_KEY).getAsInt());
        return e;
     }
 
@@ -79,7 +84,7 @@ public class EntitiesModel {
     }
 
     private OverworldPlayer initOverworldPlayer(JsonObject json) throws IOException {
-        Player p = new Player(json.get("player").getAsJsonObject());
+        Player p = new Player(json.get(PLAYER_KEY).getAsJsonObject());
         Function<EntitiyParam, Entity> init =
                 entitiyParam -> new OverworldPlayer(entitiyParam.anim,(File) null, p, entitiyParam.getSpeedCounter());
         OverworldPlayer e = (OverworldPlayer) initEntity(json, init);
@@ -94,14 +99,14 @@ public class EntitiesModel {
         return entities;
     }
     private Entity initEntity(JsonObject json, Function<EntitiyParam, Entity> createEntity) throws IOException {
-        int speedCounter = json.get("speedCounter").getAsInt();
-        Coordinates coordinates = gson.fromJson(json.get("coordinates"), Coordinates.class);
-        String name = json.get("name").getAsString();
-        CharacterSpriteSheetModel characterSpriteSheetModel = gson.fromJson(json.get("characterSpriteSheetModel"), CharacterSpriteSheetModel.class);
+        int speedCounter = json.get(SPEED_COUNTER_KEY).getAsInt();
+        Coordinates coordinates = gson.fromJson(json.get(COORDINATES_KEY), Coordinates.class);
+        String name = json.get(NAME_KEY).getAsString();
+        CharacterSpriteSheetModel characterSpriteSheetModel = gson.fromJson(json.get(CHARACTER_SPRITE_SHEET_MODEL_KEY), CharacterSpriteSheetModel.class);
         BufferedImage sheet = ImageIO.read(new File(characterSpriteSheetModel.getSheetPath()));
         HashMap<Integer, MovementAnimation> animations = SpriteSheetParser.parse(sheet, characterSpriteSheetModel.getRowCount(), characterSpriteSheetModel.getColumnCount(),  characterSpriteSheetModel.getSpriteWidth(), characterSpriteSheetModel.getSpriteHeight());
         MovementAnimation movemet = animations.get(characterSpriteSheetModel.getEntityIndex());
-        int index = json.get("uniqueIndex").getAsInt();
+        int index = json.get(UNIQUE_INDEX_KEY).getAsInt();
         EntitiyParam param = new EntitiyParam(movemet, speedCounter, json);
         Entity e = createEntity.apply(param);
         e.setCoord(coordinates);
@@ -163,5 +168,19 @@ public class EntitiesModel {
 
     public void setVector(List<VectorEntity> vector) {
         this.vector = vector;
+    }
+
+    public List<Entity> getAllStandardEntities(){
+        List<Entity> entities = new ArrayList<>();
+        entities.addAll(this.homing);
+        entities.addAll(this.vector);
+        entities.addAll(this.controlable);
+        entities.addAll(this.homing);
+        return entities;
+    }
+    public List<Entity> getAllEntities(){
+        List<Entity> all = getAllStandardEntities();
+        all.add(this.player);
+        return all;
     }
 }

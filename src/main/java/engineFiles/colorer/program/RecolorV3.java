@@ -1,7 +1,12 @@
 package engineFiles.colorer.program;
 
+import engineFiles.main.models.ColorerModel;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 public class RecolorV3 {
@@ -14,6 +19,8 @@ public class RecolorV3 {
         this.greenShiftSeed = new Random().nextInt(255);
         this.blueShiftSeed = new Random().nextInt(255);
     }
+
+
 
     public RecolorV3( int redShiftSeed, int greenShiftSeed, int blueShiftSeed){
         this.redShiftSeed = redShiftSeed;
@@ -62,6 +69,9 @@ public class RecolorV3 {
         int blueShiftSeed = new Random().nextInt(255);
         return recolorAlgorithm(img,redShiftSeed,greenShiftSeed, blueShiftSeed);
     }
+    public static BufferedImage recolor(BufferedImage img, int redShiftSeed, int greenShiftSeed, int blueShiftSeed){
+        return recolorAlgorithm(img,redShiftSeed,greenShiftSeed, blueShiftSeed);
+    }
 
     private static BufferedImage copyImage(BufferedImage source){
         BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
@@ -69,6 +79,13 @@ public class RecolorV3 {
         g.drawImage(source, 0, 0, null);
         g.dispose();
         return b;
+    }
+
+    public static void recolorAndSave(ColorerModel model) throws IOException {
+        BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())), model.getRedShift(), model.getGreenShift(), model.getBlueShift());
+        File f = new File(model.getTilesetOutputDir());
+        f.createNewFile();
+        ImageIO.write(recolor,"png", f);
     }
 
 }

@@ -7,10 +7,10 @@ import engineFiles.main.models.Area;
 import engineFiles.main.models.Sprites.SpriteCollection;
 import engineFiles.ui.Utils;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+
+import static engineFiles.main.models.WorldGenKeys.TileMapKeys.*;
 
 public class TileMap {
 
@@ -33,17 +33,18 @@ public class TileMap {
     Tileset[] tilesets;
     Layer[] layers;
     EditorSettings editorsettings;
-
-    private String PATH = "src/main/java/resources/playerGameFiles/sprites/tilesets/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
+    JsonObject json;
+    //private String PATH = "src/main/java/resources/playerGameFiles/sprites/tilesets/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
+    private String tilesetPath;
     public TileMap(){
 
     }
 
-    public TileMap(String path) throws FileNotFoundException {
-
-        BufferedReader br = new BufferedReader(new FileReader(path));
+    public TileMap(JsonObject tileset, String tilesetPath) throws FileNotFoundException {
+        this.tilesetPath = tilesetPath;
+        this.json = tileset;
         Gson gson = new Gson();
-        TileMap tm = gson.fromJson(br, TileMap.class);
+        TileMap tm = gson.fromJson(tileset, TileMap.class);
 
         this.compressionlevel = tm.getCompressionlevel();
         this.height = tm.getHeight();
@@ -60,25 +61,19 @@ public class TileMap {
         this.version = tm.getVersion();
 
         this.infinite = tm.getIsInfinite();
-        JsonObject json = gson.fromJson(new BufferedReader(new FileReader(path)), JsonObject.class);
+
 
         Gson eventGson = new Gson();
         //Type eventsType = new TypeToken<List<Event>>(){}.getType();
 
         JsonObject obj = json.getAsJsonObject();
         //Layer[] eventList = eventGson.fromJson(obj.get("layers"), Layer[].class);
-        this.layers =   gson.fromJson(json.getAsJsonArray("layers"), Layer[].class);
-        this.tilesets = gson.fromJson(json.get("tilesets"), Tileset[].class);
-        this.editorsettings = gson.fromJson(json.get("editorsettings"), EditorSettings.class);
+        this.layers =   gson.fromJson(json.getAsJsonArray(LAYERS_KEY), Layer[].class);
+        this.tilesets = gson.fromJson(json.get(TILE_SETS_KEY), Tileset[].class);
+        this.editorsettings = gson.fromJson(json.get(EDITOR_SETTINGS_KEY), EditorSettings.class);
     }
 
-    public String getPATH() {
-        return PATH;
-    }
 
-    public void setPATH(String PATH) {
-        this.PATH = PATH;
-    }
 
     public int getCompressionlevel() {
         return compressionlevel;
@@ -219,7 +214,7 @@ public class TileMap {
     public Area getArea(){
         SpriteCollection s = new SpriteCollection();
         //MAKE SURE THE SOURCE IS CORRECT AND COMPATIBLE WITH CODE
-        File areaTileset = new File(PATH + tilesets[0].source);
+        File areaTileset = new File(tilesetPath + tilesets[0].source);
         for (Layer l: layers) {
             s.addAll(l.getSpriteCollection(areaTileset));
             System.out.println(l.name);

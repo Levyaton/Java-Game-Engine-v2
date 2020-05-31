@@ -7,14 +7,14 @@ import engineFiles.main.models.Sprites.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.*;
 public class Player {
     private Gson gson = new Gson();
     private String username;
     private List<Item> inventory = new ArrayList<>();
     public Player(JsonObject json){
-        this.username = json.get("username").getAsString();
-        for (JsonElement el : json.get("inventory").getAsJsonArray()){
+        this.username = json.get(USERNAME_KEY).getAsString();
+        for (JsonElement el : json.get(INVENTORY_KEY).getAsJsonArray()){
             this.inventory.add(gson.fromJson(el.getAsJsonObject(), Item.class));
         }
     }

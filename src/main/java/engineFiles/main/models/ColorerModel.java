@@ -4,23 +4,25 @@ import com.google.gson.JsonObject;
 
 import java.util.Random;
 
+import static engineFiles.main.models.WorldGenKeys.ColorerKeys.*;
+
 public class ColorerModel {
-    String tilesetInputDir;
-    String tilesetOutputDir;
-    boolean recolor;
-    int redShift;
-    int greenShift;
-    int blueShift;
+    private String tilesetInputDir;
+    private String tilesetOutputDir;
+    private boolean recolor;
+    private int redShift;
+    private int greenShift;
+    private int blueShift;
 
 
     public ColorerModel(JsonObject json){
-        tilesetInputDir = json.get("tilesetInputDir").toString();
-        tilesetOutputDir = json.get("tilesetOutputDir").toString();
-        recolor = json.get("recolor").getAsBoolean();
-        if(json.has("redShift") && json.has("greenShift") && json.has("blueShift")){
-            this.redShift = json.get("redShift").getAsInt();
-            this.greenShift = json.get("greenShift").getAsInt();
-            this.blueShift = json.get("blueShift").getAsInt();
+        tilesetInputDir = json.get(TILESET_INPUT_DIR_KEY).toString();
+        tilesetOutputDir = json.get(TILESET_OUTPUT_DIR_KEY).toString();
+        recolor = json.get(RECOLOR_KEY).getAsBoolean();
+        if(json.has(RED_SHIFT_KEY) && json.has(GREEN_SHIFT_KEY) && json.has(BLUE_SHIFT_KEY)){
+            this.redShift = json.get(RED_SHIFT_KEY).getAsInt();
+            this.greenShift = json.get(GREEN_SHIFT_KEY).getAsInt();
+            this.blueShift = json.get(BLUE_SHIFT_KEY).getAsInt();
         }
         else{
             this.redShift = new Random().nextInt(255);
@@ -46,5 +48,27 @@ public class ColorerModel {
         this.blueShift = blueShift;
     }
 
+    public String getTilesetInputDir() {
+        return tilesetInputDir;
+    }
 
+    public String getTilesetOutputDir() {
+        return tilesetOutputDir;
+    }
+
+    public boolean isRecolor() {
+        return recolor;
+    }
+
+    public int getRedShift() {
+        return redShift;
+    }
+
+    public int getGreenShift() {
+        return greenShift;
+    }
+
+    public int getBlueShift() {
+        return blueShift;
+    }
 }
