@@ -7,7 +7,9 @@ import engineFiles.main.models.Sprites.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
-import static engineFiles.main.models.WorldGenKeys.PlayerKeys.*;
+
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 public class Player {
     private Gson gson = new Gson();
     private String username;
@@ -17,6 +19,10 @@ public class Player {
         for (JsonElement el : json.get(INVENTORY_KEY).getAsJsonArray()){
             this.inventory.add(gson.fromJson(el.getAsJsonObject(), Item.class));
         }
+    }
+    public Player(String username, List<Item> inventory){
+        this.username = username;
+        this.inventory = inventory;
     }
 
     public void setUsername(String username) {

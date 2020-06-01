@@ -1,5 +1,9 @@
 package engineFiles.main.models;
 
+import com.google.gson.JsonObject;
+
+import static engineFiles.main.models.WorldGenKeys.CharacterSpriteSheetKeys.*;
+
 public class CharacterSpriteSheetModel {
 
     private int rowCount;
@@ -16,6 +20,26 @@ public class CharacterSpriteSheetModel {
         this.spriteWidth = spriteWidth;
         this.entityIndex = entityIndex;
         this.sheetPath = sheetPath;
+    }
+
+    public CharacterSpriteSheetModel(JsonObject json){
+        this.rowCount = json.get(ROW_COUNT_KEY).getAsInt();
+        this.columnCount = json.get(COLUMN_COUNT_KEY).getAsInt();
+        this.spriteHeight = json.get(SPRITE_HEIGHT_KEY).getAsInt();
+        this.spriteWidth = json.get(SPRITE_WIDTH_KEY).getAsInt();
+        this.entityIndex = json.get(ENTITY_INDEX_KEY).getAsInt();
+        this.sheetPath = json.get(SHEET_PATH_KEY).getAsString();
+    }
+
+    public JsonObject getCharacterSpriteSheetModelJson(){
+        JsonObject model = new JsonObject();
+        model.addProperty(ROW_COUNT_KEY, this.rowCount);
+        model.addProperty(COLUMN_COUNT_KEY, this.columnCount);
+        model.addProperty(ENTITY_INDEX_KEY, this.entityIndex);
+        model.addProperty(SPRITE_HEIGHT_KEY, this.spriteHeight);
+        model.addProperty(SPRITE_WIDTH_KEY, this.spriteWidth);
+        model.addProperty(SHEET_PATH_KEY, this.sheetPath);
+        return model;
     }
 
     public int getRowCount() {

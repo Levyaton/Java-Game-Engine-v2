@@ -1,7 +1,5 @@
 package engineFiles.main.models.Sprites.Items;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.main.models.Sprites.Sprite;
@@ -10,14 +8,11 @@ import engineFiles.ui.FolderOP;
 import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 
 public class ItemSprite extends Sprite {
     private Item item;
+    private int dimMod;
     //private BufferedImage temp;
 
     public ItemSprite(JSONObject json){
@@ -33,6 +28,7 @@ public class ItemSprite extends Sprite {
     //File file, BufferedImage img, int dimMod, int x, int y, int z,int blockID, int width, int height, boolean solid, boolean movable
 
     public ItemSprite(File file, int dimMod, int x, int y, int z, Item item){
+        this.dimMod = dimMod;
         this.ogFile = file;
         this.img = FolderOP.getImage(file);
         this.ogImg = img;
@@ -63,9 +59,13 @@ public class ItemSprite extends Sprite {
             return false;
         }
         return true;
-
-
     }
 
+    public Item getItem() {
+        return item;
+    }
 
+    public int getDimMod() {
+        return dimMod;
+    }
 }

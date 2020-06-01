@@ -17,10 +17,10 @@ public class ColorerModel {
 
 
     public ColorerModel(JsonObject json){
-        tilesetInputDir = json.get(TILESET_INPUT_DIR_KEY).toString();
-        tilesetOutputDir = json.get(TILESET_OUTPUT_DIR_KEY).toString();
+        tilesetInputDir = json.get(TILESET_INPUT_DIR_KEY).getAsString();
+        tilesetOutputDir = json.get(TILESET_OUTPUT_DIR_KEY).getAsString();
         recolor = json.get(RECOLOR_KEY).getAsBoolean();
-        if(json.has(RED_SHIFT_KEY) && json.has(GREEN_SHIFT_KEY) && json.has(BLUE_SHIFT_KEY)){
+        if(json.has(RED_SHIFT_KEY) && json.has(GREEN_SHIFT_KEY) && json.has(BLUE_SHIFT_KEY) && recolor){
             this.redShift = json.get(RED_SHIFT_KEY).getAsInt();
             this.greenShift = json.get(GREEN_SHIFT_KEY).getAsInt();
             this.blueShift = json.get(BLUE_SHIFT_KEY).getAsInt();
@@ -81,5 +81,16 @@ public class ColorerModel {
 
     public int getBlueShift() {
         return blueShift;
+    }
+
+    public JsonObject getColorerModelJson(){
+        JsonObject object = new JsonObject();
+        object.addProperty(TILESET_INPUT_DIR_KEY, tilesetInputDir);
+        object.addProperty(TILESET_OUTPUT_DIR_KEY, tilesetOutputDir);
+        object.addProperty(RECOLOR_KEY, recolor);
+        object.addProperty(RED_SHIFT_KEY, redShift);
+        object.addProperty(GREEN_SHIFT_KEY, greenShift);
+        object.addProperty(BLUE_SHIFT_KEY, blueShift);
+        return object;
     }
 }

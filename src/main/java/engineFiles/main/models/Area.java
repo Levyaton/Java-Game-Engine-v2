@@ -1,11 +1,14 @@
 package engineFiles.main.models;
 
+import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.main.models.Sprites.Sprite;
 import engineFiles.main.models.Sprites.SpriteCollection;
 import engineFiles.ui.FolderOP;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
@@ -124,6 +127,16 @@ public class Area {
     private void updateJSON(SpriteCollection sprite){
         this.json.remove(SPRITES_KEY);
         this.json.put(SPRITES_KEY, sprites.toJSONArray());
+    }
+
+    public List<ItemSprite> getItems(){
+        List<ItemSprite> items = new ArrayList<>();
+        for(Sprite s: sprites){
+            if(s.getCategoryName().equals("item")){
+                items.add((ItemSprite) s);
+            }
+        }
+        return items;
     }
 
 

@@ -102,6 +102,7 @@ public class Layer {
     }
 
     public SpriteCollection getSpriteCollection(File tileSet){
+
         BufferedImage[] tiles = TileParser.getTiles(tileSet);
         SpriteCollection spriteCollection = new SpriteCollection();
 

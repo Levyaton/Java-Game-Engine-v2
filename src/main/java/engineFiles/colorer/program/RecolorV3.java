@@ -93,6 +93,7 @@ public class RecolorV3 {
         BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())), model.getRedShift(), model.getGreenShift(), model.getBlueShift());
         File f = new File(model.getTilesetOutputDir());
         f.createNewFile();
+        System.out.println(f);
         ImageIO.write(recolor,"png", f);
     }
 

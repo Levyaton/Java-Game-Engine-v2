@@ -216,13 +216,14 @@ public class TileMap {
         //MAKE SURE THE SOURCE IS CORRECT AND COMPATIBLE WITH CODE
         File areaTileset = new File(tilesetPath + tilesets[0].source);
         for (Layer l: layers) {
+            //System.out.println(tilesetPath);
             s.addAll(l.getSpriteCollection(areaTileset));
-            System.out.println(l.name);
+            //System.out.println(l.name);
         }
        return new Area(s, areaTileset.getName(),this.width, this.height);
     }
 
-
-
-
+    public JsonObject getJson() {
+        return json;
+    }
 }

@@ -1,5 +1,6 @@
 package engineFiles.main.models.Sprites.Entities;
 
+import engineFiles.main.models.CharacterSpriteSheetModel;
 import engineFiles.main.models.Sprites.Controlls;
 import engineFiles.main.models.Sprites.Sprite;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ public abstract class Entity extends Sprite {
     protected int speedCounter;
     protected int currentSpeedCount = 0;
     protected int uniqueIndex;
+    protected CharacterSpriteSheetModel characterSpriteSheetModel;
 
 
     public void setUniqueIndex(int uniqueIndex) {
@@ -132,6 +134,14 @@ public abstract class Entity extends Sprite {
         left.add(2);
         right.add(3);
         return new Controlls(up,down,left,right);
+    }
+
+    public void setCharacterSpriteSheetModel(CharacterSpriteSheetModel characterSpriteSheetModel) {
+        this.characterSpriteSheetModel = characterSpriteSheetModel;
+    }
+
+    public CharacterSpriteSheetModel getCharacterSpriteSheetModel() {
+        return characterSpriteSheetModel;
     }
 
     public int getSpeedCounter() {

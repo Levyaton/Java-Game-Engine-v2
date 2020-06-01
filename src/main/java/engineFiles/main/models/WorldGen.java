@@ -12,36 +12,33 @@ import engineFiles.main.game.GameContainer;
 import engineFiles.ui.TileMapClasses.TileMap;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
 
 public class WorldGen {
 
-    private TileMap tm;
-    private ColorerModel cm;
-    private EntitiesModel em;
-    private String tilesetPath;
 
-
-    public void generateWorld() {
+    public void generateWorld() throws FileNotFoundException {
         Gson gson = new Gson();
         BufferedReader br = null;
-        try {
+
             JsonObject worldGen = JsonParser.parseReader(new FileReader(WORLD_GEN_JSON_PATH)).getAsJsonObject();
-            tilesetPath = worldGen.get(TILESET_PATH_KEY).getAsString();
+            String tilesetPath = worldGen.get(TILESET_PATH_KEY).getAsString();
             try {
-                em = new EntitiesModel(worldGen.get(ENTITY_MODELS_KEY).getAsJsonObject());
-                cm = new ColorerModel(worldGen.get(COLORER_MODELS_KEY).getAsJsonObject());
+                EntitiesModel em = new EntitiesModel(worldGen.get(ENTITY_MODELS_KEY).getAsJsonObject());
+                ColorerModel cm = new ColorerModel(worldGen.get(COLORER_MODELS_KEY).getAsJsonObject());
                 if (cm.isRecolor()) {
                     RecolorV3.recolorAndSave(cm);
                 }
-                tm = new TileMap(worldGen.get(TILESET_KEY).getAsJsonObject(), TILESET_PATH_KEY);
-                Area a = tm.getArea();
-                GamePanel gamePanel = new OverworldPanel(a, em.getAllEntities(), "overworld");
+                TileMap tm = new TileMap(worldGen.get(TILESET_KEY).getAsJsonObject(), tilesetPath);
+
+                WorldGenModel model = new WorldGenModel(tm, cm, em, tilesetPath, ItemsModel.generateOverworldItems(worldGen.getAsJsonArray(WORLD_ITMES_KEY)));
+
+                GamePanel gamePanel = new OverworldPanel(model, "overworld");
                 PanelManager.panels.put("overworld", gamePanel);
                 Window frame = new Window("overworld", gamePanel);
                 frame.resetActivePanel();
@@ -135,10 +132,7 @@ public class WorldGen {
 
              */
 
-        }
-        catch (Exception e){
-            System.out.println("Failed to load");
-            System.out.println(e.getMessage());
-        }
+
+
     }
 }

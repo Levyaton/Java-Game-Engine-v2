@@ -1,19 +1,20 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.*;
+import engineFiles.main.models.Area;
+import engineFiles.main.models.SaveGame;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Sprite;
-import engineFiles.main.models.Sprites.SpriteCollection;
-import engineFiles.ui.*;
-import engineFiles.ui.TileMapClasses.TileMap;
+import engineFiles.main.models.WorldGenModel;
+import engineFiles.ui.Coordinates;
+import engineFiles.ui.Resolution;
+import engineFiles.ui.Settings;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class OverworldPanel extends GamePanel{
 
@@ -25,20 +26,22 @@ public class OverworldPanel extends GamePanel{
     int SPACE_MOD1 = 100;
     int SPACE_MOD2 = 50;
 
+    private WorldGenModel worldGenModel;
 
     private int frameCount = 0;
     private Image dbImage;
     private Graphics dbGraphics;
 
 
-    public OverworldPanel(Area area, List<Entity> entities, String panelName) {
-        super(area,entities,panelName);
+    public OverworldPanel(WorldGenModel worldGenModel, String panelName) {
+        super(worldGenModel.getArea(),worldGenModel.getEntitiesModel().getAllEntities(),panelName);
         //Dimension d = new Dimension(800, 700);s
         setLayout(null);
         loadSprites(area.getSprites());
         loadPlayer();
         setDoubleBuffered(true);
         requestFocus();
+        this.worldGenModel = worldGenModel;
         //System.out.println(hasFocus());
     }
 
@@ -62,26 +65,20 @@ public class OverworldPanel extends GamePanel{
     }
 
     private void saveGame(){
-        TileMap tm;
-        ColorerModel cm;
-        EntitiesModel em;
-        String tilesetPath;
-        List<Sprite> items;
-
-
-        WorldGenModel model = new WorldGenModel();
+        System.out.println("Saving game");
+        SaveGame.save(this.worldGenModel);
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if(e.getKeyCode() == Settings.controlls.getGameSave()){
-            saveGame();
-        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         //System.out.println("Pressed " + e);
+        if(e.getKeyCode() == Settings.controlls.getGameSave()){
+            saveGame();
+        }
         KeyMap.setKey(e.getKeyCode(), false);
     }
 

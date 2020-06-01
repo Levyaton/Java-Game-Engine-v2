@@ -28,7 +28,7 @@ public class Sprite implements Comparable {
     protected boolean movable = false;
     protected boolean solid = true;
     protected int id;
-    protected String categoryName;
+    protected String categoryName = "tile";
 
     public Sprite(){
 

@@ -1,33 +1,62 @@
 package engineFiles.main.models;
 
-import engineFiles.main.models.Sprites.Sprite;
+import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.ui.TileMapClasses.TileMap;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WorldGenModel {
-    private TileMap tm;
-    private ColorerModel cm;
-    private EntitiesModel em;
+    private TileMap tileMap;
+    private ColorerModel colorerModel;
+    private EntitiesModel entitiesModel;
     private String tilesetPath;
-    private List<Sprite> items;
+    private Area area;
 
-    public WorldGenModel(TileMap tm, ColorerModel cm, EntitiesModel em, String tilesetPath, List<Sprite> items) {
-        this.tm = tm;
-        this.cm = cm;
-        this.em = em;
+    public WorldGenModel(TileMap tm, ColorerModel cm, EntitiesModel em, String tilesetPath, List<ItemSprite> items) {
+        this.tileMap = tm;
+        this.colorerModel = cm;
+        this.entitiesModel = em;
         this.tilesetPath = tilesetPath;
-        this.items = items;
-    }
-
-    public WorldGenModel(TileMap tm, ColorerModel cm, EntitiesModel em, String tilesetPath) {
-        this.tm = tm;
-        this.cm = cm;
-        this.em = em;
-        this.tilesetPath = tilesetPath;
-        this.items = new ArrayList<>();
+        area = tm.getArea();
+        area.getSprites().addAll(items);
     }
 
 
+
+    public TileMap getTileMap() {
+        return tileMap;
+    }
+
+    public ColorerModel getColorerModel() {
+        return colorerModel;
+    }
+
+    public EntitiesModel getEntitiesModel() {
+        return entitiesModel;
+    }
+
+    public String getTilesetPath() {
+        return tilesetPath;
+    }
+
+
+    public void setTm(TileMap tileMap) {
+        this.tileMap = tileMap;
+    }
+
+    public void setColorerModel(ColorerModel colorerModel) {
+        this.colorerModel = colorerModel;
+    }
+
+    public void setEntitiesModel(EntitiesModel entitiesModel) {
+        this.entitiesModel = entitiesModel;
+    }
+
+    public void setTilesetPath(String tilesetPath) {
+        this.tilesetPath = tilesetPath;
+    }
+
+    public Area getArea() {
+        return area;
+    }
 }

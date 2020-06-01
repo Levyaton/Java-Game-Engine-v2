@@ -1,8 +1,6 @@
 package engineFiles.main.models.Sprites;
 
 
-import engineFiles.ui.Settings;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class Controlls {
     private List<Integer> down;
     private List<Integer> left;
     private List<Integer> right;
-    private int gameSave = Settings.controlls.gameSave;
+    private int gameSave;
     private int interaction;
 
 

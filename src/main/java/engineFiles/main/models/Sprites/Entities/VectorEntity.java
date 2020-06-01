@@ -7,11 +7,11 @@ import java.util.List;
 
 public class VectorEntity extends Entity{
 
-    List<Vector> vectors;
+    protected List<Vector> vectors;
 
-    int vectorIndex = 0;
-    int vectorCounter = 0;
-    boolean followingX;
+    protected int vectorIndex = 0;
+    protected int vectorCounter = 0;
+    protected boolean followingX;
 
     public VectorEntity(MovementAnimation animation, JSONObject json, int speedCounter, List<Vector> vectors){
         super(animation, json, speedCounter);
@@ -137,5 +137,7 @@ public class VectorEntity extends Entity{
     }
 
 
-
+    public List<Vector> getVectors() {
+        return vectors;
+    }
 }

@@ -9,6 +9,7 @@ public class TileParser {
 
     public static BufferedImage[] getTiles(File tileSheet){
         BufferedImage sheet = FolderOP.getImage(tileSheet);
+        System.out.println(tileSheet);
         int width = sheet.getWidth() / 16;
         int height = sheet.getHeight() / 16;
 
