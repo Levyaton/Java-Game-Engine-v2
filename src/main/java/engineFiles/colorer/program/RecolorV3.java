@@ -1,6 +1,7 @@
 package engineFiles.colorer.program;
 
 import engineFiles.main.models.ColorerModel;
+import engineFiles.ui.Settings;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -63,10 +64,17 @@ public class RecolorV3 {
     }
 
     public static BufferedImage recolor(BufferedImage img){
+        return recolor(img,true);
+    }
 
+    public static BufferedImage recolor(BufferedImage img, boolean recolor){
         int redShiftSeed = new Random().nextInt(255);
         int greenShiftSeed = new Random().nextInt(255);
         int blueShiftSeed = new Random().nextInt(255);
+        Settings.ColorerSettings.redShift = redShiftSeed;
+        Settings.ColorerSettings.greenShift = greenShiftSeed;
+        Settings.ColorerSettings.blueShift = blueShiftSeed;
+        Settings.ColorerSettings.recolor = recolor;
         return recolorAlgorithm(img,redShiftSeed,greenShiftSeed, blueShiftSeed);
     }
     public static BufferedImage recolor(BufferedImage img, int redShiftSeed, int greenShiftSeed, int blueShiftSeed){
@@ -87,5 +95,6 @@ public class RecolorV3 {
         f.createNewFile();
         ImageIO.write(recolor,"png", f);
     }
+
 
 }

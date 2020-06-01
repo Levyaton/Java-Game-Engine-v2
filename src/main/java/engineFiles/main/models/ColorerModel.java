@@ -1,6 +1,7 @@
 package engineFiles.main.models;
 
 import com.google.gson.JsonObject;
+import engineFiles.ui.Settings;
 
 import java.util.Random;
 
@@ -30,6 +31,14 @@ public class ColorerModel {
             this.blueShift = new Random().nextInt(255);
         }
 
+        updateColorerSettings();
+    }
+
+    public void updateColorerSettings(){
+        Settings.ColorerSettings.recolor = this.recolor;
+        Settings.ColorerSettings.redShift = this.redShift;
+        Settings.ColorerSettings.greenShift = this.greenShift;
+        Settings.ColorerSettings.blueShift = this.blueShift;
     }
 
     public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor){
@@ -39,6 +48,7 @@ public class ColorerModel {
         this.redShift = new Random().nextInt(255);
         this.greenShift = new Random().nextInt(255);
         this.blueShift = new Random().nextInt(255);
+        updateColorerSettings();
     }
 
     public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor, int redShift, int greenShift, int blueShift){
@@ -46,6 +56,7 @@ public class ColorerModel {
         this.redShift = redShift;
         this.greenShift = greenShift;
         this.blueShift = blueShift;
+        updateColorerSettings();
     }
 
     public String getTilesetInputDir() {

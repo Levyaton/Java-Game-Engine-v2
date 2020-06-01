@@ -1,17 +1,19 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.Area;
+import engineFiles.main.models.*;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Sprite;
 import engineFiles.main.models.Sprites.SpriteCollection;
 import engineFiles.ui.*;
+import engineFiles.ui.TileMapClasses.TileMap;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class OverworldPanel extends GamePanel{
 
@@ -59,10 +61,22 @@ public class OverworldPanel extends GamePanel{
         return image;
     }
 
+    private void saveGame(){
+        TileMap tm;
+        ColorerModel cm;
+        EntitiesModel em;
+        String tilesetPath;
+        List<Sprite> items;
+
+
+        WorldGenModel model = new WorldGenModel();
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        if(e.getKeyCode() == Settings.controlls.getGameSave()){
+            saveGame();
+        }
     }
 
     @Override
@@ -213,7 +227,6 @@ public class OverworldPanel extends GamePanel{
 
         }
     return null;
-
     }
 
     @Override

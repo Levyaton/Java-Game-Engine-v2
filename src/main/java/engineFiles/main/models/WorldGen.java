@@ -14,16 +14,17 @@ import engineFiles.ui.TileMapClasses.TileMap;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
 
 public class WorldGen {
 
-    TileMap tm;
-    ColorerModel cm;
-    EntitiesModel em;
-    String tilesetPath;
+    private TileMap tm;
+    private ColorerModel cm;
+    private EntitiesModel em;
+    private String tilesetPath;
 
 
     public void generateWorld() {
