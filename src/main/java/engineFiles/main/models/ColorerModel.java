@@ -93,4 +93,8 @@ public class ColorerModel {
         object.addProperty(BLUE_SHIFT_KEY, blueShift);
         return object;
     }
+
+    public void setRecolor(boolean recolor) {
+        this.recolor = recolor;
+    }
 }

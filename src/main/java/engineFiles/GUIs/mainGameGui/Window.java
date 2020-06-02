@@ -1,6 +1,7 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.ui.Resolution;
+import engineFiles.ui.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,20 +12,30 @@ public class Window extends JFrame {
     int lastDrawY;
     private BufferStrategy bs;
     private String activePanelKey;
+    private JLayeredPane layers;
+    private JLayeredPane overlay;
     private GameCanvas canvas;
     public Window() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
         //Dimension dim = new Dimension(800, 600);
 
-        setLayout(new BorderLayout());
        // setPreferredSize(dim);
         setVisible(true);
+        layers = new JLayeredPane();
+        layers.setLayout(new BorderLayout());
+        overlay = new JLayeredPane();
+        Dimension dimension = new Dimension(Settings.screenWidth, Settings.screenHeight);
+        overlay.setPreferredSize(dimension);
+        overlay.setBackground(Color.red);
         setIgnoreRepaint(true);
         createBufferStrategy(2);
         bs = getBufferStrategy();
         canvas = new GameCanvas();
-        this.add(canvas, BorderLayout.CENTER);
+        layers.add(overlay, 0);
+        layers.add(canvas, 1);
+
+        this.getContentPane().add(layers, BorderLayout.CENTER);
         pack();
     }
 
@@ -53,12 +64,18 @@ public class Window extends JFrame {
     public void resetActivePanel() {
         try{
             this.remove(PanelManager.panels.get(activePanelKey));
+            for(JComponent component : PanelManager.panels.get(activePanelKey).getJComponents()){
+                overlay.remove(component);
+            }
         }
         catch (Exception ignored){}
         this.activePanelKey = PanelManager.current;
         GamePanel activePanel = PanelManager.panels.get(activePanelKey);
         this.add(activePanel, BorderLayout.CENTER);
-
+        for (JComponent component: activePanel.getJComponents()){
+            overlay.add(component);
+        }
+        System.out.println("Number of jcomponents is " + activePanel.getJComponents().size());
         activePanel.requestFocus();
 
     }
@@ -88,6 +105,7 @@ public class Window extends JFrame {
         bs.show();
     */
         canvas.repaint();
+
 
     }
 

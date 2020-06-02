@@ -120,8 +120,10 @@ public class EntitiesModel {
     }
     private Entity initEntity(JsonObject json, Function<EntitiyParam, Entity> createEntity) throws IOException {
         int speedCounter = json.get(SPEED_COUNTER_KEY).getAsInt();
+
         Coordinates coordinates = gson.fromJson(json.get(COORDINATES_KEY), Coordinates.class);
         String name = json.get(NAME_KEY).getAsString();
+        System.out.println(name + "has a SPEED COUTNER of " + speedCounter);
         CharacterSpriteSheetModel characterSpriteSheetModel = new CharacterSpriteSheetModel(json.get(CHARACTER_SPRITE_SHEET_MODEL_KEY).getAsJsonObject());
         BufferedImage sheet = ImageIO.read(new File(characterSpriteSheetModel.getSheetPath()));
         HashMap<Integer, MovementAnimation> animations = SpriteSheetParser.parse(sheet, characterSpriteSheetModel.getRowCount(), characterSpriteSheetModel.getColumnCount(),  characterSpriteSheetModel.getSpriteWidth(), characterSpriteSheetModel.getSpriteHeight());

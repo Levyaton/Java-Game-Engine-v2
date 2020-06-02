@@ -1,5 +1,6 @@
 package engineFiles.GUIs.mainGameGui;
 
+import engineFiles.GUIs.ColorSwitchGui;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Area;
 import engineFiles.main.models.SaveGame;
@@ -26,17 +27,20 @@ public class OverworldPanel extends GamePanel{
     int SPACE_MOD1 = 100;
     int SPACE_MOD2 = 50;
 
+    ColorSwitchGui colorSwitchGui;
     private WorldGenModel worldGenModel;
 
     private int frameCount = 0;
     private Image dbImage;
     private Graphics dbGraphics;
 
+    private boolean paused = false;
 
     public OverworldPanel(WorldGenModel worldGenModel, String panelName) {
         super(worldGenModel.getArea(),worldGenModel.getEntitiesModel().getAllEntities(),panelName);
         //Dimension d = new Dimension(800, 700);s
-        setLayout(null);
+        setLayout(new BorderLayout());
+        this.colorSwitchGui = new ColorSwitchGui(worldGenModel.getColorerModel().isRecolor());
         loadSprites(area.getSprites());
         loadPlayer();
         setDoubleBuffered(true);
@@ -66,6 +70,7 @@ public class OverworldPanel extends GamePanel{
 
     private void saveGame(){
         System.out.println("Saving game");
+        this.worldGenModel.getColorerModel().setRecolor(Boolean.getBoolean(this.colorSwitchGui.getColorChangeButton().getText()));
         SaveGame.save(this.worldGenModel);
     }
 
@@ -78,6 +83,9 @@ public class OverworldPanel extends GamePanel{
         //System.out.println("Pressed " + e);
         if(e.getKeyCode() == Settings.controlls.getGameSave()){
             saveGame();
+        }
+        if(e.getKeyCode()==KeyEvent.VK_C){
+            colorSwitchGui.setVisible(!colorSwitchGui.isVisible());
         }
         KeyMap.setKey(e.getKeyCode(), false);
     }
@@ -207,22 +215,24 @@ public class OverworldPanel extends GamePanel{
 
     public Void updateMovement(Void param) {
 
+        if(!isGamePaused()){
+            for(Entity e: this.entities){
 
-        //System.out.println(entities.size());
-        for(Entity e: this.entities){
+                // System.out.println("Check");
+                if(e.timeToMove()){
+                    e.getMovement();
 
-           // System.out.println("Check");
-            if(e.timeToMove()){
-                e.getMovement();
-
-                if(colliding(e)){
-                    e.movementBlocked();
-                    //System.out.println("Failed");
+                    if(colliding(e)){
+                        e.movementBlocked();
+                        //System.out.println("Failed");
+                    }
                 }
+
+
             }
-
-
         }
+        //System.out.println(entities.size());
+
     return null;
     }
 
@@ -256,4 +266,15 @@ public class OverworldPanel extends GamePanel{
         return null;
     }
 
+    private boolean isGamePaused(){
+         return colorSwitchGui.isVisible();
+    }
+
+    @Override
+    public List<JComponent> getJComponents() {
+        List<JComponent> components = new ArrayList<>();
+        components.add(colorSwitchGui);
+        return components;
+
+    }
 }

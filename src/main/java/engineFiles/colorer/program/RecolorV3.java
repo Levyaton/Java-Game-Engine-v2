@@ -90,7 +90,7 @@ public class RecolorV3 {
     }
 
     public static void recolorAndSave(ColorerModel model) throws IOException {
-        BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())), model.getRedShift(), model.getGreenShift(), model.getBlueShift());
+        BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())));
         File f = new File(model.getTilesetOutputDir());
         f.createNewFile();
         System.out.println(f);

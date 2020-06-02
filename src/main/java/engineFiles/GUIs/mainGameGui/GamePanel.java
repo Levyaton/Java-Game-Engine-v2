@@ -1,7 +1,7 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Area;
+import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.ui.Coordinates;
 
 import javax.swing.*;
@@ -15,6 +15,8 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
     protected  String panelName;
     protected Area area;
     protected List<Entity> entities;
+
+    protected List<JComponent> jComponents;
 
     public GamePanel(Area area, List<Entity> entities, String panelName){
         this.panelName = panelName;
@@ -69,6 +71,11 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
 
     public Coordinates getOffset(){
         return new Coordinates(0,0,0,0);
+    }
+
+
+    public List<JComponent> getJComponents() {
+        return this.jComponents;
     }
 }
 
