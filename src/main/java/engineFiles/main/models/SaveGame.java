@@ -12,9 +12,9 @@ import static engineFiles.main.models.WorldGenKeys.*;
 
 public class SaveGame {
 
-    public static void save(WorldGenModel worldGenModel){
+    public static void save(WorldGenModel worldGenModel) {
         JsonObject world = new JsonObject();
-        world.add(WORLD_ITMES_KEY,ItemsModel.generateOverworldItemsJson(worldGenModel.getArea().getItems()));
+        world.add(WORLD_ITMES_KEY, ItemsModel.generateOverworldItemsJson(worldGenModel.getArea().getItems()));
         world.addProperty(TILESET_PATH_KEY, new File(worldGenModel.getTilesetPath()) + "/");
         world.add(TILESET_KEY, worldGenModel.getTileMap().getJson());
         world.add(COLORER_MODELS_KEY, worldGenModel.getColorerModel().getColorerModelJson());
