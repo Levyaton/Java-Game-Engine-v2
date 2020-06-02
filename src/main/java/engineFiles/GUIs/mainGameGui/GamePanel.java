@@ -8,9 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
-public abstract class GamePanel extends JPanel implements KeyListener,GamePanelInterface {
+public abstract class GamePanel extends JPanel implements KeyListener,GamePanelInterface, MouseListener {
 
     protected  String panelName;
     protected Area area;
@@ -23,10 +25,11 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
         this.entities = entities;
         this.area = area;
         this.addKeyListener(this);
-
+        this.addMouseListener(this);
     }
 
-    public GamePanel(){
+    public GamePanel(String panelName){
+        this.addMouseListener(this);
         this.addKeyListener(this);
     }
     //ADD CONSTRUCTORS IF NEEDED
@@ -73,6 +76,30 @@ public abstract class GamePanel extends JPanel implements KeyListener,GamePanelI
         return new Coordinates(0,0,0,0);
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 
     public List<JComponent> getJComponents() {
         return this.jComponents;
