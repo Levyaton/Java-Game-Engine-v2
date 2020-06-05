@@ -12,17 +12,18 @@ import java.util.List;
 
 public class SpriteSheetParser {
 
-
-    public static HashMap<Integer, MovementAnimation> parse(BufferedImage sheet, int rowCountPerCharacter, int columnCountPerCharacter, int spriteWidth, int spriteHeight){
-        SpriteSheet target = new SpriteSheet(sheet,rowCountPerCharacter,columnCountPerCharacter,spriteWidth,spriteHeight);
+    public static HashMap<Integer, MovementAnimation> parse(BufferedImage sheet, int rowCountPerCharacter,
+            int columnCountPerCharacter, int spriteWidth, int spriteHeight) {
+        SpriteSheet target = new SpriteSheet(sheet, rowCountPerCharacter, columnCountPerCharacter, spriteWidth,
+                spriteHeight);
         HashMap<Integer, MovementAnimation> animations = new HashMap<>();
         int id = 0;
         int numberOfRows = target.getRowSpriteBlockCount();
         int numberOfColumns = target.getColumnSpriteBlockCount();
 
-        for(int y_mod = 0; y_mod < numberOfRows; y_mod++){
-            for(int x_mod = 0; x_mod < numberOfColumns; x_mod++){
-                MovementAnimation animation = getAnimationBlock(y_mod,x_mod,target,id);
+        for (int y_mod = 0; y_mod < numberOfRows; y_mod++) {
+            for (int x_mod = 0; x_mod < numberOfColumns; x_mod++) {
+                MovementAnimation animation = getAnimationBlock(y_mod, x_mod, target, id);
                 animations.put(id, animation);
                 id++;
             }
@@ -32,17 +33,20 @@ public class SpriteSheetParser {
 
     }
 
-    private static MovementAnimation getAnimationBlock(int y_mod, int x_mod, SpriteSheet sheet, int id){
+    private static MovementAnimation getAnimationBlock(int y_mod, int x_mod, SpriteSheet sheet, int id) {
         MovementAnimation animation = new MovementAnimation(id);
         List<BufferedImage> row = new ArrayList<>();
-        for(int y = 0; y < sheet.getRowCountPerCharacter(); y++){
-            for(int x = 0; x < sheet.getColumnCountPerCharacter(); x++){
-                BufferedImage result = sheet.getSheet().getSubimage(x* sheet.getSpriteWidth() + (x_mod  * sheet.getSpriteWidth()), y  * sheet.getSpriteHeight()+ (y_mod * sheet.getSpriteHeight()), sheet.getSpriteWidth(), sheet.getSpriteHeight());
+        for (int y = 0; y < sheet.getRowCountPerCharacter(); y++) {
+            for (int x = 0; x < sheet.getColumnCountPerCharacter(); x++) {
+                BufferedImage result = sheet.getSheet().getSubimage(
+                        x * sheet.getSpriteWidth() + (x_mod * sheet.getSpriteWidth()),
+                        y * sheet.getSpriteHeight() + (y_mod * sheet.getSpriteHeight()), sheet.getSpriteWidth(),
+                        sheet.getSpriteHeight());
                 row.add(result);
-                System.out.println("X = " + x + " Y = " + y);
-                //System.out.println(id);
+                // System.out.println(id);
                 try {
-                    ImageIO.write(result,"png", new File("src/main/java/resources/gameFiles/models/sprites/" + id + y + x +".png"));
+                    ImageIO.write(result, "png",
+                            new File("src/main/java/resources/gameFiles/models/sprites/" + id + y + x + ".png"));
                 } catch (IOException e) {
                     System.out.println("failed");
                     e.printStackTrace();
@@ -54,14 +58,12 @@ public class SpriteSheetParser {
         return animation;
     }
 
-
-    private static class SpriteSheet{
+    private static class SpriteSheet {
         BufferedImage sheet;
         int rowCountPerCharacter;
         int columnCountPerCharacter;
         int spriteHeight;
         int spriteWidth;
-
 
         int sheetArea;
         int spriteArea;
@@ -72,11 +74,11 @@ public class SpriteSheetParser {
         int spriteBlockWidth;
         int spriteBlockHeight;
 
-
         int rowSpriteBlockCount;
         int columnSpriteBlockCount;
 
-        public SpriteSheet(BufferedImage sheet, int rowCountPerCharacter, int columnCountPerCharacter,int spriteWidth,int spriteHeight){
+        public SpriteSheet(BufferedImage sheet, int rowCountPerCharacter, int columnCountPerCharacter, int spriteWidth,
+                int spriteHeight) {
             this.sheet = sheet;
             this.rowCountPerCharacter = rowCountPerCharacter;
             this.columnCountPerCharacter = columnCountPerCharacter;
@@ -85,7 +87,7 @@ public class SpriteSheetParser {
             makeCalculations();
         }
 
-        private void makeCalculations(){
+        private void makeCalculations() {
             calculateSheetArea();
             calculateSpriteArea();
             calculateTotalSpriteCount();
@@ -97,43 +99,41 @@ public class SpriteSheetParser {
             calculateTotalBlockCount();
         }
 
-        private void calculateSheetArea(){
+        private void calculateSheetArea() {
             this.sheetArea = sheet.getWidth() * sheet.getHeight();
         }
 
-        private void calculateSpriteArea(){
-            this.spriteArea = spriteHeight*spriteWidth;
+        private void calculateSpriteArea() {
+            this.spriteArea = spriteHeight * spriteWidth;
         }
 
-        private void calculateTotalSpriteCount(){
+        private void calculateTotalSpriteCount() {
             this.spriteCount = sheetArea / spriteArea;
         }
 
-        private void calculateSpriteBlockAre(){
+        private void calculateSpriteBlockAre() {
             this.spriteBlockArea = rowCountPerCharacter * columnCountPerCharacter;
         }
 
-        private void calculateSpriteBlockWidth(){
-            this.spriteBlockWidth = columnCountPerCharacter*spriteWidth;
+        private void calculateSpriteBlockWidth() {
+            this.spriteBlockWidth = columnCountPerCharacter * spriteWidth;
         }
 
-        private void calculateSpriteBlockHeight(){
-            this.spriteBlockHeight= rowCountPerCharacter*spriteHeight;
+        private void calculateSpriteBlockHeight() {
+            this.spriteBlockHeight = rowCountPerCharacter * spriteHeight;
         }
 
-        private void calculateRowSpriteBlockCount(){
+        private void calculateRowSpriteBlockCount() {
             this.rowSpriteBlockCount = sheet.getHeight() / (spriteBlockHeight);
         }
 
-        private void calculateColumnSpriteBlockCount(){
+        private void calculateColumnSpriteBlockCount() {
             this.columnSpriteBlockCount = sheet.getWidth() / (spriteBlockWidth);
         }
 
-        private void calculateTotalBlockCount(){
+        private void calculateTotalBlockCount() {
             this.spriteBlockCount = spriteCount / spriteBlockArea;
         }
-
-
 
         public BufferedImage getSheet() {
             return sheet;
@@ -204,8 +204,7 @@ public class SpriteSheetParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SpriteSheetParser.parse(sheet, rowCount, columnCount,  spriteWidth, spriteHeight);
+        SpriteSheetParser.parse(sheet, rowCount, columnCount, spriteWidth, spriteHeight);
     }
-
 
 }

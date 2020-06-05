@@ -3,13 +3,14 @@ package engineFiles.main.models;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import engineFiles.GUIs.mainGameGui.GamePanel;
-import engineFiles.GUIs.mainGameGui.OverworldPanel;
-import engineFiles.GUIs.mainGameGui.PanelManager;
+// import engineFiles.GUIs.mainGameGui.GamePanel;
+// import engineFiles.GUIs.mainGameGui.OverworldPanel;
+// import engineFiles.GUIs.mainGameGui.PanelManager;
 import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.colorer.program.RecolorV3;
 import engineFiles.main.game.GameContainer;
 import engineFiles.ui.TileMapClasses.TileMap;
+import engineFiles.ui.fonts.FontLibrary;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -34,14 +35,11 @@ public class WorldGen {
                 RecolorV3.recolorAndSave(cm);
             }
             TileMap tm = new TileMap(worldGen.get(TILESET_KEY).getAsJsonObject(), tilesetPath);
-
+            FontLibrary fl = new FontLibrary();
             WorldGenModel model = new WorldGenModel(tm, cm, em, tilesetPath,
                     ItemsModel.generateOverworldItems(worldGen.getAsJsonArray(WORLD_ITMES_KEY)));
 
-            GamePanel gamePanel = new OverworldPanel(model, "overworld");
-            PanelManager.panels.put("overworld", gamePanel);
-            Window frame = new Window("overworld", gamePanel);
-            frame.resetActivePanel();
+            Window frame = new Window(model);
             GameContainer gc = new GameContainer(frame);
         } catch (IOException e) {
             e.printStackTrace();

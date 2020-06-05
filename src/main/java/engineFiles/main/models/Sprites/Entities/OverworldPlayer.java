@@ -13,12 +13,16 @@ public class OverworldPlayer extends ControllableEntity {
     public OverworldPlayer(MovementAnimation animation, JSONObject json, Player player, int speedCounter) {
         super(animation, json, speedCounter);
         super.categoryName = "player";
+        this.health = 10;
+        this.curHealth = 10;
         this.player = player;
     }
 
     public OverworldPlayer(MovementAnimation animation, File f, Player player, int speedCounter) {
         super(animation, f, speedCounter);
-        super.categoryName = "player";
+        this.categoryName = "player";
+        this.health = 10;
+        this.curHealth = 10;
         this.player = player;
     }
 
@@ -30,7 +34,5 @@ public class OverworldPlayer extends ControllableEntity {
     public Player getPlayer() {
         return player;
     }
-
-
 
 }

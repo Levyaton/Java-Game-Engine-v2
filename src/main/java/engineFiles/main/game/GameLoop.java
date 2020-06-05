@@ -13,13 +13,13 @@ public class GameLoop implements Runnable {
 
     @Override
     public void run() {
-
+        System.out.println("gameloop starting");
         EngineStats.running = true;
         while (EngineStats.running) {
 
             // System.out.println("hey");
             // Catches up on the missed updates, however many times is needed
-            EngineStats.catchUp(frame.getActiveGamePanel()::updateMovement);
+            EngineStats.catchUp();
 
             if (EngineStats.render) {
                 frame.redraw();

@@ -22,12 +22,11 @@ public class EngineStats {
 
     }
 
-
     public static void updateStats() {
 
     }
 
-    public static void catchUp(Function<Void, Void> updateGame) {
+    public static void catchUp() {
         render = false;
         firstTime = System.nanoTime() / LARGE_CONST;
         passedTime = firstTime - lastTime;
@@ -42,14 +41,12 @@ public class EngineStats {
             render = true;
             frameTime += passedTime;
 
-            updateGame.apply(null); //TO-Do: Create the function
-
             if (frameTime >= 1.0) {
                 frameTime = 0;
                 fps = frames;
                 frames = 0;
 
-                System.out.println("FPS: " + fps);
+                // System.out.println("FPS: " + fps);
             }
         }
     }

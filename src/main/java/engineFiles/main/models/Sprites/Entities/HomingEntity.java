@@ -11,9 +11,7 @@ public class HomingEntity extends Entity {
     private int range;
     private int targetIndex;
 
-
-
-    public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter){
+    public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter) {
         super(animation, json, speedCounter);
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
@@ -22,8 +20,8 @@ public class HomingEntity extends Entity {
         this.range = range;
     }
 
-    public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter){
-        super(animation, f,speedCounter);
+    public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter) {
+        super(animation, f, speedCounter);
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
@@ -32,10 +30,10 @@ public class HomingEntity extends Entity {
     }
 
     @Override
-    public int getMovement(){
+    public int getMovement() {
         Rectangle scope = new Rectangle();
-        scope.setBounds(this.getCoord().getX() - this.range/2, this.getCoord().getY() - this.range/2, range, range);
-        //IMPLEMENT MOVEMENT METHOD
+        scope.setBounds(this.getCoord().getX() - this.range / 2, this.getCoord().getY() - this.range / 2, range, range);
+        // IMPLEMENT MOVEMENT METHOD
         Coordinates target = this.target.getCoord();
         super.still = false;
         int choice;
@@ -48,58 +46,50 @@ public class HomingEntity extends Entity {
 
         int y = Math.abs(Math.abs(selfY) - Math.abs(targetY));
         int x = Math.abs(Math.abs(selfX) - Math.abs(targetX));
-        if(!scope.contains(this.target.getCoord().getBounds())){
+        if (!scope.contains(this.target.getCoord().getBounds())) {
             choice = super.lastMovementIndex;
             super.lastMovementIndex = choice;
             super.still = true;
             super.animation.resetStateIndex();
-        }
-        else{
+        } else {
 
-            if(y == x){
-                int random = (int) Math.round( Math.random());
-                choice = makeChoice(random, selfY, selfX, targetY,targetX);
-            }
-            else{
+            if (y == x) {
+                int random = (int) Math.round(Math.random());
+                choice = makeChoice(random, selfY, selfX, targetY, targetX);
+            } else {
 
                 int decider;
-                if(y > x){
-
-                    System.out.println("vertical: Y = " +y + " X = " + x);
-                   decider = 0;
-                }
-                else{
-                    System.out.println("horizontal: Y = " +y + " X = " + x);
+                if (y > x) {
+                    decider = 0;
+                } else {
                     decider = 1;
                 }
                 choice = makeChoice(decider, selfY, selfX, targetY, targetX);
             }
         }
-       // System.out.println(choice);
+        // System.out.println(choice);
         super.currentMovement = choice;
         return choice;
     }
 
-    private int makeChoice(int decider, int selfY, int selfX, int targetY, int targetX){
+    private int makeChoice(int decider, int selfY, int selfX, int targetY, int targetX) {
         int choice = 0;
-        switch (decider){
+        switch (decider) {
             case 0:
-                if(selfY > targetY){
+                if (selfY > targetY) {
                     choice = super.controlls.getUp().get(0);
                     super.coord.moveUp();
 
-                }
-                else{
+                } else {
                     choice = super.controlls.getDown().get(0);
                     super.coord.moveDown();
                 }
                 break;
             case 1:
-                if(selfX > targetX){
+                if (selfX > targetX) {
                     choice = super.controlls.getLeft().get(0);
                     super.coord.moveLeft();
-                }
-                else{
+                } else {
                     choice = super.controlls.getRight().get(0);
                     super.coord.moveRight();
                 }

@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class KeyMap {
     private static Set<Integer> keys = new HashSet<>();
+    private static boolean pressed = false;
 
     public static void setKey(int keyCode, boolean unset) {
         if (unset) {
@@ -23,6 +24,15 @@ public class KeyMap {
         }
         return false;
     }
+
+    public static boolean isPressed() {
+        return pressed;
+    }
+
+    public static void setPressed(boolean isPressed) {
+        pressed = isPressed;
+    }
+
     public static boolean isPressed(int keyCode) {
 
         return keys.contains(keyCode);
@@ -31,6 +41,5 @@ public class KeyMap {
     public static Set<Integer> getKeys() {
         return keys;
     }
-
 
 }

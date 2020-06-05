@@ -14,26 +14,27 @@ public class MovementAnimation {
 
     private int stateIndex = 0;
 
-    private int animationSpeed = 3000000;
+    private int animationSpeed = 5;
 
     private int animationCounter = 0;
 
     private int id;
 
-    public MovementAnimation(){
+    public MovementAnimation() {
 
     }
 
-    public MovementAnimation(int id){
+    public MovementAnimation(int id) {
         this.id = id;
     }
 
-    public MovementAnimation(int animationSpeed, int id){
+    public MovementAnimation(int animationSpeed, int id) {
         this(id);
         this.animationSpeed = animationSpeed;
     }
 
-    public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, int id){
+    public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
+            List<BufferedImage> right, int id) {
         this(id);
         this.down = down;
         this.up = up;
@@ -41,11 +42,11 @@ public class MovementAnimation {
         this.right = right;
     }
 
-    public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left, List<BufferedImage> right, int animationSpeed, int id){
+    public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
+            List<BufferedImage> right, int animationSpeed, int id) {
         this(down, up, left, right, id);
         this.animationSpeed = animationSpeed;
     }
-
 
     public int getAnimationSpeed() {
         return animationSpeed;
@@ -71,8 +72,6 @@ public class MovementAnimation {
         return right;
     }
 
-
-
     public void setDown(List<BufferedImage> down) {
         this.down = down;
     }
@@ -89,23 +88,22 @@ public class MovementAnimation {
         this.right = right;
     }
 
-    public BufferedImage getState(){
+    public BufferedImage getState() {
         return stateSelect(this.movementIndex).get(this.stateIndex);
     }
 
-    public int getMovementIndex(){
+    public int getMovementIndex() {
         return movementIndex;
     }
-    public void nextState(){
-        //System.out.println(isAnimationCounterFull());
-        if(!isAnimationCounterFull()){
-           // System.out.println((stateIndex + 1) % stateSelect(movementIndex).size());
+
+    public void nextState() {
+        if (isAnimationCounterFull()) {
             this.stateIndex = (stateIndex + 1) % stateSelect(movementIndex).size();
         }
     }
 
-    private List<BufferedImage> stateSelect(int movementIndex){
-        switch (movementIndex){
+    private List<BufferedImage> stateSelect(int movementIndex) {
+        switch (movementIndex) {
             case 0:
                 return this.down;
             case 1:
@@ -115,31 +113,27 @@ public class MovementAnimation {
             case 3:
                 return this.right;
         }
-        //System.out.println(movementIndex);
+        // System.out.println(movementIndex);
         return null;
     }
 
-    public BufferedImage move(int movementIndex, boolean standing){
+    public BufferedImage move(int movementIndex, boolean standing) {
 
-        if(movementIndex != this.movementIndex){
-            //System.out.println("Change");
+        if (movementIndex != this.movementIndex) {
             this.movementIndex = movementIndex;
             resetStateIndex();
         }
 
         List<BufferedImage> currentMovement = stateSelect(movementIndex);
-       // System.out.println(currentMovement.size());
         BufferedImage current = currentMovement.get(stateIndex);
-        //System.out.println(this.stateIndex);
-        //System.out.println(movementIndex);
-        if(!standing){
+        if (!standing) {
             nextState();
         }
         return current;
     }
 
-    private boolean isAnimationCounterFull(){
-        if(this.animationCounter == this.animationSpeed){
+    private boolean isAnimationCounterFull() {
+        if (this.animationCounter == this.animationSpeed) {
             this.animationCounter = 0;
             return true;
         }
@@ -147,25 +141,25 @@ public class MovementAnimation {
         return false;
     }
 
-    public void resetStateIndex(){
+    public void resetStateIndex() {
         this.stateIndex = 1;
         this.animationCounter = 1;
     }
 
-    public boolean addNextRow(List<BufferedImage> row){
-        if(this.down == null){
+    public boolean addNextRow(List<BufferedImage> row) {
+        if (this.down == null) {
             this.down = row;
             return true;
         }
-        if(this.left == null){
+        if (this.left == null) {
             this.left = row;
             return true;
         }
-        if(this.right == null){
+        if (this.right == null) {
             this.right = row;
             return true;
         }
-        if(this.up == null){
+        if (this.up == null) {
             this.up = row;
             return true;
         }
@@ -176,9 +170,8 @@ public class MovementAnimation {
         return id;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
-
 
 }
