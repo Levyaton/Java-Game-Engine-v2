@@ -52,7 +52,7 @@ public class BattleManager {
       case ITEM:
         if (move.item.getAttackMod() != 0) {
           battlePanel.pushDialog("item increased attack by " + move.item.getAttackMod() + " DMG");
-          move.entity.setDamage(move.entity.getDamage() + move.item.getAttackMod());
+          move.entity.setBattleDamage(move.entity.getBattleDamage() + move.item.getAttackMod());
         }
         if (move.item.getHealthMod() != 0) {
           move.entity.setCurHealth(move.entity.getCurHealth() + move.item.getHealthMod());

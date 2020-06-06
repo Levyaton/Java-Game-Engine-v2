@@ -21,6 +21,7 @@ public abstract class Entity extends Sprite {
     protected int health;
     protected int curHealth;
     protected int damage;
+    protected int battleDamage = 0;
     protected int speedCounter;
     protected int currentSpeedCount = 0;
     protected int uniqueIndex;
@@ -146,6 +147,14 @@ public abstract class Entity extends Sprite {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getBattleDamage() {
+        return battleDamage;
+    }
+
+    public void setBattleDamage(int battleDamage) {
+        this.battleDamage = battleDamage;
     }
 
     protected Controlls controllsInit() {

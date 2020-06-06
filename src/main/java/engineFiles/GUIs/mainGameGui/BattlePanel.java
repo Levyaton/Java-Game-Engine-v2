@@ -92,6 +92,7 @@ public class BattlePanel extends GamePanel {
       battleManager.update();
     } else if (inBattle) {
       inBattle = false;
+      player.setBattleDamage(0);
       componentStack.push(new Dialog("Leaving battle...", () -> {
         window.getPanelManager().getOverWorldPanel().removeEntity(opponent);
         window.setPanel("overworld");
