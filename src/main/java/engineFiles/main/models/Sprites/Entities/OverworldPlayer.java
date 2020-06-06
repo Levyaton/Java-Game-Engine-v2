@@ -15,6 +15,7 @@ public class OverworldPlayer extends ControllableEntity {
         super.categoryName = "player";
         this.health = 10;
         this.curHealth = 10;
+        this.damage = 2;
         this.player = player;
     }
 
@@ -23,6 +24,7 @@ public class OverworldPlayer extends ControllableEntity {
         this.categoryName = "player";
         this.health = 10;
         this.curHealth = 10;
+        this.damage = 2;
         this.player = player;
     }
 

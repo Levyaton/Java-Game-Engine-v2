@@ -18,10 +18,8 @@ public class WorldGenModel {
         this.entitiesModel = em;
         this.tilesetPath = tilesetPath;
         area = tm.getArea();
-        area.getSprites().addAll(items);
+        area.addItems(items);
     }
-
-
 
     public TileMap getTileMap() {
         return tileMap;
@@ -38,7 +36,6 @@ public class WorldGenModel {
     public String getTilesetPath() {
         return tilesetPath;
     }
-
 
     public void setTm(TileMap tileMap) {
         this.tileMap = tileMap;

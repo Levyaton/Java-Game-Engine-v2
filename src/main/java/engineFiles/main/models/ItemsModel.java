@@ -15,10 +15,9 @@ import static engineFiles.main.models.WorldGenKeys.OverworldItemsKeys.*;
 
 public class ItemsModel {
 
-
-    public static List<ItemSprite> generateOverworldItems(JsonArray items){
+    public static List<ItemSprite> generateOverworldItems(JsonArray items) {
         List<ItemSprite> itemSprites = new ArrayList<>();
-        for (JsonElement el: items) {
+        for (JsonElement el : items) {
             JsonObject item = el.getAsJsonObject();
             String name = item.get(ITEM_NAME_KEY).getAsString();
             File file = new File(item.get(FILE_PATH_KEY).getAsString());
@@ -29,16 +28,16 @@ public class ItemsModel {
             int cost = item.get(COST_KEY).getAsInt();
             int healthMod = item.get(HEALTH_MOD_KEY).getAsInt();
             int speedMod = item.get(SPEED_MOD_KEY).getAsInt();
-            int defMod = item.get(DEF_MOD_KEY).getAsInt();
             int attackMod = item.get(ATTACK_MOD_KEY).getAsInt();
-            itemSprites.add(new ItemSprite(file,dimMod,x,y,z,new Item(name,healthMod,speedMod,defMod,attackMod,cost)));
+            itemSprites
+                    .add(new ItemSprite(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, attackMod, cost)));
         }
         return itemSprites;
     }
 
-    public static JsonArray generateOverworldItemsJson(List<ItemSprite> items){
+    public static JsonArray generateOverworldItemsJson(List<ItemSprite> items) {
         JsonArray array = new JsonArray();
-        for (ItemSprite item: items){
+        for (ItemSprite item : items) {
             JsonObject obj = new JsonObject();
             obj.addProperty(ITEM_NAME_KEY, item.getItem().getName());
             obj.addProperty(FILE_PATH_KEY, item.getOgFile().getPath());
@@ -48,7 +47,6 @@ public class ItemsModel {
             obj.addProperty(Z_KEY, item.getCoord().getZ());
             obj.addProperty(COST_KEY, item.getItem().getCost());
             obj.addProperty(HEALTH_MOD_KEY, item.getItem().getHealthMod());
-            obj.addProperty(DEF_MOD_KEY, item.getItem().getDefMod());
             obj.addProperty(SPEED_MOD_KEY, item.getItem().getSpeedMod());
             obj.addProperty(ATTACK_MOD_KEY, item.getItem().getAttackMod());
             array.add(obj);

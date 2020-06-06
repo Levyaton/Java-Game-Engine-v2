@@ -124,12 +124,28 @@ public abstract class Entity extends Sprite {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int getCurHealth() {
         return curHealth;
     }
 
     public void setCurHealth(int curHealth) {
-        this.curHealth = curHealth;
+        if (curHealth >= this.curHealth) {
+            this.curHealth = health;
+        } else {
+            this.curHealth = curHealth;
+        }
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
     protected Controlls controllsInit() {

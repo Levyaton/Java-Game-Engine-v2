@@ -9,9 +9,7 @@ public class WorldGenKeys {
     public static String COLORER_MODELS_KEY = "colorer";
     public static String WORLD_ITMES_KEY = "items";
 
-
-
-    public static class EntityKeys{
+    public static class EntityKeys {
         public static String VECTOR_ENTITIES_KEY = "vector";
         public static String OVERWORLD_PLAYER_KEY = "overworldPlayer";
         public static String CONTROLLABLE_ENITITIES_KEY = "controllable";
@@ -30,7 +28,7 @@ public class WorldGenKeys {
 
     }
 
-    public static class ColorerKeys{
+    public static class ColorerKeys {
         public static String TILESET_INPUT_DIR_KEY = "tilesetInputDir";
         public static String TILESET_OUTPUT_DIR_KEY = "tilesetOutputDir";
         public static String RECOLOR_KEY = "recolor";
@@ -39,34 +37,33 @@ public class WorldGenKeys {
         public static String BLUE_SHIFT_KEY = "blueShift";
     }
 
-    public static class AreaKeys{
+    public static class AreaKeys {
         public static String NAME_KEY = "Name";
         public static String WIDTH_KEY = "Width";
         public static String HEIGHT_KEY = "Height";
         public static String SPRITES_KEY = "Sprites";
     }
 
-    public static class TileMapKeys{
+    public static class TileMapKeys {
         public static String LAYERS_KEY = "layers";
         public static String TILE_SETS_KEY = "tilesets";
-        public static String EDITOR_SETTINGS_KEY  = "editorsettings";
+        public static String EDITOR_SETTINGS_KEY = "editorsettings";
     }
 
-    public static class PlayerKeys{
+    public static class PlayerKeys {
         public static String USERNAME_KEY = "username";
         public static String INVENTORY_KEY = "inventory";
     }
 
-    public static class InventoryKeys{
+    public static class InventoryKeys {
         public static String ITEM_NAME_KEY = "name";
         public static String HEALTH_MOD_KEY = "health";;
         public static String SPEED_MOD_KEY = "speed";;
-        public static String DEF_MOD_KEY = "def";;
         public static String ATTACK_MOD_KEY = "attack";;
         public static String COST_KEY = "cost";;
     }
 
-    public static class OverworldItemsKeys{
+    public static class OverworldItemsKeys {
         public static String FILE_PATH_KEY = "path";
         public static String DIM_MOD_KEY = "dim";
         public static String X_KEY = "x";
@@ -74,7 +71,7 @@ public class WorldGenKeys {
         public static String Z_KEY = "z";
     }
 
-    public static class CharacterSpriteSheetKeys{
+    public static class CharacterSpriteSheetKeys {
         public static String SHEET_PATH_KEY = "sheetPath";
         public static String ENTITY_INDEX_KEY = "entityIndex";
         public static String SPRITE_HEIGHT_KEY = "spriteHeight";
@@ -83,9 +80,4 @@ public class WorldGenKeys {
         public static String ROW_COUNT_KEY = "rowCount";
     }
 
-
-
-
-
 }
-

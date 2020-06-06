@@ -16,6 +16,9 @@ public class HomingEntity extends Entity {
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
+        this.health = 10;
+        this.curHealth = 10;
+        this.damage = 1;
         this.target = target;
         this.range = range;
     }
@@ -23,8 +26,11 @@ public class HomingEntity extends Entity {
     public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter) {
         super(animation, f, speedCounter);
         super.controlls = super.controllsInit();
-        this.categoryName = "homing";
         super.others.add(target);
+        this.categoryName = "homing";
+        this.health = 10;
+        this.curHealth = 10;
+        this.damage = 1;
         this.range = range;
         this.target = target;
     }
@@ -67,7 +73,6 @@ public class HomingEntity extends Entity {
                 choice = makeChoice(decider, selfY, selfX, targetY, targetX);
             }
         }
-        // System.out.println(choice);
         super.currentMovement = choice;
         return choice;
     }

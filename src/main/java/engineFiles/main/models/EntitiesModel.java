@@ -103,10 +103,9 @@ public class EntitiesModel {
             String itemName = item.get(ITEM_NAME_KEY).getAsString();
             int healthMod = item.get(HEALTH_MOD_KEY).getAsInt();
             int speedMod = item.get(SPEED_MOD_KEY).getAsInt();
-            int defMod = item.get(DEF_MOD_KEY).getAsInt();
             int attackMod = item.get(ATTACK_MOD_KEY).getAsInt();
             int cost = item.get(COST_KEY).getAsInt();
-            inventory.add(new Item(itemName, healthMod, speedMod, defMod, attackMod, cost));
+            inventory.add(new Item(itemName, healthMod, speedMod, attackMod, cost));
         }
         Player player = new Player(p.get(USERNAME_KEY).getAsString(), inventory);
 
@@ -267,7 +266,6 @@ public class EntitiesModel {
             item.addProperty(ITEM_NAME_KEY, i.getName());
             item.addProperty(HEALTH_MOD_KEY, i.getHealthMod());
             item.addProperty(SPEED_MOD_KEY, i.getSpeedMod());
-            item.addProperty(DEF_MOD_KEY, i.getDefMod());
             item.addProperty(ATTACK_MOD_KEY, i.getAttackMod());
             item.addProperty(COST_KEY, i.getCost());
             inventory.add(item);

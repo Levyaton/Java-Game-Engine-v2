@@ -18,6 +18,7 @@ public class VectorEntity extends Entity {
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;
+        this.damage = 1;
         this.categoryName = "vector";
         this.vectors = vectors;
         this.followingX = this.vectors.get(vectorIndex).startWithX;
@@ -28,6 +29,7 @@ public class VectorEntity extends Entity {
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;
+        this.damage = 1;
         this.categoryName = "vector";
         this.vectors = vectors;
         this.followingX = this.vectors.get(vectorIndex).startWithX;

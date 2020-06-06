@@ -3,30 +3,38 @@ package engineFiles.main.models.Sprites.Items;
 public class Item {
     private int healthMod = 0;
     private int speedMod = 0;
-    private int defMod = 0;
     private int attackMod = 0;
     private int cost = 0;
+    private String description;
 
     private String name;
 
-    public Item(String name){
+    public Item(String name) {
         this.name = name;
     }
 
-    public Item(String name, int cost){
+    public Item(String name, int cost) {
         this(name);
         this.cost = cost;
     }
 
-    public Item(String name, int healthMod, int speedMod, int defMod, int attackMod){
+    public Item(String name, int healthMod, int speedMod, int attackMod) {
         this(name);
         this.healthMod = healthMod;
         this.speedMod = speedMod;
-        this.defMod = defMod;
         this.attackMod = attackMod;
     }
-    public Item(String name, int healthMod, int speedMod, int defMod, int attackMod, int cost){
-        this(name,healthMod,speedMod,defMod,attackMod);
+
+    public Item(String name, int healthMod, int speedMod, int attackMod, String description) {
+        this(name);
+        this.healthMod = healthMod;
+        this.speedMod = speedMod;
+        this.attackMod = attackMod;
+        this.description = description;
+    }
+
+    public Item(String name, int healthMod, int speedMod, int attackMod, int cost) {
+        this(name, healthMod, speedMod, attackMod);
         this.cost = cost;
     }
 
@@ -36,10 +44,6 @@ public class Item {
 
     public int getSpeedMod() {
         return speedMod;
-    }
-
-    public int getDefMod() {
-        return defMod;
     }
 
     public int getAttackMod() {
@@ -54,16 +58,16 @@ public class Item {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setHealthMod(int healthMod) {
         this.healthMod = healthMod;
     }
 
     public void setSpeedMod(int speedMod) {
         this.speedMod = speedMod;
-    }
-
-    public void setDefMod(int defMod) {
-        this.defMod = defMod;
     }
 
     public void setAttackMod(int attackMod) {

@@ -1,6 +1,5 @@
 package engineFiles.main.models.Sprites;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ public class Controlls {
     private int gameSave;
     private int interaction;
 
-
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right) {
         this.down = down;
         this.left = left;
@@ -21,17 +19,17 @@ public class Controlls {
     }
 
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction) {
-        this(up,down,left,right);
+        this(up, down, left, right);
         this.interaction = interaction;
     }
 
-    public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction, int gameSave) {
-        this(up,down,left,right,interaction);
+    public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction,
+            int gameSave) {
+        this(up, down, left, right, interaction);
         this.gameSave = gameSave;
     }
 
-
-    //GETTERS
+    // GETTERS
 
     public List<Integer> getUp() {
         return up;
@@ -49,7 +47,7 @@ public class Controlls {
         this.down = down;
     }
 
-    //SETTERS
+    // SETTERS
 
     public List<Integer> getLeft() {
         return left;

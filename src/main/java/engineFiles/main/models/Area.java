@@ -10,18 +10,20 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
 
 public class Area {
 
     private SpriteCollection sprites = new SpriteCollection();
+    private List<ItemSprite> spritesItems = new CopyOnWriteArrayList<ItemSprite>();
     private String name;
     private int width;
     private int height;
     private JSONObject json = new JSONObject();
 
-    public Area(String name, int width, int height, String spritePath){
+    public Area(String name, int width, int height, String spritePath) {
         this.name = name;
         this.width = width;
         this.height = height;
@@ -29,7 +31,7 @@ public class Area {
         buildJSON();
     }
 
-    public Area(SpriteCollection sprites, String name, int width, int height){
+    public Area(SpriteCollection sprites, String name, int width, int height) {
         this.sprites = sprites;
         this.name = name;
         this.width = width;
@@ -37,7 +39,7 @@ public class Area {
         buildJSON();
     }
 
-    public Area(JSONObject json){
+    public Area(JSONObject json) {
         this.json = json;
         this.name = json.getString(NAME_KEY);
         this.width = json.getInt(WIDTH_KEY);
@@ -45,15 +47,15 @@ public class Area {
         this.sprites = new SpriteCollection(json.getJSONArray(SPRITES_KEY));
     }
 
-    public Area(File f){
+    public Area(File f) {
         this(Objects.requireNonNull(FolderOP.getJSON(f)));
     }
 
-    public Area(String pathToJSON){
+    public Area(String pathToJSON) {
         this(Objects.requireNonNull(FolderOP.getJSON(pathToJSON)));
     }
 
-    public void addSprite(Sprite sprite){
+    public void addSprite(Sprite sprite) {
         sprites.add(sprite);
     }
 
@@ -69,12 +71,12 @@ public class Area {
 
     public void setWidth(int width) {
         this.width = width;
-        this.updateJSON(this.width,this.height);
+        this.updateJSON(this.width, this.height);
     }
 
     public void setHeight(int height) {
         this.height = height;
-        this.updateJSON(this.width,this.height);
+        this.updateJSON(this.width, this.height);
     }
 
     public SpriteCollection getSprites() {
@@ -93,55 +95,62 @@ public class Area {
         return height;
     }
 
-    public JSONObject getJSONArea(){
+    public JSONObject getJSONArea() {
         return json;
     }
 
-    private void buildJSON(){
-        this.json.put(NAME_KEY,name);
+    private void buildJSON() {
+        this.json.put(NAME_KEY, name);
         this.json.put(WIDTH_KEY, width);
         this.json.put(HEIGHT_KEY, height);
         this.json.put(SPRITES_KEY, sprites.toJSONArray());
     }
 
-    private void updateJSON(){
+    private void updateJSON() {
         this.json.remove(NAME_KEY);
         this.json.remove(WIDTH_KEY);
         this.json.remove(HEIGHT_KEY);
         this.json.remove(SPRITES_KEY);
         buildJSON();
     }
-    private void updateJSON(String name){
+
+    private void updateJSON(String name) {
         this.json.remove(NAME_KEY);
-        this.json.put(NAME_KEY,name);
+        this.json.put(NAME_KEY, name);
     }
 
-    private void updateJSON(int width, int height){
+    private void updateJSON(int width, int height) {
         this.json.remove(WIDTH_KEY);
         this.json.remove(HEIGHT_KEY);
         this.json.put(WIDTH_KEY, width);
         this.json.put(HEIGHT_KEY, height);
-        this.json.put(NAME_KEY,name);
+        this.json.put(NAME_KEY, name);
     }
 
-    private void updateJSON(SpriteCollection sprite){
+    private void updateJSON(SpriteCollection sprite) {
         this.json.remove(SPRITES_KEY);
         this.json.put(SPRITES_KEY, sprites.toJSONArray());
     }
 
-    public List<ItemSprite> getItems(){
+    public List<ItemSprite> getItems() {
         List<ItemSprite> items = new ArrayList<>();
-        for(Sprite s: sprites){
-            if(s.getCategoryName().equals("item")){
+        for (Sprite s : sprites) {
+            if (s.getCategoryName().equals("item")) {
                 items.add((ItemSprite) s);
             }
         }
         return items;
     }
 
+    public void addItems(List<ItemSprite> items) {
+        this.spritesItems.addAll(items);
+    }
 
+    public void removeItem(ItemSprite item) {
+        this.spritesItems.remove(item);
+    }
 
-
-
-
+    public List<ItemSprite> getSpritesItems() {
+        return spritesItems;
+    }
 }

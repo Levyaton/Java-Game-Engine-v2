@@ -31,9 +31,9 @@ public class BattleManager {
 
   public void executeMove(Move move) {
     moveStack.pop();
-    switch (move.name) {
-      case "attack":
-        if (!moveStack.isEmpty() && moveStack.peek().name == "dodge") {
+    switch (move.type) {
+      case ATTACK:
+        if (!moveStack.isEmpty() && moveStack.peek().type == MoveEnum.DODGE) {
           battlePanel.pushDialog(
               move.entity.getCategoryName() + " attack was dodged by " + moveStack.peek().entity.getCategoryName());
           moveStack.pop();
@@ -49,13 +49,23 @@ public class BattleManager {
         battlePanel.pushDialog(move.entity.getCategoryName() + " attacks with " + move.value + " DMG");
         break;
 
-      case "heal":
-        move.entity.setCurHealth(move.entity.getCurHealth() + move.value);
-        battlePanel.pushDialog(move.entity.getCategoryName() + " heals " + move.value + " HP");
+      case ITEM:
+        if (move.item.getAttackMod() != 0) {
+          battlePanel.pushDialog("item increased attack by " + move.item.getAttackMod() + " DMG");
+          move.entity.setDamage(move.entity.getDamage() + move.item.getAttackMod());
+        }
+        if (move.item.getHealthMod() != 0) {
+          move.entity.setCurHealth(move.entity.getCurHealth() + move.item.getHealthMod());
+          battlePanel.pushDialog("item increased health by " + move.item.getHealthMod() + " HP");
+        }
+        if (move.item.getSpeedMod() != 0) {
+          battlePanel.pushDialog("item increased speed by " + move.item.getSpeedMod() + " MS");
+        }
+        battlePanel.pushDialog(move.entity.getCategoryName() + " uses " + move.item.getName());
         break;
 
-      case "dodge":
-        if (!moveStack.isEmpty() && moveStack.peek().name == "attack") {
+      case DODGE:
+        if (!moveStack.isEmpty() && moveStack.peek().type == MoveEnum.ATTACK) {
           battlePanel.pushDialog(
               move.entity.getCategoryName() + " dodged an attacked by " + moveStack.peek().entity.getCategoryName());
           moveStack.pop();

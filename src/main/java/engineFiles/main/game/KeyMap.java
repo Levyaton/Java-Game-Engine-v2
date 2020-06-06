@@ -14,6 +14,7 @@ public class KeyMap {
             return;
         }
         keys.add(keyCode);
+        pressed = !unset;
     }
 
     public static boolean isPressed(List<Integer> keyCode) {
