@@ -29,8 +29,9 @@ public class ItemsModel {
             int healthMod = item.get(HEALTH_MOD_KEY).getAsInt();
             int speedMod = item.get(SPEED_MOD_KEY).getAsInt();
             int attackMod = item.get(ATTACK_MOD_KEY).getAsInt();
+            String description = item.get(DESCRIPTION_KEY).getAsString();
             itemSprites
-                    .add(new ItemSprite(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, attackMod, cost)));
+                    .add(new ItemSprite(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, attackMod, description)));
         }
         return itemSprites;
     }
@@ -49,6 +50,7 @@ public class ItemsModel {
             obj.addProperty(HEALTH_MOD_KEY, item.getItem().getHealthMod());
             obj.addProperty(SPEED_MOD_KEY, item.getItem().getSpeedMod());
             obj.addProperty(ATTACK_MOD_KEY, item.getItem().getAttackMod());
+            obj.addProperty(DESCRIPTION_KEY, item.getItem().getDescription());
             array.add(obj);
         }
         return array;

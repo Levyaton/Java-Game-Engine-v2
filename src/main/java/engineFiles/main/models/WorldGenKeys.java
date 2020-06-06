@@ -56,11 +56,12 @@ public class WorldGenKeys {
     }
 
     public static class InventoryKeys {
+        public static String DESCRIPTION_KEY = "description";
         public static String ITEM_NAME_KEY = "name";
-        public static String HEALTH_MOD_KEY = "health";;
-        public static String SPEED_MOD_KEY = "speed";;
-        public static String ATTACK_MOD_KEY = "attack";;
-        public static String COST_KEY = "cost";;
+        public static String HEALTH_MOD_KEY = "health";
+        public static String SPEED_MOD_KEY = "speed";
+        public static String ATTACK_MOD_KEY = "attack";
+        public static String COST_KEY = "cost";
     }
 
     public static class OverworldItemsKeys {
