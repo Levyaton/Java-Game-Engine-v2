@@ -73,10 +73,6 @@ public class OverworldPanel extends GamePanel {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == Settings.controlls.getGameSave()) {
             saveGame();
@@ -254,41 +250,5 @@ public class OverworldPanel extends GamePanel {
 
     public void removeEntity(Entity removedEntity) {
         entities.remove(removedEntity);
-    }
-
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        System.out.println("overworld");
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
     }
 }

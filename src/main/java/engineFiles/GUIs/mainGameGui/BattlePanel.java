@@ -37,8 +37,6 @@ public class BattlePanel extends GamePanel {
   }
 
   public void setOpponents(OverworldPlayer player, Entity opponent) {
-    controller = new Controller(this);
-
     this.player = player;
     this.opponent = opponent;
     controller = new Controller(this);

@@ -32,11 +32,6 @@ public class Button extends Component {
   }
 
   @Override
-  public void update() {
-
-  }
-
-  @Override
   public void render(Graphics g) {
     g.drawRect((int) bounds.getX() - 1, (int) bounds.getY() - 1, (int) bounds.getWidth() + 1,
         (int) bounds.getHeight() + 1);
