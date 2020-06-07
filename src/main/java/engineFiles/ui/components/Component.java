@@ -2,6 +2,8 @@ package engineFiles.ui.components;
 
 import java.awt.Graphics;
 
+
+//Class containing a custom component definition
 public abstract class Component {
 
   protected int x, y, width, height;

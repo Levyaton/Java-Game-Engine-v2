@@ -19,6 +19,8 @@ import java.io.IOException;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
+
+//Class containing world generation logic. Mainly used for game loading
 public class WorldGen {
 
     public void generateWorld() throws FileNotFoundException {

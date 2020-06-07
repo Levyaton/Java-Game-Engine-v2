@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+
+//Class containing generic static utility methods
 public class Utils {
 
     public static <T> T[] arrToObj(JsonArray arr, Class<T> classOfT){

@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+//Class containing the sprite logic, mainly used in the overworld
 public class Sprite implements Comparable {
     protected File ogFile;
     protected BufferedImage img;

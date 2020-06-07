@@ -1,5 +1,7 @@
 package engineFiles.ui.TileMapClasses;
 
+
+//Class containing tileset logic
 public class Tileset {
     int firstgid;
     String source;

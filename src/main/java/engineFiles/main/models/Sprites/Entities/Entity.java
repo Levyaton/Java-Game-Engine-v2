@@ -10,6 +10,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+//Class containing the general logic of every entity
+
 public abstract class Entity extends Sprite {
 
     protected int lastMovementIndex = 0;

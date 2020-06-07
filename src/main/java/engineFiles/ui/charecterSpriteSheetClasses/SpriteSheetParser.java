@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+//Class containing spritesheet parsing logic
 public class SpriteSheetParser {
 
     public static HashMap<Integer, MovementAnimation> parse(BufferedImage sheet, int rowCountPerCharacter,

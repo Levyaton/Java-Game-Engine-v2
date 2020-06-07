@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 
 import static engineFiles.main.models.WorldGenKeys.TileMapKeys.*;
 
+//Class containing the logic needed to use tilemaps
+
 public class TileMap {
 
     int compressionlevel;

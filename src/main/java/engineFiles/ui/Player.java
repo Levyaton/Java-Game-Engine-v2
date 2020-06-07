@@ -10,6 +10,8 @@ import java.util.List;
 
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
+
+//Class containing the player object logic
 public class Player {
     private Gson gson = new Gson();
     private String username;

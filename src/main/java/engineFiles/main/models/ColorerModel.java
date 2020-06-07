@@ -7,6 +7,7 @@ import java.util.Random;
 
 import static engineFiles.main.models.WorldGenKeys.ColorerKeys.*;
 
+//Class containing the colorer model. Used to translate the color settings of the game to a json object, and vice-versa
 public class ColorerModel {
     private String tilesetInputDir;
     private String tilesetOutputDir;

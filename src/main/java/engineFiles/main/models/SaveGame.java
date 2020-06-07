@@ -10,6 +10,8 @@ import java.io.Writer;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
+//Class containing save game logic. Used to save the game, by storing individual classes into their respective models,
+// which are then translated into json objects and stored into a file
 public class SaveGame {
 
     public static void save(WorldGenModel worldGenModel) {

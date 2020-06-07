@@ -3,6 +3,8 @@ package engineFiles.main.models.Sprites;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//Class containing the games overworld controlls
 public class Controlls {
     private List<Integer> up;
     private List<Integer> down;

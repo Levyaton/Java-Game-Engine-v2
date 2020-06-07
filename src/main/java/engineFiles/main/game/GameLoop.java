@@ -2,7 +2,7 @@ package engineFiles.main.game;
 
 import engineFiles.GUIs.mainGameGui.Window;
 import engineFiles.main.models.EngineStats;
-
+//Class containing the game loop
 public class GameLoop implements Runnable {
 
     private Window frame;

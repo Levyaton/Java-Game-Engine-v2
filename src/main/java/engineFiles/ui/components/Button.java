@@ -1,10 +1,11 @@
 package engineFiles.ui.components;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import engineFiles.ui.fonts.FontLibrary;
 
+import java.awt.*;
+
+
+//Class containing a custom button definition
 public class Button extends Component {
 
   private Rectangle bounds;

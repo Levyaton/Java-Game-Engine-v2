@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.List;
 
+//Class containing the logic for entities that follow a pre-determined path, using vectors
 public class VectorEntity extends Entity {
 
     protected List<Vector> vectors;

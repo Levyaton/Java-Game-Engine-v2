@@ -5,6 +5,7 @@ import engineFiles.ui.TileMapClasses.TileMap;
 
 import java.util.List;
 
+//Class containing the world generation properties. Used to keep track of games structure
 public class WorldGenModel {
     private TileMap tileMap;
     private ColorerModel colorerModel;

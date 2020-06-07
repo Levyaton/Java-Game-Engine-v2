@@ -6,6 +6,7 @@ import engineFiles.main.models.WorldGen;
 
 import java.io.*;
 
+//Class containing the game launching methods
 public class GameContainer {
 
     private Thread thread;
@@ -19,7 +20,7 @@ public class GameContainer {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-       /*
+
         File log = new File("src/main/java/Log.txt");
        try {
            log.createNewFile();
@@ -30,7 +31,6 @@ public class GameContainer {
        FileOutputStream(log)), true);
        System.setOut(stream);
 
-        */
         WorldGen load = new WorldGen();
         load.generateWorld();
     }

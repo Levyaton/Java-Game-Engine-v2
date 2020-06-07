@@ -1,7 +1,6 @@
 package engineFiles.main.models;
 
-import java.util.function.Function;
-
+//A class containing the engine stats, and methods that involve them
 public class EngineStats {
     public static final double UPDATE_CAP = 1.0 / 60.0;
     public static final double LARGE_CONST = 100000000.0;

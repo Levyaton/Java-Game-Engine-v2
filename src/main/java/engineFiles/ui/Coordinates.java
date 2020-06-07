@@ -1,7 +1,7 @@
 package engineFiles.ui;
 
 import java.awt.*;
-
+//Class containing coordinate logic
 public class Coordinates {
     private int x_last;
     private int y_last;

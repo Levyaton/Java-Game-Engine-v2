@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 
 import static engineFiles.main.models.WorldGenKeys.CharacterSpriteSheetKeys.*;
 
+
+//Class containing the spritesheet logic. Used to translate spritesheet information into json objects and vice versa
 public class CharacterSpriteSheetModel {
 
     private int rowCount;

@@ -3,7 +3,7 @@ package engineFiles.main.game;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+//Class used to keep track of typed keys
 public class KeyMap {
     private static Set<Integer> keys = new HashSet<>();
     private static boolean pressed = false;

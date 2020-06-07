@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 
+
+//Class containing the overworld logic of items. They are displayed as sprites
 public class ItemSprite extends Sprite {
     private Item item;
     private int dimMod;

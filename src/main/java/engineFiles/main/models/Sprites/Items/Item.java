@@ -1,5 +1,7 @@
 package engineFiles.main.models.Sprites.Items;
 
+
+//Class containing the item logic
 public class Item {
     private int healthMod = 0;
     private int speedMod = 0;

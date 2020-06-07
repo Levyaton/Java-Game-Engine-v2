@@ -1,5 +1,7 @@
 package engineFiles.ui.TileMapClasses;
 
+
+//Class containing tilemap export logic
 public class Export {
     String format;
 

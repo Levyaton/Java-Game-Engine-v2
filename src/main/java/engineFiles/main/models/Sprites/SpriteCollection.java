@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
+////Class containing a custom sprite array list, that has some modified methods, making it more useful for tracking used sprites
 public class SpriteCollection extends ArrayList<Sprite> {
 
     public SpriteCollection(JSONArray sprites){

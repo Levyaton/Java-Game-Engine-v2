@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+//Class containing generic static folder operations
 public class FolderOP {
 
     public static File[] getFiles(String dir) {

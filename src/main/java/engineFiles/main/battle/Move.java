@@ -4,7 +4,7 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Items.Item;
 
 
-//A class containing
+//A class containing the move logic used in battles
 public class Move {
 
   public Entity entity;

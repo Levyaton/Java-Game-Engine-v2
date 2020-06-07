@@ -21,6 +21,8 @@ import static engineFiles.main.models.WorldGenKeys.EntityKeys.*;
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.*;
 
+
+//Class containing all entity models. Used to translate the entities into json objects, and vice-versa
 public class EntitiesModel {
 
     private Gson gson = new Gson();

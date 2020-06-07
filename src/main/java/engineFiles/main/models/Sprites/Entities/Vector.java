@@ -1,5 +1,7 @@
 package engineFiles.main.models.Sprites.Entities;
 
+
+//Class containing the vector logic used for movement in the overworld by npc's
 public class Vector {
     int x;
     int y;

@@ -1,15 +1,13 @@
 package engineFiles.ui;
 
-import engineFiles.main.models.ColorerModel;
 import engineFiles.main.models.Sprites.Controlls;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
+//Class containing  the game settings
 public class Settings {
 
     public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;

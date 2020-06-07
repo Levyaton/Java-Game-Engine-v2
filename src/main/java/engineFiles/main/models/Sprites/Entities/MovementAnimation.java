@@ -3,6 +3,8 @@ package engineFiles.main.models.Sprites.Entities;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+
+//Class containing the overworld movement animation logic
 public class MovementAnimation {
 
     private List<BufferedImage> down;

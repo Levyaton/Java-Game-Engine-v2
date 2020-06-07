@@ -1,9 +1,10 @@
 package engineFiles.main.models.Sprites.Battle;
 
-import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 
+//Class containing the battle gui
 public class battleGUI {
 
   public static BufferedImage battleBackground, battleOptions, battleDialog, battleStats;

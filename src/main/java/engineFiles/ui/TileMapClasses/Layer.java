@@ -6,6 +6,8 @@ import engineFiles.main.models.Sprites.SpriteCollection;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+
+//Class containing sprite sheet layer logic
 public class Layer {
     int[] data;
     int height;

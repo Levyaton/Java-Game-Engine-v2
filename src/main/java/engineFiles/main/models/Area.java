@@ -14,6 +14,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
 
+
+//Class containing the logic of a game area. It tracks which sprites are being used in a given area
 public class Area {
 
     private SpriteCollection sprites = new SpriteCollection();

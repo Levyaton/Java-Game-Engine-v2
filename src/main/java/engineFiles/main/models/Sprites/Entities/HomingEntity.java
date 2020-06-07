@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.awt.*;
 import java.io.File;
 
+//Class containing the logic of homing entities. They foolow a given entity, if the entity is in a given range
 public class HomingEntity extends Entity {
     private Entity target;
     private int range;

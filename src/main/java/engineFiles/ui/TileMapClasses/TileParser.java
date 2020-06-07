@@ -5,6 +5,8 @@ import engineFiles.ui.FolderOP;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+
+//Class containing tile parsing logic
 public class TileParser {
 
     public static BufferedImage[] getTiles(File tileSheet){

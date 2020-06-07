@@ -13,6 +13,7 @@ import java.util.List;
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
 import static engineFiles.main.models.WorldGenKeys.OverworldItemsKeys.*;
 
+//Class containing the item model. Used to translate items to a json objects, and vice-versa
 public class ItemsModel {
 
     public static List<ItemSprite> generateOverworldItems(JsonArray items) {

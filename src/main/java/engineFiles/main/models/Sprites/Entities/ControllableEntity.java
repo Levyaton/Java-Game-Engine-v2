@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 
+
+//Class containing the logic of controllable entities. The entity is controlled by the user
 public class ControllableEntity extends Entity {
 
     public int getTEST_COUNTER() {

@@ -1,5 +1,8 @@
 package engineFiles.main.models;
 
+
+//Class containing static string keys, used to make making edits to strings easier, since they are, for the most part, here, and not in
+//random classes
 public class WorldGenKeys {
 
     public static String TILESET_PATH_KEY = "tilesetPath";

@@ -5,6 +5,7 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.FileInputStream;
 
+//Class containing font loading logic
 public class FontLoader {
   public void register(String path) {
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

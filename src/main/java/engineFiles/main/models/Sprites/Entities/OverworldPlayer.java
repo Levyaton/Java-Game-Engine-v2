@@ -4,7 +4,7 @@ import engineFiles.ui.Player;
 import org.json.JSONObject;
 
 import java.io.File;
-
+//Class containing the logic for the overworld player entity. 
 public class OverworldPlayer extends ControllableEntity {
 
     private Player player;
