@@ -70,8 +70,8 @@ public class Controller extends Component {
         if (!showItemsOption && (curIndex != 2)) {
           switch (baseOptions[curIndex]) {
             case "attack":
-              battlePanel.getBattleManager()
-                  .push(new Move(battlePanel.player, MoveEnum.ATTACK, battlePanel.player.getDamage()));
+              battlePanel.getBattleManager().push(new Move(battlePanel.player, MoveEnum.ATTACK,
+                  battlePanel.player.getDamage() + battlePanel.player.getBattleDamage()));
               break;
             case "dodge":
               battlePanel.getBattleManager().push(new Move(battlePanel.player, MoveEnum.DODGE));
@@ -80,12 +80,12 @@ public class Controller extends Component {
           curIndex = 0;
         } else if (showItemsOption) {
           showItemsOption = false;
-          curIndex = 0;
-          itemIndex = 0;
           Item item = inventory.get(curIndex);
           inventory.remove(item);
           battlePanel.getBattleManager().push(new Move(battlePanel.player, MoveEnum.ITEM, item));
           battlePanel.player.getPlayer().setInventory(inventory);
+          curIndex = 0;
+          itemIndex = 0;
         }
       }
     }
@@ -121,7 +121,7 @@ public class Controller extends Component {
     } else {
       g.setColor(Color.BLACK);
     }
-    g.drawString("items", 55, 390);
+    g.drawString("items -", 55, 390);
   }
 
   public void drawItemsOptions(Graphics g) {

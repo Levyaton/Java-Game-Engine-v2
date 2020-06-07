@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
 //Custom JFrame that contains the game panels and controls the displaying of information
 public class Window extends JFrame implements KeyListener, MouseListener, MouseMotionListener {
     int lastDrawX;
@@ -34,19 +33,21 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         this();
         panelManager = new PanelManager(model, this);
         add(panelManager.getCurrent());
+        panelManager.getCurrent().requestFocusInWindow();
         setVisible(true);
         setLocationRelativeTo(null);
     }
 
     public void setPanel(String name) {
-
         panelManager.setCurrent(name);
         remove(getContentPane());
         add(panelManager.getCurrent());
+        panelManager.getCurrent().requestFocusInWindow();
     }
 
     public void initBattle(OverworldPlayer player, Entity opponent) {
-        panelManager.initBattle(player, opponent);
+        // panelManager.initBattle(player, opponent);
+        panelManager.setCurrent("menu");
         remove(getContentPane());
         add(panelManager.getCurrent());
     }
@@ -109,7 +110,6 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     public void mouseMoved(MouseEvent e) {
         panelManager.getCurrent().mouseMoved(e);
     }
-
 
     private class GameCanvas extends JPanel {
 

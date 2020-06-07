@@ -1,6 +1,12 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.ui.Resolution;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import engineFiles.ui.components.Button;
 import engineFiles.ui.components.Component;
 
@@ -8,7 +14,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
 
 //Class that is used to get the information needed to display for the main menu
 public class MenuPanel extends GamePanel {
@@ -38,6 +43,40 @@ public class MenuPanel extends GamePanel {
   }
 
   @Override
+  public void update() {
+  }
+
+  @Override
+  public void keyTyped(KeyEvent e) {
+
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+
+  }
+
+  @Override
+  public void mouseClicked(MouseEvent e) {
+    System.out.println("p2");
+  }
+
+  @Override
+  public void mouseEntered(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseExited(MouseEvent e) {
+
+  }
+
+  @Override
   public void mousePressed(MouseEvent e) {
     clicked = true;
   }
@@ -49,6 +88,7 @@ public class MenuPanel extends GamePanel {
 
   @Override
   public void mouseMoved(MouseEvent e) {
+    System.out.println("menu");
     mouseX = e.getX();
     mouseY = e.getY();
     System.out.println("menu");
@@ -57,9 +97,5 @@ public class MenuPanel extends GamePanel {
   @Override
   public void mouseDragged(MouseEvent e) {
 
-  }
-
-  @Override
-  public void update() {
   }
 }

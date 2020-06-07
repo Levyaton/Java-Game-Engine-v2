@@ -132,7 +132,6 @@ public class EntitiesModel {
 
         Coordinates coordinates = gson.fromJson(json.get(COORDINATES_KEY), Coordinates.class);
         String name = json.get(NAME_KEY).getAsString();
-        System.out.println(name + "has a SPEED COUTNER of " + speedCounter);
         CharacterSpriteSheetModel characterSpriteSheetModel = new CharacterSpriteSheetModel(
                 json.get(CHARACTER_SPRITE_SHEET_MODEL_KEY).getAsJsonObject());
         BufferedImage sheet = ImageIO.read(new File(characterSpriteSheetModel.getSheetPath()));

@@ -20,25 +20,14 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 //Class that is used to get the information needed to display for the overworld
 public class OverworldPanel extends GamePanel {
-
-    private List<Integer> up = Settings.controlls.getUp();
-    private List<Integer> down = Settings.controlls.getDown();
-    private List<Integer> left = Settings.controlls.getLeft();
-    private List<Integer> right = Settings.controlls.getRight();
 
     int SPACE_MOD1 = 100;
     int SPACE_MOD2 = 50;
 
     ColorSwitchGui colorSwitchGui;
     private WorldGenModel worldGenModel;
-
-    private int frameCount = 0;
-    private Image dbImage;
-    private Graphics dbGraphics;
 
     private boolean paused = false;
 
@@ -52,7 +41,7 @@ public class OverworldPanel extends GamePanel {
         this.worldGenModel = worldGenModel;
     }
 
-    public OverworldPanel(String panelName, Window window,boolean isRecolor, Area area, List<Entity> entities) {
+    public OverworldPanel(String panelName, Window window, boolean isRecolor, Area area, List<Entity> entities) {
         super(area, entities, panelName, window);
         // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
@@ -77,7 +66,7 @@ public class OverworldPanel extends GamePanel {
     }
 
     private void saveGame() {
-        //System.out.println("Saving game");
+        // System.out.println("Saving game");
         this.worldGenModel.getColorerModel()
                 .setRecolor(Boolean.getBoolean(this.colorSwitchGui.getColorChangeButton().getText()));
         SaveGame.save(this.worldGenModel);
@@ -103,8 +92,6 @@ public class OverworldPanel extends GamePanel {
             Rectangle rect1 = new Rectangle(player.getCoord().getX() - offest.getX() - 10,
                     player.getCoord().getY() - offest.getY() - 10, player.getCurrentWidth() + 20,
                     player.getCurrentHeight() + 20);
-            System.out.println(rect1);
-            System.out.println(area.getSpritesItems());
             for (ItemSprite i : area.getSpritesItems()) {
                 Rectangle rect2 = new Rectangle(i.getCoord().getX() - offest.getX() - this.SPACE_MOD2,
                         i.getCoord().getY() - offest.getY() - this.SPACE_MOD2, i.getCurrentWidth(),
@@ -131,7 +118,6 @@ public class OverworldPanel extends GamePanel {
         Image offscreen = null;
 
         // create the offscreen buffer and associated Graphics
-        // System.out.println(area.getHeight());
         Dimension dimension = new Dimension(offest.getBounds().width, offest.getBounds().height);
         offscreen = createImage(dimension.width, dimension.height);
         offgc = offscreen.getGraphics();
@@ -241,8 +227,6 @@ public class OverworldPanel extends GamePanel {
             offset_y = player.getCoord().getY() - height / 2;
         }
 
-        // System.out.println(width);
-
         return new Coordinates(offset_X, offset_y, width, height);
     }
 
@@ -268,17 +252,37 @@ public class OverworldPanel extends GamePanel {
 
     }
 
+    public void removeEntity(Entity removedEntity) {
+        entities.remove(removedEntity);
+    }
+
     @Override
-    public void mouseMoved(MouseEvent e) {
-        System.out.println("Overwold");
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
 
-    }
-
-    public void removeEntity(Entity removedEntity) {
-        entities.remove(removedEntity);
     }
 }

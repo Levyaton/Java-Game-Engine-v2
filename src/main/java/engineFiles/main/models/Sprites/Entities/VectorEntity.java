@@ -62,7 +62,6 @@ public class VectorEntity extends Entity {
             }
         }
 
-        // System.out.println(vectorCounter);
         this.vectorCounter++;
 
         vectorStateCheck(currentVector.startWithX, currentVector.getAbsX(), currentVector.getAbsY());

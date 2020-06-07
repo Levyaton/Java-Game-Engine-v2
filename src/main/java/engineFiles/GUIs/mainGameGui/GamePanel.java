@@ -31,12 +31,10 @@ public abstract class GamePanel extends JPanel {
     public GamePanel(String panelName, Window window) {
         this.window = window;
     }
-    // ADD CONSTRUCTORS IF NEEDED
 
     public abstract Image getRenderGraphics();
 
     public abstract void update();
-
 
     public Area getArea() {
         return area;
@@ -58,28 +56,23 @@ public abstract class GamePanel extends JPanel {
         return this.jComponents;
     }
 
-
-
     public void mousePressed(MouseEvent e) {
 
     }
-
 
     public void mouseReleased(MouseEvent e) {
 
     }
 
-
     public void mouseEntered(MouseEvent e) {
 
     }
-
 
     public void mouseExited(MouseEvent e) {
 
     }
 
-    public void mouseMoved(MouseEvent e){
+    public void mouseMoved(MouseEvent e) {
 
     }
 
@@ -91,13 +84,13 @@ public abstract class GamePanel extends JPanel {
 
     }
 
-    public  void keyTyped(KeyEvent e){}
+    public void keyTyped(KeyEvent e) {
+    }
 
+    public void keyPressed(KeyEvent e) {
+    }
 
-    public  void keyPressed(KeyEvent e){}
-
-
-    public  void keyReleased(KeyEvent e){}
-
+    public void keyReleased(KeyEvent e) {
+    }
 
 }
