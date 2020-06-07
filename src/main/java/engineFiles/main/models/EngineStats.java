@@ -45,7 +45,6 @@ public class EngineStats {
                 frameTime = 0;
                 fps = frames;
                 frames = 0;
-
                 // System.out.println("FPS: " + fps);
             }
         }

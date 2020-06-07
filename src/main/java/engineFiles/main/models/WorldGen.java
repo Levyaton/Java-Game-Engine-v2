@@ -31,7 +31,6 @@ public class WorldGen {
             EntitiesModel em = new EntitiesModel(worldGen.get(ENTITY_MODELS_KEY).getAsJsonObject());
             ColorerModel cm = new ColorerModel(worldGen.get(COLORER_MODELS_KEY).getAsJsonObject());
             if (cm.isRecolor()) {
-                // System.out.println("Recolor confirmed");
                 RecolorV3.recolorAndSave(cm);
             }
             TileMap tm = new TileMap(worldGen.get(TILESET_KEY).getAsJsonObject(), tilesetPath);

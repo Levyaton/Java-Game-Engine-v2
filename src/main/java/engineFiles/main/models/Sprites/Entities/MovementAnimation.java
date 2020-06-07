@@ -113,7 +113,6 @@ public class MovementAnimation {
             case 3:
                 return this.right;
         }
-        // System.out.println(movementIndex);
         return null;
     }
 

@@ -32,12 +32,13 @@ public class BattlePanel extends GamePanel {
     super(panelName, window);
     battleGUI.loadResources();
 
-
     battleManager = new BattleManager(this);
     componentStack = new Stack<Component>();
   }
 
   public void setOpponents(OverworldPlayer player, Entity opponent) {
+    controller = new Controller(this);
+
     this.player = player;
     this.opponent = opponent;
     controller = new Controller(this);
@@ -66,11 +67,6 @@ public class BattlePanel extends GamePanel {
   }
 
   @Override
-  public void mouseDragged(MouseEvent e) {
-
-  }
-
-  @Override
   public Image getRenderGraphics() {
     Image img = createImage(Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT);
     Graphics g = img.getGraphics();
@@ -91,18 +87,23 @@ public class BattlePanel extends GamePanel {
     if (!gameEnded()) {
       battleManager.update();
     } else if (inBattle) {
-      inBattle = false;
-      componentStack.push(new Dialog("Leaving battle...", () -> {
-        window.getPanelManager().getOverWorldPanel().removeEntity(opponent);
-        window.setPanel("overworld");
-      }));
+      player.setBattleDamage(0);
+      opponent.setBattleDamage(0);
       if (inBattle && opponent.getCurHealth() < 1) {
+        componentStack.push(new Dialog("Leaving battle...", () -> {
+          window.getPanelManager().getOverWorldPanel().removeEntity(opponent);
+          window.setPanel("overworld");
+        }));
         pushDialog("VICTORY!");
         pushDialog(opponent.getCategoryName() + " was defeated");
       } else if (player.getCurHealth() < 1) {
+        componentStack.push(new Dialog("Leaving battle...", () -> {
+          window.setPanel("gameover");
+        }));
         pushDialog("DEFEAT!");
         pushDialog(player.getCategoryName() + " was defeated");
       }
+      inBattle = false;
     }
   }
 
@@ -152,5 +153,45 @@ public class BattlePanel extends GamePanel {
 
   public BattleManager getBattleManager() {
     return battleManager;
+  }
+
+  @Override
+  public void keyTyped(KeyEvent e) {
+
+  }
+
+  @Override
+  public void mouseClicked(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mousePressed(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseReleased(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseEntered(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseExited(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseMoved(MouseEvent e) {
+
+  }
+
+  @Override
+  public void mouseDragged(MouseEvent e) {
+
   }
 }

@@ -21,6 +21,7 @@ public abstract class Entity extends Sprite {
     protected int health;
     protected int curHealth;
     protected int damage;
+    protected int battleDamage = 0;
     protected int speedCounter;
     protected int currentSpeedCount = 0;
     protected int uniqueIndex;
@@ -53,17 +54,11 @@ public abstract class Entity extends Sprite {
     @Override
     public BufferedImage getImg() {
         int movementIndex = getMovementIndex();
-        // System.out.println(movementIndex);
-        // System.out.println("["+ this.getCoord().getX() + "," + getCoord().getY() +
-        // "]");
         return this.animation.move(movementIndex, still);
-        // return this.animation.getDown().get(0);
     }
 
     protected int getMovementIndex() {
         int chosenMovement = currentMovement;
-        // System.out.println("Movement is " + chosenMovement);
-        // movementIndex = 0;
         if (this.controlls.getUp().contains(chosenMovement)) {
             movementIndex = 1;
         } else if (this.controlls.getLeft().contains(chosenMovement)) {
@@ -73,7 +68,6 @@ public abstract class Entity extends Sprite {
         } else if (this.controlls.getDown().contains(chosenMovement)) {
             movementIndex = 0;
         }
-        // lastMovementIndex = movementIndex;
         return movementIndex;
     }
 
@@ -133,7 +127,7 @@ public abstract class Entity extends Sprite {
     }
 
     public void setCurHealth(int curHealth) {
-        if (curHealth >= this.curHealth) {
+        if (curHealth >= this.health) {
             this.curHealth = health;
         } else {
             this.curHealth = curHealth;
@@ -146,6 +140,14 @@ public abstract class Entity extends Sprite {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getBattleDamage() {
+        return battleDamage;
+    }
+
+    public void setBattleDamage(int battleDamage) {
+        this.battleDamage = battleDamage;
     }
 
     protected Controlls controllsInit() {

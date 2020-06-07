@@ -43,7 +43,6 @@ public class SpriteSheetParser {
                         y * sheet.getSpriteHeight() + (y_mod * sheet.getSpriteHeight()), sheet.getSpriteWidth(),
                         sheet.getSpriteHeight());
                 row.add(result);
-                // System.out.println(id);
                 try {
                     ImageIO.write(result, "png",
                             new File("src/main/java/resources/gameFiles/models/sprites/" + id + y + x + ".png"));
