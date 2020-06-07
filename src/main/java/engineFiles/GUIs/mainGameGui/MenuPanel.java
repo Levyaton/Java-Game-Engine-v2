@@ -51,6 +51,7 @@ public class MenuPanel extends GamePanel {
   public void mouseMoved(MouseEvent e) {
     mouseX = e.getX();
     mouseY = e.getY();
+    System.out.println("menu");
   }
 
   @Override

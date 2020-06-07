@@ -5,7 +5,7 @@ public class Item {
     private int speedMod = 0;
     private int attackMod = 0;
     private int cost = 0;
-    private String description = "";
+    private String description = "default";
 
     private String name;
 
@@ -80,5 +80,9 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

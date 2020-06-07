@@ -269,6 +269,11 @@ public class OverworldPanel extends GamePanel {
     }
 
     @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println("Overwold");
+    }
+
+    @Override
     public void mouseDragged(MouseEvent e) {
 
     }
