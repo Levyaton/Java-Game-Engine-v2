@@ -79,12 +79,12 @@ public class Controller extends Component {
           curIndex = 0;
         } else if (showItemsOption) {
           showItemsOption = false;
-          curIndex = 0;
-          itemIndex = 0;
           Item item = inventory.get(curIndex);
           inventory.remove(item);
           battlePanel.getBattleManager().push(new Move(battlePanel.player, MoveEnum.ITEM, item));
           battlePanel.player.getPlayer().setInventory(inventory);
+          curIndex = 0;
+          itemIndex = 0;
         }
       }
     }

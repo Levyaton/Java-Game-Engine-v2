@@ -34,9 +34,11 @@ public class TileMap {
     Layer[] layers;
     EditorSettings editorsettings;
     JsonObject json;
-    //private String PATH = "src/main/java/resources/playerGameFiles/sprites/tilesets/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
+    // private String PATH =
+    // "src/main/java/resources/playerGameFiles/sprites/tilesets/";//"src/main/java/resources/playerGameFiles/sprites/tilesets/";
     private String tilesetPath;
-    public TileMap(){
+
+    public TileMap() {
 
     }
 
@@ -62,18 +64,15 @@ public class TileMap {
 
         this.infinite = tm.getIsInfinite();
 
-
         Gson eventGson = new Gson();
-        //Type eventsType = new TypeToken<List<Event>>(){}.getType();
+        // Type eventsType = new TypeToken<List<Event>>(){}.getType();
 
         JsonObject obj = json.getAsJsonObject();
-        //Layer[] eventList = eventGson.fromJson(obj.get("layers"), Layer[].class);
-        this.layers =   gson.fromJson(json.getAsJsonArray(LAYERS_KEY), Layer[].class);
+        // Layer[] eventList = eventGson.fromJson(obj.get("layers"), Layer[].class);
+        this.layers = gson.fromJson(json.getAsJsonArray(LAYERS_KEY), Layer[].class);
         this.tilesets = gson.fromJson(json.get(TILE_SETS_KEY), Tileset[].class);
         this.editorsettings = gson.fromJson(json.get(EDITOR_SETTINGS_KEY), EditorSettings.class);
     }
-
-
 
     public int getCompressionlevel() {
         return compressionlevel;
@@ -211,16 +210,14 @@ public class TileMap {
         this.editorsettings = editorsettings;
     }
 
-    public Area getArea(){
+    public Area getArea() {
         SpriteCollection s = new SpriteCollection();
-        //MAKE SURE THE SOURCE IS CORRECT AND COMPATIBLE WITH CODE
+        // MAKE SURE THE SOURCE IS CORRECT AND COMPATIBLE WITH CODE
         File areaTileset = new File(tilesetPath + tilesets[0].source);
-        for (Layer l: layers) {
-            //System.out.println(tilesetPath);
+        for (Layer l : layers) {
             s.addAll(l.getSpriteCollection(areaTileset));
-            //System.out.println(l.name);
         }
-       return new Area(s, areaTileset.getName(),this.width, this.height);
+        return new Area(s, areaTileset.getName(), this.width, this.height);
     }
 
     public JsonObject getJson() {

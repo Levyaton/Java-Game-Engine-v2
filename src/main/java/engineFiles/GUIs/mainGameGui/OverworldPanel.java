@@ -21,20 +21,11 @@ import java.util.List;
 
 public class OverworldPanel extends GamePanel {
 
-    private List<Integer> up = Settings.controlls.getUp();
-    private List<Integer> down = Settings.controlls.getDown();
-    private List<Integer> left = Settings.controlls.getLeft();
-    private List<Integer> right = Settings.controlls.getRight();
-
     int SPACE_MOD1 = 100;
     int SPACE_MOD2 = 50;
 
     ColorSwitchGui colorSwitchGui;
     private WorldGenModel worldGenModel;
-
-    private int frameCount = 0;
-    private Image dbImage;
-    private Graphics dbGraphics;
 
     private boolean paused = false;
 
@@ -89,7 +80,6 @@ public class OverworldPanel extends GamePanel {
             Rectangle rect1 = new Rectangle(player.getCoord().getX() - offest.getX() - 10,
                     player.getCoord().getY() - offest.getY() - 10, player.getCurrentWidth() + 20,
                     player.getCurrentHeight() + 20);
-            System.out.println(rect1);
 
             for (ItemSprite i : area.getSpritesItems()) {
                 Rectangle rect2 = new Rectangle(i.getCoord().getX() - offest.getX() - this.SPACE_MOD2,
@@ -117,7 +107,6 @@ public class OverworldPanel extends GamePanel {
         Image offscreen = null;
 
         // create the offscreen buffer and associated Graphics
-        // System.out.println(area.getHeight());
         Dimension dimension = new Dimension(offest.getBounds().width, offest.getBounds().height);
         offscreen = createImage(dimension.width, dimension.height);
         offgc = offscreen.getGraphics();
@@ -228,8 +217,6 @@ public class OverworldPanel extends GamePanel {
             offset_y = player.getCoord().getY() - height / 2;
         }
 
-        // System.out.println(width);
-
         return new Coordinates(offset_X, offset_y, width, height);
     }
 
@@ -255,12 +242,42 @@ public class OverworldPanel extends GamePanel {
 
     }
 
+    public void removeEntity(Entity removedEntity) {
+        entities.remove(removedEntity);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
     @Override
     public void mouseDragged(MouseEvent e) {
 
     }
 
-    public void removeEntity(Entity removedEntity) {
-        entities.remove(removedEntity);
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println("overworld");
     }
 }

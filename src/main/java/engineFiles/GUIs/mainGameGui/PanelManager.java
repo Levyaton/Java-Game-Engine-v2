@@ -10,12 +10,13 @@ public class PanelManager {
     private MenuPanel menu;
     private OverworldPanel overworld;
     private BattlePanel battle;
+    private GameOverPanel gameover;
     private WorldGenModel model;
-    private Window window;
 
     public PanelManager(WorldGenModel model, Window window) {
         menu = new MenuPanel("menu", window);
         battle = new BattlePanel("battle", window);
+        gameover = new GameOverPanel("gameover", window);
         overworld = new OverworldPanel("overworld", window, model);
         current = menu;
     }
@@ -31,6 +32,9 @@ public class PanelManager {
                 break;
             case "overworld":
                 current = overworld;
+                break;
+            case "gameover":
+                current = gameover;
                 break;
         }
     }

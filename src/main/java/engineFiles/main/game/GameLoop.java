@@ -17,7 +17,6 @@ public class GameLoop implements Runnable {
         EngineStats.running = true;
         while (EngineStats.running) {
 
-            // System.out.println("hey");
             // Catches up on the missed updates, however many times is needed
             EngineStats.catchUp();
 
@@ -25,7 +24,6 @@ public class GameLoop implements Runnable {
                 frame.redraw();
                 EngineStats.frames++;
             } else {
-                // System.out.println("SLEEP!!!!");
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {

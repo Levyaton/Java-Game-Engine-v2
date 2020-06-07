@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-
 public class Sprite implements Comparable {
     protected File ogFile;
     protected BufferedImage img;
@@ -30,9 +29,10 @@ public class Sprite implements Comparable {
     protected int id;
     protected String categoryName = "tile";
 
-    public Sprite(){
+    public Sprite() {
 
     }
+
     public Sprite(File file) {
         this.ogFile = file;
         initFromOGFile();
@@ -43,7 +43,8 @@ public class Sprite implements Comparable {
         json = updateJSON();
     }
 
-    public Sprite(File file, BufferedImage img, int dimMod, int x, int y, int z,int blockID, int width, int height, boolean solid, boolean movable) {
+    public Sprite(File file, BufferedImage img, int dimMod, int x, int y, int z, int blockID, int width, int height,
+            boolean solid, boolean movable) {
         this.ogFile = file;
         this.img = img;
         this.ogImg = img;
@@ -51,9 +52,9 @@ public class Sprite implements Comparable {
         this.name = String.valueOf(blockID);
         this.defaultHeight = height;
         this.defaultWidth = width;
-        this.currentHeight = height*dimMod;
-        this.currentWidth = width*dimMod;
-        this.coord = new Coordinates(x * width, y * height, z, width*dimMod, height*dimMod);
+        this.currentHeight = height * dimMod;
+        this.currentWidth = width * dimMod;
+        this.coord = new Coordinates(x * width, y * height, z, width * dimMod, height * dimMod);
         this.ogCoord = this.coord;
         json = updateJSON();
         this.solid = solid;
@@ -70,13 +71,11 @@ public class Sprite implements Comparable {
         json = updateJSON();
     }
 
-
     public Sprite(JSONObject json) {
         String path = json.get("Path").toString();
-        //path = path.substring(2,path.length()-2);
+        // path = path.substring(2,path.length()-2);
         this.ogFile = new File(path);
         initFromOGFile();
-        // System.out.println(json.get("Height"));
         currentHeight = json.getInt("Height");
         currentWidth = json.getInt("Width");
         int x = json.getInt("XAxis");
@@ -107,7 +106,7 @@ public class Sprite implements Comparable {
         jsonObject.append("YAxis", getCoord().getY());
         jsonObject.append("ZAxis", getCoord().getZ());
         jsonObject.append("Path", getPath());
-        jsonObject.append("Solid",solid);
+        jsonObject.append("Solid", solid);
         jsonObject.append("Movable", this.movable);
         return jsonObject;
     }
@@ -200,17 +199,19 @@ public class Sprite implements Comparable {
         return currentHeight;
     }
 
-    public void resizeImg(double mod){
-        this.currentWidth =  (int)(currentWidth * mod);
-        this.currentHeight = (int)(currentHeight * mod);
-        this.img = Scalr.resize( this.img, Scalr.Method.QUALITY, Scalr.Mode.FIT_TO_WIDTH, currentWidth, currentHeight, Scalr.OP_ANTIALIAS);
+    public void resizeImg(double mod) {
+        this.currentWidth = (int) (currentWidth * mod);
+        this.currentHeight = (int) (currentHeight * mod);
+        this.img = Scalr.resize(this.img, Scalr.Method.QUALITY, Scalr.Mode.FIT_TO_WIDTH, currentWidth, currentHeight,
+                Scalr.OP_ANTIALIAS);
     }
-    public void transformImg(int width, int height){
-        //Cannot deform image, fix later
+
+    public void transformImg(int width, int height) {
+        // Cannot deform image, fix later
         Image image = this.img;
         this.currentWidth = width;
         this.currentHeight = height;
-        image = image.getScaledInstance(width, height,Image.SCALE_DEFAULT);
+        image = image.getScaledInstance(width, height, Image.SCALE_DEFAULT);
         BufferedImage temp = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = temp.createGraphics();
         g.drawImage(image, 0, 0, null);
@@ -221,8 +222,6 @@ public class Sprite implements Comparable {
     public int getCurrentWidth() {
         return currentWidth;
     }
-
-
 
     public int getDefaultHeight() {
         return defaultHeight;
@@ -264,16 +263,14 @@ public class Sprite implements Comparable {
         this.solid = solid;
     }
 
-
-    //USE ONLY FOR COMPARING Z VALUES!!!!!!
+    // USE ONLY FOR COMPARING Z VALUES!!!!!!
     @Override
     public int compareTo(Object o) {
         int compareZOrder = ((Sprite) o).getCoord().getZ();
         return this.getCoord().getZ() - compareZOrder;
     }
 
-    public boolean onCollision(Sprite s){
-        System.out.println(this.name + " collided with " + s.getName());
+    public boolean onCollision(Sprite s) {
         return true;
     }
 

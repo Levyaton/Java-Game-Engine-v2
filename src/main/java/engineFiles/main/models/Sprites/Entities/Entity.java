@@ -54,17 +54,11 @@ public abstract class Entity extends Sprite {
     @Override
     public BufferedImage getImg() {
         int movementIndex = getMovementIndex();
-        // System.out.println(movementIndex);
-        // System.out.println("["+ this.getCoord().getX() + "," + getCoord().getY() +
-        // "]");
         return this.animation.move(movementIndex, still);
-        // return this.animation.getDown().get(0);
     }
 
     protected int getMovementIndex() {
         int chosenMovement = currentMovement;
-        // System.out.println("Movement is " + chosenMovement);
-        // movementIndex = 0;
         if (this.controlls.getUp().contains(chosenMovement)) {
             movementIndex = 1;
         } else if (this.controlls.getLeft().contains(chosenMovement)) {
@@ -74,7 +68,6 @@ public abstract class Entity extends Sprite {
         } else if (this.controlls.getDown().contains(chosenMovement)) {
             movementIndex = 0;
         }
-        // lastMovementIndex = movementIndex;
         return movementIndex;
     }
 
@@ -134,7 +127,7 @@ public abstract class Entity extends Sprite {
     }
 
     public void setCurHealth(int curHealth) {
-        if (curHealth >= this.curHealth) {
+        if (curHealth >= this.health) {
             this.curHealth = health;
         } else {
             this.curHealth = curHealth;

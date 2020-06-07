@@ -28,20 +28,22 @@ public class Window extends JFrame {
         this();
         panelManager = new PanelManager(model, this);
         add(panelManager.getCurrent());
-        panelManager.getCurrent().requestFocus();
+        panelManager.getCurrent().setRequestFocusEnabled(true);
         setVisible(true);
         setLocationRelativeTo(null);
     }
 
     public void setPanel(String name) {
+        panelManager.getCurrent().setRequestFocusEnabled(false);
         panelManager.setCurrent(name);
         remove(getContentPane());
         add(panelManager.getCurrent());
-        panelManager.getCurrent().requestFocus();
+        panelManager.getCurrent().setRequestFocusEnabled(true);
     }
 
     public void initBattle(OverworldPlayer player, Entity opponent) {
-        panelManager.initBattle(player, opponent);
+        // panelManager.initBattle(player, opponent);
+        panelManager.setCurrent("menu");
         remove(getContentPane());
         add(panelManager.getCurrent());
         panelManager.getCurrent().requestFocus();
