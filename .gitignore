@@ -80,3 +80,5 @@ local.properties
 /log/
 project.iml
 levymaty.iml
+.DS_STORE
+.vscode/
