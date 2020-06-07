@@ -33,7 +33,6 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         this();
         panelManager = new PanelManager(model, this);
         add(panelManager.getCurrent());
-        panelManager.getCurrent().requestFocusInWindow();
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -42,7 +41,6 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         panelManager.setCurrent(name);
         remove(getContentPane());
         add(panelManager.getCurrent());
-        panelManager.getCurrent().requestFocusInWindow();
     }
 
     public void initBattle(OverworldPlayer player, Entity opponent) {

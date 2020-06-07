@@ -256,6 +256,12 @@ public class OverworldPanel extends GamePanel {
         entities.remove(removedEntity);
     }
 
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println("overworld");
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
