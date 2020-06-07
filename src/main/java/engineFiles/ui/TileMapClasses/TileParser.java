@@ -5,11 +5,14 @@ import engineFiles.ui.FolderOP;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-
 //Class containing tile parsing logic
 public class TileParser {
 
-    public static BufferedImage[] getTiles(File tileSheet){
+    /**
+     * @param tileSheet
+     * @return BufferedImage[]
+     */
+    public static BufferedImage[] getTiles(File tileSheet) {
         BufferedImage sheet = FolderOP.getImage(tileSheet);
         System.out.println(tileSheet);
         int width = sheet.getWidth() / 16;
@@ -24,8 +27,5 @@ public class TileParser {
         }
         return tiles;
     }
-
-
-
 
 }

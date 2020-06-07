@@ -22,38 +22,65 @@ public class WorldGenModel {
         area.addItems(items);
     }
 
+    /**
+     * @return TileMap
+     */
     public TileMap getTileMap() {
         return tileMap;
     }
 
+    /**
+     * @return ColorerModel
+     */
     public ColorerModel getColorerModel() {
         return colorerModel;
     }
 
+    /**
+     * @return EntitiesModel
+     */
     public EntitiesModel getEntitiesModel() {
         return entitiesModel;
     }
 
+    /**
+     * @return String
+     */
     public String getTilesetPath() {
         return tilesetPath;
     }
 
+    /**
+     * @param tileMap
+     */
     public void setTm(TileMap tileMap) {
         this.tileMap = tileMap;
     }
 
+    /**
+     * @param colorerModel
+     */
     public void setColorerModel(ColorerModel colorerModel) {
         this.colorerModel = colorerModel;
     }
 
+    /**
+     * @param entitiesModel
+     */
     public void setEntitiesModel(EntitiesModel entitiesModel) {
         this.entitiesModel = entitiesModel;
     }
 
+    /**
+     * @param tilesetPath
+     */
     public void setTilesetPath(String tilesetPath) {
         this.tilesetPath = tilesetPath;
     }
 
+    /**
+     * @return Area
+     */
     public Area getArea() {
         return area;
     }

@@ -3,7 +3,6 @@ package engineFiles.main.models.Sprites;
 import java.util.ArrayList;
 import java.util.List;
 
-
 //Class containing the games overworld controlls
 public class Controlls {
     private List<Integer> up;
@@ -31,50 +30,83 @@ public class Controlls {
         this.gameSave = gameSave;
     }
 
+    /**
+     * @return List<Integer>
+     */
     // GETTERS
 
     public List<Integer> getUp() {
         return up;
     }
 
+    /**
+     * @param up
+     */
     public void setUp(List<Integer> up) {
         this.up = up;
     }
 
+    /**
+     * @return List<Integer>
+     */
     public List<Integer> getDown() {
         return down;
     }
 
+    /**
+     * @param down
+     */
     public void setDown(List<Integer> down) {
         this.down = down;
     }
 
+    /**
+     * @return List<Integer>
+     */
     // SETTERS
 
     public List<Integer> getLeft() {
         return left;
     }
 
+    /**
+     * @param left
+     */
     public void List(ArrayList<Integer> left) {
         this.left = left;
     }
 
+    /**
+     * @return List<Integer>
+     */
     public List<Integer> getRight() {
         return right;
     }
 
+    /**
+     * @param right
+     */
     public void setRight(ArrayList<Integer> right) {
         this.right = right;
     }
 
+    /**
+     * @return int
+     */
     public int getInteraction() {
         return interaction;
     }
 
+    /**
+     * @param interaction
+     */
     public void setInteraction(int interaction) {
         this.interaction = interaction;
     }
 
+    /**
+     * @return int
+     */
     public int getGameSave() {
         return gameSave;
     }

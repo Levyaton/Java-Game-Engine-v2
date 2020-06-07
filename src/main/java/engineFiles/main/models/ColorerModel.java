@@ -16,17 +16,15 @@ public class ColorerModel {
     private int greenShift;
     private int blueShift;
 
-
-    public ColorerModel(JsonObject json){
+    public ColorerModel(JsonObject json) {
         tilesetInputDir = json.get(TILESET_INPUT_DIR_KEY).getAsString();
         tilesetOutputDir = json.get(TILESET_OUTPUT_DIR_KEY).getAsString();
         recolor = json.get(RECOLOR_KEY).getAsBoolean();
-        if(json.has(RED_SHIFT_KEY) && json.has(GREEN_SHIFT_KEY) && json.has(BLUE_SHIFT_KEY) && recolor){
+        if (json.has(RED_SHIFT_KEY) && json.has(GREEN_SHIFT_KEY) && json.has(BLUE_SHIFT_KEY) && recolor) {
             this.redShift = json.get(RED_SHIFT_KEY).getAsInt();
             this.greenShift = json.get(GREEN_SHIFT_KEY).getAsInt();
             this.blueShift = json.get(BLUE_SHIFT_KEY).getAsInt();
-        }
-        else{
+        } else {
             this.redShift = new Random().nextInt(255);
             this.greenShift = new Random().nextInt(255);
             this.blueShift = new Random().nextInt(255);
@@ -35,14 +33,14 @@ public class ColorerModel {
         updateColorerSettings();
     }
 
-    public void updateColorerSettings(){
+    public void updateColorerSettings() {
         Settings.ColorerSettings.recolor = this.recolor;
         Settings.ColorerSettings.redShift = this.redShift;
         Settings.ColorerSettings.greenShift = this.greenShift;
         Settings.ColorerSettings.blueShift = this.blueShift;
     }
 
-    public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor){
+    public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor) {
         this.tilesetInputDir = tilesetInputDir;
         this.tilesetOutputDir = tilesetOutputDir;
         this.recolor = recolor;
@@ -52,39 +50,61 @@ public class ColorerModel {
         updateColorerSettings();
     }
 
-    public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor, int redShift, int greenShift, int blueShift){
-        this(tilesetInputDir,tilesetOutputDir,recolor);
+    public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor, int redShift, int greenShift,
+            int blueShift) {
+        this(tilesetInputDir, tilesetOutputDir, recolor);
         this.redShift = redShift;
         this.greenShift = greenShift;
         this.blueShift = blueShift;
         updateColorerSettings();
     }
 
+    /**
+     * @return String
+     */
     public String getTilesetInputDir() {
         return tilesetInputDir;
     }
 
+    /**
+     * @return String
+     */
     public String getTilesetOutputDir() {
         return tilesetOutputDir;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean isRecolor() {
         return recolor;
     }
 
+    /**
+     * @return int
+     */
     public int getRedShift() {
         return redShift;
     }
 
+    /**
+     * @return int
+     */
     public int getGreenShift() {
         return greenShift;
     }
 
+    /**
+     * @return int
+     */
     public int getBlueShift() {
         return blueShift;
     }
 
-    public JsonObject getColorerModelJson(){
+    /**
+     * @return JsonObject
+     */
+    public JsonObject getColorerModelJson() {
         JsonObject object = new JsonObject();
         object.addProperty(TILESET_INPUT_DIR_KEY, tilesetInputDir);
         object.addProperty(TILESET_OUTPUT_DIR_KEY, tilesetOutputDir);
@@ -95,6 +115,9 @@ public class ColorerModel {
         return object;
     }
 
+    /**
+     * @param recolor
+     */
     public void setRecolor(boolean recolor) {
         this.recolor = recolor;
     }

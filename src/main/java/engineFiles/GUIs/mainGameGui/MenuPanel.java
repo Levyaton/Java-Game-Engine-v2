@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import engineFiles.ui.components.Button;
 import engineFiles.ui.components.Component;
 
-//Class that is used to get the information needed to display for the main menu
+// Menu screen for game start
 public class MenuPanel extends GamePanel {
 
   private boolean clicked = false;
@@ -23,6 +23,9 @@ public class MenuPanel extends GamePanel {
         () -> window.setPanel("overworld")));
   }
 
+  /**
+   * @return Image
+   */
   @Override
   public Image getRenderGraphics() {
     Image img = createImage(Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT);
@@ -39,16 +42,25 @@ public class MenuPanel extends GamePanel {
   public void update() {
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mousePressed(MouseEvent e) {
     clicked = true;
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mouseReleased(MouseEvent e) {
     clicked = false;
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mouseMoved(MouseEvent e) {
     mouseX = e.getX();

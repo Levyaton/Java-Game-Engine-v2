@@ -7,7 +7,6 @@ import engineFiles.ui.components.CallbackFunc;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-
 //A class containing methods of displaying text
 public class Dialog extends Component {
 
@@ -27,6 +26,9 @@ public class Dialog extends Component {
     }
   }
 
+  /**
+   * @param g
+   */
   @Override
   public void render(Graphics g) {
     g.drawImage(battleGUI.battleDialog, 170, 400, 450, 100, null);

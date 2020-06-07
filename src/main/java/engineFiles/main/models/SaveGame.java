@@ -14,6 +14,9 @@ import static engineFiles.main.models.WorldGenKeys.*;
 // which are then translated into json objects and stored into a file
 public class SaveGame {
 
+    /**
+     * @param worldGenModel
+     */
     public static void save(WorldGenModel worldGenModel) {
         JsonObject world = new JsonObject();
         world.add(WORLD_ITMES_KEY, ItemsModel.generateOverworldItemsJson(worldGenModel.getArea().getSpritesItems()));

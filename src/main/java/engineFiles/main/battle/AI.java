@@ -5,7 +5,6 @@ import java.util.Random;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Items.Item;
 
-
 //Class containing the ai behaviour
 public class AI {
 
@@ -21,6 +20,10 @@ public class AI {
     randomItems[3] = new Item("Health potion", 5, 0, 0, "+5 DMG");
   }
 
+  /**
+   * @param entity
+   * @return Move
+   */
   public Move getNextMove(Entity entity) {
     int randomInt = rand.nextInt(10);
     if (randomInt > 5) {

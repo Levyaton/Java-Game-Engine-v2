@@ -36,6 +36,9 @@ public class HomingEntity extends Entity {
         this.target = target;
     }
 
+    /**
+     * @return int
+     */
     @Override
     public int getMovement() {
         Rectangle scope = new Rectangle();
@@ -78,6 +81,14 @@ public class HomingEntity extends Entity {
         return choice;
     }
 
+    /**
+     * @param decider
+     * @param selfY
+     * @param selfX
+     * @param targetY
+     * @param targetX
+     * @return int
+     */
     private int makeChoice(int decider, int selfY, int selfX, int targetY, int targetX) {
         int choice = 0;
         switch (decider) {
@@ -104,26 +115,44 @@ public class HomingEntity extends Entity {
         return choice;
     }
 
+    /**
+     * @param target
+     */
     public void setTarget(Entity target) {
         this.target = target;
     }
 
+    /**
+     * @param range
+     */
     public void setRange(int range) {
         this.range = range;
     }
 
+    /**
+     * @return Entity
+     */
     public Entity getTarget() {
         return target;
     }
 
+    /**
+     * @return int
+     */
     public int getRange() {
         return range;
     }
 
+    /**
+     * @return int
+     */
     public int getTargetIndex() {
         return targetIndex;
     }
 
+    /**
+     * @param targetIndex
+     */
     public void setTargetIndex(int targetIndex) {
         this.targetIndex = targetIndex;
     }

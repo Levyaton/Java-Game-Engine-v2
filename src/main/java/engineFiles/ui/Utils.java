@@ -9,22 +9,31 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-
 //Class containing generic static utility methods
 public class Utils {
 
-    public static <T> T[] arrToObj(JsonArray arr, Class<T> classOfT){
+    /**
+     * @param arr
+     * @param classOfT
+     * @return T[]
+     */
+    public static <T> T[] arrToObj(JsonArray arr, Class<T> classOfT) {
 
         Gson gson = new Gson();
         ArrayList<T> l = new ArrayList<>();
-        for (Object json: arr) {
-            l.add(gson.fromJson((JsonElement) json,(Type)classOfT));
+        for (Object json : arr) {
+            l.add(gson.fromJson((JsonElement) json, (Type) classOfT));
         }
         return (T[]) l.toArray();
     }
 
-    public static BufferedImage scale(BufferedImage img, int newW, int newH)
-    {
+    /**
+     * @param img
+     * @param newW
+     * @param newH
+     * @return BufferedImage
+     */
+    public static BufferedImage scale(BufferedImage img, int newW, int newH) {
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
 
@@ -37,7 +46,10 @@ public class Utils {
 
     private static int entityIndex = 1;
 
-    public static int getEntityIndex(){
+    /**
+     * @return int
+     */
+    public static int getEntityIndex() {
         int index = entityIndex;
         entityIndex++;
         return index;

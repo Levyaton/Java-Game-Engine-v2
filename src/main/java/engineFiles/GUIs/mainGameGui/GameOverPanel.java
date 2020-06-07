@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import engineFiles.ui.components.Button;
 import engineFiles.ui.Resolution;
 
+// Gameover screen after loosing, closes the window after click
 public class GameOverPanel extends GamePanel {
 
   private boolean clicked = false;
@@ -22,6 +23,9 @@ public class GameOverPanel extends GamePanel {
     });
   }
 
+  /**
+   * @return Image
+   */
   @Override
   public Image getRenderGraphics() {
     Image img = createImage(Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT);
@@ -38,16 +42,25 @@ public class GameOverPanel extends GamePanel {
 
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mousePressed(MouseEvent e) {
     clicked = true;
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mouseReleased(MouseEvent e) {
     clicked = false;
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void mouseMoved(MouseEvent e) {
     mouseX = e.getX();

@@ -2,7 +2,6 @@ package engineFiles.ui.fonts;
 
 import java.awt.Font;
 
-
 //Class containing a font library
 public class FontLibrary {
 

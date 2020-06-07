@@ -29,10 +29,16 @@ public abstract class Entity extends Sprite {
     protected int uniqueIndex;
     protected CharacterSpriteSheetModel characterSpriteSheetModel;
 
+    /**
+     * @param uniqueIndex
+     */
     public void setUniqueIndex(int uniqueIndex) {
         this.uniqueIndex = uniqueIndex;
     }
 
+    /**
+     * @return int
+     */
     public int getUniqueIndex() {
         return uniqueIndex;
     }
@@ -53,12 +59,18 @@ public abstract class Entity extends Sprite {
         // this.coord.setMOD(speed);
     }
 
+    /**
+     * @return BufferedImage
+     */
     @Override
     public BufferedImage getImg() {
         int movementIndex = getMovementIndex();
         return this.animation.move(movementIndex, still);
     }
 
+    /**
+     * @return int
+     */
     protected int getMovementIndex() {
         int chosenMovement = currentMovement;
         if (this.controlls.getUp().contains(chosenMovement)) {
@@ -73,8 +85,15 @@ public abstract class Entity extends Sprite {
         return movementIndex;
     }
 
+    /**
+     * @param other
+     * @return int
+     */
     public abstract int getMovement();
 
+    /**
+     * @param other
+     */
     public void addOtherEntity(Entity other) {
         this.others.add(other);
     }
@@ -99,6 +118,9 @@ public abstract class Entity extends Sprite {
 
     }
 
+    /**
+     * @return boolean
+     */
     public boolean timeToMove() {
         if (this.speedCounter == this.currentSpeedCount) {
             this.currentSpeedCount = 0;
@@ -108,26 +130,44 @@ public abstract class Entity extends Sprite {
         return false;
     }
 
+    /**
+     * @return String
+     */
     public String getCategoryName() {
         return categoryName;
     }
 
+    /**
+     * @return MovementAnimation
+     */
     public MovementAnimation getAnimation() {
         return animation;
     }
 
+    /**
+     * @return int
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * @param health
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     * @return int
+     */
     public int getCurHealth() {
         return curHealth;
     }
 
+    /**
+     * @param curHealth
+     */
     public void setCurHealth(int curHealth) {
         if (curHealth >= this.health) {
             this.curHealth = health;
@@ -136,22 +176,37 @@ public abstract class Entity extends Sprite {
         }
     }
 
+    /**
+     * @return int
+     */
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * @param damage
+     */
     public void setDamage(int damage) {
         this.damage = damage;
     }
 
+    /**
+     * @return int
+     */
     public int getBattleDamage() {
         return battleDamage;
     }
 
+    /**
+     * @param battleDamage
+     */
     public void setBattleDamage(int battleDamage) {
         this.battleDamage = battleDamage;
     }
 
+    /**
+     * @return Controlls
+     */
     protected Controlls controllsInit() {
         List<Integer> up = new ArrayList<>();
         List<Integer> down = new ArrayList<>();
@@ -165,14 +220,23 @@ public abstract class Entity extends Sprite {
         return new Controlls(up, down, left, right);
     }
 
+    /**
+     * @param characterSpriteSheetModel
+     */
     public void setCharacterSpriteSheetModel(CharacterSpriteSheetModel characterSpriteSheetModel) {
         this.characterSpriteSheetModel = characterSpriteSheetModel;
     }
 
+    /**
+     * @return CharacterSpriteSheetModel
+     */
     public CharacterSpriteSheetModel getCharacterSpriteSheetModel() {
         return characterSpriteSheetModel;
     }
 
+    /**
+     * @return int
+     */
     public int getSpeedCounter() {
         return speedCounter;
     }

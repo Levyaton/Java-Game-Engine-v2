@@ -16,6 +16,10 @@ import static engineFiles.main.models.WorldGenKeys.OverworldItemsKeys.*;
 //Class containing the item model. Used to translate items to a json objects, and vice-versa
 public class ItemsModel {
 
+    /**
+     * @param items
+     * @return List<ItemSprite>
+     */
     public static List<ItemSprite> generateOverworldItems(JsonArray items) {
         List<ItemSprite> itemSprites = new ArrayList<>();
         for (JsonElement el : items) {
@@ -31,12 +35,16 @@ public class ItemsModel {
             int speedMod = item.get(SPEED_MOD_KEY).getAsInt();
             int attackMod = item.get(ATTACK_MOD_KEY).getAsInt();
             String description = item.get(DESCRIPTION_KEY).getAsString();
-            itemSprites
-                    .add(new ItemSprite(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, attackMod, description)));
+            itemSprites.add(
+                    new ItemSprite(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, attackMod, description)));
         }
         return itemSprites;
     }
 
+    /**
+     * @param items
+     * @return JsonArray
+     */
     public static JsonArray generateOverworldItemsJson(List<ItemSprite> items) {
         JsonArray array = new JsonArray();
         for (ItemSprite item : items) {

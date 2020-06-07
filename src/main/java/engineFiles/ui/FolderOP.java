@@ -1,6 +1,5 @@
 package engineFiles.ui;
 
-
 import com.google.gson.Gson;
 import engineFiles.main.models.Sprites.Sprite;
 import org.json.JSONObject;
@@ -15,11 +14,19 @@ import java.util.Scanner;
 //Class containing generic static folder operations
 public class FolderOP {
 
+    /**
+     * @param dir
+     * @return File[]
+     */
     public static File[] getFiles(String dir) {
         File folder = new File(dir);
         return Objects.requireNonNull(folder.listFiles());
     }
 
+    /**
+     * @param file
+     * @return BufferedImage
+     */
     public static BufferedImage getImage(File file) {
         try {
             return ImageIO.read(file);
@@ -31,16 +38,27 @@ public class FolderOP {
         }
     }
 
+    /**
+     * @param file
+     * @return Sprite
+     */
     public static Sprite getSprite(File file) {
         return new Sprite(file);
     }
 
-
+    /**
+     * @param path
+     * @return Sprite
+     */
     public static Sprite getSprite(String path) {
         File f = new File(path);
         return new Sprite(f);
     }
 
+    /**
+     * @param dir
+     * @return ArrayList<Sprite>
+     */
     public static ArrayList<Sprite> getSprites(String dir) {
         ArrayList<Sprite> sprites = new ArrayList<>();
         File[] files = FolderOP.getFiles(dir);
@@ -53,6 +71,10 @@ public class FolderOP {
         return sprites;
     }
 
+    /**
+     * @param path
+     * @return JSONObject
+     */
     public static JSONObject getJSON(String path) {
         Gson gSon = new Gson();
 
@@ -62,7 +84,7 @@ public class FolderOP {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
             String line = br.readLine();
             StringBuilder sb = new StringBuilder();
-            while(line != null){
+            while (line != null) {
                 sb.append(line).append("\n");
                 line = br.readLine();
             }
@@ -74,8 +96,11 @@ public class FolderOP {
         return null;
     }
 
+    /**
+     * @param file
+     * @return JSONObject
+     */
     public static JSONObject getJSON(File file) {
-
 
         // create a reader
 

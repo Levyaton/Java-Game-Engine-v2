@@ -6,10 +6,12 @@ import org.json.JSONObject;
 
 import java.io.File;
 
-
 //Class containing the logic of controllable entities. The entity is controlled by the user
 public class ControllableEntity extends Entity {
 
+    /**
+     * @return int
+     */
     public int getTEST_COUNTER() {
         return TEST_COUNTER;
     }
@@ -28,6 +30,9 @@ public class ControllableEntity extends Entity {
         this.categoryName = "controllable";
     }
 
+    /**
+     * @return int
+     */
     @Override
     public int getMovement() {
         this.TEST_COUNTER++;

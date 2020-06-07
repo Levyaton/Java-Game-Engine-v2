@@ -1,6 +1,7 @@
 package engineFiles.ui;
 
 import java.awt.*;
+
 //Class containing coordinate logic
 public class Coordinates {
     private int x_last;
@@ -12,6 +13,9 @@ public class Coordinates {
     private int width;
     private double MOD = Settings.MOVEMENT_SPEED;
 
+    /**
+     * @param MOD
+     */
     public void setMOD(double MOD) {
         this.MOD = MOD;
     }
@@ -36,28 +40,46 @@ public class Coordinates {
         this.z = z;
     }
 
+    /**
+     * @return int
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * @param x
+     */
     public void setX(int x) {
         x_last = this.x;
         this.x = x;
     }
 
+    /**
+     * @return int
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * @param y
+     */
     public void setY(int y) {
         y_last = this.y;
         this.y = y;
     }
 
+    /**
+     * @return int
+     */
     public int getZ() {
         return z;
     }
 
+    /**
+     * @param z
+     */
     public void setZ(int z) {
         this.z = z;
     }
@@ -69,6 +91,9 @@ public class Coordinates {
 
     }
 
+    /**
+     * @param mod
+     */
     public void moveUp(double mod) {
         y_last = this.y;
         this.y -= (mod * height);
@@ -80,6 +105,9 @@ public class Coordinates {
         this.y += MOD;
     }
 
+    /**
+     * @param mod
+     */
     public void moveDown(double mod) {
         y_last = this.y;
         this.y += (mod * height);
@@ -91,6 +119,9 @@ public class Coordinates {
         this.x -= MOD;
     }
 
+    /**
+     * @param mod
+     */
     public void moveLeft(double mod) {
         x_last = this.x;
         this.x -= mod * width;
@@ -102,15 +133,24 @@ public class Coordinates {
         this.x += MOD;
     }
 
+    /**
+     * @param mod
+     */
     public void moveRight(double mod) {
         x_last = this.x;
         this.x += mod * width;
     }
 
+    /**
+     * @return double
+     */
     public double getMOD() {
         return MOD;
     }
 
+    /**
+     * @return Rectangle
+     */
     public Rectangle getBounds() {
         return new Rectangle(this.x, this.y, this.width, this.height);
     }

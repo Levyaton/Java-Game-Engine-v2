@@ -4,8 +4,7 @@ import engineFiles.main.models.WorldGenModel;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 
-
-//Class that helps manage the various GamePanel children that are being used
+// Class that helps manage the various GamePanel children that are being used
 public class PanelManager {
 
     private GamePanel current;
@@ -23,10 +22,16 @@ public class PanelManager {
         current = menu;
     }
 
+    /**
+     * @return GamePanel
+     */
     public GamePanel getCurrent() {
         return current;
     }
 
+    /**
+     * @param name
+     */
     public void setCurrent(String name) {
         switch (name) {
             case "menu":
@@ -41,11 +46,18 @@ public class PanelManager {
         }
     }
 
+    /**
+     * @param player
+     * @param opponent
+     */
     public void initBattle(OverworldPlayer player, Entity opponent) {
         battle.setOpponents(player, opponent);
         current = battle;
     }
 
+    /**
+     * @return OverworldPanel
+     */
     public OverworldPanel getOverWorldPanel() {
         return overworld;
     }

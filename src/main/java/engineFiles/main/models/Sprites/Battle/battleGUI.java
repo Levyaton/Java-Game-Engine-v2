@@ -16,6 +16,10 @@ public class battleGUI {
     battleStats = load("/battleGUI/battle_stats.png");
   }
 
+  /**
+   * @param path
+   * @return BufferedImage
+   */
   static public BufferedImage load(String path) {
     try {
       return ImageIO.read(new FileInputStream("src/main/java/resources" + path));

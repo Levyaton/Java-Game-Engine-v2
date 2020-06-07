@@ -9,9 +9,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 //Class containing spritesheet parsing logic
 public class SpriteSheetParser {
 
+    /**
+     * @param sheet
+     * @param rowCountPerCharacter
+     * @param columnCountPerCharacter
+     * @param spriteWidth
+     * @param spriteHeight
+     * @return HashMap<Integer, MovementAnimation>
+     */
     public static HashMap<Integer, MovementAnimation> parse(BufferedImage sheet, int rowCountPerCharacter,
             int columnCountPerCharacter, int spriteWidth, int spriteHeight) {
         SpriteSheet target = new SpriteSheet(sheet, rowCountPerCharacter, columnCountPerCharacter, spriteWidth,
@@ -33,6 +42,13 @@ public class SpriteSheetParser {
 
     }
 
+    /**
+     * @param y_mod
+     * @param x_mod
+     * @param sheet
+     * @param id
+     * @return MovementAnimation
+     */
     private static MovementAnimation getAnimationBlock(int y_mod, int x_mod, SpriteSheet sheet, int id) {
         MovementAnimation animation = new MovementAnimation(id);
         List<BufferedImage> row = new ArrayList<>();
@@ -191,6 +207,9 @@ public class SpriteSheetParser {
         }
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         int rowCount = 4;
         int columnCount = 3;

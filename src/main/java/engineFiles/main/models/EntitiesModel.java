@@ -21,7 +21,6 @@ import static engineFiles.main.models.WorldGenKeys.EntityKeys.*;
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.*;
 
-
 //Class containing all entity models. Used to translate the entities into json objects, and vice-versa
 public class EntitiesModel {
 
@@ -50,6 +49,10 @@ public class EntitiesModel {
         this.homing = initHomingEntities(json.get(HOMING_ENITITIES_KEY), allEntities);
     }
 
+    /**
+     * @param param
+     * @return Entity
+     */
     private Entity loadVectorEntity(EntitiyParam param) {
         List<Vector> vecotrs = new ArrayList<>();
         for (JsonElement el : param.getJson().get(VECTORS_KEY).getAsJsonArray()) {
@@ -62,10 +65,20 @@ public class EntitiesModel {
                 param.getSpeedCounter(), vecotrs);
     }
 
+    /**
+     * @param element
+     * @return List<VectorEntity>
+     * @throws IOException
+     */
     private List<VectorEntity> initVectorEntities(JsonElement element) throws IOException {
         return initEntityArray(element, this::loadVectorEntity);
     }
 
+    /**
+     * @param element
+     * @return List<ControllableEntity>
+     * @throws IOException
+     */
     private List<ControllableEntity> initControllableEntities(JsonElement element) throws IOException {
         Function<EntitiyParam, Entity> e = param -> new ControllableEntity(param.anim,
                 new File("src/main/java/resources/gameFiles/models/characterSpriteSheets/characters.png"),
@@ -73,6 +86,10 @@ public class EntitiesModel {
         return initEntityArray(element, e);
     }
 
+    /**
+     * @param param
+     * @return Entity
+     */
     private Entity loadHomingEntity(EntitiyParam param) {
         HomingEntity e = new HomingEntity(param.anim,
                 new File("src/main/java/resources/gameFiles/models/characterSpriteSheets/characters.png"), null, 0,
@@ -82,6 +99,12 @@ public class EntitiesModel {
         return e;
     }
 
+    /**
+     * @param element
+     * @param allEntities
+     * @return List<HomingEntity>
+     * @throws IOException
+     */
     private List<HomingEntity> initHomingEntities(JsonElement element, List<Entity> allEntities) throws IOException {
         List<HomingEntity> result = initEntityArray(element, this::loadHomingEntity);
         allEntities.addAll(result);
@@ -97,6 +120,11 @@ public class EntitiesModel {
         return result;
     }
 
+    /**
+     * @param json
+     * @return OverworldPlayer
+     * @throws IOException
+     */
     private OverworldPlayer initOverworldPlayer(JsonObject json) throws IOException {
         List<Item> inventory = new ArrayList<>();
         JsonObject p = json.get(PLAYER_KEY).getAsJsonObject();
@@ -120,6 +148,12 @@ public class EntitiesModel {
         return op;
     }
 
+    /**
+     * @param element
+     * @param createEntity
+     * @return List<T>
+     * @throws IOException
+     */
     private <T> List<T> initEntityArray(JsonElement element, Function<EntitiyParam, Entity> createEntity)
             throws IOException {
         List<T> entities = new ArrayList<>();
@@ -129,6 +163,12 @@ public class EntitiesModel {
         return entities;
     }
 
+    /**
+     * @param json
+     * @param createEntity
+     * @return Entity
+     * @throws IOException
+     */
     private Entity initEntity(JsonObject json, Function<EntitiyParam, Entity> createEntity) throws IOException {
         int speedCounter = json.get(SPEED_COUNTER_KEY).getAsInt();
 
@@ -178,38 +218,65 @@ public class EntitiesModel {
         }
     }
 
+    /**
+     * @return OverworldPlayer
+     */
     public OverworldPlayer getPlayer() {
         return player;
     }
 
+    /**
+     * @return List<HomingEntity>
+     */
     public List<HomingEntity> getHoming() {
         return homing;
     }
 
+    /**
+     * @return List<ControllableEntity>
+     */
     public List<ControllableEntity> getControlable() {
         return controlable;
     }
 
+    /**
+     * @return List<VectorEntity>
+     */
     public List<VectorEntity> getVector() {
         return vector;
     }
 
+    /**
+     * @param player
+     */
     public void setPlayer(OverworldPlayer player) {
         this.player = player;
     }
 
+    /**
+     * @param homing
+     */
     public void setHoming(List<HomingEntity> homing) {
         this.homing = homing;
     }
 
+    /**
+     * @param controlable
+     */
     public void setControlable(List<ControllableEntity> controlable) {
         this.controlable = controlable;
     }
 
+    /**
+     * @param vector
+     */
     public void setVector(List<VectorEntity> vector) {
         this.vector = vector;
     }
 
+    /**
+     * @return List<Entity>
+     */
     public List<Entity> getAllStandardEntities() {
         List<Entity> entities = new CopyOnWriteArrayList<>();
         entities.addAll(this.homing);
@@ -219,12 +286,19 @@ public class EntitiesModel {
         return entities;
     }
 
+    /**
+     * @return List<Entity>
+     */
     public List<Entity> getAllEntities() {
         List<Entity> all = getAllStandardEntities();
         all.add(this.player);
         return all;
     }
 
+    /**
+     * @param e
+     * @return JsonObject
+     */
     private JsonObject getEntityJson(Entity e) {
         JsonObject object = new JsonObject();
         object.addProperty(SPEED_COUNTER_KEY, e.getSpeedCounter());
@@ -238,6 +312,10 @@ public class EntitiesModel {
         return object;
     }
 
+    /**
+     * @param e
+     * @return JsonObject
+     */
     private JsonObject getHomingEntityJson(HomingEntity e) {
         JsonObject object = getEntityJson(e);
         object.addProperty(TARGET_INDEX_KEY, e.getTargetIndex());
@@ -245,6 +323,10 @@ public class EntitiesModel {
         return object;
     }
 
+    /**
+     * @param e
+     * @return JsonObject
+     */
     private JsonObject getVectorEntityJson(VectorEntity e) {
 
         JsonObject object = getEntityJson(e);
@@ -256,16 +338,24 @@ public class EntitiesModel {
         return object;
     }
 
+    /**
+     * @param e
+     * @return JsonObject
+     */
     private JsonObject getControlableEntityJson(ControllableEntity e) {
         return getEntityJson(e);
     }
 
+    /**
+     * @param p
+     * @return JsonObject
+     */
     private JsonObject getPlayerEntityJson(OverworldPlayer p) {
         JsonObject object = getEntityJson(p);
         object.remove(COORDINATES_KEY);
         object.add(COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getCoord())));
         object.add(OG_COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getOgCoord())));
-        System.out.println( JsonParser.parseString(gson.toJson(p.getOgCoord())));
+        System.out.println(JsonParser.parseString(gson.toJson(p.getOgCoord())));
         JsonObject player = new JsonObject();
         JsonArray inventory = new JsonArray();
         for (Item i : p.getPlayer().getInventory()) {
@@ -283,6 +373,11 @@ public class EntitiesModel {
         return object;
     }
 
+    /**
+     * @param entities
+     * @param function
+     * @return JsonArray
+     */
     private <T> JsonArray getEntitiesJson(List<T> entities, Function<T, JsonObject> function) {
         JsonArray arr = new JsonArray();
         for (T entity : entities) {
@@ -291,6 +386,9 @@ public class EntitiesModel {
         return arr;
     }
 
+    /**
+     * @return JsonObject
+     */
     public JsonObject getEntities() {
         JsonObject entities = new JsonObject();
         entities.add(VECTOR_ENTITIES_KEY, getEntitiesJson(this.getVector(), this::getVectorEntityJson));

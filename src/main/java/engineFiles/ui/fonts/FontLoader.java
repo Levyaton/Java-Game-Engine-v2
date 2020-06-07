@@ -7,6 +7,10 @@ import java.io.FileInputStream;
 
 //Class containing font loading logic
 public class FontLoader {
+
+  /**
+   * @param path
+   */
   public void register(String path) {
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     try {

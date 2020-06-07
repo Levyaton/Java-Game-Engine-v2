@@ -36,6 +36,9 @@ public class VectorEntity extends Entity {
         this.followingX = this.vectors.get(vectorIndex).startWithX;
     }
 
+    /**
+     * @return int
+     */
     @Override
     public int getMovement() {
 
@@ -70,6 +73,11 @@ public class VectorEntity extends Entity {
         // IMPLEMENT MOVEMENT METHOD
     }
 
+    /**
+     * @param startWithX
+     * @param absX
+     * @param absY
+     */
     private void vectorStateCheck(boolean startWithX, int absX, int absY) {
         if (!changeVectorsCheck(startWithX, absX, absY)) {
             if (this.followingX && this.vectorCounter >= absX || !this.followingX && this.vectorCounter >= absY) {
@@ -79,6 +87,12 @@ public class VectorEntity extends Entity {
         }
     }
 
+    /**
+     * @param startWithX
+     * @param absX
+     * @param absY
+     * @return boolean
+     */
     private boolean changeVectorsCheck(boolean startWithX, int absX, int absY) {
         if (this.followingX && !startWithX && this.vectorCounter >= absX
                 || !this.followingX && startWithX && this.vectorCounter >= absY) {
@@ -134,6 +148,9 @@ public class VectorEntity extends Entity {
 
     }
 
+    /**
+     * @return List<Vector>
+     */
     public List<Vector> getVectors() {
         return vectors;
     }

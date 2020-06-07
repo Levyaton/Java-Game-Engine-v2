@@ -4,7 +4,6 @@ import engineFiles.GUIs.mainGameGui.BattlePanel;
 
 import java.util.Stack;
 
-
 //A class containing the battle logic
 public class BattleManager {
 
@@ -19,6 +18,9 @@ public class BattleManager {
     moveStack = new Stack<Move>();
   }
 
+  /**
+   * @param move
+   */
   public void push(Move move) {
     moveStack.push(move);
     moveStack.push(ai.getNextMove(battlePanel.opponent));
@@ -31,6 +33,9 @@ public class BattleManager {
     executeMove(moveStack.peek());
   }
 
+  /**
+   * @param move
+   */
   public void executeMove(Move move) {
     moveStack.pop();
     switch (move.type) {

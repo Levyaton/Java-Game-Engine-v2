@@ -20,7 +20,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-//Class that is used to get the information needed to display for the overworld
+// Class that is used to get the information needed to display for the overworld/main game world
 public class OverworldPanel extends GamePanel {
 
     int SPACE_MOD1 = 100;
@@ -50,12 +50,19 @@ public class OverworldPanel extends GamePanel {
         setDoubleBuffered(true);
     }
 
+    /**
+     * @param sprites
+     */
     private void loadSprites(ArrayList<Sprite> sprites) {
         for (Sprite s : sprites) {
             loadSprite(s);
         }
     }
 
+    /**
+     * @param s
+     * @return JLabel
+     */
     private JLabel loadSprite(Sprite s) {
         JLabel image = new JLabel(new ImageIcon(s.getPath()));
         image.setDoubleBuffered(true);
@@ -72,6 +79,9 @@ public class OverworldPanel extends GamePanel {
         SaveGame.save(this.worldGenModel);
     }
 
+    /**
+     * @param e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == Settings.controlls.getGameSave()) {
@@ -101,11 +111,17 @@ public class OverworldPanel extends GamePanel {
         KeyMap.setKey(e.getKeyCode(), false);
     }
 
+    /**
+     * @param e
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         KeyMap.setKey(e.getKeyCode(), true);
     }
 
+    /**
+     * @return Image
+     */
     @Override
     public Image getRenderGraphics() {
         Coordinates offest = this.getOffset();
@@ -148,10 +164,17 @@ public class OverworldPanel extends GamePanel {
         return offscreen;
     }
 
+    /**
+     * @param area
+     */
     public void setArea(Area area) {
         this.area = area;
     }
 
+    /**
+     * @param checked
+     * @return boolean
+     */
     private boolean colliding(Sprite checked) {
         Rectangle rect1 = new Rectangle();
         Rectangle rect2 = new Rectangle();
@@ -209,6 +232,9 @@ public class OverworldPanel extends GamePanel {
         }
     }
 
+    /**
+     * @return Coordinates
+     */
     @Override
     public Coordinates getOffset() {
         Entity player = this.getPlayer();
@@ -226,6 +252,9 @@ public class OverworldPanel extends GamePanel {
         return new Coordinates(offset_X, offset_y, width, height);
     }
 
+    /**
+     * @return Entity
+     */
     public Entity getPlayer() {
         for (Entity e : entities) {
             if (e.getCategoryName().equals("player")) {
@@ -236,10 +265,16 @@ public class OverworldPanel extends GamePanel {
         return null;
     }
 
+    /**
+     * @return boolean
+     */
     private boolean isGamePaused() {
         return colorSwitchGui.isVisible();
     }
 
+    /**
+     * @return List<JComponent>
+     */
     @Override
     public List<JComponent> getJComponents() {
         List<JComponent> components = new ArrayList<>();
@@ -248,6 +283,9 @@ public class OverworldPanel extends GamePanel {
 
     }
 
+    /**
+     * @param removedEntity
+     */
     public void removeEntity(Entity removedEntity) {
         entities.remove(removedEntity);
     }

@@ -85,6 +85,9 @@ public class Controller extends Component {
     }
   }
 
+  /**
+   * @param g
+   */
   @Override
   public void render(Graphics g) {
     if (showItemsOption) {
@@ -96,6 +99,9 @@ public class Controller extends Component {
     }
   }
 
+  /**
+   * @param g
+   */
   public void drawBasicOptions(Graphics g) {
     g.setFont(FontLibrary.zeldaFontMedium);
     if (curIndex == 0) {
@@ -118,6 +124,9 @@ public class Controller extends Component {
     g.drawString("items -", 55, 390);
   }
 
+  /**
+   * @param g
+   */
   public void drawItemsOptions(Graphics g) {
     for (int i = itemIndex; i < itemIndex + 3; i++) {
       if (i >= inventory.size()) {

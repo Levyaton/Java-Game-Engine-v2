@@ -29,10 +29,12 @@ import java.util.List;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
-
 //Class containing an old version of the game container. Used for repairing the json file, if broken
 public class OldGameContrainer {
 
+        /**
+         * @param args
+         */
         public static void main(String[] args) {
                 // String areaDir = "src/main/java/resources/gameFiles/models/objects/areas/";
                 // BufferedImage test = null;

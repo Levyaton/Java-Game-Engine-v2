@@ -5,13 +5,13 @@ import engineFiles.ui.Settings;
 import javax.swing.*;
 import java.awt.*;
 
-
 //Gui meant to help switch the games color setting
 public class ColorSwitchGui extends JPanel {
     JLabel colorChangeText;
     JButton colorChangeButton;
     JButton exit;
-    public ColorSwitchGui(boolean changeColor){
+
+    public ColorSwitchGui(boolean changeColor) {
         super();
         Dimension dimension = new Dimension(Settings.screenWidth, Settings.screenHeight);
         this.setPreferredSize(dimension);
@@ -44,14 +44,23 @@ public class ColorSwitchGui extends JPanel {
         this.add(middle, BorderLayout.CENTER);
     }
 
+    /**
+     * @return JLabel
+     */
     public JLabel getColorChangeText() {
         return colorChangeText;
     }
 
+    /**
+     * @return JButton
+     */
     public JButton getColorChangeButton() {
         return colorChangeButton;
     }
 
+    /**
+     * @return JButton
+     */
     public JButton getExit() {
         return exit;
     }

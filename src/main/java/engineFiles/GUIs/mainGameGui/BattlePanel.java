@@ -10,13 +10,11 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.fonts.FontLibrary;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.Stack;
 
-//Class that is used to get the information needed to display for battles
+// Main battle screen class, rendering layout GUI and input processing
 public class BattlePanel extends GamePanel {
 
   private boolean inBattle = false;
@@ -36,6 +34,10 @@ public class BattlePanel extends GamePanel {
     componentStack = new Stack<Component>();
   }
 
+  /**
+   * @param player
+   * @param opponent
+   */
   public void setOpponents(OverworldPlayer player, Entity opponent) {
     this.player = player;
     this.opponent = opponent;
@@ -48,22 +50,34 @@ public class BattlePanel extends GamePanel {
     inBattle = true;
   }
 
+  /**
+   * @return boolean
+   */
   public boolean isInBattle() {
     return inBattle;
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void keyPressed(KeyEvent e) {
     KeyMap.setPressed(true);
     KeyMap.setKey(e.getKeyCode(), false);
   }
 
+  /**
+   * @param e
+   */
   @Override
   public void keyReleased(KeyEvent e) {
     KeyMap.setPressed(false);
     KeyMap.setKey(e.getKeyCode(), true);
   }
 
+  /**
+   * @return Image
+   */
   @Override
   public Image getRenderGraphics() {
     Image img = createImage(Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT);
@@ -105,6 +119,9 @@ public class BattlePanel extends GamePanel {
     }
   }
 
+  /**
+   * @param g
+   */
   public void drawGUI(Graphics g) {
     // setting up background and components
     g.drawImage(battleGUI.battleBackground, 0, 0, Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT, null);
@@ -116,16 +133,25 @@ public class BattlePanel extends GamePanel {
     g.drawImage(battleGUI.battleStats, 580, 40, 198, 68, null);
   }
 
+  /**
+   * @param g
+   */
   public void drawPlayer(Graphics g) {
     g.drawString(player.getCategoryName(), 35, 175);
     g.drawImage(player.getAnimation().getUp().get(1), 290, 320, 150, 150, null);
   }
 
+  /**
+   * @param g
+   */
   public void drawOpponent(Graphics g) {
     g.drawString(opponent.getCategoryName(), 595, 75);
     g.drawImage(opponent.getAnimation().getDown().get(1), 380, 160, 90, 90, null);
   }
 
+  /**
+   * @param g
+   */
   public void drawHealthBars(Graphics g) {
     // health width: 160
     g.setColor(Color.GREEN);
@@ -139,57 +165,26 @@ public class BattlePanel extends GamePanel {
     }
   }
 
+  /**
+   * @param text
+   */
   public void pushDialog(String text) {
     componentStack.push(new Dialog(text, () -> {
       componentStack.pop();
     }));
   }
 
+  /**
+   * @return boolean
+   */
   public boolean gameEnded() {
     return player.getCurHealth() < 1 || opponent.getCurHealth() < 1;
   }
 
+  /**
+   * @return BattleManager
+   */
   public BattleManager getBattleManager() {
     return battleManager;
-  }
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-
-  }
-
-  @Override
-  public void mouseClicked(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mousePressed(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mouseReleased(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mouseEntered(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mouseExited(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mouseMoved(MouseEvent e) {
-
-  }
-
-  @Override
-  public void mouseDragged(MouseEvent e) {
-
   }
 }

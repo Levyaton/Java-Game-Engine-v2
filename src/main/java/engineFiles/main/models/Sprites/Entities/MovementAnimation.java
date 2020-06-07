@@ -3,7 +3,6 @@ package engineFiles.main.models.Sprites.Entities;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-
 //Class containing the overworld movement animation logic
 public class MovementAnimation {
 
@@ -50,50 +49,86 @@ public class MovementAnimation {
         this.animationSpeed = animationSpeed;
     }
 
+    /**
+     * @return int
+     */
     public int getAnimationSpeed() {
         return animationSpeed;
     }
 
+    /**
+     * @param animationSpeed
+     */
     public void setAnimationSpeed(int animationSpeed) {
         this.animationSpeed = animationSpeed;
     }
 
+    /**
+     * @return List<BufferedImage>
+     */
     public List<BufferedImage> getDown() {
         return down;
     }
 
+    /**
+     * @return List<BufferedImage>
+     */
     public List<BufferedImage> getUp() {
         return up;
     }
 
+    /**
+     * @return List<BufferedImage>
+     */
     public List<BufferedImage> getLeft() {
         return left;
     }
 
+    /**
+     * @return List<BufferedImage>
+     */
     public List<BufferedImage> getRight() {
         return right;
     }
 
+    /**
+     * @param down
+     */
     public void setDown(List<BufferedImage> down) {
         this.down = down;
     }
 
+    /**
+     * @param up
+     */
     public void setUp(List<BufferedImage> up) {
         this.up = up;
     }
 
+    /**
+     * @param left
+     */
     public void setLeft(List<BufferedImage> left) {
         this.left = left;
     }
 
+    /**
+     * @param right
+     */
     public void setRight(List<BufferedImage> right) {
         this.right = right;
     }
 
+    /**
+     * @return BufferedImage
+     */
     public BufferedImage getState() {
         return stateSelect(this.movementIndex).get(this.stateIndex);
     }
 
+    /**
+     * @return int
+     */
     public int getMovementIndex() {
         return movementIndex;
     }
@@ -104,6 +139,10 @@ public class MovementAnimation {
         }
     }
 
+    /**
+     * @param movementIndex
+     * @return List<BufferedImage>
+     */
     private List<BufferedImage> stateSelect(int movementIndex) {
         switch (movementIndex) {
             case 0:
@@ -118,6 +157,11 @@ public class MovementAnimation {
         return null;
     }
 
+    /**
+     * @param movementIndex
+     * @param standing
+     * @return BufferedImage
+     */
     public BufferedImage move(int movementIndex, boolean standing) {
 
         if (movementIndex != this.movementIndex) {
@@ -133,6 +177,9 @@ public class MovementAnimation {
         return current;
     }
 
+    /**
+     * @return boolean
+     */
     private boolean isAnimationCounterFull() {
         if (this.animationCounter == this.animationSpeed) {
             this.animationCounter = 0;
@@ -147,6 +194,10 @@ public class MovementAnimation {
         this.animationCounter = 1;
     }
 
+    /**
+     * @param row
+     * @return boolean
+     */
     public boolean addNextRow(List<BufferedImage> row) {
         if (this.down == null) {
             this.down = row;
@@ -167,10 +218,16 @@ public class MovementAnimation {
         return false;
     }
 
+    /**
+     * @return int
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }

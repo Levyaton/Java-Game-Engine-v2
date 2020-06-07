@@ -99,6 +99,9 @@ public class Sprite implements Comparable {
         this.defaultWidth = this.img.getWidth();
     }
 
+    /**
+     * @return JSONObject
+     */
     public JSONObject updateJSON() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.append("Width", getCurrentWidth());
@@ -112,94 +115,163 @@ public class Sprite implements Comparable {
         return jsonObject;
     }
 
+    /**
+     * @return Coordinates
+     */
     public Coordinates getOgCoord() {
         return ogCoord;
     }
 
+    /**
+     * @param ogCoord
+     */
     public void setOgCoord(Coordinates ogCoord) {
         this.ogCoord = ogCoord;
     }
 
+    /**
+     * @param ogImg
+     */
     public void setOgImg(BufferedImage ogImg) {
         this.ogImg = ogImg;
     }
 
+    /**
+     * @param currentHeight
+     */
     public void setCurrentHeight(int currentHeight) {
         this.currentHeight = currentHeight;
     }
 
+    /**
+     * @param currentWidth
+     */
     public void setCurrentWidth(int currentWidth) {
         this.currentWidth = currentWidth;
     }
 
+    /**
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * @return BufferedImage
+     */
     public BufferedImage getOgImg() {
         return ogImg;
     }
 
+    /**
+     * @return JSONObject
+     */
     public JSONObject getJson() {
         return json;
     }
 
+    /**
+     * @return int
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean isMovable() {
         return movable;
     }
 
+    /**
+     * @param movable
+     */
     public void setMovable(boolean movable) {
         this.movable = movable;
     }
 
+    /**
+     * @return JSONObject
+     */
     public JSONObject getJSON() {
         return json;
     }
 
+    /**
+     * @return JComponent
+     */
     public JComponent getComponent() {
         return component;
     }
 
+    /**
+     * @param component
+     */
     public void setComponent(JComponent component) {
         this.component = component;
     }
 
+    /**
+     * @return File
+     */
     public File getOgFile() {
         return ogFile;
     }
 
+    /**
+     * @param ogFile
+     */
     public void setOgFile(File ogFile) {
         this.ogFile = ogFile;
     }
 
+    /**
+     * @return BufferedImage
+     */
     public BufferedImage getImg() {
         return img;
     }
 
+    /**
+     * @param img
+     */
     public void setImg(BufferedImage img) {
         this.img = img;
     }
 
+    /**
+     * @return Coordinates
+     */
     public Coordinates getCoord() {
         return coord;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean isSolid() {
         return solid;
     }
 
+    /**
+     * @param coord
+     */
     public void setCoord(Coordinates coord) {
         this.coord = coord;
     }
 
+    /**
+     * @return int
+     */
     public int getCurrentHeight() {
         return currentHeight;
     }
 
+    /**
+     * @param mod
+     */
     public void resizeImg(double mod) {
         this.currentWidth = (int) (currentWidth * mod);
         this.currentHeight = (int) (currentHeight * mod);
@@ -207,6 +279,10 @@ public class Sprite implements Comparable {
                 Scalr.OP_ANTIALIAS);
     }
 
+    /**
+     * @param width
+     * @param height
+     */
     public void transformImg(int width, int height) {
         // Cannot deform image, fix later
         Image image = this.img;
@@ -220,50 +296,87 @@ public class Sprite implements Comparable {
         this.img = temp;
     }
 
+    /**
+     * @return int
+     */
     public int getCurrentWidth() {
         return currentWidth;
     }
 
+    /**
+     * @return int
+     */
     public int getDefaultHeight() {
         return defaultHeight;
     }
 
+    /**
+     * @param defaultHeight
+     */
     public void setDefaultHeight(int defaultHeight) {
         this.defaultHeight = defaultHeight;
     }
 
+    /**
+     * @return String
+     */
     public String getPath() {
         return path;
     }
 
+    /**
+     * @param path
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
+    /**
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return int
+     */
     public int getDefaultWidth() {
         return defaultWidth;
     }
 
+    /**
+     * @param defaultWidth
+     */
     public void setDefaultWidth(int defaultWidth) {
         this.defaultWidth = defaultWidth;
     }
 
+    /**
+     * @param json
+     */
     public void setJson(JSONObject json) {
         this.json = json;
     }
 
+    /**
+     * @param solid
+     */
     public void setSolid(boolean solid) {
         this.solid = solid;
     }
 
+    /**
+     * @param o
+     * @return int
+     */
     // USE ONLY FOR COMPARING Z VALUES!!!!!!
     @Override
     public int compareTo(Object o) {
@@ -271,14 +384,24 @@ public class Sprite implements Comparable {
         return this.getCoord().getZ() - compareZOrder;
     }
 
+    /**
+     * @param s
+     * @return boolean
+     */
     public boolean onCollision(Sprite s) {
         return true;
     }
 
+    /**
+     * @return String
+     */
     public String getCategoryName() {
         return categoryName;
     }
 
+    /**
+     * @param categoryName
+     */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }

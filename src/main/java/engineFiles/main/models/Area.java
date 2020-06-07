@@ -14,7 +14,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
 
-
 //Class containing the logic of a game area. It tracks which sprites are being used in a given area
 public class Area {
 
@@ -57,46 +56,76 @@ public class Area {
         this(Objects.requireNonNull(FolderOP.getJSON(pathToJSON)));
     }
 
+    /**
+     * @param sprite
+     */
     public void addSprite(Sprite sprite) {
         sprites.add(sprite);
     }
 
+    /**
+     * @param sprites
+     */
     public void setSprites(SpriteCollection sprites) {
         this.sprites = sprites;
         this.updateJSON(sprites);
     }
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
         this.updateJSON(name);
     }
 
+    /**
+     * @param width
+     */
     public void setWidth(int width) {
         this.width = width;
         this.updateJSON(this.width, this.height);
     }
 
+    /**
+     * @param height
+     */
     public void setHeight(int height) {
         this.height = height;
         this.updateJSON(this.width, this.height);
     }
 
+    /**
+     * @return SpriteCollection
+     */
     public SpriteCollection getSprites() {
         return sprites;
     }
 
+    /**
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return int
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * @return int
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * @return JSONObject
+     */
     public JSONObject getJSONArea() {
         return json;
     }
@@ -116,11 +145,18 @@ public class Area {
         buildJSON();
     }
 
+    /**
+     * @param name
+     */
     private void updateJSON(String name) {
         this.json.remove(NAME_KEY);
         this.json.put(NAME_KEY, name);
     }
 
+    /**
+     * @param width
+     * @param height
+     */
     private void updateJSON(int width, int height) {
         this.json.remove(WIDTH_KEY);
         this.json.remove(HEIGHT_KEY);
@@ -129,11 +165,17 @@ public class Area {
         this.json.put(NAME_KEY, name);
     }
 
+    /**
+     * @param sprite
+     */
     private void updateJSON(SpriteCollection sprite) {
         this.json.remove(SPRITES_KEY);
         this.json.put(SPRITES_KEY, sprites.toJSONArray());
     }
 
+    /**
+     * @return List<ItemSprite>
+     */
     public List<ItemSprite> getItems() {
         List<ItemSprite> items = new ArrayList<>();
         for (Sprite s : sprites) {
@@ -144,14 +186,23 @@ public class Area {
         return items;
     }
 
+    /**
+     * @param items
+     */
     public void addItems(List<ItemSprite> items) {
         this.spritesItems.addAll(items);
     }
 
+    /**
+     * @param item
+     */
     public void removeItem(ItemSprite item) {
         this.spritesItems.remove(item);
     }
 
+    /**
+     * @return List<ItemSprite>
+     */
     public List<ItemSprite> getSpritesItems() {
         return spritesItems;
     }

@@ -7,11 +7,11 @@ import org.json.JSONObject;
 
 import java.io.File;
 
-
 //Class containing the overworld logic of items. They are displayed as sprites
 public class ItemSprite extends Sprite {
     private Item item;
     private int dimMod;
+
     // private BufferedImage temp;
     public ItemSprite(JSONObject json) {
         super(json);
@@ -53,10 +53,16 @@ public class ItemSprite extends Sprite {
 
     }
 
+    /**
+     * @return Item
+     */
     public Item getItem() {
         return item;
     }
 
+    /**
+     * @return int
+     */
     public int getDimMod() {
         return dimMod;
     }

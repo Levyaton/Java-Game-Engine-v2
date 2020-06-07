@@ -4,7 +4,6 @@ import engineFiles.ui.fonts.FontLibrary;
 
 import java.awt.*;
 
-
 //Class containing a custom button definition
 public class Button extends Component {
 
@@ -20,6 +19,11 @@ public class Button extends Component {
     bounds = new Rectangle(x - (width / 2), y - (height / 2), width, height);
   }
 
+  /**
+   * @param x
+   * @param y
+   * @param clicked
+   */
   @Override
   public void input(int x, int y, boolean clicked) {
     if (bounds.contains(x, y)) {
@@ -32,6 +36,9 @@ public class Button extends Component {
     }
   }
 
+  /**
+   * @param g
+   */
   @Override
   public void render(Graphics g) {
     g.drawRect((int) bounds.getX() - 1, (int) bounds.getY() - 1, (int) bounds.getWidth() + 1,

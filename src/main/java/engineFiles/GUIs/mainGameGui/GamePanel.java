@@ -10,8 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-//A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
-//to update itself correctly
+// A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
+// to update itself correctly
 public abstract class GamePanel extends JPanel {
 
     protected String panelName;
@@ -32,65 +32,116 @@ public abstract class GamePanel extends JPanel {
         this.window = window;
     }
 
+    /**
+     * @param getArea(
+     * @return Image
+     */
     public abstract Image getRenderGraphics();
 
+    /**
+     * @param getArea(
+     */
     public abstract void update();
 
+    /**
+     * @return Area
+     */
     public Area getArea() {
         return area;
     }
 
+    /**
+     * @return List<Entity>
+     */
     public List<Entity> getEntities() {
         return entities;
     }
 
+    /**
+     * @return String
+     */
     public String getPanelName() {
         return panelName;
     }
 
+    /**
+     * @return Coordinates
+     */
     public Coordinates getOffset() {
         return new Coordinates(0, 0, 0, 0);
     }
 
+    /**
+     * @return List<JComponent>
+     */
     public List<JComponent> getJComponents() {
         return this.jComponents;
     }
 
+    /**
+     * @param e
+     */
     public void mousePressed(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseReleased(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseExited(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseMoved(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseDragged(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void mouseClicked(MouseEvent e) {
 
     }
 
+    /**
+     * @param e
+     */
     public void keyTyped(KeyEvent e) {
     }
 
+    /**
+     * @param e
+     */
     public void keyPressed(KeyEvent e) {
     }
 
+    /**
+     * @param e
+     */
     public void keyReleased(KeyEvent e) {
     }
-
 }
