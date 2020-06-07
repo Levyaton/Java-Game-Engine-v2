@@ -8,15 +8,15 @@ import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Sprites.Battle.battleGUI;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
-import java.awt.Image;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.util.Stack;
-import java.awt.event.KeyEvent;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.fonts.FontLibrary;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.util.Stack;
+
+//Class that is used to get the information needed to display for battles
 public class BattlePanel extends GamePanel {
 
   private boolean inBattle = false;
@@ -32,7 +32,7 @@ public class BattlePanel extends GamePanel {
     super(panelName, window);
     battleGUI.loadResources();
 
-    controller = new Controller(this);
+
     battleManager = new BattleManager(this);
     componentStack = new Stack<Component>();
   }
@@ -40,7 +40,7 @@ public class BattlePanel extends GamePanel {
   public void setOpponents(OverworldPlayer player, Entity opponent) {
     this.player = player;
     this.opponent = opponent;
-
+    controller = new Controller(this);
     componentStack.push(controller);
     componentStack.push(new Dialog("A wild " + opponent.getCategoryName() + " has appeard", () -> {
       componentStack.pop();

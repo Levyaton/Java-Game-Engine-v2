@@ -31,6 +31,7 @@ public class ControllableEntity extends Entity{
         this.TEST_COUNTER++;
         super.still = false;
         int choice;
+
         if (KeyMap.isPressed(super.controlls.getRight())) {
             choice = super.controlls.getRight().get(0);
             super.coord.moveRight();
@@ -38,7 +39,7 @@ public class ControllableEntity extends Entity{
         else if (KeyMap.isPressed(super.controlls.getLeft())) {
             choice = super.controlls.getLeft().get(0);
             super.coord.moveLeft();
-
+            System.out.println(super.coord.getX() + ", " + super.coord.getY());
         }
         else if (KeyMap.isPressed(super.controlls.getDown())) {
             choice = super.controlls.getDown().get(0);

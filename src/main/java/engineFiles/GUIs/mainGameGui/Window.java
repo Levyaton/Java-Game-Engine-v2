@@ -7,6 +7,8 @@ import engineFiles.ui.Resolution;
 import javax.swing.*;
 import java.awt.*;
 
+
+//Custom JFrame that contains the game panels and controls the displaying of information
 public class Window extends JFrame {
     int lastDrawX;
     int lastDrawY;

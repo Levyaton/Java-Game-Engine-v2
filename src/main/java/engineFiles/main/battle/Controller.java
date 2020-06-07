@@ -1,15 +1,14 @@
 package engineFiles.main.battle;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 import engineFiles.GUIs.mainGameGui.BattlePanel;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Sprites.Battle.battleGUI;
-import engineFiles.ui.fonts.FontLibrary;
 import engineFiles.main.models.Sprites.Items.Item;
+import engineFiles.ui.fonts.FontLibrary;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class Controller extends Component {
 
@@ -24,12 +23,12 @@ public class Controller extends Component {
   public Controller(BattlePanel battlePanel) {
     this.battlePanel = battlePanel;
     baseOptions = new String[] { "attack", "dodge" };
-    // inventory = battlePanel.player.getPlayer().getInventory();
-    inventory = new ArrayList<Item>();
-    inventory.add(new Item("testName1", 0, 0, 2, "+2 DMG"));
-    inventory.add(new Item("testName2", 5, 0, 0, "+5 HP"));
-    inventory.add(new Item("testName3", 0, 10, 0, "+10 MS"));
-    inventory.add(new Item("testName4", 3, 0, 1, "+1 DMG, +3 HP"));
+    inventory = battlePanel.player.getPlayer().getInventory();
+   // inventory = new ArrayList<Item>();
+    //inventory.add(new Item("testName1", 0, 0, 2, "+2 DMG"));
+    //inventory.add(new Item("testName2", 5, 0, 0, "+5 HP"));
+    //inventory.add(new Item("testName3", 0, 10, 0, "+10 MS"));
+   // inventory.add(new Item("testName4", 3, 0, 1, "+1 DMG, +3 HP"));
   }
 
   @Override

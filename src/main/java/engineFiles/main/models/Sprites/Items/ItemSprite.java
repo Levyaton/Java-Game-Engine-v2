@@ -1,11 +1,8 @@
 package engineFiles.main.models.Sprites.Items;
 
-import engineFiles.main.game.KeyMap;
-import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.main.models.Sprites.Sprite;
 import engineFiles.ui.Coordinates;
 import engineFiles.ui.FolderOP;
-import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -14,7 +11,6 @@ public class ItemSprite extends Sprite {
     private Item item;
     private int dimMod;
     // private BufferedImage temp;
-
     public ItemSprite(JSONObject json) {
         super(json);
         categoryName = "item";

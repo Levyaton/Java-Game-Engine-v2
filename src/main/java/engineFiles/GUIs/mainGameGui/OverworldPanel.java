@@ -12,6 +12,7 @@ import engineFiles.main.models.WorldGenModel;
 import engineFiles.ui.Coordinates;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.Settings;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -19,6 +20,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+//Class that is used to get the information needed to display for the overworld
 public class OverworldPanel extends GamePanel {
 
     private List<Integer> up = Settings.controlls.getUp();
@@ -48,6 +52,15 @@ public class OverworldPanel extends GamePanel {
         this.worldGenModel = worldGenModel;
     }
 
+    public OverworldPanel(String panelName, Window window,boolean isRecolor, Area area, List<Entity> entities) {
+        super(area, entities, panelName, window);
+        // Dimension d = new Dimension(800, 700);s
+        setLayout(new BorderLayout());
+        this.colorSwitchGui = new ColorSwitchGui(isRecolor);
+        loadSprites(area.getSprites());
+        setDoubleBuffered(true);
+    }
+
     private void loadSprites(ArrayList<Sprite> sprites) {
         for (Sprite s : sprites) {
             loadSprite(s);
@@ -64,7 +77,7 @@ public class OverworldPanel extends GamePanel {
     }
 
     private void saveGame() {
-        System.out.println("Saving game");
+        //System.out.println("Saving game");
         this.worldGenModel.getColorerModel()
                 .setRecolor(Boolean.getBoolean(this.colorSwitchGui.getColorChangeButton().getText()));
         SaveGame.save(this.worldGenModel);
@@ -83,6 +96,7 @@ public class OverworldPanel extends GamePanel {
             colorSwitchGui.setVisible(!colorSwitchGui.isVisible());
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+
             Coordinates offest = this.getOffset();
             OverworldPlayer player = (OverworldPlayer) getPlayer();
 
@@ -90,7 +104,7 @@ public class OverworldPanel extends GamePanel {
                     player.getCoord().getY() - offest.getY() - 10, player.getCurrentWidth() + 20,
                     player.getCurrentHeight() + 20);
             System.out.println(rect1);
-
+            System.out.println(area.getSpritesItems());
             for (ItemSprite i : area.getSpritesItems()) {
                 Rectangle rect2 = new Rectangle(i.getCoord().getX() - offest.getX() - this.SPACE_MOD2,
                         i.getCoord().getY() - offest.getY() - this.SPACE_MOD2, i.getCurrentWidth(),
@@ -204,7 +218,6 @@ public class OverworldPanel extends GamePanel {
             for (Entity e : this.entities) {
                 if (e.timeToMove()) {
                     e.getMovement();
-
                     if (colliding(e)) {
                         e.movementBlocked();
                     }
@@ -233,7 +246,7 @@ public class OverworldPanel extends GamePanel {
         return new Coordinates(offset_X, offset_y, width, height);
     }
 
-    private Entity getPlayer() {
+    public Entity getPlayer() {
         for (Entity e : entities) {
             if (e.getCategoryName().equals("player")) {
                 return e;

@@ -1,6 +1,5 @@
 package engineFiles.main.models.Sprites.Entities;
 
-import engineFiles.ui.Coordinates;
 import engineFiles.ui.Player;
 import org.json.JSONObject;
 
@@ -26,11 +25,6 @@ public class OverworldPlayer extends ControllableEntity {
         this.curHealth = 10;
         this.damage = 2;
         this.player = player;
-    }
-
-    @Override
-    public Coordinates getOgCoord() {
-        return super.getCoord();
     }
 
     public Player getPlayer() {

@@ -5,7 +5,7 @@ public class Item {
     private int speedMod = 0;
     private int attackMod = 0;
     private int cost = 0;
-    private String description;
+    private String description = "";
 
     private String name;
 

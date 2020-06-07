@@ -5,6 +5,8 @@ import engineFiles.ui.Settings;
 import javax.swing.*;
 import java.awt.*;
 
+
+//Gui meant to help switch the games color setting
 public class ColorSwitchGui extends JPanel {
     JLabel colorChangeText;
     JButton colorChangeButton;

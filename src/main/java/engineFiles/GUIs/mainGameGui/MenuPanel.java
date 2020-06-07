@@ -1,14 +1,16 @@
 package engineFiles.GUIs.mainGameGui;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.event.MouseEvent;
+import engineFiles.ui.Resolution;
 import engineFiles.ui.components.Button;
 import engineFiles.ui.components.Component;
-import engineFiles.ui.Resolution;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+
+//Class that is used to get the information needed to display for the main menu
 public class MenuPanel extends GamePanel {
 
   private boolean clicked = false;

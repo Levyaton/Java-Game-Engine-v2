@@ -13,7 +13,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 class CoordinatesTest {
 
-    double MOD = 10.0;
+    static double MOD = 10.0;
     int x = 0;
     int y = 0;
     int width = 2;
@@ -22,7 +22,7 @@ class CoordinatesTest {
 
 
     @BeforeClass
-    private void prepareMocks(){
+    public static void prepareMocks(){
         PowerMockito.mockStatic(Settings.class);
         PowerMockito.when(Settings.MOVEMENT_SPEED).thenReturn(MOD);
     }

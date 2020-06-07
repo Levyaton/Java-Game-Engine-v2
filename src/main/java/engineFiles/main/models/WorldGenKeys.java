@@ -20,6 +20,7 @@ public class WorldGenKeys {
         public static String PLAYER_KEY = "player";
         public static String SPEED_COUNTER_KEY = "speedCounter";
         public static String COORDINATES_KEY = "coordinates";
+        public static String OG_COORDINATES_KEY = "ogCoordinates";
         public static String NAME_KEY = "name";
         public static String CHARACTER_SPRITE_SHEET_MODEL_KEY = "characterSpriteSheetModel";
         public static String UNIQUE_INDEX_KEY = "uniqueIndex";

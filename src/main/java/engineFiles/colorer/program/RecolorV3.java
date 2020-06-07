@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
+
+//Class used to recolor tilesets or single images
 public class RecolorV3 {
     int redShiftSeed;
     int greenShiftSeed;

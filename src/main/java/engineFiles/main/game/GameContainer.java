@@ -19,15 +19,15 @@ public class GameContainer {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        // File log = new File("src/main/java/Log.txt");
-        // try {
-        // log.createNewFile();
-        // } catch (IOException e) {
-        // e.printStackTrace();
-        // }
-        // PrintStream stream = new PrintStream(new BufferedOutputStream(new
-        // FileOutputStream(log)), true);
-        // System.setOut(stream);
+       File log = new File("src/main/java/Log.txt");
+       try {
+           log.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+         }
+        PrintStream stream = new PrintStream(new BufferedOutputStream(new
+       FileOutputStream(log)), true);
+       System.setOut(stream);
         WorldGen load = new WorldGen();
         load.generateWorld();
     }

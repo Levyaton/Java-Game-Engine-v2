@@ -75,7 +75,10 @@ public class OldGameContrainer {
                         player.getCoord().setZ(500);
                         player.setOgCoord(player.getCoord());
                         player.setName("Player");
-
+                        player.getPlayer().getInventory().add(new Item("testName1", 0, 0, 2, "+2 DMG"));
+                        player.getPlayer().getInventory().add(new Item("testName2", 5, 0, 0, "+5 HP"));
+                        player.getPlayer().getInventory().add(new Item("testName3", 0, 10, 0, "+10 MS"));
+                        player.getPlayer().getInventory().add(new Item("testName4", 3, 0, 1, "+1 DMG, +3 HP"));
                         int range = Resolution.SCREEN_WIDTH / 2;
                         MovementAnimation homingAnim = SpriteSheetParser
                                         .parse(sheet, rowCount, columnCount, spriteWidth, spriteHeight).get(0);

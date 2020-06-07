@@ -12,6 +12,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
+//A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
+//to update itself correctly
 public abstract class GamePanel extends JPanel implements KeyListener, MouseListener, MouseMotionListener {
 
     protected String panelName;
@@ -58,11 +60,11 @@ public abstract class GamePanel extends JPanel implements KeyListener, MouseList
 
     }
 
-    protected Area getArea() {
+    public Area getArea() {
         return area;
     }
 
-    protected List<Entity> getEntities() {
+    public List<Entity> getEntities() {
         return entities;
     }
 
@@ -107,4 +109,6 @@ public abstract class GamePanel extends JPanel implements KeyListener, MouseList
     public List<JComponent> getJComponents() {
         return this.jComponents;
     }
+
+
 }

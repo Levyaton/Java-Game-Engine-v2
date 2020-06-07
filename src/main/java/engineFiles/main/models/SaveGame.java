@@ -20,10 +20,12 @@ public class SaveGame {
         world.add(COLORER_MODELS_KEY, worldGenModel.getColorerModel().getColorerModelJson());
         world.add(ENTITY_MODELS_KEY, worldGenModel.getEntitiesModel().getEntities());
         try {
+            System.out.println("saving");
             Writer writer = new FileWriter(WORLD_GEN_JSON_PATH);
             new Gson().toJson(world, writer);
             writer.close();
         } catch (IOException e) {
+            System.out.println("Failed to save");
             e.printStackTrace();
         }
     }

@@ -4,6 +4,8 @@ import engineFiles.main.models.WorldGenModel;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 
+
+//Class that helps manage the various GamePanel children that are being used
 public class PanelManager {
 
     private GamePanel current;

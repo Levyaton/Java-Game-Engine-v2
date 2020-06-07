@@ -108,12 +108,14 @@ public class EntitiesModel {
             inventory.add(new Item(itemName, healthMod, speedMod, attackMod, cost));
         }
         Player player = new Player(p.get(USERNAME_KEY).getAsString(), inventory);
-
         Function<EntitiyParam, Entity> init = entitiyParam -> new OverworldPlayer(entitiyParam.anim,
                 new File("src/main/java/resources/gameFiles/models/characterSpriteSheets/characters.png"), player,
                 entitiyParam.getSpeedCounter());
-        OverworldPlayer e = (OverworldPlayer) initEntity(json, init);
-        return e;
+        OverworldPlayer op = (OverworldPlayer) initEntity(json, init);
+        op.setCoord(gson.fromJson(json.get(COORDINATES_KEY), Coordinates.class));
+        op.setOgCoord(gson.fromJson(json.get(OG_COORDINATES_KEY), Coordinates.class));
+
+        return op;
     }
 
     private <T> List<T> initEntityArray(JsonElement element, Function<EntitiyParam, Entity> createEntity)
@@ -259,6 +261,10 @@ public class EntitiesModel {
 
     private JsonObject getPlayerEntityJson(OverworldPlayer p) {
         JsonObject object = getEntityJson(p);
+        object.remove(COORDINATES_KEY);
+        object.add(COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getCoord())));
+        object.add(OG_COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getOgCoord())));
+        System.out.println( JsonParser.parseString(gson.toJson(p.getOgCoord())));
         JsonObject player = new JsonObject();
         JsonArray inventory = new JsonArray();
         for (Item i : p.getPlayer().getInventory()) {
