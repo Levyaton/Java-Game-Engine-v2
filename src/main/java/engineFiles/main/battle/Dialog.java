@@ -1,12 +1,14 @@
 package engineFiles.main.battle;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Sprites.Battle.battleGUI;
 import engineFiles.ui.components.CallbackFunc;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+
+//A class containing methods of displaying text
 public class Dialog extends Component {
 
   private String text;

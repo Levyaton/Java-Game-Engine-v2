@@ -1,9 +1,11 @@
 package engineFiles.main.battle;
 
-import java.util.Stack;
-
 import engineFiles.GUIs.mainGameGui.BattlePanel;
 
+import java.util.Stack;
+
+
+//A class containing the battle logic
 public class BattleManager {
 
   private BattlePanel battlePanel;

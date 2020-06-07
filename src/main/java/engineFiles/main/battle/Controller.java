@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+
+//A class containing the controls that are used in battles
 public class Controller extends Component {
 
   private BattlePanel battlePanel;

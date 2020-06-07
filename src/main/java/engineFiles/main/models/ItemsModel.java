@@ -41,7 +41,7 @@ public class ItemsModel {
         for (ItemSprite item : items) {
             JsonObject obj = new JsonObject();
             obj.addProperty(ITEM_NAME_KEY, item.getItem().getName());
-            obj.addProperty(FILE_PATH_KEY, item.getOgFile().getPath());
+            obj.addProperty(FILE_PATH_KEY, (item.getOgFile().getPath()).replace("\\", "/"));
             obj.addProperty(DIM_MOD_KEY, item.getDimMod());
             obj.addProperty(X_KEY, item.getCoord().getX());
             obj.addProperty(Y_KEY, item.getCoord().getY());
