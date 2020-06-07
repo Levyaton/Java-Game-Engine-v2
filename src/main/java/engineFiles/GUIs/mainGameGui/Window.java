@@ -24,15 +24,15 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         add(canvas);
         pack();
         setLocationRelativeTo(null);
-        addMouseListener(this);
-        addKeyListener(this);
-        addMouseMotionListener(this);
     }
 
     public Window(WorldGenModel model) {
         this();
         panelManager = new PanelManager(model, this);
         add(panelManager.getCurrent());
+        addMouseListener(this);
+        addKeyListener(this);
+        addMouseMotionListener(this);
         setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -44,8 +44,7 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     }
 
     public void initBattle(OverworldPlayer player, Entity opponent) {
-        // panelManager.initBattle(player, opponent);
-        panelManager.setCurrent("menu");
+        panelManager.initBattle(player, opponent);
         remove(getContentPane());
         add(panelManager.getCurrent());
     }

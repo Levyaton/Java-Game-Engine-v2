@@ -17,7 +17,5 @@ public abstract class Component {
 
   public abstract void input(int x, int y, boolean clicked);
 
-  public abstract void update();
-
   public abstract void render(Graphics g);
 }
