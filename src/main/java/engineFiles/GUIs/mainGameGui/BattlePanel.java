@@ -14,7 +14,10 @@ import engineFiles.ui.fonts.FontLibrary;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Stack;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 // Main battle screen class, rendering layout GUI and input processing
 public class BattlePanel extends GamePanel {
@@ -30,8 +33,17 @@ public class BattlePanel extends GamePanel {
 
   public BattlePanel(String panelName, Window window) {
     super(panelName, window);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     battleGUI.loadResources();
-    LOG.setUseParentHandlers(true);
+
     battleManager = new BattleManager(this);
     componentStack = new Stack<Component>();
     LOG.config("BattlePanel Initialized");
@@ -51,6 +63,7 @@ public class BattlePanel extends GamePanel {
     }));
 
     inBattle = true;
+    LOG.info("Opponents set");
   }
 
   /**

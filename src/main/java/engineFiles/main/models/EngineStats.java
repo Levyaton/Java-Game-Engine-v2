@@ -1,6 +1,9 @@
 package engineFiles.main.models;
 
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //A class containing the engine stats, and methods that involve them
 public class EngineStats {
@@ -21,6 +24,15 @@ public class EngineStats {
     public static double unprocessedTime = 0;
 
     public EngineStats() {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         LOG.config("EngineStats Initialized");
     }
 

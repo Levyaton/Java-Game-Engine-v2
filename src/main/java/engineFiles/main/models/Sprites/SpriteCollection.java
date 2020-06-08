@@ -5,12 +5,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 ////Class containing a custom sprite array list, that has some modified methods, making it more useful for tracking used sprites
 public class SpriteCollection extends ArrayList<Sprite> {
     private static final Logger LOG = Logger.getLogger(SpriteCollection.class.getName());
     public SpriteCollection(JSONArray sprites) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         for (Object json : sprites) {
             Sprite s = new Sprite((JSONObject) json);
             add(s);
@@ -20,11 +32,29 @@ public class SpriteCollection extends ArrayList<Sprite> {
     }
 
     public SpriteCollection(ArrayList<Sprite> arr) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         addAll(arr);
         LOG.config("SpriteCollection Initialized");
     }
 
     public SpriteCollection() {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         LOG.config("SpriteCollection Initialized");
     }
 
@@ -52,7 +82,7 @@ public class SpriteCollection extends ArrayList<Sprite> {
     public void sort() {
         Comparator<Sprite> compareByZ = Sprite::compareTo;
         super.sort(compareByZ);
-
+        LOG.info("SpriteCollection Sorted");
     }
 
     /**

@@ -2,7 +2,10 @@ package engineFiles.main.models.Sprites;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the games overworld controlls
 public class Controlls {
@@ -15,6 +18,15 @@ public class Controlls {
     private int interaction;
 
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.down = down;
         this.left = left;
         this.right = right;

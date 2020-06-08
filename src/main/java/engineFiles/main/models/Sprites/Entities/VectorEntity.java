@@ -4,7 +4,10 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the logic for entities that follow a pre-determined path, using vectors
 public class VectorEntity extends Entity {
@@ -18,7 +21,15 @@ public class VectorEntity extends Entity {
 
     public VectorEntity(MovementAnimation animation, JSONObject json, int speedCounter, List<Vector> vectors) {
         super(animation, json, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;
@@ -31,7 +42,15 @@ public class VectorEntity extends Entity {
 
     public VectorEntity(MovementAnimation animation, File f, int speedCounter, List<Vector> vectors) {
         super(animation, f, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;

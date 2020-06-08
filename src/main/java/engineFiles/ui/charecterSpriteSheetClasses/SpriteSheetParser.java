@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing spritesheet parsing logic
 public class SpriteSheetParser {
@@ -24,6 +27,15 @@ public class SpriteSheetParser {
      */
     public static HashMap<Integer, MovementAnimation> parse(BufferedImage sheet, int rowCountPerCharacter,
             int columnCountPerCharacter, int spriteWidth, int spriteHeight) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         SpriteSheet target = new SpriteSheet(sheet, rowCountPerCharacter, columnCountPerCharacter, spriteWidth,
                 spriteHeight);
         HashMap<Integer, MovementAnimation> animations = new HashMap<>();
@@ -38,7 +50,7 @@ public class SpriteSheetParser {
                 id++;
             }
         }
-
+        LOG.info("Animation Sprite Sheet Parsing complete");
         return animations;
 
     }
@@ -64,7 +76,7 @@ public class SpriteSheetParser {
                     ImageIO.write(result, "png",
                             new File("src/main/java/resources/gameFiles/models/sprites/" + id + y + x + ".png"));
                 } catch (IOException e) {
-                    System.out.println("failed");
+                    LOG.severe("Failed to load animation block");
                     e.printStackTrace();
                 }
             }

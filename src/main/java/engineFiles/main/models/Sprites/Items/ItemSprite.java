@@ -6,7 +6,10 @@ import engineFiles.ui.FolderOP;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the overworld logic of items. They are displayed as sprites
 public class ItemSprite extends Sprite {
@@ -17,6 +20,15 @@ public class ItemSprite extends Sprite {
     // private BufferedImage temp;
     public ItemSprite(JSONObject json) {
         super(json);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         categoryName = "item";
         item = new Item(super.name);
         item.setAttackMod(json.getInt("attackMod"));
@@ -29,7 +41,7 @@ public class ItemSprite extends Sprite {
     // int width, int height, boolean solid, boolean movable
 
     public ItemSprite(File file, int dimMod, int x, int y, int z, Item item) {
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
         this.dimMod = dimMod;
         this.ogFile = file;
         this.img = FolderOP.getImage(file);

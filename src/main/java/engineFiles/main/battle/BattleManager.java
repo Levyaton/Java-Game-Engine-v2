@@ -3,7 +3,10 @@ package engineFiles.main.battle;
 import engineFiles.GUIs.mainGameGui.BattlePanel;
 
 import java.util.Stack;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //A class containing the battle logic
 public class BattleManager {
@@ -14,6 +17,15 @@ public class BattleManager {
   private AI ai;
 
   public BattleManager(BattlePanel battlePanel) {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.battlePanel = battlePanel;
     this.ai = new AI();
     moveStack = new Stack<Move>();
@@ -82,5 +94,7 @@ public class BattleManager {
         battlePanel.pushDialog(move.entity.getCategoryName() + " dodges attack");
         break;
     }
+
+    LOG.info("Battle move executed");
   }
 }

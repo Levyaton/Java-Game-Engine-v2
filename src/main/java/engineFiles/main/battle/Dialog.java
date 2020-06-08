@@ -6,7 +6,10 @@ import engineFiles.ui.components.CallbackFunc;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //A class containing methods of displaying text
 public class Dialog extends Component {
@@ -15,7 +18,15 @@ public class Dialog extends Component {
   private CallbackFunc func;
 
   public Dialog(String text, CallbackFunc func) {
-    LOG.setUseParentHandlers(true);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.text = text;
     this.func = func;
     LOG.config("Dialog Initialized");

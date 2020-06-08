@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
 
@@ -26,6 +29,15 @@ public class Area {
     private JSONObject json = new JSONObject();
 
     public Area(String name, int width, int height, String spritePath) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.name = name;
         this.width = width;
         this.height = height;
@@ -35,6 +47,15 @@ public class Area {
     }
 
     public Area(SpriteCollection sprites, String name, int width, int height) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.sprites = sprites;
         this.name = name;
         this.width = width;
@@ -44,6 +65,15 @@ public class Area {
     }
 
     public Area(JSONObject json) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.json = json;
         this.name = json.getString(NAME_KEY);
         this.width = json.getInt(WIDTH_KEY);
@@ -53,11 +83,32 @@ public class Area {
     }
 
     public Area(File f) {
+
         this(Objects.requireNonNull(FolderOP.getJSON(f)));
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
+        LOG.config("Area Initialized");
     }
 
     public Area(String pathToJSON) {
         this(Objects.requireNonNull(FolderOP.getJSON(pathToJSON)));
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
+        LOG.config("Area Initialized");
     }
 
     /**

@@ -5,7 +5,10 @@ import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the logic of controllable entities. The entity is controlled by the user
 public class ControllableEntity extends Entity {
@@ -21,7 +24,15 @@ public class ControllableEntity extends Entity {
 
     public ControllableEntity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(animation, json, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
         LOG.config("ControllableEntity Initialized");
@@ -29,7 +40,15 @@ public class ControllableEntity extends Entity {
 
     public ControllableEntity(MovementAnimation animation, File f, int speedCounter) {
         super(animation, f, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
         LOG.config("ControllableEntity Initialized");

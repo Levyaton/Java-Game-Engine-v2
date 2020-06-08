@@ -16,7 +16,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
@@ -32,6 +35,15 @@ public class WorldGen {
      * @throws FileNotFoundException
      */
     public void generateWorld() throws FileNotFoundException {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         Gson gson = new Gson();
         BufferedReader br = null;
 
@@ -52,6 +64,7 @@ public class WorldGen {
             GameContainer gc = new GameContainer(frame);
         } catch (IOException e) {
             e.printStackTrace();
+            LOG.severe("Failed to generate world");
         }
         /*
          * //COLORING String inputDir =

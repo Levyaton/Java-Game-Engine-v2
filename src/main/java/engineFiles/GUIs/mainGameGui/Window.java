@@ -8,7 +8,10 @@ import engineFiles.ui.Resolution;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Custom JFrame that contains the game panels and controls the displaying of information
 public class Window extends JFrame implements KeyListener, MouseListener, MouseMotionListener {
@@ -19,6 +22,15 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     private PanelManager panelManager;
 
     public Window() {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         setTitle("zelda");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -32,6 +44,16 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
 
     public Window(WorldGenModel model) {
         this();
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
+
         panelManager = new PanelManager(model, this);
         add(panelManager.getCurrent());
         addMouseListener(this);
@@ -39,6 +61,7 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         addMouseMotionListener(this);
         setVisible(true);
         setLocationRelativeTo(null);
+        LOG.config("Window Initialized");
     }
 
     /**

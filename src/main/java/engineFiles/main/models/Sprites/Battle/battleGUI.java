@@ -3,7 +3,10 @@ package engineFiles.main.models.Sprites.Battle;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the battle gui
 public class battleGUI {
@@ -22,11 +25,20 @@ public class battleGUI {
    * @return BufferedImage
    */
   static public BufferedImage load(String path) {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     try {
       return ImageIO.read(new FileInputStream("src/main/java/resources" + path));
     } catch (java.io.IOException e) {
       e.printStackTrace();
-      System.out.println("Error, could not load GUI component with path: " + path);
+      LOG.severe("Error, could not load GUI component with path: " + path);
       return null;
     }
   }

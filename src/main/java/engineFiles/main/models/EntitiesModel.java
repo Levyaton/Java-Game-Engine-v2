@@ -16,7 +16,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.EntityKeys.*;
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
@@ -34,6 +37,15 @@ public class EntitiesModel {
 
     public EntitiesModel(OverworldPlayer player, List<HomingEntity> homing, List<ControllableEntity> controlable,
             List<VectorEntity> vector) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.player = player;
         this.homing = homing;
         this.controlable = controlable;
@@ -42,6 +54,15 @@ public class EntitiesModel {
     }
 
     public EntitiesModel(JsonObject json) throws IOException {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         List<Entity> allEntities = new ArrayList<>();
         this.player = initOverworldPlayer(json.get(OVERWORLD_PLAYER_KEY).getAsJsonObject());
         allEntities.add(player);
@@ -359,7 +380,6 @@ public class EntitiesModel {
         object.remove(COORDINATES_KEY);
         object.add(COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getCoord())));
         object.add(OG_COORDINATES_KEY, JsonParser.parseString(gson.toJson(p.getOgCoord())));
-        System.out.println(JsonParser.parseString(gson.toJson(p.getOgCoord())));
         JsonObject player = new JsonObject();
         JsonArray inventory = new JsonArray();
         for (Item i : p.getPlayer().getInventory()) {

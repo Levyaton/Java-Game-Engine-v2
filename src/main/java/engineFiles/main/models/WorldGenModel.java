@@ -4,7 +4,10 @@ import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.ui.TileMapClasses.TileMap;
 
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the world generation properties. Used to keep track of games structure
 public class WorldGenModel {
@@ -16,6 +19,15 @@ public class WorldGenModel {
     private Area area;
 
     public WorldGenModel(TileMap tm, ColorerModel cm, EntitiesModel em, String tilesetPath, List<ItemSprite> items) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.tileMap = tm;
         this.colorerModel = cm;
         this.entitiesModel = em;

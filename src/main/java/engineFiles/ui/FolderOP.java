@@ -10,7 +10,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing generic static folder operations
 public class FolderOP {
@@ -29,12 +32,21 @@ public class FolderOP {
      * @return BufferedImage
      */
     public static BufferedImage getImage(File file) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         try {
             return ImageIO.read(file);
         } catch (IOException e) {
 
-            System.out.println(e.getMessage());
-            System.out.println(file.getPath());
+            LOG.severe("Image failed to load with message " + e.getMessage());
+            System.out.println("From path " + file.getPath());
             return null;
         }
     }
@@ -77,6 +89,15 @@ public class FolderOP {
      * @return JSONObject
      */
     public static JSONObject getJSON(String path) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         Gson gSon = new Gson();
 
         File f = new File(path);
@@ -89,10 +110,11 @@ public class FolderOP {
                 sb.append(line).append("\n");
                 line = br.readLine();
             }
-            System.out.println(sb.toString());
+            LOG.config(sb.toString());
             return new JSONObject(sb.toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.severe("Failed to get JSON in FolderOP with message");
+            LOG.severe(e.getMessage());
         }
         return null;
     }
@@ -102,13 +124,22 @@ public class FolderOP {
      * @return JSONObject
      */
     public static JSONObject getJSON(File file) {
-
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         // create a reader
 
         try {
             return new JSONObject(new Scanner(file));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LOG.severe("Failed to get Json in FolderOP with message");
+            LOG.severe(e.getMessage());
         }
         return null;
     }

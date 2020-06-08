@@ -18,7 +18,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 // Class that is used to get the information needed to display for the overworld/main game world
 public class OverworldPanel extends GamePanel {
@@ -33,7 +36,15 @@ public class OverworldPanel extends GamePanel {
 
     public OverworldPanel(String panelName, Window window, WorldGenModel worldGenModel) {
         super(worldGenModel.getArea(), worldGenModel.getEntitiesModel().getAllEntities(), panelName, window);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(worldGenModel.getColorerModel().isRecolor());
@@ -45,7 +56,15 @@ public class OverworldPanel extends GamePanel {
 
     public OverworldPanel(String panelName, Window window, boolean isRecolor, Area area, List<Entity> entities) {
         super(area, entities, panelName, window);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(isRecolor);

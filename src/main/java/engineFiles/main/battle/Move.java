@@ -3,7 +3,10 @@ package engineFiles.main.battle;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Items.Item;
 
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 
 //A class containing the move logic used in battles
@@ -15,12 +18,30 @@ public class Move {
   public int value;
 
   public Move(Entity entity, MoveEnum type) {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;
     LOG.config("Move Initialized");
   }
 
   public Move(Entity entity, MoveEnum type, int value) {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;
     this.value = value;
@@ -28,6 +49,15 @@ public class Move {
   }
 
   public Move(Entity entity, MoveEnum type, Item item) {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;
     this.item = item;

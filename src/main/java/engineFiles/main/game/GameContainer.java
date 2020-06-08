@@ -5,7 +5,7 @@ import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.WorldGen;
 
 import java.io.*;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 //Class containing the game launching methods
 public class GameContainer {
@@ -18,6 +18,15 @@ public class GameContainer {
     private Window frame;
 
     public GameContainer(Window frame) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.frame = frame;
         start();
         LOG.config("GameContainer Initialized");
@@ -28,7 +37,16 @@ public class GameContainer {
      * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
-
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
+        LOG.info("Game Started");
         File log = new File("src/main/java/Log.txt");
         try {
             log.createNewFile();

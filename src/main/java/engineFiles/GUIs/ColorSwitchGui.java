@@ -4,7 +4,10 @@ import engineFiles.ui.Settings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Gui meant to help switch the games color setting
 public class ColorSwitchGui extends JPanel {
@@ -15,6 +18,15 @@ public class ColorSwitchGui extends JPanel {
 
     public ColorSwitchGui(boolean changeColor) {
         super();
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         Dimension dimension = new Dimension(Settings.screenWidth, Settings.screenHeight);
         this.setPreferredSize(dimension);
         this.colorChangeText = new JLabel();

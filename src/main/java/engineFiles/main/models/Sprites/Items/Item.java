@@ -1,6 +1,9 @@
 package engineFiles.main.models.Sprites.Items;
 
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the item logic
 public class Item {
@@ -14,6 +17,15 @@ public class Item {
     private String name;
 
     public Item(String name) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.name = name;
         LOG.config("Item Initialized");
     }

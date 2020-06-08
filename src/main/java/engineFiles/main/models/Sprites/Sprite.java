@@ -9,7 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the sprite logic, mainly used in the overworld
 public class Sprite implements Comparable {
@@ -33,10 +36,28 @@ public class Sprite implements Comparable {
     protected String categoryName = "tile";
 
     public Sprite() {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         LOG.config("Sprite Initialized");
     }
 
     public Sprite(File file) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.ogFile = file;
         initFromOGFile();
         this.currentHeight = this.defaultHeight;
@@ -49,6 +70,15 @@ public class Sprite implements Comparable {
 
     public Sprite(File file, BufferedImage img, int dimMod, int x, int y, int z, int blockID, int width, int height,
             boolean solid, boolean movable) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.ogFile = file;
         this.img = img;
         this.ogImg = img;
@@ -67,6 +97,15 @@ public class Sprite implements Comparable {
     }
 
     public Sprite(String file) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.ogFile = new File(file);
         initFromOGFile();
         this.currentHeight = this.defaultHeight;
@@ -78,6 +117,15 @@ public class Sprite implements Comparable {
     }
 
     public Sprite(JSONObject json) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         String path = json.get("Path").toString();
         // path = path.substring(2,path.length()-2);
         this.ogFile = new File(path);
@@ -103,6 +151,7 @@ public class Sprite implements Comparable {
         this.name = this.ogFile.getName();
         this.defaultHeight = this.img.getHeight();
         this.defaultWidth = this.img.getWidth();
+        LOG.info("Sprite " + name + " initialed from og file");
     }
 
     /**

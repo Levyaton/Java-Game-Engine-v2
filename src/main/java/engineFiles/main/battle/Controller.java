@@ -9,7 +9,10 @@ import engineFiles.ui.fonts.FontLibrary;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //A class containing the controls that are used in battles
 public class Controller extends Component {
@@ -23,7 +26,15 @@ public class Controller extends Component {
   private boolean showItemsOption = false;
 
   public Controller(BattlePanel battlePanel) {
-    LOG.setUseParentHandlers(true);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.battlePanel = battlePanel;
     baseOptions = new String[] { "attack", "dodge" };
     inventory = battlePanel.player.getPlayer().getInventory();

@@ -9,7 +9,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 // A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
 // to update itself correctly
@@ -23,6 +26,15 @@ public abstract class GamePanel extends JPanel {
     protected List<JComponent> jComponents;
 
     public GamePanel(Area area, List<Entity> entities, String panelName, Window window) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.panelName = panelName;
         this.entities = entities;
         this.area = area;
@@ -31,6 +43,15 @@ public abstract class GamePanel extends JPanel {
     }
 
     public GamePanel(String panelName, Window window) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.window = window;
         LOG.config("GameOverPanel Initialized");
     }

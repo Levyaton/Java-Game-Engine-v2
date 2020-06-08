@@ -2,7 +2,10 @@ package engineFiles.main.models.Sprites.Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the overworld movement animation logic
 public class MovementAnimation {
@@ -27,6 +30,15 @@ public class MovementAnimation {
     }
 
     public MovementAnimation(int id) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.id = id;
         LOG.config("MovementAnimation Initialized");
     }

@@ -8,7 +8,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 // Menu screen for game start
 public class MenuPanel extends GamePanel {
@@ -19,7 +22,15 @@ public class MenuPanel extends GamePanel {
 
   public MenuPanel(String panelName, Window window) {
     super(panelName, window);
-    LOG.setUseParentHandlers(true);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     components = new ArrayList<>();
     components.add(new Button("start", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60,
         () -> window.setPanel("overworld")));

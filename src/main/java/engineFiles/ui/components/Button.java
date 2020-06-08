@@ -3,7 +3,10 @@ package engineFiles.ui.components;
 import engineFiles.ui.fonts.FontLibrary;
 
 import java.awt.*;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing a custom button definition
 public class Button extends Component {
@@ -15,7 +18,15 @@ public class Button extends Component {
 
   public Button(String text, int x, int y, int width, int height, CallbackFunc func) {
     super(x, y, width, height);
-    LOG.setUseParentHandlers(true);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     this.text = text;
     this.func = func;
     bounds = new Rectangle(x - (width / 2), y - (height / 2), width, height);

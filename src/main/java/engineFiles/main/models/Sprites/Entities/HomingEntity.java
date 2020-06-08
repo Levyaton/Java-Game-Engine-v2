@@ -5,7 +5,10 @@ import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.File;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the logic of homing entities. They foolow a given entity, if the entity is in a given range
 public class HomingEntity extends Entity {
@@ -16,7 +19,15 @@ public class HomingEntity extends Entity {
 
     public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter) {
         super(animation, json, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
@@ -30,7 +41,15 @@ public class HomingEntity extends Entity {
 
     public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter) {
         super(animation, f, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         super.others.add(target);
         this.categoryName = "homing";

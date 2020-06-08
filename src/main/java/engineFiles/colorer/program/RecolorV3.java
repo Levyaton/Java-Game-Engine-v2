@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 //Class used to recolor tilesets or single images
 public class RecolorV3 {
@@ -19,6 +19,15 @@ public class RecolorV3 {
     int blueShiftSeed;
 
     public RecolorV3() {
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.setUseParentHandlers(false);
+        LOG.addHandler(stdout);
         this.redShiftSeed = new Random().nextInt(255);
         this.greenShiftSeed = new Random().nextInt(255);
         this.blueShiftSeed = new Random().nextInt(255);
@@ -26,6 +35,15 @@ public class RecolorV3 {
     }
 
     public RecolorV3(int redShiftSeed, int greenShiftSeed, int blueShiftSeed) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.redShiftSeed = redShiftSeed;
         this.greenShiftSeed = greenShiftSeed;
         this.blueShiftSeed = blueShiftSeed;
@@ -84,6 +102,8 @@ public class RecolorV3 {
                 }
             }
         }
+        LOG.info("Image recolored");
+
         return result;
     }
 
@@ -142,7 +162,8 @@ public class RecolorV3 {
         BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())));
         File f = new File(model.getTilesetOutputDir());
         f.createNewFile();
-        System.out.println(f);
         ImageIO.write(recolor, "png", f);
+        LOG.info("Image recolored");
+
     }
 }

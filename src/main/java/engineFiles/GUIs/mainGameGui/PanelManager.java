@@ -4,7 +4,10 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.main.models.WorldGenModel;
 
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 // Class that helps manage the various GamePanel children that are being used
 public class PanelManager {
@@ -17,6 +20,15 @@ public class PanelManager {
     private WorldGenModel model;
 
     public PanelManager(WorldGenModel model, Window window) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         menu = new MenuPanel("menu", window);
         battle = new BattlePanel("battle", window);
         gameover = new GameOverPanel("gameover", window);
@@ -47,6 +59,8 @@ public class PanelManager {
                 current = gameover;
                 break;
         }
+
+        LOG.info("Set panel " + name + " as Current");
     }
 
     /**
@@ -56,6 +70,7 @@ public class PanelManager {
     public void initBattle(OverworldPlayer player, Entity opponent) {
         battle.setOpponents(player, opponent);
         current = battle;
+        LOG.info("Call to battle");
     }
 
     /**

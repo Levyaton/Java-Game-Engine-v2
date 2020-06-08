@@ -4,7 +4,10 @@ import engineFiles.ui.Player;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the logic for the overworld player entity. 
 public class OverworldPlayer extends ControllableEntity {
@@ -13,7 +16,15 @@ public class OverworldPlayer extends ControllableEntity {
 
     public OverworldPlayer(MovementAnimation animation, JSONObject json, Player player, int speedCounter) {
         super(animation, json, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         super.categoryName = "player";
         this.health = 10;
         this.curHealth = 10;
@@ -24,7 +35,15 @@ public class OverworldPlayer extends ControllableEntity {
 
     public OverworldPlayer(MovementAnimation animation, File f, Player player, int speedCounter) {
         super(animation, f, speedCounter);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.categoryName = "player";
         this.health = 10;
         this.curHealth = 10;

@@ -7,7 +7,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
@@ -19,6 +22,15 @@ public class SaveGame {
      * @param worldGenModel
      */
     public static void save(WorldGenModel worldGenModel) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         JsonObject world = new JsonObject();
         world.add(WORLD_ITMES_KEY, ItemsModel.generateOverworldItemsJson(worldGenModel.getArea().getSpritesItems()));
         world.addProperty(TILESET_PATH_KEY, new File(worldGenModel.getTilesetPath()) + "/");
@@ -26,13 +38,14 @@ public class SaveGame {
         world.add(COLORER_MODELS_KEY, worldGenModel.getColorerModel().getColorerModelJson());
         world.add(ENTITY_MODELS_KEY, worldGenModel.getEntitiesModel().getEntities());
         try {
-            System.out.println("saving");
+            LOG.info("Saving");
             Writer writer = new FileWriter(WORLD_GEN_JSON_PATH);
             new Gson().toJson(world, writer);
             writer.close();
         } catch (IOException e) {
-            System.out.println("Failed to save");
+            LOG.severe("Failed to save");
             e.printStackTrace();
         }
+        LOG.info("Game Saved");
     }
 }

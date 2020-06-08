@@ -9,7 +9,10 @@ import engineFiles.ui.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.TileMapKeys.*;
 
@@ -42,10 +45,28 @@ public class TileMap {
     private String tilesetPath;
 
     public TileMap() {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         LOG.config("TileMap Initialized");
     }
 
     public TileMap(JsonObject tileset, String tilesetPath) throws FileNotFoundException {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.tilesetPath = tilesetPath;
         this.json = tileset;
         Gson gson = new Gson();

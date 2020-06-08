@@ -7,7 +7,10 @@ import engineFiles.main.models.Sprites.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
@@ -19,6 +22,15 @@ public class Player {
     private List<Item> inventory = new ArrayList<>();
 
     public Player(JsonObject json) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.username = json.get(USERNAME_KEY).getAsString();
         for (JsonElement el : json.get(INVENTORY_KEY).getAsJsonArray()) {
             this.inventory.add(gson.fromJson(el.getAsJsonObject(), Item.class));
@@ -27,6 +39,15 @@ public class Player {
     }
 
     public Player(String username, List<Item> inventory) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.username = username;
         this.inventory = inventory;
         LOG.config("Player Initialized");
@@ -64,7 +85,7 @@ public class Player {
      * @param item
      */
     public void addItem(Item item) {
-        System.out.println("Added item named " + item.getName());
+        LOG.info("Added item named " + item.getName());
         this.inventory.add(item);
     }
 }

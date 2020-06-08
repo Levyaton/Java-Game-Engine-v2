@@ -4,7 +4,10 @@ import com.google.gson.JsonObject;
 import engineFiles.ui.Settings;
 
 import java.util.Random;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.ColorerKeys.*;
 
@@ -19,6 +22,15 @@ public class ColorerModel {
     private int blueShift;
 
     public ColorerModel(JsonObject json) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         tilesetInputDir = json.get(TILESET_INPUT_DIR_KEY).getAsString();
         tilesetOutputDir = json.get(TILESET_OUTPUT_DIR_KEY).getAsString();
         recolor = json.get(RECOLOR_KEY).getAsBoolean();
@@ -41,6 +53,7 @@ public class ColorerModel {
         Settings.ColorerSettings.redShift = this.redShift;
         Settings.ColorerSettings.greenShift = this.greenShift;
         Settings.ColorerSettings.blueShift = this.blueShift;
+        LOG.config("Colorer Setting updated");
     }
 
     public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor) {

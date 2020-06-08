@@ -2,7 +2,10 @@ package engineFiles.main.models;
 
 import com.google.gson.JsonObject;
 
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.CharacterSpriteSheetKeys.*;
 
@@ -18,6 +21,15 @@ public class CharacterSpriteSheetModel {
 
     public CharacterSpriteSheetModel(int rowCount, int columnCount, int spriteWidth, int spriteHeight, int entityIndex,
             String sheetPath) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.rowCount = rowCount;
         this.columnCount = columnCount;
         this.spriteHeight = spriteHeight;
@@ -28,6 +40,15 @@ public class CharacterSpriteSheetModel {
     }
 
     public CharacterSpriteSheetModel(JsonObject json) {
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.rowCount = json.get(ROW_COUNT_KEY).getAsInt();
         this.columnCount = json.get(COLUMN_COUNT_KEY).getAsInt();
         this.spriteHeight = json.get(SPRITE_HEIGHT_KEY).getAsInt();

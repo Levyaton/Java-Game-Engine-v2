@@ -25,7 +25,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
@@ -37,6 +40,16 @@ public class OldGameContrainer {
          * @param args
          */
         public static void main(String[] args) {
+                LOG.setUseParentHandlers(false);
+                Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+                LOG.addHandler(stdout);
+                LOG.info("Game Started (from old launcher)");
                 // String areaDir = "src/main/java/resources/gameFiles/models/objects/areas/";
                 // BufferedImage test = null;
                 String playerPath = "src/main/java/resources/gameFiles/models/sprites/static/other/redSquare.png";

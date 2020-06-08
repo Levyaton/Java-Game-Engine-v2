@@ -4,7 +4,10 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Items.Item;
 
 import java.util.Random;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the ai behaviour
 public class AI {
@@ -13,6 +16,15 @@ public class AI {
   private Item[] randomItems;
 
   public AI() {
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+    LOG.addHandler(stdout);
     rand = new Random();
     randomItems = new Item[4];
     randomItems[0] = new Item("Fist of Odin", 0, 0, 2, "+2 DMG");
@@ -29,10 +41,13 @@ public class AI {
   public Move getNextMove(Entity entity) {
     int randomInt = rand.nextInt(10);
     if (randomInt > 5) {
+      LOG.info("AI will attack");
       return new Move(entity, MoveEnum.ATTACK, entity.getDamage() + entity.getBattleDamage());
     } else if (randomInt == 0) {
+      LOG.info("AI will use item");
       return new Move(entity, MoveEnum.ITEM, randomItems[rand.nextInt(4)]);
     } else {
+      LOG.info("AI will dodge");
       return new Move(entity, MoveEnum.DODGE, 0);
     }
   }

@@ -9,7 +9,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.*;
 
 //Class containing the general logic of every entity
 
@@ -48,7 +51,15 @@ public abstract class Entity extends Sprite {
 
     public Entity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(json);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.animation = animation;
         this.speedCounter = speedCounter;
         // this.coord.setMOD(speed);
@@ -57,7 +68,15 @@ public abstract class Entity extends Sprite {
 
     public Entity(MovementAnimation animation, File f, int speedCounter) {
         super(f);
-        LOG.setUseParentHandlers(true);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+    @Override
+    public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+    }
+};
+        LOG.addHandler(stdout);
         this.animation = animation;
         this.speedCounter = speedCounter;
         LOG.config("Entity Initialized");
