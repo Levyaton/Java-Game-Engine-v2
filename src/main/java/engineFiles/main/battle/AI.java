@@ -1,13 +1,14 @@
 package engineFiles.main.battle;
 
-import java.util.Random;
-
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Items.Item;
 
+import java.util.Random;
+import java.util.logging.Logger;
+
 //Class containing the ai behaviour
 public class AI {
-
+  private static final Logger LOG = Logger.getLogger(AI.class.getName());
   private Random rand;
   private Item[] randomItems;
 
@@ -18,6 +19,7 @@ public class AI {
     randomItems[1] = new Item("Hunter Dagger", 0, 0, 1, "+1 DMG");
     randomItems[2] = new Item("Spirit stone", 3, 0, 0, "+3 HP");
     randomItems[3] = new Item("Health potion", 5, 0, 0, "+5 DMG");
+    LOG.config("AI Initialized");
   }
 
   /**

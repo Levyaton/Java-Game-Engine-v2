@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing spritesheet parsing logic
 public class SpriteSheetParser {
-
+    private static final Logger LOG = Logger.getLogger(SpriteSheetParser.class.getName());
     /**
      * @param sheet
      * @param rowCountPerCharacter

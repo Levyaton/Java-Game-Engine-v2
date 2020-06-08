@@ -9,9 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Logger;
 
 //Class used to recolor tilesets or single images
 public class RecolorV3 {
+    private static final Logger LOG = Logger.getLogger(RecolorV3.class.getName());
     int redShiftSeed;
     int greenShiftSeed;
     int blueShiftSeed;
@@ -20,12 +22,14 @@ public class RecolorV3 {
         this.redShiftSeed = new Random().nextInt(255);
         this.greenShiftSeed = new Random().nextInt(255);
         this.blueShiftSeed = new Random().nextInt(255);
+        LOG.config("RecolorV3 Initialized");
     }
 
     public RecolorV3(int redShiftSeed, int greenShiftSeed, int blueShiftSeed) {
         this.redShiftSeed = redShiftSeed;
         this.greenShiftSeed = greenShiftSeed;
         this.blueShiftSeed = blueShiftSeed;
+        LOG.config("RecolorV3 Initialized");
     }
 
     /**

@@ -10,10 +10,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 //Class containing generic static folder operations
 public class FolderOP {
-
+    private static final Logger LOG = Logger.getLogger(FolderOP.class.getName());
     /**
      * @param dir
      * @return File[]

@@ -1,8 +1,12 @@
 package engineFiles.ui.TileMapClasses;
 
+import java.util.logging.Logger;
+
 //Class containing tilemap export logic
 public class Export {
-    String format;
+   private static final Logger LOG = Logger.getLogger(Export.class.getName());
+
+        String format;
 
     /**
      * @return String

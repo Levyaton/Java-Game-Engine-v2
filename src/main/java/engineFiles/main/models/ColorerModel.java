@@ -4,11 +4,13 @@ import com.google.gson.JsonObject;
 import engineFiles.ui.Settings;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.ColorerKeys.*;
 
 //Class containing the colorer model. Used to translate the color settings of the game to a json object, and vice-versa
 public class ColorerModel {
+    private static final Logger LOG = Logger.getLogger(ColorerModel.class.getName());
     private String tilesetInputDir;
     private String tilesetOutputDir;
     private boolean recolor;
@@ -31,6 +33,7 @@ public class ColorerModel {
         }
 
         updateColorerSettings();
+        LOG.config("ColorerModel Initialized");
     }
 
     public void updateColorerSettings() {
@@ -48,6 +51,7 @@ public class ColorerModel {
         this.greenShift = new Random().nextInt(255);
         this.blueShift = new Random().nextInt(255);
         updateColorerSettings();
+        LOG.config("ColorerModel Initialized");
     }
 
     public ColorerModel(String tilesetInputDir, String tilesetOutputDir, boolean recolor, int redShift, int greenShift,
@@ -57,6 +61,7 @@ public class ColorerModel {
         this.greenShift = greenShift;
         this.blueShift = blueShift;
         updateColorerSettings();
+        LOG.config("ColorerModel Initialized");
     }
 
     /**

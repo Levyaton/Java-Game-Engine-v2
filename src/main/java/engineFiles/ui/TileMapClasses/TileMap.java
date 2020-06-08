@@ -9,13 +9,14 @@ import engineFiles.ui.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.TileMapKeys.*;
 
 //Class containing the logic needed to use tilemaps
 
 public class TileMap {
-
+    private static final Logger LOG = Logger.getLogger(TileMap.class.getName());
     int compressionlevel;
     int height;
     int width;
@@ -41,7 +42,7 @@ public class TileMap {
     private String tilesetPath;
 
     public TileMap() {
-
+        LOG.config("TileMap Initialized");
     }
 
     public TileMap(JsonObject tileset, String tilesetPath) throws FileNotFoundException {
@@ -74,6 +75,7 @@ public class TileMap {
         this.layers = gson.fromJson(json.getAsJsonArray(LAYERS_KEY), Layer[].class);
         this.tilesets = gson.fromJson(json.get(TILE_SETS_KEY), Tileset[].class);
         this.editorsettings = gson.fromJson(json.get(EDITOR_SETTINGS_KEY), EditorSettings.class);
+        LOG.config("TileMap Initialized");
     }
 
     /**

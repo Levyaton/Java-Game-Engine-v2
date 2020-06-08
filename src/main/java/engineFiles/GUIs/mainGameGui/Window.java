@@ -1,15 +1,18 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.main.models.WorldGenModel;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
+import engineFiles.main.models.WorldGenModel;
 import engineFiles.ui.Resolution;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Logger;
 
 //Custom JFrame that contains the game panels and controls the displaying of information
 public class Window extends JFrame implements KeyListener, MouseListener, MouseMotionListener {
+    private static final Logger LOG = Logger.getLogger(Window.class.getName());
     int lastDrawX;
     int lastDrawY;
     private GameCanvas canvas;
@@ -24,6 +27,7 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         add(canvas);
         pack();
         setLocationRelativeTo(null);
+        LOG.config("Window Initialized");
     }
 
     public Window(WorldGenModel model) {

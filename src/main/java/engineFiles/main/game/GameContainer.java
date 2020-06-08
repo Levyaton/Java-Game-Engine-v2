@@ -5,9 +5,12 @@ import engineFiles.main.models.EngineStats;
 import engineFiles.main.models.WorldGen;
 
 import java.io.*;
+import java.util.logging.Logger;
 
 //Class containing the game launching methods
 public class GameContainer {
+
+    private static final Logger LOG = Logger.getLogger(GameContainer.class.getName());
 
     private Thread thread;
     private GameLoop loop;
@@ -17,6 +20,7 @@ public class GameContainer {
     public GameContainer(Window frame) {
         this.frame = frame;
         start();
+        LOG.config("GameContainer Initialized");
     }
 
     /**

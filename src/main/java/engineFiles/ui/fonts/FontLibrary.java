@@ -1,14 +1,16 @@
 package engineFiles.ui.fonts;
 
-import java.awt.Font;
+import java.awt.*;
+import java.util.logging.Logger;
 
 //Class containing a font library
 public class FontLibrary {
-
+  private static final Logger LOG = Logger.getLogger(FontLibrary.class.getName());
   public static Font arialFontBold, zeldaFontMedium, zeldaFontSmall;
 
   public FontLibrary() {
     loadFonts();
+    LOG.config("FontLibrary Initialized");
   }
 
   public void loadFonts() {

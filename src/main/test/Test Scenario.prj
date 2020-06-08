@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project description="" id="6" linkage="" name="New project 2" version="">
+    <graphs>
+        <graph description="" id="10" linkage="" name="Directional Graph Test Scenario" type="ORIENTED_GRAPH" version="">
+            <node description="" height="25.0" id="2" name="START" priority="" style="STYLE_START" width="70.0" xpos="210.0" ypos="50.0"/>
+            <edge description="" id="24" name="Load Save Menu Screen" priority="" source="2" target="3"/>
+            <node description="" height="70.0" id="3" name="Pick Save &#10;Game Option" priority="" style="STYLE_NODE" width="80.0" xpos="190.0" ypos="110.0"/>
+            <edge description="" id="8" name="Load new game" priority="" source="3" target="7"/>
+            <edge description="" id="9" name="Load old game&#10;" priority="" source="3" target="7"/>
+            <edge description="" id="10" name="Avoid choosing by closing the game" priority="" source="3" target="6"/>
+            <node description="" height="90.0" id="6" name="Game has Ended" priority="" style="STYLE_NODE" width="90.0" xpos="500.0" ypos="120.0"/>
+            <node description="" height="90.0" id="7" name="Generate overworld" priority="" style="STYLE_NODE" width="130.0" xpos="230.0" ypos="260.0"/>
+            <edge description="" id="13" name="Enable player input" priority="" source="7" target="11"/>
+            <node description="" height="90.0" id="11" name="Await for player input" priority="" style="STYLE_NODE" width="130.0" xpos="340.0" ypos="420.0"/>
+            <edge description="" id="14" name="close the game" priority="" source="11" target="6"/>
+            <edge description="" id="17" name="Movement Input detected" priority="" source="11" target="16"/>
+            <edge description="" id="19" name="Game pause input&#10; detected" priority="" source="11" target="18"/>
+            <edge description="" id="26" name="Save Game Input detected" priority="" source="11" target="25"/>
+            <node description="" height="80.0" id="16" name="Collision Check" priority="" style="STYLE_NODE" width="90.0" xpos="110.0" ypos="560.0"/>
+            <edge description="" id="22" name="Prevent Movement in input direction" priority="" source="16" target="11"/>
+            <edge description="" id="23" name="Allow movement in inout direction" priority="" source="16" target="11"/>
+            <node description="" height="70.0" id="18" name="Pause Game" priority="" style="STYLE_NODE" width="90.0" xpos="750.0" ypos="380.0"/>
+            <edge description="" id="20" name="Game pause input detected,Game continues" priority="" source="18" target="11"/>
+            <edge description="" id="21" name="close the paused game" priority="" source="18" target="6"/>
+            <node description="" height="40.0" id="25" name="Save the game" priority="" style="STYLE_NODE" width="40.0" xpos="560.0" ypos="540.0"/>
+            <edge description="" id="27" name="Store Save Game File" priority="" source="25" target="11"/>
+            <test_case changed="false" combinations_data_rows="7" graph_id="10" name="Test situations 1, TDL= 1, ALG= PCT." note="" test_situations_data_rows="4">
+                <combinations_data_value col="0" selected_row="0">Generate overworld</combinations_data_value>
+                <combinations_data_value col="1" selected_row="0">Load new game
+Load old game
+
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="1">Collision Check</combinations_data_value>
+                <combinations_data_value col="1" selected_row="1">Movement Input detected
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="2">Save the game</combinations_data_value>
+                <combinations_data_value col="1" selected_row="2">Save Game Input detected
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="3">Pick Save 
+Game Option</combinations_data_value>
+                <combinations_data_value col="1" selected_row="3">Load Save Menu Screen
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="4">Pause Game</combinations_data_value>
+                <combinations_data_value col="1" selected_row="4">Game pause input
+ detected
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="5">Game has Ended</combinations_data_value>
+                <combinations_data_value col="1" selected_row="5">Avoid choosing by closing the game
+close the game
+close the paused game
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="6">Await for player input</combinations_data_value>
+                <combinations_data_value col="1" selected_row="6">Enable player input
+Prevent Movement in input direction
+Allow movement in inout direction
+Game pause input detected,Game continues
+Store Save Game File
+</combinations_data_value>
+                <test_situation_row>
+                    <value edge_id="24" name="Load Save Menu Screen"/>
+                    <value edge_id="8" name="Load new game"/>
+                    <value edge_id="13" name="Enable player input"/>
+                    <value edge_id="14" name="close the game"/>
+                </test_situation_row>
+                <test_situation_row>
+                    <value edge_id="24" name="Load Save Menu Screen"/>
+                    <value edge_id="9" name="Load old game&#10;"/>
+                    <value edge_id="13" name="Enable player input"/>
+                    <value edge_id="17" name="Movement Input detected"/>
+                    <value edge_id="22" name="Prevent Movement in input direction"/>
+                    <value edge_id="19" name="Game pause input&#10; detected"/>
+                    <value edge_id="21" name="close the paused game"/>
+                </test_situation_row>
+                <test_situation_row>
+                    <value edge_id="24" name="Load Save Menu Screen"/>
+                    <value edge_id="10" name="Avoid choosing by closing the game"/>
+                </test_situation_row>
+                <test_situation_row>
+                    <value edge_id="24" name="Load Save Menu Screen"/>
+                    <value edge_id="8" name="Load new game"/>
+                    <value edge_id="13" name="Enable player input"/>
+                    <value edge_id="26" name="Save Game Input detected"/>
+                    <value edge_id="27" name="Store Save Game File"/>
+                    <value edge_id="19" name="Game pause input&#10; detected"/>
+                    <value edge_id="20" name="Game pause input detected,Game continues"/>
+                    <value edge_id="17" name="Movement Input detected"/>
+                    <value edge_id="23" name="Allow movement in inout direction"/>
+                    <value edge_id="14" name="close the game"/>
+                </test_situation_row>
+            </test_case>
+        </graph>
+        <graph description="" id="11" linkage="" name="Test Scenario" type="ACTIVITY_DIAGRAM" version="">
+            <node description="" height="25.0" id="2" name="START" priority="" style="STYLE_ACTIVITY_START" width="25.0" xpos="300.0" ypos="10.0"/>
+            <edge description="" id="28" name="Started the Games" priority="" source="2" target="4"/>
+            <node description="" height="35.0" id="3" name="END A" priority="" style="STYLE_ACTIVITY_END" width="35.0" xpos="1310.0" ypos="490.0"/>
+            <node description="" height="40.0" id="4" name="Load save menu &#10;Screen&#10;" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="270.0" ypos="70.0"/>
+            <edge description="" id="27" name="user picks if they wish&#10; to continue" priority="" source="4" target="5"/>
+            <node description="" height="40.0" id="5" name="save choice&#10;" priority="" style="STYLE_ACTIVITY_DECISION" width="40.0" xpos="290.0" ypos="170.0"/>
+            <edge description="" id="21" name="closed the jframe and avoid deciding" priority="" source="5" target="20"/>
+            <edge description="" id="23" name="selected conttinue option" priority="" source="5" target="8"/>
+            <edge description="" id="24" name="Selected new game option" priority="" source="5" target="7"/>
+            <node description="" height="40.0" id="7" name="New Game" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="160.0" ypos="240.0"/>
+            <edge description="" id="26" name="Generate new save game from templete" priority="" source="7" target="9"/>
+            <node description="" height="40.0" id="8" name="Continue" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="330.0" ypos="240.0"/>
+            <edge description="" id="25" name="Load previous game save" priority="" source="8" target="9"/>
+            <node description="" height="40.0" id="9" name="Load assosiated&#10; worldGen.json&#10; File&#10;" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="240.0" ypos="330.0"/>
+            <edge description="" id="49" name="Generate World&#10;" priority="" source="9" target="31"/>
+            <node description="" height="80.0" id="11" name="Player input&#10;" priority="" style="STYLE_ACTIVITY_DECISION" width="80.0" xpos="730.0" ypos="400.0"/>
+            <edge description="" id="34" name="closed the jframe" priority="" source="11" target="20"/>
+            <edge description="" id="35" name="Disable movement input" priority="" source="11" target="17"/>
+            <edge description="" id="42" name="Movement input&#10; detected while not colliding with entity&#10;" priority="" source="11" target="12"/>
+            <edge description="" id="44" name="Collide and interact&#10; with Item" priority="" source="11" target="16"/>
+            <edge description="" id="45" name="Save the game" priority="" source="11" target="14"/>
+            <edge description="" id="48" name="movement input detected &#10;while colliding with entity" priority="" source="11" target="13"/>
+            <node description="" height="40.0" id="12" name="Walk around&#10;" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="390.0" ypos="450.0"/>
+            <edge description="" id="41" name="Move sprite and&#10; await  for input" priority="" source="12" target="11"/>
+            <node description="" height="40.0" id="13" name="Collide with NPC&#10;" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="540.0" ypos="320.0"/>
+            <edge description="" id="47" name="Prevent movement&#10;and await for input&#10;¨" priority="" source="13" target="11"/>
+            <node description="" height="40.0" id="14" name="Save game&#10;" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="890.0" ypos="540.0"/>
+            <edge description="" id="51" name="Await for input" priority="" source="14" target="11"/>
+            <node description="" height="40.0" id="16" name="Pick up item" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="930.0" ypos="320.0"/>
+            <edge description="" id="43" name="Remove item&#10; from overworld and add it to&#10; player inventory" priority="" source="16" target="11"/>
+            <node description="" height="40.0" id="20" name="Close Game" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="800.0" ypos="80.0"/>
+            <edge description="" id="40" name="Game has ended" priority="" source="20" target="3"/>
+            <node description="" height="40.0" id="31" name="Load overworld" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="640.0" ypos="170.0"/>
+            <edge description="" id="33" name="Enable overworld inputs" priority="" source="31" target="11"/>
+            <node description="" height="40.0" id="17" name="Pause Game" priority="" style="STYLE_ACTIVITY_NODE" width="80.0" xpos="610.0" ypos="570.0"/>
+            <edge description="" id="50" name="Enable movement input" priority="" source="17" target="11"/>
+            <test_case changed="false" combinations_data_rows="14" graph_id="11" name="Test situations 2, TDL= 1, ALG= PCT." note="" test_situations_data_rows="3">
+                <combinations_data_value col="0" selected_row="0">Player input
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="0">Move sprite and
+ await  for input
+Prevent movement
+and await for input
+¨
+Await for input
+Remove item
+ from overworld and add it to
+ player inventory
+Enable overworld inputs
+Enable movement input
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="1">END A</combinations_data_value>
+                <combinations_data_value col="1" selected_row="1">Game has ended
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="2">Close Game</combinations_data_value>
+                <combinations_data_value col="1" selected_row="2">closed the jframe and avoid deciding
+closed the jframe
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="3">New Game</combinations_data_value>
+                <combinations_data_value col="1" selected_row="3">Selected new game option
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="4">Load assosiated
+ worldGen.json
+ File
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="4">Generate new save game from templete
+Load previous game save
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="5">Load overworld</combinations_data_value>
+                <combinations_data_value col="1" selected_row="5">Generate World
+
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="6">Pause Game</combinations_data_value>
+                <combinations_data_value col="1" selected_row="6">Disable movement input
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="7">Continue</combinations_data_value>
+                <combinations_data_value col="1" selected_row="7">selected conttinue option
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="8">Walk around
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="8">Movement input
+ detected while not colliding with entity
+
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="9">Collide with NPC
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="9">movement input detected 
+while colliding with entity
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="10">Load save menu 
+Screen
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="10">Started the Games
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="11">Pick up item</combinations_data_value>
+                <combinations_data_value col="1" selected_row="11">Collide and interact
+ with Item
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="12">Save game
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="12">Save the game
+</combinations_data_value>
+                <combinations_data_value col="0" selected_row="13">save choice
+</combinations_data_value>
+                <combinations_data_value col="1" selected_row="13">user picks if they wish
+ to continue
+</combinations_data_value>
+                <test_situation_row>
+                    <value edge_id="28" name="Started the Games"/>
+                    <value edge_id="27" name="user picks if they wish&#10; to continue"/>
+                    <value edge_id="21" name="closed the jframe and avoid deciding"/>
+                    <value edge_id="40" name="Game has ended"/>
+                </test_situation_row>
+                <test_situation_row>
+                    <value edge_id="28" name="Started the Games"/>
+                    <value edge_id="27" name="user picks if they wish&#10; to continue"/>
+                    <value edge_id="24" name="Selected new game option"/>
+                    <value edge_id="26" name="Generate new save game from templete"/>
+                    <value edge_id="49" name="Generate World&#10;"/>
+                    <value edge_id="33" name="Enable overworld inputs"/>
+                    <value edge_id="44" name="Collide and interact&#10; with Item"/>
+                    <value edge_id="43" name="Remove item&#10; from overworld and add it to&#10; player inventory"/>
+                    <value edge_id="45" name="Save the game"/>
+                    <value edge_id="51" name="Await for input"/>
+                    <value edge_id="48" name="movement input detected &#10;while colliding with entity"/>
+                    <value edge_id="47" name="Prevent movement&#10;and await for input&#10;¨"/>
+                    <value edge_id="42" name="Movement input&#10; detected while not colliding with entity&#10;"/>
+                    <value edge_id="41" name="Move sprite and&#10; await  for input"/>
+                    <value edge_id="34" name="closed the jframe"/>
+                    <value edge_id="40" name="Game has ended"/>
+                </test_situation_row>
+                <test_situation_row>
+                    <value edge_id="28" name="Started the Games"/>
+                    <value edge_id="27" name="user picks if they wish&#10; to continue"/>
+                    <value edge_id="23" name="selected conttinue option"/>
+                    <value edge_id="25" name="Load previous game save"/>
+                    <value edge_id="49" name="Generate World&#10;"/>
+                    <value edge_id="33" name="Enable overworld inputs"/>
+                    <value edge_id="35" name="Disable movement input"/>
+                    <value edge_id="50" name="Enable movement input"/>
+                    <value edge_id="34" name="closed the jframe"/>
+                    <value edge_id="40" name="Game has ended"/>
+                </test_situation_row>
+            </test_case>
+        </graph>
+    </graphs>
+    <crud linkage="" version="">
+        <description/>
+        <entities>
+            <entity entity_id="E0">
+                <name>E1</name>
+                <description/>
+                <attributes/>
+            </entity>
+            <entity entity_id="E1">
+                <name>E2</name>
+                <description/>
+                <attributes/>
+            </entity>
+            <entity entity_id="E2">
+                <name>E3</name>
+                <description/>
+                <attributes/>
+            </entity>
+        </entities>
+        <functions>
+            <function function_id="F0">
+                <name>F1</name>
+                <description/>
+            </function>
+            <function function_id="F1">
+                <name>F2</name>
+                <description/>
+            </function>
+            <function function_id="F2">
+                <name>F3</name>
+                <description/>
+            </function>
+        </functions>
+        <actions>
+            <action entity_id_ref="E0" function_id_ref="F0">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E1" function_id_ref="F0">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E2" function_id_ref="F0">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E0" function_id_ref="F1">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E1" function_id_ref="F1">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E2" function_id_ref="F1">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E0" function_id_ref="F2">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E1" function_id_ref="F2">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E2" imns="false" is_set="false"/>
+                </influences>
+            </action>
+            <action entity_id_ref="E2" function_id_ref="F2">
+                <create imns="false" is_set="false">
+                    <touched_attributes/>
+                </create>
+                <read imns="false" is_set="false">
+                    <touched_attributes/>
+                </read>
+                <update imns="false" is_set="false">
+                    <touched_attributes/>
+                </update>
+                <delete imns="false" is_set="false">
+                    <touched_attributes/>
+                </delete>
+                <best_read imns="false" is_set="false"/>
+                <influences>
+                    <influence entity_id_ref="E0" imns="false" is_set="false"/>
+                    <influence entity_id_ref="E1" imns="false" is_set="false"/>
+                </influences>
+            </action>
+        </actions>
+        <test_cases/>
+    </crud>
+</project>

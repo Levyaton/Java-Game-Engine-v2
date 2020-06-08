@@ -16,13 +16,13 @@ import engineFiles.ui.Settings;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 // Class that is used to get the information needed to display for the overworld/main game world
 public class OverworldPanel extends GamePanel {
-
+    private static final Logger LOG = Logger.getLogger(OverworldPanel.class.getName());
     int SPACE_MOD1 = 100;
     int SPACE_MOD2 = 50;
 
@@ -33,16 +33,19 @@ public class OverworldPanel extends GamePanel {
 
     public OverworldPanel(String panelName, Window window, WorldGenModel worldGenModel) {
         super(worldGenModel.getArea(), worldGenModel.getEntitiesModel().getAllEntities(), panelName, window);
+        LOG.setUseParentHandlers(true);
         // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(worldGenModel.getColorerModel().isRecolor());
         loadSprites(area.getSprites());
         setDoubleBuffered(true);
         this.worldGenModel = worldGenModel;
+        LOG.config("OverworldPanel Initialized");
     }
 
     public OverworldPanel(String panelName, Window window, boolean isRecolor, Area area, List<Entity> entities) {
         super(area, entities, panelName, window);
+        LOG.setUseParentHandlers(true);
         // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(isRecolor);

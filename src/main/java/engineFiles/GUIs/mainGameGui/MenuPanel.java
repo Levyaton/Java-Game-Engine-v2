@@ -1,26 +1,29 @@
 package engineFiles.GUIs.mainGameGui;
 
 import engineFiles.ui.Resolution;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.event.MouseEvent;
 import engineFiles.ui.components.Button;
 import engineFiles.ui.components.Component;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
 // Menu screen for game start
 public class MenuPanel extends GamePanel {
-
+  private static final Logger LOG = Logger.getLogger(MenuPanel.class.getName());
   private boolean clicked = false;
   private int mouseX, mouseY = 0;
   private List<Component> components;
 
   public MenuPanel(String panelName, Window window) {
     super(panelName, window);
+    LOG.setUseParentHandlers(true);
     components = new ArrayList<>();
     components.add(new Button("start", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60,
         () -> window.setPanel("overworld")));
+    LOG.config("MenuPanel Initialized");
   }
 
   /**

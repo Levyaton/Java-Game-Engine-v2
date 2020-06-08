@@ -1,10 +1,12 @@
 package engineFiles.main.models;
 
 
+import java.util.logging.Logger;
+
 //Class containing static string keys, used to make making edits to strings easier, since they are, for the most part, here, and not in
 //random classes
 public class WorldGenKeys {
-
+    private static final Logger LOG = Logger.getLogger(WorldGenKeys.class.getName());
     public static String TILESET_PATH_KEY = "tilesetPath";
     public static String TILESET_KEY = "tileset";
     public static String WORLD_GEN_JSON_PATH = "src/main/java/resources/gameFiles/models/WorldGen.json";

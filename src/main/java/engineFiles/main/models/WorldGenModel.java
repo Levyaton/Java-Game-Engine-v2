@@ -4,9 +4,11 @@ import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.ui.TileMapClasses.TileMap;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing the world generation properties. Used to keep track of games structure
 public class WorldGenModel {
+    private static final Logger LOG = Logger.getLogger(WorldGenModel.class.getName());
     private TileMap tileMap;
     private ColorerModel colorerModel;
     private EntitiesModel entitiesModel;
@@ -20,6 +22,7 @@ public class WorldGenModel {
         this.tilesetPath = tilesetPath;
         area = tm.getArea();
         area.addItems(items);
+        LOG.config("WorldGen Initialized");
     }
 
     /**

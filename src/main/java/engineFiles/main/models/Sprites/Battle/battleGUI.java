@@ -3,10 +3,11 @@ package engineFiles.main.models.Sprites.Battle;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
+import java.util.logging.Logger;
 
 //Class containing the battle gui
 public class battleGUI {
-
+  private static final Logger LOG = Logger.getLogger(battleGUI.class.getName());
   public static BufferedImage battleBackground, battleOptions, battleDialog, battleStats;
 
   public static void loadResources() {

@@ -5,15 +5,18 @@ import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.File;
+import java.util.logging.Logger;
 
 //Class containing the logic of homing entities. They foolow a given entity, if the entity is in a given range
 public class HomingEntity extends Entity {
+    private static final Logger LOG = Logger.getLogger(HomingEntity.class.getName());
     private Entity target;
     private int range;
     private int targetIndex;
 
     public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter) {
         super(animation, json, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
         super.others.add(target);
@@ -22,10 +25,12 @@ public class HomingEntity extends Entity {
         this.damage = 1;
         this.target = target;
         this.range = range;
+        LOG.config("HomingEntity Initialized");
     }
 
     public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter) {
         super(animation, f, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = super.controllsInit();
         super.others.add(target);
         this.categoryName = "homing";
@@ -34,6 +39,7 @@ public class HomingEntity extends Entity {
         this.damage = 1;
         this.range = range;
         this.target = target;
+        LOG.config("HomingEntity Initialized");
     }
 
     /**

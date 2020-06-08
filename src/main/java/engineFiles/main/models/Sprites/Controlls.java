@@ -2,9 +2,11 @@ package engineFiles.main.models.Sprites;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing the games overworld controlls
 public class Controlls {
+    private static final Logger LOG = Logger.getLogger(Controlls.class.getName());
     private List<Integer> up;
     private List<Integer> down;
     private List<Integer> left;
@@ -17,17 +19,20 @@ public class Controlls {
         this.left = left;
         this.right = right;
         this.up = up;
+        LOG.config("Controlls Initialized");
     }
 
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction) {
         this(up, down, left, right);
         this.interaction = interaction;
+        LOG.config("Controlls Initialized");
     }
 
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right, int interaction,
             int gameSave) {
         this(up, down, left, right, interaction);
         this.gameSave = gameSave;
+        LOG.config("Controlls Initialized");
     }
 
     /**

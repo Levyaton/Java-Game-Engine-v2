@@ -1,12 +1,14 @@
 package engineFiles.GUIs.mainGameGui;
 
-import engineFiles.main.models.WorldGenModel;
 import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
+import engineFiles.main.models.WorldGenModel;
+
+import java.util.logging.Logger;
 
 // Class that helps manage the various GamePanel children that are being used
 public class PanelManager {
-
+    private static final Logger LOG = Logger.getLogger(PanelManager.class.getName());
     private GamePanel current;
     private MenuPanel menu;
     private OverworldPanel overworld;
@@ -20,6 +22,7 @@ public class PanelManager {
         gameover = new GameOverPanel("gameover", window);
         overworld = new OverworldPanel("overworld", window, model);
         current = menu;
+        LOG.config("PanelManager Initialized");
     }
 
     /**

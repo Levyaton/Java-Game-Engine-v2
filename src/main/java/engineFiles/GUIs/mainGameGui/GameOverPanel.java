@@ -1,25 +1,27 @@
 package engineFiles.GUIs.mainGameGui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import engineFiles.ui.components.Button;
 import engineFiles.ui.Resolution;
+import engineFiles.ui.components.Button;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 // Gameover screen after loosing, closes the window after click
 public class GameOverPanel extends GamePanel {
-
+  private static final Logger LOG = Logger.getLogger(GameOverPanel.class.getName());
   private boolean clicked = false;
   private int mouseX, mouseY = 0;
   private Button endButton;
 
   public GameOverPanel(String panelName, Window window) {
     super(panelName, window);
+    LOG.setUseParentHandlers(true);
     endButton = new Button("End", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60, () -> {
       System.exit(0);
       window.dispose();
       window.setVisible(false);
+      LOG.config("GameOverPanel Initialized");
     });
   }
 

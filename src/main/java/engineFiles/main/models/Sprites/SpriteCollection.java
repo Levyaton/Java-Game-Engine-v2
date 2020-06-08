@@ -5,23 +5,27 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.logging.Logger;
 
 ////Class containing a custom sprite array list, that has some modified methods, making it more useful for tracking used sprites
 public class SpriteCollection extends ArrayList<Sprite> {
-
+    private static final Logger LOG = Logger.getLogger(SpriteCollection.class.getName());
     public SpriteCollection(JSONArray sprites) {
         for (Object json : sprites) {
             Sprite s = new Sprite((JSONObject) json);
             add(s);
         }
+
+        LOG.config("SpriteCollection Initialized");
     }
 
     public SpriteCollection(ArrayList<Sprite> arr) {
         addAll(arr);
+        LOG.config("SpriteCollection Initialized");
     }
 
     public SpriteCollection() {
-
+        LOG.config("SpriteCollection Initialized");
     }
 
     /**

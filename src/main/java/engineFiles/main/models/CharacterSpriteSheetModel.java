@@ -2,11 +2,13 @@ package engineFiles.main.models;
 
 import com.google.gson.JsonObject;
 
+import java.util.logging.Logger;
+
 import static engineFiles.main.models.WorldGenKeys.CharacterSpriteSheetKeys.*;
 
 //Class containing the spritesheet logic. Used to translate spritesheet information into json objects and vice versa
 public class CharacterSpriteSheetModel {
-
+    private static final Logger LOG = Logger.getLogger(CharacterSpriteSheetModel.class.getName());
     private int rowCount;
     private int columnCount;
     private int spriteWidth;
@@ -22,6 +24,7 @@ public class CharacterSpriteSheetModel {
         this.spriteWidth = spriteWidth;
         this.entityIndex = entityIndex;
         this.sheetPath = sheetPath;
+        LOG.config("CharacterSpriteSheetModel Initialized");
     }
 
     public CharacterSpriteSheetModel(JsonObject json) {
@@ -31,6 +34,7 @@ public class CharacterSpriteSheetModel {
         this.spriteWidth = json.get(SPRITE_WIDTH_KEY).getAsInt();
         this.entityIndex = json.get(ENTITY_INDEX_KEY).getAsInt();
         this.sheetPath = json.get(SHEET_PATH_KEY).getAsString();
+        LOG.config("CharacterSpriteSheetModel Initialized");
     }
 
     /**

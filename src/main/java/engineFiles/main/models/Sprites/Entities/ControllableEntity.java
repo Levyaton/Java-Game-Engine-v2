@@ -5,10 +5,11 @@ import engineFiles.ui.Settings;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 //Class containing the logic of controllable entities. The entity is controlled by the user
 public class ControllableEntity extends Entity {
-
+    private static final Logger LOG = Logger.getLogger(ControllableEntity.class.getName());
     /**
      * @return int
      */
@@ -20,14 +21,18 @@ public class ControllableEntity extends Entity {
 
     public ControllableEntity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(animation, json, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
+        LOG.config("ControllableEntity Initialized");
     }
 
     public ControllableEntity(MovementAnimation animation, File f, int speedCounter) {
         super(animation, f, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
+        LOG.config("ControllableEntity Initialized");
     }
 
     /**

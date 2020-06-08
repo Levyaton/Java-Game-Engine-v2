@@ -1,7 +1,10 @@
 package engineFiles.main.models;
 
+import java.util.logging.Logger;
+
 //A class containing the engine stats, and methods that involve them
 public class EngineStats {
+    private static final Logger LOG = Logger.getLogger(EngineStats.class.getName());
     public static final double UPDATE_CAP = 1.0 / 60.0;
     public static final double LARGE_CONST = 100000000.0;
     public static boolean render = false;
@@ -18,7 +21,7 @@ public class EngineStats {
     public static double unprocessedTime = 0;
 
     public EngineStats() {
-
+        LOG.config("EngineStats Initialized");
     }
 
     public static void updateStats() {

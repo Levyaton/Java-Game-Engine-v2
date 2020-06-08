@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><test_situations name="Test situations 1, TDL= 1, ALG= PCT." note=""><test_situation selected_row="0">Load Save Menu Screen - Load new game - Enable player input - close the game</test_situation><test_situation selected_row="1">Load Save Menu Screen - Load old game
+ - Enable player input - Movement Input detected - Prevent Movement in input direction - Game pause input
+ detected - close the paused game</test_situation><test_situation selected_row="2">Load Save Menu Screen - Avoid choosing by closing the game</test_situation><test_situation selected_row="3">Load Save Menu Screen - Load new game - Enable player input - Save Game Input detected - Store Save Game File - Game pause input
+ detected - Game pause input detected,Game continues - Movement Input detected - Allow movement in inout direction - close the game</test_situation></test_situations>

@@ -25,13 +25,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
 //Class containing an old version of the game container. Used for repairing the json file, if broken
 public class OldGameContrainer {
-
+        private static final Logger LOG = Logger.getLogger(OldGameContrainer.class.getName());
         /**
          * @param args
          */

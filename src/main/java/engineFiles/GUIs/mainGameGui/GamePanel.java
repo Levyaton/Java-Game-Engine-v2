@@ -9,11 +9,12 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.logging.Logger;
 
 // A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
 // to update itself correctly
 public abstract class GamePanel extends JPanel {
-
+    private static final Logger LOG = Logger.getLogger(GamePanel.class.getName());
     protected String panelName;
     protected Area area;
     protected List<Entity> entities;
@@ -26,10 +27,12 @@ public abstract class GamePanel extends JPanel {
         this.entities = entities;
         this.area = area;
         this.window = window;
+        LOG.config("GamePanel Initialized");
     }
 
     public GamePanel(String panelName, Window window) {
         this.window = window;
+        LOG.config("GameOverPanel Initialized");
     }
 
     /**

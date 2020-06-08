@@ -4,9 +4,11 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing the logic for entities that follow a pre-determined path, using vectors
 public class VectorEntity extends Entity {
+    private static final Logger LOG = Logger.getLogger(VectorEntity.class.getName());
 
     protected List<Vector> vectors;
 
@@ -16,6 +18,7 @@ public class VectorEntity extends Entity {
 
     public VectorEntity(MovementAnimation animation, JSONObject json, int speedCounter, List<Vector> vectors) {
         super(animation, json, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;
@@ -23,10 +26,12 @@ public class VectorEntity extends Entity {
         this.categoryName = "vector";
         this.vectors = vectors;
         this.followingX = this.vectors.get(vectorIndex).startWithX;
+        LOG.config("VectorEntity Initialized");
     }
 
     public VectorEntity(MovementAnimation animation, File f, int speedCounter, List<Vector> vectors) {
         super(animation, f, speedCounter);
+        LOG.setUseParentHandlers(true);
         super.controlls = super.controllsInit();
         this.health = 10;
         this.curHealth = 10;
@@ -34,6 +39,7 @@ public class VectorEntity extends Entity {
         this.categoryName = "vector";
         this.vectors = vectors;
         this.followingX = this.vectors.get(vectorIndex).startWithX;
+        LOG.config("VectorEntity Initialized");
     }
 
     /**

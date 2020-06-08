@@ -16,14 +16,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.EntityKeys.*;
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
-import static engineFiles.main.models.WorldGenKeys.PlayerKeys.*;
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
+import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
 //Class containing all entity models. Used to translate the entities into json objects, and vice-versa
 public class EntitiesModel {
-
+    private static final Logger LOG = Logger.getLogger(EntitiesModel.class.getName());
     private Gson gson = new Gson();
     private OverworldPlayer player;
     private List<HomingEntity> homing;
@@ -36,6 +38,7 @@ public class EntitiesModel {
         this.homing = homing;
         this.controlable = controlable;
         this.vector = vector;
+        LOG.config("EntitiesModel Initialized");
     }
 
     public EntitiesModel(JsonObject json) throws IOException {
@@ -47,6 +50,7 @@ public class EntitiesModel {
         this.vector = initVectorEntities(json.get(VECTOR_ENTITIES_KEY));
         allEntities.addAll(vector);
         this.homing = initHomingEntities(json.get(HOMING_ENITITIES_KEY), allEntities);
+        LOG.config("EntitiesModel Initialized");
     }
 
     /**

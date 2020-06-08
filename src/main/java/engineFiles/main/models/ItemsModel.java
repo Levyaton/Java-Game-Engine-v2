@@ -9,13 +9,14 @@ import engineFiles.main.models.Sprites.Items.ItemSprite;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
 import static engineFiles.main.models.WorldGenKeys.OverworldItemsKeys.*;
 
 //Class containing the item model. Used to translate items to a json objects, and vice-versa
 public class ItemsModel {
-
+    private static final Logger LOG = Logger.getLogger(ItemsModel.class.getName());
     /**
      * @param items
      * @return List<ItemSprite>

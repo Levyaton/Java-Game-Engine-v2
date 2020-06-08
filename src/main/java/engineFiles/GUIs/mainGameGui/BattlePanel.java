@@ -10,13 +10,15 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.fonts.FontLibrary;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Stack;
+import java.util.logging.Logger;
 
 // Main battle screen class, rendering layout GUI and input processing
 public class BattlePanel extends GamePanel {
-
+  private static final Logger LOG = Logger.getLogger(BattlePanel.class.getName());
   private boolean inBattle = false;
 
   private Stack<Component> componentStack;
@@ -29,9 +31,10 @@ public class BattlePanel extends GamePanel {
   public BattlePanel(String panelName, Window window) {
     super(panelName, window);
     battleGUI.loadResources();
-
+    LOG.setUseParentHandlers(true);
     battleManager = new BattleManager(this);
     componentStack = new Stack<Component>();
+    LOG.config("BattlePanel Initialized");
   }
 
   /**

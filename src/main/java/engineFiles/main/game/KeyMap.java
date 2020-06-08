@@ -3,9 +3,11 @@ package engineFiles.main.game;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 //Class used to keep track of typed keys
 public class KeyMap {
+    private static final Logger LOG = Logger.getLogger(KeyMap.class.getName());
     private static Set<Integer> keys = new HashSet<>();
     private static boolean pressed = false;
 

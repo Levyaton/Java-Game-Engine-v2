@@ -3,10 +3,11 @@ package engineFiles.main.battle;
 import engineFiles.GUIs.mainGameGui.BattlePanel;
 
 import java.util.Stack;
+import java.util.logging.Logger;
 
 //A class containing the battle logic
 public class BattleManager {
-
+  private static final Logger LOG = Logger.getLogger(BattleManager.class.getName());
   private BattlePanel battlePanel;
   private Stack<Move> moveStack;
 
@@ -16,6 +17,7 @@ public class BattleManager {
     this.battlePanel = battlePanel;
     this.ai = new AI();
     moveStack = new Stack<Move>();
+    LOG.config("BattleManager Initialized");
   }
 
   /**

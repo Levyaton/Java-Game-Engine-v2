@@ -9,9 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.logging.Logger;
 
 //Class containing the sprite logic, mainly used in the overworld
 public class Sprite implements Comparable {
+    private static final Logger LOG = Logger.getLogger(Sprite.class.getName());
     protected File ogFile;
     protected BufferedImage img;
     protected BufferedImage ogImg;
@@ -31,7 +33,7 @@ public class Sprite implements Comparable {
     protected String categoryName = "tile";
 
     public Sprite() {
-
+        LOG.config("Sprite Initialized");
     }
 
     public Sprite(File file) {
@@ -42,6 +44,7 @@ public class Sprite implements Comparable {
         this.coord = new Coordinates(0, 0, currentWidth, currentHeight);
         this.ogCoord = this.coord;
         json = updateJSON();
+        LOG.config("Sprite Initialized");
     }
 
     public Sprite(File file, BufferedImage img, int dimMod, int x, int y, int z, int blockID, int width, int height,
@@ -60,6 +63,7 @@ public class Sprite implements Comparable {
         json = updateJSON();
         this.solid = solid;
         this.movable = movable;
+        LOG.config("Sprite Initialized");
     }
 
     public Sprite(String file) {
@@ -70,6 +74,7 @@ public class Sprite implements Comparable {
         this.coord = new Coordinates(0, 0, currentWidth, currentHeight);
         this.ogCoord = this.coord;
         json = updateJSON();
+        LOG.config("Sprite Initialized");
     }
 
     public Sprite(JSONObject json) {
@@ -87,6 +92,7 @@ public class Sprite implements Comparable {
         this.ogCoord = this.coord;
         solid = json.getBoolean("Solid");
         movable = json.getBoolean("Movable");
+        LOG.config("Sprite Initialized");
     }
 
     protected void initFromOGFile() {

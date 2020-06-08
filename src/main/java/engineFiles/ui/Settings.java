@@ -7,9 +7,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.logging.Logger;
+
 //Class containing  the game settings
 public class Settings {
-
+    private static final Logger LOG = Logger.getLogger(Settings.class.getName());
     public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
     public static int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 

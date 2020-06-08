@@ -2,10 +2,11 @@ package engineFiles.main.models.Sprites.Entities;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing the overworld movement animation logic
 public class MovementAnimation {
-
+    private static final Logger LOG = Logger.getLogger(MovementAnimation.class.getName());
     private List<BufferedImage> down;
     private List<BufferedImage> up;
     private List<BufferedImage> left;
@@ -27,11 +28,13 @@ public class MovementAnimation {
 
     public MovementAnimation(int id) {
         this.id = id;
+        LOG.config("MovementAnimation Initialized");
     }
 
     public MovementAnimation(int animationSpeed, int id) {
         this(id);
         this.animationSpeed = animationSpeed;
+        LOG.config("MovementAnimation Initialized");
     }
 
     public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
@@ -41,12 +44,14 @@ public class MovementAnimation {
         this.up = up;
         this.left = left;
         this.right = right;
+        LOG.config("MovementAnimation Initialized");
     }
 
     public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
             List<BufferedImage> right, int animationSpeed, int id) {
         this(down, up, left, right, id);
         this.animationSpeed = animationSpeed;
+        LOG.config("MovementAnimation Initialized");
     }
 
     /**

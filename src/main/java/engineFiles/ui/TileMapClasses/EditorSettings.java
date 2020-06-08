@@ -4,8 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
+import java.util.logging.Logger;
+
 //Class containing tilemap settings
 public class EditorSettings {
+    private static final Logger LOG = Logger.getLogger(EditorSettings.class.getName());
     Export export;
 
     /**

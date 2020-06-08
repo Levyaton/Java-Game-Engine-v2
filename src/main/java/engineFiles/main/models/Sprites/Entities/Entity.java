@@ -9,11 +9,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 //Class containing the general logic of every entity
 
 public abstract class Entity extends Sprite {
-
+    private static final Logger LOG = Logger.getLogger(Entity.class.getName());
     protected int lastMovementIndex = 0;
     protected MovementAnimation animation;
     protected Controlls controlls;
@@ -47,15 +48,19 @@ public abstract class Entity extends Sprite {
 
     public Entity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(json);
+        LOG.setUseParentHandlers(true);
         this.animation = animation;
         this.speedCounter = speedCounter;
         // this.coord.setMOD(speed);
+        LOG.config("Entity Initialized");
     }
 
     public Entity(MovementAnimation animation, File f, int speedCounter) {
         super(f);
+        LOG.setUseParentHandlers(true);
         this.animation = animation;
         this.speedCounter = speedCounter;
+        LOG.config("Entity Initialized");
         // this.coord.setMOD(speed);
     }
 

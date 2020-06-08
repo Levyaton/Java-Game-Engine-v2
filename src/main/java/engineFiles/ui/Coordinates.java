@@ -1,9 +1,11 @@
 package engineFiles.ui;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 //Class containing coordinate logic
 public class Coordinates {
+    private static final Logger LOG = Logger.getLogger(Coordinates.class.getName());
     private int x_last;
     private int y_last;
     private int x;
@@ -28,6 +30,7 @@ public class Coordinates {
         this.width = width;
         this.height = height;
         this.z = 0;
+        LOG.config("Coordinates Initialized");
     }
 
     public Coordinates(int x, int y, int z, int width, int height) {
@@ -38,6 +41,7 @@ public class Coordinates {
         this.width = width;
         this.height = height;
         this.z = z;
+        LOG.config("Coordinates Initialized");
     }
 
     /**

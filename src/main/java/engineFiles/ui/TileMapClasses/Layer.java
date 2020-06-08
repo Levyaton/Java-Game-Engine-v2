@@ -5,9 +5,11 @@ import engineFiles.main.models.Sprites.SpriteCollection;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.logging.Logger;
 
 //Class containing sprite sheet layer logic
 public class Layer {
+    private static final Logger LOG = Logger.getLogger(Layer.class.getName());
     int[] data;
     int height;
     int id;

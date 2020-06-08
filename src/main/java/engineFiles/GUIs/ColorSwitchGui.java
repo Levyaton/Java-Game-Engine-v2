@@ -4,9 +4,11 @@ import engineFiles.ui.Settings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Logger;
 
 //Gui meant to help switch the games color setting
 public class ColorSwitchGui extends JPanel {
+    private static final Logger LOG = Logger.getLogger(ColorSwitchGui.class.getName());
     JLabel colorChangeText;
     JButton colorChangeButton;
     JButton exit;
@@ -42,6 +44,7 @@ public class ColorSwitchGui extends JPanel {
         middle.add(colorChangeText, FlowLayout.LEFT);
         middle.add(colorChangeButton);
         this.add(middle, BorderLayout.CENTER);
+        LOG.config("ColorSwitchGui Initialized");
     }
 
     /**

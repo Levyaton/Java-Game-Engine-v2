@@ -16,12 +16,18 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
 //Class containing world generation logic. Mainly used for game loading
 public class WorldGen {
 
+    public WorldGen() {
+        LOG.config("WorldGen Initialized");
+    }
+
+    private static final Logger LOG = Logger.getLogger(WorldGen.class.getName());
     /**
      * @throws FileNotFoundException
      */

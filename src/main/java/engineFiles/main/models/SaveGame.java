@@ -7,13 +7,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
 //Class containing save game logic. Used to save the game, by storing individual classes into their respective models,
 // which are then translated into json objects and stored into a file
 public class SaveGame {
-
+    private static final Logger LOG = Logger.getLogger(SaveGame.class.getName());
     /**
      * @param worldGenModel
      */

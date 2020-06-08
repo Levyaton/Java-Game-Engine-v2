@@ -8,10 +8,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 //Class containing generic static utility methods
 public class Utils {
-
+    private static final Logger LOG = Logger.getLogger(Utils.class.getName());
     /**
      * @param arr
      * @param classOfT

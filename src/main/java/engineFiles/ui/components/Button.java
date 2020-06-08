@@ -3,10 +3,11 @@ package engineFiles.ui.components;
 import engineFiles.ui.fonts.FontLibrary;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 //Class containing a custom button definition
 public class Button extends Component {
-
+  private static final Logger LOG = Logger.getLogger(Button.class.getName());
   private Rectangle bounds;
   private boolean hovering = false;
   private String text;
@@ -14,9 +15,11 @@ public class Button extends Component {
 
   public Button(String text, int x, int y, int width, int height, CallbackFunc func) {
     super(x, y, width, height);
+    LOG.setUseParentHandlers(true);
     this.text = text;
     this.func = func;
     bounds = new Rectangle(x - (width / 2), y - (height / 2), width, height);
+    LOG.config("Button Initialized");
   }
 
   /**

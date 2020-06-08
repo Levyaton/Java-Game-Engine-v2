@@ -4,10 +4,11 @@ import engineFiles.ui.FolderOP;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.logging.Logger;
 
 //Class containing tile parsing logic
 public class TileParser {
-
+    private static final Logger LOG = Logger.getLogger(TileParser.class.getName());
     /**
      * @param tileSheet
      * @return BufferedImage[]

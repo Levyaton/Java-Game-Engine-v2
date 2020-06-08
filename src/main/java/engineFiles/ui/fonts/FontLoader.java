@@ -1,13 +1,12 @@
 package engineFiles.ui.fonts;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
+import java.awt.*;
 import java.io.FileInputStream;
+import java.util.logging.Logger;
 
 //Class containing font loading logic
 public class FontLoader {
-
+  private static final Logger LOG = Logger.getLogger(FontLoader.class.getName());
   /**
    * @param path
    */

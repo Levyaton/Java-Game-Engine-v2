@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graph description="" id="10" linkage="" name="Directional Graph Test Scenario" type="ORIENTED_GRAPH" version="">
+    <node description="" height="25.0" id="2" name="START" priority="" style="STYLE_START" width="70.0" xpos="210.0" ypos="50.0"/>
+    <edge description="" id="24" name="Load Save Menu Screen" priority="" source="2" target="3"/>
+    <node description="" height="70.0" id="3" name="Pick Save &#10;Game Option" priority="" style="STYLE_NODE" width="80.0" xpos="190.0" ypos="110.0"/>
+    <edge description="" id="8" name="Load new game" priority="" source="3" target="7"/>
+    <edge description="" id="9" name="Load old game&#10;" priority="" source="3" target="7"/>
+    <edge description="" id="10" name="Avoid choosing by closing the game" priority="" source="3" target="6"/>
+    <node description="" height="90.0" id="6" name="Game has Ended" priority="" style="STYLE_NODE" width="90.0" xpos="500.0" ypos="120.0"/>
+    <node description="" height="90.0" id="7" name="Generate overworld" priority="" style="STYLE_NODE" width="130.0" xpos="230.0" ypos="260.0"/>
+    <edge description="" id="13" name="Enable player input" priority="" source="7" target="11"/>
+    <node description="" height="90.0" id="11" name="Await for player input" priority="" style="STYLE_NODE" width="130.0" xpos="340.0" ypos="420.0"/>
+    <edge description="" id="14" name="close the game" priority="" source="11" target="6"/>
+    <edge description="" id="17" name="Movement Input detected" priority="" source="11" target="16"/>
+    <edge description="" id="19" name="Game pause input&#10; detected" priority="" source="11" target="18"/>
+    <edge description="" id="26" name="Save Game Input detected" priority="" source="11" target="25"/>
+    <node description="" height="80.0" id="16" name="Collision Check" priority="" style="STYLE_NODE" width="90.0" xpos="110.0" ypos="560.0"/>
+    <edge description="" id="22" name="Prevent Movement in input direction" priority="" source="16" target="11"/>
+    <edge description="" id="23" name="Allow movement in inout direction" priority="" source="16" target="11"/>
+    <node description="" height="70.0" id="18" name="Pause Game" priority="" style="STYLE_NODE" width="90.0" xpos="750.0" ypos="380.0"/>
+    <edge description="" id="20" name="Game pause input detected,Game continues" priority="" source="18" target="11"/>
+    <edge description="" id="21" name="close the paused game" priority="" source="18" target="6"/>
+    <node description="" height="40.0" id="25" name="Save the game" priority="" style="STYLE_NODE" width="40.0" xpos="560.0" ypos="540.0"/>
+    <edge description="" id="27" name="Store Save Game File" priority="" source="25" target="11"/>
+</graph>

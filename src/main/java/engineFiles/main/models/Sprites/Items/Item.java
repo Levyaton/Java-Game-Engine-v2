@@ -1,7 +1,10 @@
 package engineFiles.main.models.Sprites.Items;
 
+import java.util.logging.Logger;
+
 //Class containing the item logic
 public class Item {
+    private static final Logger LOG = Logger.getLogger(Item.class.getName());
     private int healthMod = 0;
     private int speedMod = 0;
     private int attackMod = 0;
@@ -12,11 +15,13 @@ public class Item {
 
     public Item(String name) {
         this.name = name;
+        LOG.config("Item Initialized");
     }
 
     public Item(String name, int cost) {
         this(name);
         this.cost = cost;
+        LOG.config("Item Initialized");
     }
 
     public Item(String name, int healthMod, int speedMod, int attackMod) {
@@ -24,6 +29,7 @@ public class Item {
         this.healthMod = healthMod;
         this.speedMod = speedMod;
         this.attackMod = attackMod;
+        LOG.config("Item Initialized");
     }
 
     public Item(String name, int healthMod, int speedMod, int attackMod, String description) {
@@ -32,11 +38,13 @@ public class Item {
         this.speedMod = speedMod;
         this.attackMod = attackMod;
         this.description = description;
+        LOG.config("Item Initialized");
     }
 
     public Item(String name, int healthMod, int speedMod, int attackMod, int cost) {
         this(name, healthMod, speedMod, attackMod);
         this.cost = cost;
+        LOG.config("Item Initialized");
     }
 
     /**

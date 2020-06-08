@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Logger;
 
 import static engineFiles.main.models.WorldGenKeys.AreaKeys.*;
 
 //Class containing the logic of a game area. It tracks which sprites are being used in a given area
 public class Area {
-
+    private static final Logger LOG = Logger.getLogger(Area.class.getName());
     private SpriteCollection sprites = new SpriteCollection();
     private List<ItemSprite> spritesItems = new CopyOnWriteArrayList<ItemSprite>();
     private String name;
@@ -30,6 +31,7 @@ public class Area {
         this.height = height;
 
         buildJSON();
+        LOG.config("Area Initialized");
     }
 
     public Area(SpriteCollection sprites, String name, int width, int height) {
@@ -38,6 +40,7 @@ public class Area {
         this.width = width;
         this.height = height;
         buildJSON();
+        LOG.config("Area Initialized");
     }
 
     public Area(JSONObject json) {
@@ -46,6 +49,7 @@ public class Area {
         this.width = json.getInt(WIDTH_KEY);
         this.height = json.getInt(HEIGHT_KEY);
         this.sprites = new SpriteCollection(json.getJSONArray(SPRITES_KEY));
+        LOG.config("Area Initialized");
     }
 
     public Area(File f) {

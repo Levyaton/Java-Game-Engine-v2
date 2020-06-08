@@ -1,7 +1,10 @@
 package engineFiles.main.models.Sprites.Entities;
 
+import java.util.logging.Logger;
+
 //Class containing the vector logic used for movement in the overworld by npc's
 public class Vector {
+    private static final Logger LOG = Logger.getLogger(Vector.class.getName());
     int x;
     int y;
     boolean startWithX = true;
@@ -10,11 +13,13 @@ public class Vector {
         this.x = x;
         this.y = y;
         this.startWithX = startWithX;
+        LOG.config("Vector Initialized");
     }
 
     public Vector(int x, int y) {
         this.x = x;
         this.y = y;
+        LOG.config("Vector Initialized");
     }
 
     /**

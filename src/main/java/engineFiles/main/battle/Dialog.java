@@ -6,16 +6,19 @@ import engineFiles.ui.components.CallbackFunc;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.logging.Logger;
 
 //A class containing methods of displaying text
 public class Dialog extends Component {
-
+  private static final Logger LOG = Logger.getLogger(Dialog.class.getName());
   private String text;
   private CallbackFunc func;
 
   public Dialog(String text, CallbackFunc func) {
+    LOG.setUseParentHandlers(true);
     this.text = text;
     this.func = func;
+    LOG.config("Dialog Initialized");
   }
 
   @Override
