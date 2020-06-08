@@ -2,6 +2,8 @@ package integrationTests;
 import engineFiles.GUIs.mainGameGui.OverworldPanel;
 import engineFiles.main.game.KeyMap;
 import engineFiles.main.models.Area;
+import engineFiles.main.models.Sprites.Entities.ControllableEntity;
+import engineFiles.main.models.Sprites.Entities.MovementAnimation;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.main.models.Sprites.Items.ItemSprite;
 import engineFiles.main.models.Sprites.SpriteCollection;
@@ -33,6 +35,8 @@ public class IntegrationTests {
         Assertions.assertFalse(op.getArea().getSpritesItems().contains(itemSprite));
         Assertions.assertTrue(((OverworldPlayer)op.getPlayer()).getPlayer().getInventory().contains(itemSprite.getItem()));
     }
+
+
 
     @Test
     public void playerMovementTest(){
@@ -74,11 +78,55 @@ public class IntegrationTests {
         Assertions.assertEquals((playerPostion.getX() + Settings.MOVEMENT_SPEED), op.getPlayer().getCoord().getX());
         Assertions.assertEquals((playerPostion.getY()), op.getPlayer().getCoord().getY());
 
-
-
     }
 
+    @Test
+    public void collisionTest(){
+        //ACT
+        ItemSprite item = setUpItemSprite();
+        item.setCoord(new Coordinates(0,0,item.getCurrentWidth(),item.getCurrentHeight()));
+        OverworldPlayer player = setUpOverWorldPlayer();
+        player.setCoord(new Coordinates(0,0,player.getCurrentWidth(),player.getCurrentHeight()));
+        OverworldPanel overworldPanel = setUpOverworldPanel(player);
+        //ASSERT
+        Coordinates ogPlayerPostion = new Coordinates(overworldPanel.getPlayer().getCoord().getX(), overworldPanel.getPlayer().getCoord().getY(), overworldPanel.getPlayer().getCurrentWidth(), overworldPanel.getPlayer().getCurrentHeight());
+        Coordinates currentPlayerPosition = new Coordinates(overworldPanel.getPlayer().getCoord().getX(), overworldPanel.getPlayer().getCoord().getY(), overworldPanel.getPlayer().getCurrentWidth(), overworldPanel.getPlayer().getCurrentHeight());
+        KeyMap.setKey(KeyEvent.VK_W, false);
+        overworldPanel.update();
+        KeyMap.setKey(KeyEvent.VK_W, true);
+        Assertions.assertEquals((currentPlayerPosition.getX()), overworldPanel.getPlayer().getCoord().getX());
+        Assertions.assertEquals((currentPlayerPosition.getY() -  Settings.MOVEMENT_SPEED), overworldPanel.getPlayer().getCoord().getY());
+        Assertions.assertEquals((currentPlayerPosition.getX()), overworldPanel.getPlayer().getCoord().getX());
+        player.setCoord(new Coordinates(0,0,player.getCurrentWidth(),player.getCurrentHeight()));
+        overworldPanel.getArea().getSpritesItems().add(item);
+        KeyMap.setKey(KeyEvent.VK_W, false);
+        overworldPanel.update();
+        KeyMap.setKey(KeyEvent.VK_W, true);
+        Assertions.assertEquals((currentPlayerPosition.getX()), overworldPanel.getPlayer().getCoord().getX());
+        Assertions.assertNotEquals((currentPlayerPosition.getY() -  Settings.MOVEMENT_SPEED), overworldPanel.getPlayer().getCoord().getY());
+    }
 
+    @Test
+    public void multipleControllablesTest(){
+        //ACT
+        OverworldPlayer overworldPlayer = setUpOverWorldPlayer();
+        OverworldPanel overworldPanel = setUpOverworldPanel(overworldPlayer);
+        ControllableEntity controllableEntity = setUpControlebleEntity();
+        Coordinates oldPlayerCoords = new Coordinates(overworldPlayer.getCoord().getX(), overworldPlayer.getCoord().getY(), overworldPlayer.getCurrentWidth(), overworldPlayer.getCurrentHeight());
+        int oldContrrollableX = 1000;
+        int oldContrrollableY = 1000;
+        controllableEntity.setCoord(new Coordinates(oldContrrollableX, oldContrrollableY, controllableEntity.getCurrentWidth(), controllableEntity.getCurrentHeight()));
+        overworldPanel.getEntities().add(controllableEntity);
+        //System.out.println( oldControlableEntityCoords.getY() -  controllableEntity.getCoord().getMOD());
+        KeyMap.setKey(KeyEvent.VK_W, false);
+        overworldPanel.update();
+        KeyMap.setKey(KeyEvent.VK_W, true);
+        Assertions.assertEquals((oldPlayerCoords.getX()), overworldPanel.getPlayer().getCoord().getX());
+        Assertions.assertEquals((oldPlayerCoords.getY() -  Settings.MOVEMENT_SPEED), overworldPanel.getPlayer().getCoord().getY());
+        Assertions.assertEquals(oldContrrollableX, overworldPanel.getEntities().get(1).getCoord().getX());
+        Assertions.assertEquals((oldContrrollableY -  controllableEntity.getCoord().getMOD()), overworldPanel.getEntities().get(1).getCoord().getY());
+
+    }
     private KeyEvent simmulateKeyPress(int keycode){
         return new KeyEvent(new Button(), 1, 20, 1, keycode, 'a');
     }
@@ -105,7 +153,14 @@ public class IntegrationTests {
 
     private OverworldPlayer setUpOverWorldPlayer(){
         File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
-        return new OverworldPlayer(null, sourceImage, new Player("PlayerUsername", new ArrayList<>()), 0);
+        return new OverworldPlayer(new MovementAnimation(), sourceImage, new Player("PlayerUsername", new ArrayList<>()), 0);
+    }
+
+    private ControllableEntity setUpControlebleEntity(){
+        File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
+        MovementAnimation animation = new MovementAnimation();
+        int speedCounter = 0;
+        return new ControllableEntity(animation, sourceImage, speedCounter);
     }
 
     private OverworldPanel setUpOverworldPanel(ItemSprite itemSprite, OverworldPlayer overworldPlayer){
@@ -130,6 +185,8 @@ public class IntegrationTests {
         OverworldPanel op = new OverworldPanel("testPanel", null, false, area,new ArrayList<>(Arrays.asList(overworldPlayer)));
         return op;
     }
+
+
 
 
 }

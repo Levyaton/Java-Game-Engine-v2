@@ -1,38 +1,32 @@
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:06 PM engineFiles.ui.Settings setControlls
+Jun 08, 2020 6:55:57 PM engineFiles.ui.Settings setControlls
 INFO: Controlls set
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:06 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 1:14:07 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 08, 2020 6:55:58 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 08, 2020 1:14:07 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 08, 2020 6:55:58 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 08, 2020 1:14:09 PM engineFiles.main.game.GameLoop run
+Jun 08, 2020 6:56:00 PM engineFiles.main.game.GameLoop run
 INFO: gameloop starting
-Jun 08, 2020 1:14:12 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
-INFO: Set panel overworld as Current
-Jun 08, 2020 1:14:15 PM engineFiles.main.models.SaveGame save
-INFO: Saving
-Jun 08, 2020 1:14:15 PM engineFiles.main.models.SaveGame save
-INFO: Game Saved
