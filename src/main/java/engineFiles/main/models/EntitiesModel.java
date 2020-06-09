@@ -26,7 +26,11 @@ import static engineFiles.main.models.WorldGenKeys.InventoryKeys.*;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
-//Class containing all entity models. Used to translate the entities into json objects, and vice-versa
+/**
+ * Class containing all entity models. Used to translate the entities into json
+ * objects, and vice-versa
+ * 
+ */
 public class EntitiesModel {
     private static final Logger LOG = Logger.getLogger(EntitiesModel.class.getName());
     private Gson gson = new Gson();

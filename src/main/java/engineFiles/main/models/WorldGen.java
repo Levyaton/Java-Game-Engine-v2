@@ -23,7 +23,11 @@ import java.util.logging.*;
 
 import static engineFiles.main.models.WorldGenKeys.*;
 
-//Class containing world generation logic. Mainly used for game loading
+/**
+ * Class containing world generation logic. Mainly used for game loading by
+ * taking the data and setting up entities items and tilemap
+ * 
+ */
 public class WorldGen {
 
     public WorldGen() {
