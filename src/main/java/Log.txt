@@ -1,32 +1,50 @@
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:57 PM engineFiles.ui.Settings setControlls
+Jun 09, 2020 3:17:49 AM engineFiles.ui.Settings setControlls
 INFO: Controlls set
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:57 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 08, 2020 6:55:58 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 3:17:51 AM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 08, 2020 6:55:58 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 3:17:51 AM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 08, 2020 6:56:00 PM engineFiles.main.game.GameLoop run
+Jun 09, 2020 3:17:53 AM engineFiles.main.game.GameLoop run
 INFO: gameloop starting
+Jun 09, 2020 3:17:56 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel overworld as Current
+Jun 09, 2020 3:17:58 AM engineFiles.ui.Player addItem
+INFO: Added item named Brutalizer
+Jun 09, 2020 3:18:10 AM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+INFO: Call to battle
+Jun 09, 2020 3:18:15 AM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:18:19 AM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:18:24 AM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:18:26 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel overworld as Current
+Jun 09, 2020 3:18:26 AM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+INFO: Call to battle
+Jun 09, 2020 3:18:27 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel overworld as Current

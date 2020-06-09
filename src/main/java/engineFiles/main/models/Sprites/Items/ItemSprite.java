@@ -17,17 +17,20 @@ public class ItemSprite extends Sprite {
     private Item item;
     private int dimMod;
 
-    // private BufferedImage temp;
+    /**
+     * @param json
+     * 
+     */
     public ItemSprite(JSONObject json) {
         super(json);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         categoryName = "item";
         item = new Item(super.name);
@@ -40,6 +43,15 @@ public class ItemSprite extends Sprite {
     // File file, BufferedImage img, int dimMod, int x, int y, int z,int blockID,
     // int width, int height, boolean solid, boolean movable
 
+    /**
+     * @param file
+     * @param dimMod
+     * @param x
+     * @param y
+     * @param z
+     * @param item
+     * 
+     */
     public ItemSprite(File file, int dimMod, int x, int y, int z, Item item) {
         LOG.setUseParentHandlers(false);
         this.dimMod = dimMod;
@@ -61,6 +73,19 @@ public class ItemSprite extends Sprite {
         LOG.config("ItemSprite Initialized");
     }
 
+    /**
+     * @param file
+     * @param dimMod
+     * @param x
+     * @param y
+     * @param z
+     * @param name
+     * @param healthMod
+     * @param speedMod
+     * @param attackMod
+     * @param defMod
+     * 
+     */
     public ItemSprite(File file, int dimMod, int x, int y, int z, String name, int healthMod, int speedMod, int defMod,
             int attackMod) {
         this(file, dimMod, x, y, z, new Item(name, healthMod, speedMod, defMod, attackMod));

@@ -17,16 +17,24 @@ public class HomingEntity extends Entity {
     private int range;
     private int targetIndex;
 
+    /**
+     * @param animation
+     * @param json
+     * @param target
+     * @param range
+     * @param speedCounter
+     * 
+     */
     public HomingEntity(MovementAnimation animation, JSONObject json, Entity target, int range, int speedCounter) {
         super(animation, json, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.categoryName = "homing";
@@ -39,16 +47,24 @@ public class HomingEntity extends Entity {
         LOG.config("HomingEntity Initialized");
     }
 
+    /**
+     * @param animation
+     * @param f
+     * @param target
+     * @param range
+     * @param speedCounter
+     * 
+     */
     public HomingEntity(MovementAnimation animation, File f, Entity target, int range, int speedCounter) {
         super(animation, f, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         super.others.add(target);

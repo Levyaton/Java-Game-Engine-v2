@@ -17,16 +17,22 @@ public class GameOverPanel extends GamePanel {
   private int mouseX, mouseY = 0;
   private Button endButton;
 
+  /**
+   * @param panelName
+   * @param window
+   * 
+   *                  Initliazes end button for window closing
+   */
   public GameOverPanel(String panelName, Window window) {
     super(panelName, window);
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     endButton = new Button("End", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60, () -> {
       System.exit(0);
@@ -38,6 +44,8 @@ public class GameOverPanel extends GamePanel {
 
   /**
    * @return Image
+   * 
+   *         Returns rendered image of the button and text with updates state
    */
   @Override
   public Image getRenderGraphics() {

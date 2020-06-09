@@ -13,6 +13,9 @@ public class battleGUI {
   private static final Logger LOG = Logger.getLogger(battleGUI.class.getName());
   public static BufferedImage battleBackground, battleOptions, battleDialog, battleStats;
 
+  /**
+   * Loads the GUI images for battle
+   */
   public static void loadResources() {
     battleBackground = load("/battleGUI/battle_bg.png");
     battleOptions = load("/battleGUI/battle_options.png");
@@ -27,12 +30,12 @@ public class battleGUI {
   static public BufferedImage load(String path) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     try {
       return ImageIO.read(new FileInputStream("src/main/java/resources" + path));

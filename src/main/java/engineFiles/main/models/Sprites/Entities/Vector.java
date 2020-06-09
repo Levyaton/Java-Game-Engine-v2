@@ -9,6 +9,12 @@ public class Vector {
     int y;
     boolean startWithX = true;
 
+    /**
+     * @param x
+     * @param y
+     * @param startWithX
+     * 
+     */
     public Vector(int x, int y, boolean startWithX) {
         this.x = x;
         this.y = y;
@@ -16,6 +22,11 @@ public class Vector {
         LOG.config("Vector Initialized");
     }
 
+    /**
+     * @param x
+     * @param y
+     * 
+     */
     public Vector(int x, int y) {
         this.x = x;
         this.y = y;

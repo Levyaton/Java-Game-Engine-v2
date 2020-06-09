@@ -4,7 +4,6 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.main.models.WorldGenModel;
 import engineFiles.ui.Resolution;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -21,15 +20,18 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     private GameCanvas canvas;
     private PanelManager panelManager;
 
+    /**
+     * Initialze canvas and adds to the window
+     */
     public Window() {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         setTitle("zelda");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,16 +44,21 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         LOG.config("Window Initialized");
     }
 
+    /**
+     * @param model
+     * 
+     *              Initialze panelManager, canvas and adds to the window
+     */
     public Window(WorldGenModel model) {
         this();
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
 
         panelManager = new PanelManager(model, this);
@@ -76,6 +83,10 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     /**
      * @param player
      * @param opponent
+     * 
+     *                 Initliaze the battle by calling panelManager initBattle.
+     *                 Removes the old jpanel with the new one for keyboard and
+     *                 mouse listenning
      */
     public void initBattle(OverworldPlayer player, Entity opponent) {
         panelManager.initBattle(player, opponent);
@@ -90,6 +101,9 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
         return panelManager;
     }
 
+    /**
+     * Updates the current panel and calls canvas repaint
+     */
     public void redraw() {
         getPanelManager().getCurrent().update();
         canvas.repaint();
@@ -177,7 +191,10 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
 
     private class GameCanvas extends JPanel {
 
-        GameCanvas() {
+        /**
+         * Sets the canvas size which the window uses by packing it
+         */
+        public GameCanvas() {
             setDoubleBuffered(true);
             Dimension dim = new Dimension(Resolution.SCREEN_WIDTH, Resolution.SCREEN_HEIGHT);
             setPreferredSize(dim);
@@ -186,6 +203,9 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
             setLayout(null);
         }
 
+        /**
+         * Can be called by repaint function. Drawing the current panel
+         */
         @Override
         public void paint(Graphics g) {
             super.paint(g);

@@ -10,18 +10,21 @@ import java.util.logging.*;
 //Class containing font loading logic
 public class FontLoader {
   private static final Logger LOG = Logger.getLogger(FontLoader.class.getName());
+
   /**
    * @param path
+   * 
+   *             Registers the font in the GraphicsEnvironment
    */
   public void register(String path) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
     try {

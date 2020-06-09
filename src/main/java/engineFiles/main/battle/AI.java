@@ -15,15 +15,19 @@ public class AI {
   private Random rand;
   private Item[] randomItems;
 
+  /**
+   * Creates a list of items to choose from randomize choice
+   * 
+   */
   public AI() {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     rand = new Random();
     randomItems = new Item[4];
@@ -37,6 +41,9 @@ public class AI {
   /**
    * @param entity
    * @return Move
+   * 
+   *         Generates a random number and based on probability it gets the next
+   *         move. Item move has a 10% chance of picking
    */
   public Move getNextMove(Entity entity) {
     int randomInt = rand.nextInt(10);

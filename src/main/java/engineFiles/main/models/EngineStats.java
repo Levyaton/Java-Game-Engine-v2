@@ -26,12 +26,12 @@ public class EngineStats {
     public EngineStats() {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         LOG.config("EngineStats Initialized");
     }

@@ -13,6 +13,7 @@ import java.util.logging.*;
 //Class containing the logic of controllable entities. The entity is controlled by the user
 public class ControllableEntity extends Entity {
     private static final Logger LOG = Logger.getLogger(ControllableEntity.class.getName());
+
     /**
      * @return int
      */
@@ -22,32 +23,44 @@ public class ControllableEntity extends Entity {
 
     public int TEST_COUNTER = 0;
 
+    /**
+     * @param animation
+     * @param json
+     * @param speedCounter
+     * 
+     */
     public ControllableEntity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(animation, json, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";
         LOG.config("ControllableEntity Initialized");
     }
 
+    /**
+     * @param animation
+     * @param f
+     * @param speedCounter
+     * 
+     */
     public ControllableEntity(MovementAnimation animation, File f, int speedCounter) {
         super(animation, f, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = Settings.controlls;
         this.categoryName = "controllable";

@@ -13,20 +13,29 @@ public class GameLoop implements Runnable {
     private static final Logger LOG = Logger.getLogger(GameLoop.class.getName());
     private Window frame;
 
+    /**
+     * @param frame
+     * 
+     */
     public GameLoop(Window frame) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.frame = frame;
         LOG.config("GameLoop Initialized");
     }
 
+    /**
+     * thread native run function renders everytime the render variable is set true.
+     * The catchup function set the time for renderin by calculating the needed
+     * time.
+     */
     @Override
     public void run() {
         LOG.info("gameloop starting");

@@ -20,25 +20,27 @@ public class MenuPanel extends GamePanel {
   private int mouseX, mouseY = 0;
   private List<Component> components;
 
+  /**
+   * @param panelName
+   * @param window
+   * 
+   *                  Initiliazes component ArrayList and adds the layout
+   *                  components to the list
+   * 
+   */
   public MenuPanel(String panelName, Window window) {
     super(panelName, window);
-    LOG.setUseParentHandlers(false);
-    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
-    LOG.addHandler(stdout);
     components = new ArrayList<>();
-    components.add(new Button("start", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60,
-        () -> window.setPanel("overworld")));
-    LOG.config("MenuPanel Initialized");
+    components.add(new Button("start", Resolution.SCREEN_WIDTH / 2, Resolution.SCREEN_HEIGHT / 2, 180, 60, () -> {
+      window.setPanel("overworld");
+      LOG.info("Game started");
+    }));
   }
 
   /**
    * @return Image
+   * 
+   *         Returns rendered image of the menu with updates states
    */
   @Override
   public Image getRenderGraphics() {
@@ -74,6 +76,8 @@ public class MenuPanel extends GamePanel {
 
   /**
    * @param e
+   * 
+   *          Sets mouseX and mouseY on mouse move
    */
   @Override
   public void mouseMoved(MouseEvent e) {

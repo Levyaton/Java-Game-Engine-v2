@@ -10,7 +10,6 @@ import engineFiles.main.models.Sprites.Entities.Entity;
 import engineFiles.main.models.Sprites.Entities.OverworldPlayer;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.fonts.FontLibrary;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Stack;
@@ -31,17 +30,14 @@ public class BattlePanel extends GamePanel {
   public OverworldPlayer player;
   public Entity opponent;
 
+  /**
+   * @param panelName
+   * @param window
+   * 
+   *                  Initliazes battle manager, component stack
+   */
   public BattlePanel(String panelName, Window window) {
     super(panelName, window);
-    LOG.setUseParentHandlers(false);
-    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
-    LOG.addHandler(stdout);
     battleGUI.loadResources();
 
     battleManager = new BattleManager(this);
@@ -52,6 +48,9 @@ public class BattlePanel extends GamePanel {
   /**
    * @param player
    * @param opponent
+   * 
+   *                 Sets player and opponnent entity for battle and pushes a
+   *                 intro dialog to the component stack
    */
   public void setOpponents(OverworldPlayer player, Entity opponent) {
     this.player = player;
@@ -93,6 +92,9 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @return Image
+   * 
+   *         Returns rendered image of battle and updates the component stack
+   *         state
    */
   @Override
   public Image getRenderGraphics() {
@@ -110,6 +112,11 @@ public class BattlePanel extends GamePanel {
     return img;
   }
 
+  /**
+   * Checks the game state if it ended. After the battle it resets the player and
+   * oponnent damage back to the original. During victory it removes the oponnent
+   * and when the players loses it opens the gameover screen.
+   */
   @Override
   public void update() {
     if (!gameEnded()) {
@@ -117,6 +124,7 @@ public class BattlePanel extends GamePanel {
     } else if (inBattle) {
       player.setBattleDamage(0);
       opponent.setBattleDamage(0);
+      LOG.info("Battle ending");
       if (inBattle && opponent.getCurHealth() < 1) {
         componentStack.push(new Dialog("Leaving battle...", () -> {
           window.getPanelManager().getOverWorldPanel().removeEntity(opponent);
@@ -137,6 +145,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @param g
+   * 
+   *          Draws the battle GUI layout
    */
   public void drawGUI(Graphics g) {
     // setting up background and components
@@ -151,6 +161,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @param g
+   * 
+   *          Draws the player and their name
    */
   public void drawPlayer(Graphics g) {
     g.drawString(player.getCategoryName(), 35, 175);
@@ -159,6 +171,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @param g
+   * 
+   *          Draws the oponnent and their name
    */
   public void drawOpponent(Graphics g) {
     g.drawString(opponent.getCategoryName(), 595, 75);
@@ -167,6 +181,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @param g
+   * 
+   *          Draws the player and opponent healthbar
    */
   public void drawHealthBars(Graphics g) {
     // health width: 160
@@ -183,6 +199,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @param text
+   * 
+   *             Pushes a dialog to the component stack with a text
    */
   public void pushDialog(String text) {
     componentStack.push(new Dialog(text, () -> {
@@ -192,6 +210,8 @@ public class BattlePanel extends GamePanel {
 
   /**
    * @return boolean
+   * 
+   *         Checks if game ended by comparing player and oponnent curhealth
    */
   public boolean gameEnded() {
     return player.getCurHealth() < 1 || opponent.getCurHealth() < 1;

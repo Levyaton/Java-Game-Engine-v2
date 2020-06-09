@@ -16,16 +16,25 @@ public class Button extends Component {
   private String text;
   private CallbackFunc func;
 
+  /**
+   * @param text
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   * @param func
+   * 
+   */
   public Button(String text, int x, int y, int width, int height, CallbackFunc func) {
     super(x, y, width, height);
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.text = text;
     this.func = func;
@@ -37,6 +46,9 @@ public class Button extends Component {
    * @param x
    * @param y
    * @param clicked
+   * 
+   *                Checks if button x, y coordinates interect with the rectangle
+   *                boundaries. If yes hover is applied, else normal state
    */
   @Override
   public void input(int x, int y, boolean clicked) {

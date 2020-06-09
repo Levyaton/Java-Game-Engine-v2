@@ -47,25 +47,30 @@ public class TileMap {
     public TileMap() {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         LOG.config("TileMap Initialized");
     }
 
+    /**
+     * @param tileset
+     * @param tilesetPath
+     * 
+     */
     public TileMap(JsonObject tileset, String tilesetPath) throws FileNotFoundException {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.tilesetPath = tilesetPath;
         this.json = tileset;

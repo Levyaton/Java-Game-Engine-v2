@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-
 //A class containing the move logic used in battles
 public class Move {
   private static final Logger LOG = Logger.getLogger(Move.class.getName());
@@ -17,30 +16,41 @@ public class Move {
   public Item item;
   public int value;
 
+  /**
+   * @param entity
+   * @param type
+   * 
+   */
   public Move(Entity entity, MoveEnum type) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;
     LOG.config("Move Initialized");
   }
 
+  /**
+   * @param entity
+   * @param type
+   * @param value
+   * 
+   */
   public Move(Entity entity, MoveEnum type, int value) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;
@@ -48,15 +58,21 @@ public class Move {
     LOG.config("Move Initialized");
   }
 
+  /**
+   * @param entity
+   * @param type
+   * @param item
+   * 
+   */
   public Move(Entity entity, MoveEnum type, Item item) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.entity = entity;
     this.type = type;

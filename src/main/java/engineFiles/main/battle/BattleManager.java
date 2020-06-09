@@ -16,16 +16,12 @@ public class BattleManager {
 
   private AI ai;
 
+  /**
+   * @param battlePanel
+   * 
+   *                    Initalize AI and move stack
+   */
   public BattleManager(BattlePanel battlePanel) {
-    LOG.setUseParentHandlers(false);
-    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
-    LOG.addHandler(stdout);
     this.battlePanel = battlePanel;
     this.ai = new AI();
     moveStack = new Stack<Move>();
@@ -34,8 +30,12 @@ public class BattleManager {
 
   /**
    * @param move
+   * 
+   *             Pushes a move to the move stack for player and gets a random move
+   *             for the oponnent
    */
   public void push(Move move) {
+    LOG.info("Move pushed to stack");
     moveStack.push(move);
     moveStack.push(ai.getNextMove(battlePanel.opponent));
   }
@@ -49,12 +49,19 @@ public class BattleManager {
 
   /**
    * @param move
+   * 
+   *             Executes the move from the move stack. If one entity attacks and
+   *             the other uses dodge, the attack gets nullified. After each move
+   *             a dialog is pushed to the component stack and the appropiete
+   *             update is executed
    */
   public void executeMove(Move move) {
     moveStack.pop();
     switch (move.type) {
       case ATTACK:
+        LOG.info(move.entity.getName() + " attacking");
         if (!moveStack.isEmpty() && moveStack.peek().type == MoveEnum.DODGE) {
+          LOG.info(move.entity.getName() + " dodged");
           battlePanel.pushDialog(
               move.entity.getCategoryName() + " attack was dodged by " + moveStack.peek().entity.getCategoryName());
           moveStack.pop();
@@ -70,6 +77,7 @@ public class BattleManager {
         break;
 
       case ITEM:
+        LOG.info(move.entity.getName() + " uses an item");
         if (move.item.getAttackMod() != 0) {
           battlePanel.pushDialog("item increased attack by " + move.item.getAttackMod() + " DMG");
           move.entity.setBattleDamage(move.entity.getBattleDamage() + move.item.getAttackMod());
@@ -85,6 +93,7 @@ public class BattleManager {
         break;
 
       case DODGE:
+        LOG.info(move.entity.getName() + " dodged");
         if (!moveStack.isEmpty() && moveStack.peek().type == MoveEnum.ATTACK) {
           battlePanel.pushDialog(
               move.entity.getCategoryName() + " dodged an attacked by " + moveStack.peek().entity.getCategoryName());

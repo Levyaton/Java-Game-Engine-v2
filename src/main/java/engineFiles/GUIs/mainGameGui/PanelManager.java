@@ -19,15 +19,21 @@ public class PanelManager {
     private GameOverPanel gameover;
     private WorldGenModel model;
 
+    /**
+     * @param model
+     * @param window
+     * 
+     *               Initialzes the panels and sets the current as menu
+     */
     public PanelManager(WorldGenModel model, Window window) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         menu = new MenuPanel("menu", window);
         battle = new BattlePanel("battle", window);
@@ -39,6 +45,8 @@ public class PanelManager {
 
     /**
      * @return GamePanel
+     * 
+     *         Returns the current panel
      */
     public GamePanel getCurrent() {
         return current;
@@ -46,6 +54,8 @@ public class PanelManager {
 
     /**
      * @param name
+     * 
+     *             Sets the current panel based on the name of the panel
      */
     public void setCurrent(String name) {
         switch (name) {
@@ -66,6 +76,9 @@ public class PanelManager {
     /**
      * @param player
      * @param opponent
+     * 
+     *                 Starts the battle by setting the oponnent and player and
+     *                 changing the current panel
      */
     public void initBattle(OverworldPlayer player, Entity opponent) {
         battle.setOpponents(player, opponent);

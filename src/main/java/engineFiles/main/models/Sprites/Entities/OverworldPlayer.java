@@ -14,16 +14,23 @@ public class OverworldPlayer extends ControllableEntity {
     private static final Logger LOG = Logger.getLogger(OverworldPlayer.class.getName());
     private Player player;
 
+    /**
+     * @param animation
+     * @param json
+     * @param player
+     * @param speedCounter
+     * 
+     */
     public OverworldPlayer(MovementAnimation animation, JSONObject json, Player player, int speedCounter) {
         super(animation, json, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.categoryName = "player";
         this.health = 10;
@@ -33,16 +40,23 @@ public class OverworldPlayer extends ControllableEntity {
         LOG.config("OverworldPlayer Initialized");
     }
 
+    /**
+     * @param animation
+     * @param f
+     * @param player
+     * @param speedCounter
+     * 
+     */
     public OverworldPlayer(MovementAnimation animation, File f, Player player, int speedCounter) {
         super(animation, f, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.categoryName = "player";
         this.health = 10;

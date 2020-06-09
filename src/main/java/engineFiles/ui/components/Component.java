@@ -11,15 +11,22 @@ public abstract class Component {
   private static final Logger LOG = Logger.getLogger(Component.class.getName());
   protected int x, y, width, height;
 
+  /**
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   * 
+   */
   public Component(int x, int y, int width, int height) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.x = x;
     this.y = y;

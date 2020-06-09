@@ -19,16 +19,23 @@ public class VectorEntity extends Entity {
     protected int vectorCounter = 0;
     protected boolean followingX;
 
+    /**
+     * @param animation
+     * @param json
+     * @param speedCounter
+     * @param vectors
+     * 
+     */
     public VectorEntity(MovementAnimation animation, JSONObject json, int speedCounter, List<Vector> vectors) {
         super(animation, json, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.health = 10;
@@ -40,16 +47,23 @@ public class VectorEntity extends Entity {
         LOG.config("VectorEntity Initialized");
     }
 
+    /**
+     * @param animation
+     * @param f
+     * @param speedCounter
+     * @param vectors
+     * 
+     */
     public VectorEntity(MovementAnimation animation, File f, int speedCounter, List<Vector> vectors) {
         super(animation, f, speedCounter);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         super.controlls = super.controllsInit();
         this.health = 10;

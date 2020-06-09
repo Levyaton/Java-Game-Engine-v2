@@ -25,15 +25,22 @@ public class Coordinates {
         this.MOD = MOD;
     }
 
+    /**
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * 
+     */
     public Coordinates(int x, int y, int width, int height) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.x = x;
         this.y = y;
@@ -45,15 +52,23 @@ public class Coordinates {
         LOG.config("Coordinates Initialized");
     }
 
+    /**
+     * @param x
+     * @param y
+     * @param z
+     * @param width
+     * @param height
+     * 
+     */
     public Coordinates(int x, int y, int z, int width, int height) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.x = x;
         this.y = y;

@@ -8,20 +8,22 @@ import java.util.logging.*;
 
 //A custom definition of a Component object
 public abstract class Component {
+
   public Component() {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     LOG.config("Component Initialized");
   }
 
   private static final Logger LOG = Logger.getLogger(Component.class.getName());
+
   public abstract void input();
 
   public abstract void render(Graphics g);

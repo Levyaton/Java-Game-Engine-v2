@@ -25,15 +25,22 @@ public abstract class GamePanel extends JPanel {
 
     protected List<JComponent> jComponents;
 
+    /**
+     * @param area
+     * @param entities
+     * @param panelName
+     * @param window
+     * 
+     */
     public GamePanel(Area area, List<Entity> entities, String panelName, Window window) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.panelName = panelName;
         this.entities = entities;
@@ -42,15 +49,20 @@ public abstract class GamePanel extends JPanel {
         LOG.config("GamePanel Initialized");
     }
 
+    /**
+     * @param panelName
+     * @param window
+     * 
+     */
     public GamePanel(String panelName, Window window) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.window = window;
         LOG.config("GameOverPanel Initialized");

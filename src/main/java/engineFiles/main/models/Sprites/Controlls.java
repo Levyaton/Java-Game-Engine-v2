@@ -17,15 +17,22 @@ public class Controlls {
     private int gameSave;
     private int interaction;
 
+    /**
+     * @param up
+     * @param down
+     * @param left
+     * @param right
+     * 
+     */
     public Controlls(List<Integer> up, List<Integer> down, List<Integer> left, List<Integer> right) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.down = down;
         this.left = left;

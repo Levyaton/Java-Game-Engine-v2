@@ -16,26 +16,42 @@ public class Item {
 
     private String name;
 
+    /**
+     * @param name
+     * 
+     */
     public Item(String name) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.name = name;
         LOG.config("Item Initialized");
     }
 
+    /**
+     * @param name
+     * @param cost
+     * 
+     */
     public Item(String name, int cost) {
         this(name);
         this.cost = cost;
         LOG.config("Item Initialized");
     }
 
+    /**
+     * @param name
+     * @param healthMod
+     * @param speedMod
+     * @param attackMod
+     * 
+     */
     public Item(String name, int healthMod, int speedMod, int attackMod) {
         this(name);
         this.healthMod = healthMod;
@@ -44,6 +60,14 @@ public class Item {
         LOG.config("Item Initialized");
     }
 
+    /**
+     * @param name
+     * @param healthMod
+     * @param speedMod
+     * @param attackMod
+     * @param description
+     * 
+     */
     public Item(String name, int healthMod, int speedMod, int attackMod, String description) {
         this(name);
         this.healthMod = healthMod;
@@ -53,6 +77,14 @@ public class Item {
         LOG.config("Item Initialized");
     }
 
+    /**
+     * @param name
+     * @param healthMod
+     * @param speedMod
+     * @param attackMod
+     * @param cost
+     * 
+     */
     public Item(String name, int healthMod, int speedMod, int attackMod, int cost) {
         this(name, healthMod, speedMod, attackMod);
         this.cost = cost;

@@ -21,15 +21,19 @@ public class Player {
     private String username;
     private List<Item> inventory = new ArrayList<>();
 
+    /**
+     * @param json
+     * 
+     */
     public Player(JsonObject json) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.username = json.get(USERNAME_KEY).getAsString();
         for (JsonElement el : json.get(INVENTORY_KEY).getAsJsonArray()) {
@@ -38,15 +42,20 @@ public class Player {
         LOG.config("Player Initialized");
     }
 
+    /**
+     * @param username
+     * @param inventory
+     * 
+     */
     public Player(String username, List<Item> inventory) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.username = username;
         this.inventory = inventory;

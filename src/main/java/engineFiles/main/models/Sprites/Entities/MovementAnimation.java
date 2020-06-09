@@ -25,30 +25,43 @@ public class MovementAnimation {
 
     private int id;
 
-    public MovementAnimation() {
-
-    }
-
+    /**
+     * @param id
+     * 
+     */
     public MovementAnimation(int id) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.id = id;
         LOG.config("MovementAnimation Initialized");
     }
 
+    /**
+     * @param animationSpeed
+     * @param id
+     * 
+     */
     public MovementAnimation(int animationSpeed, int id) {
         this(id);
         this.animationSpeed = animationSpeed;
         LOG.config("MovementAnimation Initialized");
     }
 
+    /**
+     * @param down
+     * @param up
+     * @param left
+     * @param right
+     * @param id
+     * 
+     */
     public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
             List<BufferedImage> right, int id) {
         this(id);
@@ -59,6 +72,15 @@ public class MovementAnimation {
         LOG.config("MovementAnimation Initialized");
     }
 
+    /**
+     * @param down
+     * @param up
+     * @param left
+     * @param right
+     * @param animationSpeed
+     * @param id
+     * 
+     */
     public MovementAnimation(List<BufferedImage> down, List<BufferedImage> up, List<BufferedImage> left,
             List<BufferedImage> right, int animationSpeed, int id) {
         this(down, up, left, right, id);

@@ -16,16 +16,21 @@ public class ColorSwitchGui extends JPanel {
     JButton colorChangeButton;
     JButton exit;
 
+    /**
+     * @param changeColor
+     * 
+     *                    Recolor GUI
+     */
     public ColorSwitchGui(boolean changeColor) {
         super();
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         Dimension dimension = new Dimension(Settings.screenWidth, Settings.screenHeight);
         this.setPreferredSize(dimension);

@@ -17,21 +17,30 @@ public class Dialog extends Component {
   private String text;
   private CallbackFunc func;
 
+  /**
+   * @param text
+   * @param func
+   * 
+   */
   public Dialog(String text, CallbackFunc func) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.text = text;
     this.func = func;
     LOG.config("Dialog Initialized");
   }
 
+  /**
+   * If enter key is pressed the callback func is invoked
+   * 
+   */
   @Override
   public void input() {
     if (KeyMap.isPressed() && KeyMap.isPressed(KeyEvent.VK_SPACE)) {
@@ -42,6 +51,8 @@ public class Dialog extends Component {
 
   /**
    * @param g
+   * 
+   *          Renders the dialog component with text
    */
   @Override
   public void render(Graphics g) {

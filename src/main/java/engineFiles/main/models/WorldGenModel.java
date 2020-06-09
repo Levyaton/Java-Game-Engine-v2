@@ -18,15 +18,23 @@ public class WorldGenModel {
     private String tilesetPath;
     private Area area;
 
+    /**
+     * @param tm
+     * @param cm
+     * @param em
+     * @param tilesetPath
+     * @param items
+     * 
+     */
     public WorldGenModel(TileMap tm, ColorerModel cm, EntitiesModel em, String tilesetPath, List<ItemSprite> items) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.tileMap = tm;
         this.colorerModel = cm;

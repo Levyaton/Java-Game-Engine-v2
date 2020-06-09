@@ -35,16 +35,22 @@ public class EntitiesModel {
     private List<ControllableEntity> controlable;
     private List<VectorEntity> vector;
 
+    /**
+     * @param player
+     * @param homing
+     * @param controllable
+     * 
+     */
     public EntitiesModel(OverworldPlayer player, List<HomingEntity> homing, List<ControllableEntity> controlable,
             List<VectorEntity> vector) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.player = player;
         this.homing = homing;
@@ -53,15 +59,19 @@ public class EntitiesModel {
         LOG.config("EntitiesModel Initialized");
     }
 
+    /**
+     * @param json
+     * 
+     */
     public EntitiesModel(JsonObject json) throws IOException {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         List<Entity> allEntities = new ArrayList<>();
         this.player = initOverworldPlayer(json.get(OVERWORLD_PLAYER_KEY).getAsJsonObject());

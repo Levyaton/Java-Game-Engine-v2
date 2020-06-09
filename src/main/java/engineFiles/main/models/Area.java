@@ -28,15 +28,22 @@ public class Area {
     private int height;
     private JSONObject json = new JSONObject();
 
+    /**
+     * @param name
+     * @param width
+     * @param height
+     * @param spritePath
+     * 
+     */
     public Area(String name, int width, int height, String spritePath) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.name = name;
         this.width = width;
@@ -46,15 +53,21 @@ public class Area {
         LOG.config("Area Initialized");
     }
 
+    /**
+     * @param sprites
+     * @param width
+     * @param height
+     * 
+     */
     public Area(SpriteCollection sprites, String name, int width, int height) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.sprites = sprites;
         this.name = name;
@@ -64,15 +77,19 @@ public class Area {
         LOG.config("Area Initialized");
     }
 
+    /**
+     * @param json
+     * 
+     */
     public Area(JSONObject json) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.json = json;
         this.name = json.getString(NAME_KEY);
@@ -87,26 +104,30 @@ public class Area {
         this(Objects.requireNonNull(FolderOP.getJSON(f)));
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         LOG.config("Area Initialized");
     }
 
+    /**
+     * @param pathToJSON
+     * 
+     */
     public Area(String pathToJSON) {
         this(Objects.requireNonNull(FolderOP.getJSON(pathToJSON)));
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         LOG.config("Area Initialized");
     }

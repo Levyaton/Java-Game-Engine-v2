@@ -34,18 +34,17 @@ public class OverworldPanel extends GamePanel {
 
     private boolean paused = false;
 
+    /**
+     * @param panelName
+     * @param window
+     * @param worldGenModel
+     * 
+     *                      Loads area sprites from worldGenModel. Sets
+     *                      DoubleBuffering to true
+     * 
+     */
     public OverworldPanel(String panelName, Window window, WorldGenModel worldGenModel) {
         super(worldGenModel.getArea(), worldGenModel.getEntitiesModel().getAllEntities(), panelName, window);
-        LOG.setUseParentHandlers(false);
-        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
-        LOG.addHandler(stdout);
-        // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(worldGenModel.getColorerModel().isRecolor());
         loadSprites(area.getSprites());
@@ -54,37 +53,39 @@ public class OverworldPanel extends GamePanel {
         LOG.config("OverworldPanel Initialized");
     }
 
+    /**
+     * @param panelName
+     * @param window
+     * @param isRecolor
+     * @param area
+     * @param entities
+     * 
+     *                  Loads area sprites from area. Sets DoubleBuffering to true
+     * 
+     */
     public OverworldPanel(String panelName, Window window, boolean isRecolor, Area area, List<Entity> entities) {
         super(area, entities, panelName, window);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
-        // Dimension d = new Dimension(800, 700);s
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(isRecolor);
         loadSprites(area.getSprites());
         setDoubleBuffered(true);
     }
 
-    /**
-     * @param sprites
-     */
     private void loadSprites(ArrayList<Sprite> sprites) {
         for (Sprite s : sprites) {
             loadSprite(s);
         }
     }
 
-    /**
-     * @param s
-     * @return JLabel
-     */
     private JLabel loadSprite(Sprite s) {
         JLabel image = new JLabel(new ImageIcon(s.getPath()));
         image.setDoubleBuffered(true);
@@ -95,7 +96,7 @@ public class OverworldPanel extends GamePanel {
     }
 
     private void saveGame() {
-        // System.out.println("Saving game");
+        LOG.info("Saving game");
         this.worldGenModel.getColorerModel()
                 .setRecolor(Boolean.getBoolean(this.colorSwitchGui.getColorChangeButton().getText()));
         SaveGame.save(this.worldGenModel);
@@ -103,6 +104,10 @@ public class OverworldPanel extends GamePanel {
 
     /**
      * @param e
+     * 
+     *          Checks saving and item picking. During Item picking checks if theres
+     *          a item sprite around the player. After picking an item , remove it
+     *          from the map and add to invetory
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -125,6 +130,7 @@ public class OverworldPanel extends GamePanel {
                         i.getCoord().getY() - offest.getY() - this.SPACE_MOD2, i.getCurrentWidth(),
                         i.getCurrentHeight());
                 if (rect2.intersects(rect1)) {
+                    LOG.info("item " + i.getName() + " picked");
                     player.getPlayer().addItem(i.getItem());
                     area.removeItem(i);
                 }
@@ -143,6 +149,9 @@ public class OverworldPanel extends GamePanel {
 
     /**
      * @return Image
+     * 
+     *         Returns rendered image of overworld. Iterates throught sprites,
+     *         entities and items in the window coordinates
      */
     @Override
     public Image getRenderGraphics() {
@@ -196,6 +205,7 @@ public class OverworldPanel extends GamePanel {
     /**
      * @param checked
      * @return boolean
+     * 
      */
     private boolean colliding(Sprite checked) {
         Rectangle rect1 = new Rectangle();
@@ -208,6 +218,7 @@ public class OverworldPanel extends GamePanel {
                 rect2.setBounds(s.getCoord().getX() - this.SPACE_MOD1, s.getCoord().getY() - this.SPACE_MOD1,
                         s.getCurrentWidth(), s.getCurrentHeight());
                 if (rect1.intersects(rect2)) {
+                    LOG.info("Colliding with sprite");
                     return true;
                 }
             }
@@ -217,6 +228,7 @@ public class OverworldPanel extends GamePanel {
             rect2.setBounds(i.getCoord().getX() - this.SPACE_MOD1, i.getCoord().getY() - this.SPACE_MOD1,
                     i.getCurrentWidth(), i.getCurrentHeight());
             if (rect1.intersects(rect2)) {
+                LOG.info("Colliding with item");
                 return true;
             }
         }
@@ -230,6 +242,7 @@ public class OverworldPanel extends GamePanel {
                 if (rect1.intersects(rect2)) {
                     e.onCollision(checked);
                     if (e instanceof OverworldPlayer == true) {
+                        LOG.info("Starting battle");
                         window.initBattle((OverworldPlayer) e, (Entity) checked);
                     }
                     return true;
@@ -239,6 +252,9 @@ public class OverworldPanel extends GamePanel {
         return false;
     }
 
+    /**
+     * If the game isnt paused check entity collision
+     */
     @Override
     public void update() {
         if (!isGamePaused()) {
@@ -256,6 +272,8 @@ public class OverworldPanel extends GamePanel {
 
     /**
      * @return Coordinates
+     * 
+     *         Returns the coordinates of the window in the map coordinates
      */
     @Override
     public Coordinates getOffset() {
@@ -276,6 +294,8 @@ public class OverworldPanel extends GamePanel {
 
     /**
      * @return Entity
+     * 
+     *         Returns the player entity
      */
     public Entity getPlayer() {
         for (Entity e : entities) {
@@ -307,6 +327,8 @@ public class OverworldPanel extends GamePanel {
 
     /**
      * @param removedEntity
+     * 
+     *                      Removes entity from entities
      */
     public void removeEntity(Entity removedEntity) {
         entities.remove(removedEntity);

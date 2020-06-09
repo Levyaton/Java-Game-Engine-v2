@@ -13,10 +13,13 @@ import java.util.logging.Logger;
 //Class containing generic static utility methods
 public class Utils {
     private static final Logger LOG = Logger.getLogger(Utils.class.getName());
+
     /**
      * @param arr
      * @param classOfT
      * @return T[]
+     * 
+     *         Converts arrat to Json object
      */
     public static <T> T[] arrToObj(JsonArray arr, Class<T> classOfT) {
 
@@ -33,6 +36,8 @@ public class Utils {
      * @param newW
      * @param newH
      * @return BufferedImage
+     * 
+     *         Crops and gets the image by the x,y width and height values
      */
     public static BufferedImage scale(BufferedImage img, int newW, int newH) {
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
@@ -49,6 +54,8 @@ public class Utils {
 
     /**
      * @return int
+     * 
+     *         Gets the entity Index and increment entity index
      */
     public static int getEntityIndex() {
         int index = entityIndex;

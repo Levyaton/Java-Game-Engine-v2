@@ -49,16 +49,22 @@ public abstract class Entity extends Sprite {
 
     int movementIndex;
 
+    /**
+     * @param animation
+     * @param json
+     * @param speedCounter
+     * 
+     */
     public Entity(MovementAnimation animation, JSONObject json, int speedCounter) {
         super(json);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.animation = animation;
         this.speedCounter = speedCounter;
@@ -66,16 +72,21 @@ public abstract class Entity extends Sprite {
         LOG.config("Entity Initialized");
     }
 
+    /**
+     * @param f
+     * @param speedCounter
+     * 
+     */
     public Entity(MovementAnimation animation, File f, int speedCounter) {
         super(f);
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.animation = animation;
         this.speedCounter = speedCounter;

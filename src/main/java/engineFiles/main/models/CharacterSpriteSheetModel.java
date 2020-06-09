@@ -19,16 +19,24 @@ public class CharacterSpriteSheetModel {
     private int entityIndex;
     private String sheetPath;
 
+    /**
+     * @param rowCount
+     * @param columnCount
+     * @param spriteWidth
+     * @param spriteHeight
+     * @param entityIndex
+     * 
+     */
     public CharacterSpriteSheetModel(int rowCount, int columnCount, int spriteWidth, int spriteHeight, int entityIndex,
             String sheetPath) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.rowCount = rowCount;
         this.columnCount = columnCount;
@@ -39,15 +47,19 @@ public class CharacterSpriteSheetModel {
         LOG.config("CharacterSpriteSheetModel Initialized");
     }
 
+    /**
+     * @param json
+     * 
+     */
     public CharacterSpriteSheetModel(JsonObject json) {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         this.rowCount = json.get(ROW_COUNT_KEY).getAsInt();
         this.columnCount = json.get(COLUMN_COUNT_KEY).getAsInt();

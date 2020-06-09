@@ -25,15 +25,21 @@ public class Controller extends Component {
   private int curIndex, itemIndex = 0;
   private boolean showItemsOption = false;
 
+  /**
+   * @param battlePanel
+   * 
+   *                    Initializes baseOptions and sets inventory from the player
+   *                    inventory for items
+   */
   public Controller(BattlePanel battlePanel) {
     LOG.setUseParentHandlers(false);
     Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
+      @Override
+      public void publish(LogRecord record) {
         super.publish(record);
         flush();
-    }
-};
+      }
+    };
     LOG.addHandler(stdout);
     this.battlePanel = battlePanel;
     baseOptions = new String[] { "attack", "dodge" };
@@ -41,6 +47,12 @@ public class Controller extends Component {
     LOG.config("Controller Initialized");
   }
 
+  /**
+   * W / S keys for changing the curIndex. Space for executing the option. D key
+   * to show items when the curIndex is on items and to return back use A key.
+   * When picking dodge or attack a Move is created and pushed to the move stack.
+   * When item options is opened using W / S keys update the itemIndex
+   */
   @Override
   public void input() {
     if (KeyMap.isPressed()) {
@@ -101,6 +113,8 @@ public class Controller extends Component {
 
   /**
    * @param g
+   * 
+   *          Renders the graphics of basic options or items options
    */
   @Override
   public void render(Graphics g) {
@@ -115,6 +129,8 @@ public class Controller extends Component {
 
   /**
    * @param g
+   * 
+   *          Draws basic options, each option is active based on the curIndex
    */
   public void drawBasicOptions(Graphics g) {
     g.setFont(FontLibrary.zeldaFontMedium);
@@ -140,6 +156,8 @@ public class Controller extends Component {
 
   /**
    * @param g
+   * 
+   *          Draws items options, each option is active based on the itemIndex
    */
   public void drawItemsOptions(Graphics g) {
     for (int i = itemIndex; i < itemIndex + 3; i++) {

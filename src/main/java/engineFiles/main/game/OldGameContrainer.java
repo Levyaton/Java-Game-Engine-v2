@@ -36,18 +36,22 @@ import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 //Class containing an old version of the game container. Used for repairing the json file, if broken
 public class OldGameContrainer {
         private static final Logger LOG = Logger.getLogger(OldGameContrainer.class.getName());
+
         /**
          * @param args
+         * 
+         *             DEPRECIATED. Old main class, usage as a backup if the normal
+         *             doesnt work
          */
         public static void main(String[] args) {
                 LOG.setUseParentHandlers(false);
                 Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+                        @Override
+                        public void publish(LogRecord record) {
+                                super.publish(record);
+                                flush();
+                        }
+                };
                 LOG.addHandler(stdout);
                 LOG.info("Game Started (from old launcher)");
                 // String areaDir = "src/main/java/resources/gameFiles/models/objects/areas/";
