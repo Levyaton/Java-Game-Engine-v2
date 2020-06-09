@@ -1,40 +1,384 @@
-Jun 09, 2020 1:18:38 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:08 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:38 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:09 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:38 PM engineFiles.ui.Settings setControlls
+Jun 09, 2020 3:40:09 PM engineFiles.ui.Settings setControlls
 INFO: Controlls set
-Jun 09, 2020 1:18:39 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:09 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:39 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:09 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:39 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:09 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:39 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:09 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:39 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:10 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:39 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:10 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:39 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 3:40:10 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 1:18:39 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:10 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:39 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:10 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:39 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 3:40:10 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 1:18:51 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 3:40:18 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 09, 2020 1:18:51 PM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 3:40:18 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 09, 2020 1:18:59 PM engineFiles.main.game.GameLoop run
+Jun 09, 2020 3:40:23 PM engineFiles.main.game.GameLoop run
 INFO: gameloop starting
-Jun 09, 2020 1:19:01 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+Jun 09, 2020 3:40:26 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
 INFO: Set panel overworld as Current
-Jun 09, 2020 1:19:14 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 3:40:30 PM engineFiles.GUIs.mainGameGui.OverworldPanel keyPressed
+INFO: item Brutalizer picked
+Jun 09, 2020 3:40:30 PM engineFiles.ui.Player addItem
+INFO: Added item named Brutalizer
+Jun 09, 2020 3:40:39 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
 INFO: Starting battle
-Jun 09, 2020 1:19:14 PM engineFiles.GUIs.mainGameGui.BattlePanel setOpponents
+Jun 09, 2020 3:40:39 PM engineFiles.GUIs.mainGameGui.BattlePanel setOpponents
 INFO: Opponents set
-Jun 09, 2020 1:19:14 PM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+Jun 09, 2020 3:40:39 PM engineFiles.GUIs.mainGameGui.PanelManager initBattle
 INFO: Call to battle
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy dodged
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player uses an item
+Jun 09, 2020 3:40:54 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy attacking
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:40:57 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will use item
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy uses an item
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:40:58 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:40:59 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:40:59 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:40:59 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy dodged
+Jun 09, 2020 3:40:59 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:01 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:01 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:41:01 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy dodged
+Jun 09, 2020 3:41:01 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:02 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:02 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:41:02 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy dodged
+Jun 09, 2020 3:41:02 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Enemy attacking
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:41:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:08 PM engineFiles.GUIs.mainGameGui.BattlePanel update
+INFO: Battle ending
+Jun 09, 2020 3:41:12 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel overworld as Current
+Jun 09, 2020 3:41:12 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Starting battle
+Jun 09, 2020 3:41:12 PM engineFiles.GUIs.mainGameGui.BattlePanel setOpponents
+INFO: Opponents set
+Jun 09, 2020 3:41:12 PM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+INFO: Call to battle
+Jun 09, 2020 3:41:12 PM engineFiles.GUIs.mainGameGui.BattlePanel update
+INFO: Battle ending
+Jun 09, 2020 3:41:14 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel overworld as Current
+Jun 09, 2020 3:41:37 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Starting battle
+Jun 09, 2020 3:41:37 PM engineFiles.GUIs.mainGameGui.BattlePanel setOpponents
+INFO: Opponents set
+Jun 09, 2020 3:41:37 PM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+INFO: Call to battle
+Jun 09, 2020 3:41:44 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:44 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:41:44 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob attacking
+Jun 09, 2020 3:41:44 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:41:44 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:51 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:51 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:41:51 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:41:51 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player dodged
+Jun 09, 2020 3:41:51 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:41:59 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:41:59 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:41:59 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:41:59 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:02 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:02 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:02 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:02 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:04 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:04 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:04 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:04 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob attacking
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:05 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will use item
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob uses an item
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:06 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:07 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:07 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:07 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:07 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player dodged
+Jun 09, 2020 3:42:07 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:08 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:08 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:08 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:09 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:10 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:10 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:10 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:10 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player dodged
+Jun 09, 2020 3:42:10 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:11 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:11 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will dodge
+Jun 09, 2020 3:42:11 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob dodged
+Jun 09, 2020 3:42:11 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob attacking
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:12 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Player attacking
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob attacking
+Jun 09, 2020 3:42:13 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:15 PM engineFiles.main.battle.BattleManager push
+INFO: Move pushed to stack
+Jun 09, 2020 3:42:15 PM engineFiles.main.battle.AI getNextMove
+INFO: AI will attack
+Jun 09, 2020 3:42:15 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Bob attacking
+Jun 09, 2020 3:42:15 PM engineFiles.main.battle.BattleManager executeMove
+INFO: Battle move executed
+Jun 09, 2020 3:42:15 PM engineFiles.GUIs.mainGameGui.BattlePanel update
+INFO: Battle ending
+Jun 09, 2020 3:42:20 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+INFO: Set panel gameover as Current
