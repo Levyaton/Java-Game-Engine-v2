@@ -9,7 +9,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the world generation properties. Used to keep track of games structure
+/**
+ * Class containing the world generation properties. Used to keep track of games
+ * structure
+ * 
+ */
 public class WorldGenModel {
     private static final Logger LOG = Logger.getLogger(WorldGenModel.class.getName());
     private TileMap tileMap;
