@@ -8,8 +8,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class VectorEntityTest {
 
     @Order(1)
@@ -21,7 +19,7 @@ class VectorEntityTest {
         vectors.add(new Vector(0,2));
         vectors.add(new Vector(1,1));
         File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
-        MovementAnimation animation = new MovementAnimation();
+        MovementAnimation animation = new MovementAnimation(1);
         int speedCounter = 0;
         VectorEntity entity = new VectorEntity(animation, sourceImage, speedCounter, vectors);
         //ASSERT
@@ -41,7 +39,7 @@ class VectorEntityTest {
         vectors.add(new Vector(0,2));
         vectors.add(new Vector(1,1));
         File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
-        MovementAnimation animation = new MovementAnimation();
+        MovementAnimation animation = new MovementAnimation(1);
         int speedCounter = 0;
         VectorEntity entity = new VectorEntity(animation, sourceImage, speedCounter, vectors);
         //ASSERT
