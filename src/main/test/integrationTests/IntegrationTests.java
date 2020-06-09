@@ -153,12 +153,12 @@ public class IntegrationTests {
 
     private OverworldPlayer setUpOverWorldPlayer(){
         File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
-        return new OverworldPlayer(new MovementAnimation(), sourceImage, new Player("PlayerUsername", new ArrayList<>()), 0);
+        return new OverworldPlayer(new MovementAnimation(1), sourceImage, new Player("PlayerUsername", new ArrayList<>()), 0);
     }
 
     private ControllableEntity setUpControlebleEntity(){
         File sourceImage = new File("src/main/java/resources/gameFiles/models/tilesets/basictiles.png");
-        MovementAnimation animation = new MovementAnimation();
+        MovementAnimation animation = new MovementAnimation(1);
         int speedCounter = 0;
         return new ControllableEntity(animation, sourceImage, speedCounter);
     }
