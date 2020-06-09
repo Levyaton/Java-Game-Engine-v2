@@ -10,11 +10,16 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the logic of controllable entities. The entity is controlled by the user
+/**
+ * Class containing the logic of controllable entities. The entity is controlled
+ * by the user which changes the state by pressing the keys
+ */
 public class ControllableEntity extends Entity {
     private static final Logger LOG = Logger.getLogger(ControllableEntity.class.getName());
 
     /**
+     * TEST
+     * 
      * @return int
      */
     public int getTEST_COUNTER() {
@@ -69,6 +74,8 @@ public class ControllableEntity extends Entity {
 
     /**
      * @return int
+     * 
+     *         Returns the movement index of the player direction
      */
     @Override
     public int getMovement() {

@@ -1,50 +1,316 @@
-Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:49 AM engineFiles.ui.Settings setControlls
+Jun 09, 2020 12:47:01 PM engineFiles.ui.Settings setControlls
 INFO: Controlls set
-Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:49 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:49 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:50 AM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
+Jun 09, 2020 12:47:01 PM engineFiles.ui.charecterSpriteSheetClasses.SpriteSheetParser parse
 INFO: Animation Sprite Sheet Parsing complete
-Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:50 AM engineFiles.main.models.Sprites.Sprite initFromOGFile
+Jun 09, 2020 12:47:01 PM engineFiles.main.models.Sprites.Sprite initFromOGFile
 INFO: Sprite characters.png initialed from og file
-Jun 09, 2020 3:17:51 AM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 12:47:03 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 09, 2020 3:17:51 AM engineFiles.ui.fonts.FontLibrary loadFonts
+Jun 09, 2020 12:47:03 PM engineFiles.ui.fonts.FontLibrary loadFonts
 INFO: Fonts loaded
-Jun 09, 2020 3:17:53 AM engineFiles.main.game.GameLoop run
+Jun 09, 2020 12:47:04 PM engineFiles.main.game.GameLoop run
 INFO: gameloop starting
-Jun 09, 2020 3:17:56 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
+Jun 09, 2020 12:47:05 PM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
 INFO: Set panel overworld as Current
-Jun 09, 2020 3:17:58 AM engineFiles.ui.Player addItem
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:07 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with item
+Jun 09, 2020 12:47:08 PM engineFiles.GUIs.mainGameGui.OverworldPanel keyPressed
+INFO: item Brutalizer picked
+Jun 09, 2020 12:47:08 PM engineFiles.ui.Player addItem
 INFO: Added item named Brutalizer
-Jun 09, 2020 3:18:10 AM engineFiles.GUIs.mainGameGui.PanelManager initBattle
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:16 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:17 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:18 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:22 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:23 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Colliding with sprite
+Jun 09, 2020 12:47:25 PM engineFiles.GUIs.mainGameGui.OverworldPanel colliding
+INFO: Starting battle
+Jun 09, 2020 12:47:25 PM engineFiles.GUIs.mainGameGui.PanelManager initBattle
 INFO: Call to battle
-Jun 09, 2020 3:18:15 AM engineFiles.main.battle.AI getNextMove
-INFO: AI will dodge
-Jun 09, 2020 3:18:19 AM engineFiles.main.battle.AI getNextMove
-INFO: AI will attack
-Jun 09, 2020 3:18:24 AM engineFiles.main.battle.AI getNextMove
-INFO: AI will attack
-Jun 09, 2020 3:18:26 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
-INFO: Set panel overworld as Current
-Jun 09, 2020 3:18:26 AM engineFiles.GUIs.mainGameGui.PanelManager initBattle
-INFO: Call to battle
-Jun 09, 2020 3:18:27 AM engineFiles.GUIs.mainGameGui.PanelManager setCurrent
-INFO: Set panel overworld as Current

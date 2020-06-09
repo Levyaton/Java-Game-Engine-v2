@@ -2,7 +2,9 @@ package engineFiles.ui.TileMapClasses;
 
 import java.util.logging.Logger;
 
-//Class containing tileset logic
+/**
+ * Class containing tileset logic
+ */
 public class Tileset {
     private static final Logger LOG = Logger.getLogger(Tileset.class.getName());
     int firstgid;

@@ -12,7 +12,6 @@ import engineFiles.main.models.WorldGenModel;
 import engineFiles.ui.Coordinates;
 import engineFiles.ui.Resolution;
 import engineFiles.ui.Settings;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -23,7 +22,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// Class that is used to get the information needed to display for the overworld/main game world
+/**
+ * Class that is used to get the information needed to display for the
+ * overworld/main game world
+ *
+ */
 public class OverworldPanel extends GamePanel {
     private static final Logger LOG = Logger.getLogger(OverworldPanel.class.getName());
     int SPACE_MOD1 = 100;
@@ -35,16 +38,24 @@ public class OverworldPanel extends GamePanel {
     private boolean paused = false;
 
     /**
+     * Loads area sprites from worldGenModel. Sets DoubleBuffering to true
+     * 
      * @param panelName
      * @param window
      * @param worldGenModel
      * 
-     *                      Loads area sprites from worldGenModel. Sets
-     *                      DoubleBuffering to true
-     * 
      */
     public OverworldPanel(String panelName, Window window, WorldGenModel worldGenModel) {
         super(worldGenModel.getArea(), worldGenModel.getEntitiesModel().getAllEntities(), panelName, window);
+        LOG.setUseParentHandlers(false);
+        Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
+        LOG.addHandler(stdout);
         setLayout(new BorderLayout());
         this.colorSwitchGui = new ColorSwitchGui(worldGenModel.getColorerModel().isRecolor());
         loadSprites(area.getSprites());
@@ -54,13 +65,13 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Loads area sprites from area. Sets DoubleBuffering to true
+     * 
      * @param panelName
      * @param window
      * @param isRecolor
      * @param area
      * @param entities
-     * 
-     *                  Loads area sprites from area. Sets DoubleBuffering to true
      * 
      */
     public OverworldPanel(String panelName, Window window, boolean isRecolor, Area area, List<Entity> entities) {
@@ -103,11 +114,12 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Checks saving and item picking. During Item picking checks if theres a item
+     * sprite around the player. After picking an item , remove it from the map and
+     * add to invetory
+     * 
      * @param e
      * 
-     *          Checks saving and item picking. During Item picking checks if theres
-     *          a item sprite around the player. After picking an item , remove it
-     *          from the map and add to invetory
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -148,10 +160,11 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Returns rendered image of overworld. Iterates throught sprites, entities and
+     * items in the window coordinates
+     * 
      * @return Image
      * 
-     *         Returns rendered image of overworld. Iterates throught sprites,
-     *         entities and items in the window coordinates
      */
     @Override
     public Image getRenderGraphics() {
@@ -271,9 +284,10 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Returns the coordinates of the window in the map coordinates
+     * 
      * @return Coordinates
      * 
-     *         Returns the coordinates of the window in the map coordinates
      */
     @Override
     public Coordinates getOffset() {
@@ -293,9 +307,10 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Returns the player entity by iterating through all entities
+     * 
      * @return Entity
      * 
-     *         Returns the player entity
      */
     public Entity getPlayer() {
         for (Entity e : entities) {
@@ -326,9 +341,10 @@ public class OverworldPanel extends GamePanel {
     }
 
     /**
+     * Removes entity from entities
+     * 
      * @param removedEntity
      * 
-     *                      Removes entity from entities
      */
     public void removeEntity(Entity removedEntity) {
         entities.remove(removedEntity);

@@ -9,7 +9,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// Class that helps manage the various GamePanel children that are being used
+/**
+ * Class that helps manage the various GamePanel children that are being used
+ *
+ */
 public class PanelManager {
     private static final Logger LOG = Logger.getLogger(PanelManager.class.getName());
     private GamePanel current;
@@ -20,10 +23,11 @@ public class PanelManager {
     private WorldGenModel model;
 
     /**
+     * Initialzes the panels and sets the current as menu
+     * 
      * @param model
      * @param window
      * 
-     *               Initialzes the panels and sets the current as menu
      */
     public PanelManager(WorldGenModel model, Window window) {
         LOG.setUseParentHandlers(false);
@@ -44,18 +48,20 @@ public class PanelManager {
     }
 
     /**
+     * Returns the current panel
+     * 
      * @return GamePanel
      * 
-     *         Returns the current panel
      */
     public GamePanel getCurrent() {
         return current;
     }
 
     /**
+     * Sets the current panel based on the name of the panel
+     * 
      * @param name
      * 
-     *             Sets the current panel based on the name of the panel
      */
     public void setCurrent(String name) {
         switch (name) {
@@ -74,11 +80,12 @@ public class PanelManager {
     }
 
     /**
+     * Starts the battle by setting the oponnent and player and changing the current
+     * panel
+     * 
      * @param player
      * @param opponent
      * 
-     *                 Starts the battle by setting the oponnent and player and
-     *                 changing the current panel
      */
     public void initBattle(OverworldPlayer player, Entity opponent) {
         battle.setOpponents(player, opponent);

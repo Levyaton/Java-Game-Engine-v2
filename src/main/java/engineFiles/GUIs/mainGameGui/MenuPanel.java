@@ -13,7 +13,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// Menu screen for game start
+/**
+ * Menu screen for game start, consist of only the button for game starting
+ *
+ */
 public class MenuPanel extends GamePanel {
   private static final Logger LOG = Logger.getLogger(MenuPanel.class.getName());
   private boolean clicked = false;
@@ -21,11 +24,11 @@ public class MenuPanel extends GamePanel {
   private List<Component> components;
 
   /**
+   * Initiliazes component ArrayList and adds the layout components to the list
+   * 
    * @param panelName
    * @param window
    * 
-   *                  Initiliazes component ArrayList and adds the layout
-   *                  components to the list
    * 
    */
   public MenuPanel(String panelName, Window window) {
@@ -38,9 +41,10 @@ public class MenuPanel extends GamePanel {
   }
 
   /**
+   * Returns rendered image of the menu with updates states
+   * 
    * @return Image
    * 
-   *         Returns rendered image of the menu with updates states
    */
   @Override
   public Image getRenderGraphics() {
@@ -75,9 +79,10 @@ public class MenuPanel extends GamePanel {
   }
 
   /**
+   * Sets mouseX and mouseY on mouse move
+   * 
    * @param e
    * 
-   *          Sets mouseX and mouseY on mouse move
    */
   @Override
   public void mouseMoved(MouseEvent e) {

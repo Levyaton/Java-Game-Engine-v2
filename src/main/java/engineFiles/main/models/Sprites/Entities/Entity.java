@@ -14,8 +14,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the general logic of every entity
-
+/**
+ * Class containing the general logic of every entity
+ */
 public abstract class Entity extends Sprite {
     private static final Logger LOG = Logger.getLogger(Entity.class.getName());
     protected int lastMovementIndex = 0;
@@ -95,6 +96,9 @@ public abstract class Entity extends Sprite {
     }
 
     /**
+     * Returns the animation of the current movement index (direction) + movement
+     * state (still or running)
+     * 
      * @return BufferedImage
      */
     @Override
@@ -104,7 +108,10 @@ public abstract class Entity extends Sprite {
     }
 
     /**
+     * Returns the movement index direction
+     * 
      * @return int
+     * 
      */
     protected int getMovementIndex() {
         int chosenMovement = currentMovement;
@@ -127,6 +134,8 @@ public abstract class Entity extends Sprite {
     public abstract int getMovement();
 
     /**
+     * Adds an entity to the others
+     * 
      * @param other
      */
     public void addOtherEntity(Entity other) {
@@ -154,6 +163,9 @@ public abstract class Entity extends Sprite {
     }
 
     /**
+     * Used in the running animation to know at which time to change the animation
+     * state
+     * 
      * @return boolean
      */
     public boolean timeToMove() {

@@ -11,7 +11,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//A class containing methods of displaying text
+/**
+ * The Dialog object extends component. It has it owns GUI representation with a
+ * text. It requerest a callback func which is invoked on enter key
+ *
+ */
 public class Dialog extends Component {
   private static final Logger LOG = Logger.getLogger(Dialog.class.getName());
   private String text;

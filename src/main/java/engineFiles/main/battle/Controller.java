@@ -14,7 +14,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//A class containing the controls that are used in battles
+/**
+ * The Controller object deals with controller and input processing which is
+ * used to know which option the player used. Additionaly it renders the
+ * controller GUI with the update state
+ *
+ */
 public class Controller extends Component {
   private static final Logger LOG = Logger.getLogger(Controller.class.getName());
   private BattlePanel battlePanel;
@@ -26,10 +31,11 @@ public class Controller extends Component {
   private boolean showItemsOption = false;
 
   /**
+   * Initializes baseOptions and sets inventory from the player inventory for
+   * items
+   * 
    * @param battlePanel
    * 
-   *                    Initializes baseOptions and sets inventory from the player
-   *                    inventory for items
    */
   public Controller(BattlePanel battlePanel) {
     LOG.setUseParentHandlers(false);
@@ -112,9 +118,10 @@ public class Controller extends Component {
   }
 
   /**
+   * Renders the graphics of basic options or items options
+   * 
    * @param g
    * 
-   *          Renders the graphics of basic options or items options
    */
   @Override
   public void render(Graphics g) {
@@ -128,9 +135,10 @@ public class Controller extends Component {
   }
 
   /**
+   * Draws basic options, each option is active based on the curIndex
+   * 
    * @param g
    * 
-   *          Draws basic options, each option is active based on the curIndex
    */
   public void drawBasicOptions(Graphics g) {
     g.setFont(FontLibrary.zeldaFontMedium);
@@ -155,9 +163,10 @@ public class Controller extends Component {
   }
 
   /**
+   * Draws items options, each option is active based on the itemIndex
+   * 
    * @param g
    * 
-   *          Draws items options, each option is active based on the itemIndex
    */
   public void drawItemsOptions(Graphics g) {
     for (int i = itemIndex; i < itemIndex + 3; i++) {

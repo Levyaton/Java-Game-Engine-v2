@@ -6,7 +6,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing coordinate logic
+/**
+ * Class containing coordinate logic for sprites and collision detection
+ */
 public class Coordinates {
     private static final Logger LOG = Logger.getLogger(Coordinates.class.getName());
     private int x_last;

@@ -12,7 +12,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Custom JFrame that contains the game panels and controls the displaying of information
+/**
+ * Custom JFrame that contains the game panels and controls the displaying of
+ * information
+ *
+ */
 public class Window extends JFrame implements KeyListener, MouseListener, MouseMotionListener {
     private static final Logger LOG = Logger.getLogger(Window.class.getName());
     int lastDrawX;
@@ -45,9 +49,10 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     }
 
     /**
+     * Initialze panelManager, canvas and adds to the window
+     * 
      * @param model
      * 
-     *              Initialze panelManager, canvas and adds to the window
      */
     public Window(WorldGenModel model) {
         this();
@@ -81,12 +86,12 @@ public class Window extends JFrame implements KeyListener, MouseListener, MouseM
     }
 
     /**
+     * Initliaze the battle by calling panelManager initBattle. Removes the old
+     * jpanel with the new one for keyboard and mouse listenning
+     * 
      * @param player
      * @param opponent
      * 
-     *                 Initliaze the battle by calling panelManager initBattle.
-     *                 Removes the old jpanel with the new one for keyboard and
-     *                 mouse listenning
      */
     public void initBattle(OverworldPlayer player, Entity opponent) {
         panelManager.initBattle(player, opponent);

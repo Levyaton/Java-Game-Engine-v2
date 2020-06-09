@@ -8,7 +8,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the game loop
+/**
+ * The GameLoops jobs is to create a consistant render enviroment set by the
+ * frame rate and calling repaint for the rerendering of the GUI
+ *
+ */
 public class GameLoop implements Runnable {
     private static final Logger LOG = Logger.getLogger(GameLoop.class.getName());
     private Window frame;

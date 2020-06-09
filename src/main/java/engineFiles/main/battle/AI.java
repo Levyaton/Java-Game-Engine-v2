@@ -9,7 +9,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the ai behaviour
+/**
+ * The AI object goal is to randomly pick a move. AI can have an attack / dodge
+ * / item move. The items which it picks from is fixly created on object
+ * initliaziation.
+ *
+ */
 public class AI {
   private static final Logger LOG = Logger.getLogger(AI.class.getName());
   private Random rand;

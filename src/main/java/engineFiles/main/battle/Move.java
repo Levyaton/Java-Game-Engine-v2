@@ -8,7 +8,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//A class containing the move logic used in battles
+/**
+ * The Move object store the data required for battle execution in the move
+ * stack.
+ *
+ */
 public class Move {
   private static final Logger LOG = Logger.getLogger(Move.class.getName());
   public Entity entity;

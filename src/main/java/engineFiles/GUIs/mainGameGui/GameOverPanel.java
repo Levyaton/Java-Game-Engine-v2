@@ -10,7 +10,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// Gameover screen after loosing, closes the window after click
+/**
+ * Gameover screen after loosing, closes the window after click
+ *
+ */
 public class GameOverPanel extends GamePanel {
   private static final Logger LOG = Logger.getLogger(GameOverPanel.class.getName());
   private boolean clicked = false;
@@ -18,10 +21,11 @@ public class GameOverPanel extends GamePanel {
   private Button endButton;
 
   /**
+   * Initliazes end button for window closing
+   * 
    * @param panelName
    * @param window
    * 
-   *                  Initliazes end button for window closing
    */
   public GameOverPanel(String panelName, Window window) {
     super(panelName, window);
@@ -43,9 +47,10 @@ public class GameOverPanel extends GamePanel {
   }
 
   /**
+   * Returns rendered image of the button and text with updates state
+   * 
    * @return Image
    * 
-   *         Returns rendered image of the button and text with updates state
    */
   @Override
   public Image getRenderGraphics() {

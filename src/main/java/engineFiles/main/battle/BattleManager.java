@@ -8,7 +8,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//A class containing the battle logic
+/**
+ * The object BattleManager deals with battle states by pushing the next moves
+ * into move stack and executing the top one on the stack
+ *
+ */
 public class BattleManager {
   private static final Logger LOG = Logger.getLogger(BattleManager.class.getName());
   private BattlePanel battlePanel;
@@ -17,22 +21,33 @@ public class BattleManager {
   private AI ai;
 
   /**
+   * Initalize AI and move stack
+   * 
    * @param battlePanel
    * 
-   *                    Initalize AI and move stack
    */
   public BattleManager(BattlePanel battlePanel) {
     this.battlePanel = battlePanel;
     this.ai = new AI();
     moveStack = new Stack<Move>();
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+      @Override
+      public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+      }
+    };
+    LOG.addHandler(stdout);
     LOG.config("BattleManager Initialized");
   }
 
   /**
+   * Pushes a move to the move stack for player and gets a random move for the
+   * oponnent
+   * 
    * @param move
    * 
-   *             Pushes a move to the move stack for player and gets a random move
-   *             for the oponnent
    */
   public void push(Move move) {
     LOG.info("Move pushed to stack");
@@ -48,12 +63,12 @@ public class BattleManager {
   }
 
   /**
+   * Executes the move from the move stack. If one entity attacks and the other
+   * uses dodge, the attack gets nullified. After each move a dialog is pushed to
+   * the component stack and the appropiete update is executed
+   * 
    * @param move
    * 
-   *             Executes the move from the move stack. If one entity attacks and
-   *             the other uses dodge, the attack gets nullified. After each move
-   *             a dialog is pushed to the component stack and the appropiete
-   *             update is executed
    */
   public void executeMove(Move move) {
     moveStack.pop();

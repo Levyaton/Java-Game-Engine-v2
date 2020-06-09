@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-//Class used to keep track of typed keys
+/**
+ * The KeyMap is used for storing, accessing and setting pressed keys
+ *
+ */
 public class KeyMap {
     private static final Logger LOG = Logger.getLogger(KeyMap.class.getName());
     private static Set<Integer> keys = new HashSet<>();

@@ -9,7 +9,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Gui meant to help switch the games color setting
+/**
+ * Gui meant to help switch the games color setting
+ *
+ */
 public class ColorSwitchGui extends JPanel {
     private static final Logger LOG = Logger.getLogger(ColorSwitchGui.class.getName());
     JLabel colorChangeText;
@@ -17,9 +20,10 @@ public class ColorSwitchGui extends JPanel {
     JButton exit;
 
     /**
+     * Recolor GUI
+     * 
      * @param changeColor
      * 
-     *                    Recolor GUI
      */
     public ColorSwitchGui(boolean changeColor) {
         super();

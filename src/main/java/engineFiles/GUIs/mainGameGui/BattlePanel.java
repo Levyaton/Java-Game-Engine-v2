@@ -18,7 +18,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// Main battle screen class, rendering layout GUI and input processing
+/**
+ * Main battle screen class, rendering layout GUI and input processing, consist
+ * of component stack for knowing which component to render, battleManger which
+ * deals with battle execution and state and a entities need in the fight
+ *
+ */
 public class BattlePanel extends GamePanel {
   private static final Logger LOG = Logger.getLogger(BattlePanel.class.getName());
   private boolean inBattle = false;
@@ -31,13 +36,23 @@ public class BattlePanel extends GamePanel {
   public Entity opponent;
 
   /**
+   * Initliazes battle manager, component stack
+   * 
    * @param panelName
    * @param window
    * 
-   *                  Initliazes battle manager, component stack
    */
   public BattlePanel(String panelName, Window window) {
     super(panelName, window);
+    LOG.setUseParentHandlers(false);
+    Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
+      @Override
+      public void publish(LogRecord record) {
+        super.publish(record);
+        flush();
+      }
+    };
+    LOG.addHandler(stdout);
     battleGUI.loadResources();
 
     battleManager = new BattleManager(this);
@@ -46,11 +61,12 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Sets player and opponnent entity for battle and pushes a intro dialog to the
+   * component stack
+   * 
    * @param player
    * @param opponent
    * 
-   *                 Sets player and opponnent entity for battle and pushes a
-   *                 intro dialog to the component stack
    */
   public void setOpponents(OverworldPlayer player, Entity opponent) {
     this.player = player;
@@ -91,10 +107,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Returns rendered image of battle and updates the component stack state
+   * 
    * @return Image
    * 
-   *         Returns rendered image of battle and updates the component stack
-   *         state
    */
   @Override
   public Image getRenderGraphics() {
@@ -144,9 +160,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Draws the battle GUI layout
+   * 
    * @param g
    * 
-   *          Draws the battle GUI layout
    */
   public void drawGUI(Graphics g) {
     // setting up background and components
@@ -160,9 +177,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Draws the player and their name
+   * 
    * @param g
    * 
-   *          Draws the player and their name
    */
   public void drawPlayer(Graphics g) {
     g.drawString(player.getCategoryName(), 35, 175);
@@ -170,9 +188,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Draws the oponnent and their name
+   * 
    * @param g
    * 
-   *          Draws the oponnent and their name
    */
   public void drawOpponent(Graphics g) {
     g.drawString(opponent.getCategoryName(), 595, 75);
@@ -180,9 +199,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Draws the player and opponent healthbar
+   * 
    * @param g
    * 
-   *          Draws the player and opponent healthbar
    */
   public void drawHealthBars(Graphics g) {
     // health width: 160
@@ -198,9 +218,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Pushes a dialog to the component stack with a text
+   * 
    * @param text
    * 
-   *             Pushes a dialog to the component stack with a text
    */
   public void pushDialog(String text) {
     componentStack.push(new Dialog(text, () -> {
@@ -209,9 +230,10 @@ public class BattlePanel extends GamePanel {
   }
 
   /**
+   * Checks if game ended by comparing player and oponnent curhealth
+   * 
    * @return boolean
    * 
-   *         Checks if game ended by comparing player and oponnent curhealth
    */
   public boolean gameEnded() {
     return player.getCurHealth() < 1 || opponent.getCurHealth() < 1;

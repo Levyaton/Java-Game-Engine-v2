@@ -6,7 +6,11 @@ import engineFiles.main.models.WorldGen;
 import java.io.*;
 import java.util.logging.*;
 
-//Class containing the game launching methods
+/**
+ * GameContainer is the main class dealing with launching the game. It Loads the
+ * saved json data and creates a WorldModel used in the game processing
+ *
+ */
 public class GameContainer {
 
     private static final Logger LOG = Logger.getLogger(GameContainer.class.getName());
@@ -36,22 +40,13 @@ public class GameContainer {
     }
 
     /**
+     * Loads the world data from the json save file and generates the world
+     * 
      * @param args
      * @throws FileNotFoundException
      * 
-     *                               Loads the world data from the json save file
-     *                               and generates the world
      */
     public static void main(String[] args) throws FileNotFoundException {
-        // LOG.setUseParentHandlers(false);
-        // Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-        // @Override
-        // public void publish(LogRecord record) {
-        // super.publish(record);
-        // flush();
-        // }
-        // };
-        // LOG.addHandler(stdout);
         LOG.info("Game Started");
         File log = new File("src/main/java/Log.txt");
         try {

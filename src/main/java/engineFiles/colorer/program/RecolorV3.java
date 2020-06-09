@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.logging.*;
 
-//Class used to recolor tilesets or single images
+/**
+ * The RecolorV3 is used for recoloring tilesets or single images
+ *
+ */
 public class RecolorV3 {
     private static final Logger LOG = Logger.getLogger(RecolorV3.class.getName());
     int redShiftSeed;
@@ -39,12 +42,13 @@ public class RecolorV3 {
     }
 
     /**
+     * Generates random int for color shifting, by changing red/green/blue shift
+     * values
+     * 
      * @param redShiftSeed
      * @param greenShiftSeed
      * @param blueShiftSeed
      * 
-     *                       Generates random int for color shifting, by changing
-     *                       red/green/blue shift values
      */
     public RecolorV3(int redShiftSeed, int greenShiftSeed, int blueShiftSeed) {
         LOG.setUseParentHandlers(false);
@@ -84,22 +88,25 @@ public class RecolorV3 {
     }
 
     /**
+     * Returns the recolerAlgo function for color img change
+     * 
      * @param img
      * @return BufferedImage
      * 
-     *         Returns the recolerAlgo function for color img change
      */
     public BufferedImage recolorLocal(BufferedImage img) {
         return recolorAlgorithm(img, this.redShiftSeed, this.blueShiftSeed, this.greenShiftSeed);
     }
 
     /**
+     * Returns the shifted img by iterating every pixel and shifting the hex color
+     * by the param values
+     * 
      * @param img
      * @param redShiftSeed
      * @param greenShiftSeed
      * @param blueShiftSeed
-     * @return BufferedImage * Returns the shifted img by iterating every pixel and
-     *         shifting the hex color by the param values
+     * @return BufferedImage
      */
     public static BufferedImage recolorAlgorithm(BufferedImage img, int redShiftSeed, int greenShiftSeed,
             int blueShiftSeed) {
@@ -131,11 +138,12 @@ public class RecolorV3 {
     }
 
     /**
+     * Returns the recolerAlgo function for color img change
+     * 
      * @param img
      * @param recolor
      * @return BufferedImage
      * 
-     *         Returns the recolerAlgo function for color img change
      */
     public static BufferedImage recolor(BufferedImage img, boolean recolor) {
         int redShiftSeed = new Random().nextInt(255);
@@ -149,13 +157,14 @@ public class RecolorV3 {
     }
 
     /**
+     * * Returns the recolerAlgo function for color img change
+     * 
      * @param img
      * @param redShiftSeed
      * @param greenShiftSeed
      * @param blueShiftSeed
      * @return BufferedImage
      * 
-     *         * Returns the recolerAlgo function for color img change
      */
     public static BufferedImage recolor(BufferedImage img, int redShiftSeed, int greenShiftSeed, int blueShiftSeed) {
         return recolorAlgorithm(img, redShiftSeed, greenShiftSeed, blueShiftSeed);
@@ -175,10 +184,11 @@ public class RecolorV3 {
     }
 
     /**
+     * Recolors the tileset img and saves it as a file
+     * 
      * @param model
      * @throws IOException
      * 
-     *                     Recolors the tileset img and saves it as a file
      */
     public static void recolorAndSave(ColorerModel model) throws IOException {
         BufferedImage recolor = recolor(ImageIO.read(new File(model.getTilesetInputDir())));

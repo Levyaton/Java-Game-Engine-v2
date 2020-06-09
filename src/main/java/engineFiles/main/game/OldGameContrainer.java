@@ -33,15 +33,19 @@ import java.util.logging.*;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
-//Class containing an old version of the game container. Used for repairing the json file, if broken
+/**
+ * DEPRECREATED
+ * 
+ * Class containing an old version of the game container. Used for repairing the
+ * json file, if its borkenbroken
+ *
+ */
 public class OldGameContrainer {
         private static final Logger LOG = Logger.getLogger(OldGameContrainer.class.getName());
 
         /**
          * @param args
          * 
-         *             DEPRECIATED. Old main class, usage as a backup if the normal
-         *             doesnt work
          */
         public static void main(String[] args) {
                 LOG.setUseParentHandlers(false);

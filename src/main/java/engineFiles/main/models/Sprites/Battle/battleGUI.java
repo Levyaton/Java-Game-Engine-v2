@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing the battle gui
+/**
+ * BattleGui stores the buffered images of loaded GUI components from the files
+ */
 public class battleGUI {
   private static final Logger LOG = Logger.getLogger(battleGUI.class.getName());
   public static BufferedImage battleBackground, battleOptions, battleDialog, battleStats;

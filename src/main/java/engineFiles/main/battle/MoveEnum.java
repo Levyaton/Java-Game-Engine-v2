@@ -1,6 +1,9 @@
 package engineFiles.main.battle;
 
-//Class containing the Move enumeration
+/**
+ * ENUM of possible move types
+ *
+ */
 public enum MoveEnum {
   ATTACK, ITEM, DODGE,
 }

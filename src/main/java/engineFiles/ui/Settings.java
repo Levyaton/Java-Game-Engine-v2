@@ -12,7 +12,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//Class containing  the game settings
+/**
+ * Class containing the game settings
+ */
 public class Settings {
     private static final Logger LOG = Logger.getLogger(Settings.class.getName());
     public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -22,23 +24,25 @@ public class Settings {
 
     public static Controlls controlls = setControlls();
 
-    public static class ColorerSettings{
+    public static class ColorerSettings {
         public static boolean recolor = true;
         public static int redShift = new Random().nextInt(255);
         public static int greenShift = new Random().nextInt(255);
         public static int blueShift = new Random().nextInt(255);
     }
 
-
+    /**
+     * Sets the basic controllers from the keyEvent code
+     */
     private static Controlls setControlls() {
         LOG.setUseParentHandlers(false);
         Handler stdout = new StreamHandler(System.out, new SimpleFormatter()) {
-    @Override
-    public void publish(LogRecord record) {
-        super.publish(record);
-        flush();
-    }
-};
+            @Override
+            public void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         LOG.addHandler(stdout);
         ArrayList<Integer> up = new ArrayList<>(Arrays.asList(KeyEvent.VK_UP, KeyEvent.VK_W));
         ArrayList<Integer> down = new ArrayList<>(Arrays.asList(KeyEvent.VK_DOWN, KeyEvent.VK_S));
@@ -47,7 +51,7 @@ public class Settings {
         int interaction = KeyEvent.VK_SPACE;
         int gameSave = KeyEvent.VK_ENTER;
         LOG.info("Controlls set");
-        return new Controlls(up, down, left, right, interaction,gameSave);
+        return new Controlls(up, down, left, right, interaction, gameSave);
     }
 
 }

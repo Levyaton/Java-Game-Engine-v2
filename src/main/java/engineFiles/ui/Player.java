@@ -4,17 +4,18 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import engineFiles.main.models.Sprites.Items.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
-
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.INVENTORY_KEY;
 import static engineFiles.main.models.WorldGenKeys.PlayerKeys.USERNAME_KEY;
 
+/**
+ * The player object which stores the inventory for items
+ */
 public class Player {
     private static final Logger LOG = Logger.getLogger(Player.class.getName());
     private Gson gson = new Gson();

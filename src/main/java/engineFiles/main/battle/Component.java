@@ -6,7 +6,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-//A custom definition of a Component object
+/**
+ * A custom definition for component used for GUI in battle
+ *
+ */
 public abstract class Component {
 
   public Component() {

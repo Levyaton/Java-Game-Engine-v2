@@ -14,8 +14,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.*;
 
-// A custom JPanel inherited by all the different panels used in the game engine. It contains the necessary methods that the JFrame needs
-// to update itself correctly
+/**
+ * A custom JPanel inherited by all the different panels used in the game
+ * engine. It contains the necessary methods that the JFrame needs // to update
+ * itself correctly
+ *
+ */
 public abstract class GamePanel extends JPanel {
     private static final Logger LOG = Logger.getLogger(GamePanel.class.getName());
     protected String panelName;
