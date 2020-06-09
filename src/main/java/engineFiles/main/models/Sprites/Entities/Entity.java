@@ -35,14 +35,14 @@ public abstract class Entity extends Sprite {
     protected CharacterSpriteSheetModel characterSpriteSheetModel;
 
     /**
-     * @param uniqueIndex
+     * Set's the uniqueIndex property of a given entity. Every entity should have their own unique index number
      */
     public void setUniqueIndex(int uniqueIndex) {
         this.uniqueIndex = uniqueIndex;
     }
 
     /**
-     * @return int
+     *Returns the Entities unique index
      */
     public int getUniqueIndex() {
         return uniqueIndex;
@@ -51,9 +51,7 @@ public abstract class Entity extends Sprite {
     int movementIndex;
 
     /**
-     * @param animation
-     * @param json
-     * @param speedCounter
+     * A secondary way to initialize the Entity class
      * 
      */
     public Entity(MovementAnimation animation, JSONObject json, int speedCounter) {
@@ -74,8 +72,7 @@ public abstract class Entity extends Sprite {
     }
 
     /**
-     * @param f
-     * @param speedCounter
+     * A tertiary way to initialize the Entiy class
      * 
      */
     public Entity(MovementAnimation animation, File f, int speedCounter) {
@@ -128,8 +125,7 @@ public abstract class Entity extends Sprite {
     }
 
     /**
-     * @param other
-     * @return int
+     * Every enitity child must have a getMovement method, which determines their behaviour and movement
      */
     public abstract int getMovement();
 
@@ -142,6 +138,10 @@ public abstract class Entity extends Sprite {
         this.others.add(other);
     }
 
+    /**
+     * A method that determines what happens if the entities desired movement is blocked or unavailable
+     *r
+     */
     public void movementBlocked() {
         if (!still) {
             switch (getMovementIndex()) {
@@ -252,7 +252,7 @@ public abstract class Entity extends Sprite {
     }
 
     /**
-     * @return Controlls
+     * Initializes the entitiees controlls
      */
     protected Controlls controllsInit() {
         List<Integer> up = new ArrayList<>();

@@ -19,7 +19,7 @@ public class ControllableEntity extends Entity {
 
     /**
      * TEST
-     * 
+     * returns the TEST_COUNTER varíable
      * @return int
      */
     public int getTEST_COUNTER() {
@@ -29,9 +29,7 @@ public class ControllableEntity extends Entity {
     public int TEST_COUNTER = 0;
 
     /**
-     * @param animation
-     * @param json
-     * @param speedCounter
+     * The main way to initialize the ControllableEntity class. It is an entity that is controlled by the player
      * 
      */
     public ControllableEntity(MovementAnimation animation, JSONObject json, int speedCounter) {
@@ -51,9 +49,7 @@ public class ControllableEntity extends Entity {
     }
 
     /**
-     * @param animation
-     * @param f
-     * @param speedCounter
+     * A secondary way to initialize the ControllableEntity class
      * 
      */
     public ControllableEntity(MovementAnimation animation, File f, int speedCounter) {
